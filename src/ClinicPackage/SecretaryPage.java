@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package ClinicPackage;
+
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -15,14 +16,13 @@ import javax.swing.ImageIcon;
 import java.util.Timer;
 import javax.swing.JOptionPane;
 //import javax.swing.Timer;
+
 /**
  *
  * @author andre
  */
-
-
 public class SecretaryPage extends javax.swing.JFrame {
-    
+
     /**
      * Creates new form SecretaryPage
      */
@@ -30,13 +30,17 @@ public class SecretaryPage extends javax.swing.JFrame {
         initComponents();
         showDate();
         showTime();
-        
-        ImageIcon myimage = new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getResource("84-512.png")));
-        
-        Image  img1=myimage.getImage();
-        Image img2= img1.getScaledInstance(lblSecretary.getWidth(), lblSecretary.getHeight(), Image.SCALE_SMOOTH);
+        imageResize();
+    
+    }
+
+    void imageResize(){
+    ImageIcon myimage = new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getResource("84-512.png")));
+
+        Image img1 = myimage.getImage();
+        Image img2 = img1.getScaledInstance(lblSecretary.getWidth(), lblSecretary.getHeight(), Image.SCALE_SMOOTH);
         ImageIcon i = new ImageIcon(img2);
-        
+
         lblSecretary.setIcon(i);
     }
     void showTime() {
@@ -44,7 +48,7 @@ public class SecretaryPage extends javax.swing.JFrame {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 Date d = new Date();
-                SimpleDateFormat s = new SimpleDateFormat("hh:mm a zzzz");
+                SimpleDateFormat s = new SimpleDateFormat("hh:mm:ss a zzzz");
                 lblTime.setText(s.format(d));
             }
 
@@ -68,13 +72,15 @@ public class SecretaryPage extends javax.swing.JFrame {
         sidePanel = new javax.swing.JPanel();
         lblSecretary = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        btnPtntRec = new javax.swing.JButton();
-        btnAppointment = new javax.swing.JButton();
-        btnMedicine = new javax.swing.JButton();
-        btnFees = new javax.swing.JButton();
         btnExit = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        jPanel7 = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         lblTime = new javax.swing.JLabel();
@@ -101,80 +107,12 @@ public class SecretaryPage extends javax.swing.JFrame {
 
         sidePanel.setBackground(new java.awt.Color(254, 241, 230));
         sidePanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        sidePanel.add(lblSecretary, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 110, 100));
+        sidePanel.add(lblSecretary, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 80, 80));
 
-        jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(61, 86, 178));
         jLabel2.setText("Secretary");
-        sidePanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, -1, -1));
-
-        btnPtntRec.setBackground(new java.awt.Color(254, 241, 230));
-        btnPtntRec.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btnPtntRec.setForeground(new java.awt.Color(61, 86, 178));
-        btnPtntRec.setText("Patient Records");
-        btnPtntRec.setBorder(null);
-        btnPtntRec.setBorderPainted(false);
-        btnPtntRec.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnPtntRec.setOpaque(false);
-        btnPtntRec.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnPtntRecMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnPtntRecMouseExited(evt);
-            }
-        });
-        btnPtntRec.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPtntRecActionPerformed(evt);
-            }
-        });
-        sidePanel.add(btnPtntRec, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 210, 60));
-
-        btnAppointment.setBackground(new java.awt.Color(254, 241, 230));
-        btnAppointment.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btnAppointment.setForeground(new java.awt.Color(61, 86, 178));
-        btnAppointment.setText("Appointments");
-        btnAppointment.setBorder(null);
-        btnAppointment.setBorderPainted(false);
-        btnAppointment.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnAppointment.setOpaque(false);
-        btnAppointment.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAppointmentActionPerformed(evt);
-            }
-        });
-        sidePanel.add(btnAppointment, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 210, 60));
-
-        btnMedicine.setBackground(new java.awt.Color(254, 241, 230));
-        btnMedicine.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btnMedicine.setForeground(new java.awt.Color(61, 86, 178));
-        btnMedicine.setText("Medicine");
-        btnMedicine.setBorder(null);
-        btnMedicine.setBorderPainted(false);
-        btnMedicine.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnMedicine.setOpaque(false);
-        btnMedicine.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMedicineActionPerformed(evt);
-            }
-        });
-        sidePanel.add(btnMedicine, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 360, 210, 60));
-
-        btnFees.setBackground(new java.awt.Color(254, 241, 230));
-        btnFees.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btnFees.setForeground(new java.awt.Color(61, 86, 178));
-        btnFees.setText("Fees");
-        btnFees.setBorder(null);
-        btnFees.setBorderPainted(false);
-        btnFees.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnFees.setOpaque(false);
-        btnFees.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFeesActionPerformed(evt);
-            }
-        });
-        sidePanel.add(btnFees, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 210, 60));
+        sidePanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 80, 20));
 
         btnExit.setBackground(new java.awt.Color(254, 241, 230));
         btnExit.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -187,10 +125,10 @@ public class SecretaryPage extends javax.swing.JFrame {
                 btnExitActionPerformed(evt);
             }
         });
-        sidePanel.add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 490, 210, 50));
+        sidePanel.add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 490, 200, 50));
 
         jPanel2.setBackground(new java.awt.Color(254, 241, 230));
-        jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jPanel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -207,12 +145,81 @@ public class SecretaryPage extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(61, 86, 178));
-        jLabel4.setText("Test Button");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, -1, -1));
+        jLabel4.setText("Medicine");
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, -1));
 
-        sidePanel.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, 210, 60));
+        sidePanel.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 200, 60));
 
-        MainPanel.add(sidePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 210, 570));
+        jPanel4.setBackground(new java.awt.Color(254, 241, 230));
+        jPanel4.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jPanel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel4MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel4MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel4MouseExited(evt);
+            }
+        });
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel6.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(61, 86, 178));
+        jLabel6.setText("Patient Records");
+        jPanel4.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, -1));
+
+        sidePanel.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 200, 60));
+
+        jPanel7.setBackground(new java.awt.Color(254, 241, 230));
+        jPanel7.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jPanel7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel7MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel7MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel7MouseExited(evt);
+            }
+        });
+        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel9.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(61, 86, 178));
+        jLabel9.setText("Appointments");
+        jPanel7.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, -1));
+
+        sidePanel.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 200, 60));
+
+        jPanel6.setBackground(new java.awt.Color(254, 241, 230));
+        jPanel6.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jPanel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel6MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel6MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel6MouseExited(evt);
+            }
+        });
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel8.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(61, 86, 178));
+        jLabel8.setText("Fees");
+        jPanel6.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, -1));
+
+        sidePanel.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 200, 60));
+
+        MainPanel.add(sidePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 200, 570));
 
         jPanel1.setBackground(new java.awt.Color(230, 230, 230));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -229,7 +236,7 @@ public class SecretaryPage extends javax.swing.JFrame {
         lblTime.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jPanel1.add(lblTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 470, 260, 60));
 
-        MainPanel.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 120, 1070, 570));
+        MainPanel.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, 1080, 570));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -246,32 +253,11 @@ public class SecretaryPage extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    public void showDate(){
+    public void showDate() {
         Date d = new Date();
         SimpleDateFormat s = new SimpleDateFormat("E, dd MMMM yyyy");
         lblDate.setText(s.format(d));
     }
-    
- /*  void showTime(){
-       new Timer()
-    } */
-    private void btnFeesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFeesActionPerformed
-     JOptionPane.showMessageDialog(null, "Feature currently unavailable");
-    }//GEN-LAST:event_btnFeesActionPerformed
-
-    private void btnPtntRecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPtntRecActionPerformed
-      new PatientRecordButtons().setVisible(true);
-           this.setVisible(false); 
-    }//GEN-LAST:event_btnPtntRecActionPerformed
-
-    private void btnAppointmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAppointmentActionPerformed
-JOptionPane.showMessageDialog(null, "Feature currently unavailable");
-    }//GEN-LAST:event_btnAppointmentActionPerformed
-
-    private void btnMedicineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMedicineActionPerformed
-new MedicineFrame().setVisible(true);
-           this.setVisible(false);         // TODO add your handling code here:
-    }//GEN-LAST:event_btnMedicineActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         int msg = JOptionPane.showConfirmDialog(null, "Are you sure you want to log out of account?");
@@ -281,26 +267,53 @@ new MedicineFrame().setVisible(true);
         }        // TODO add your handling code here:
     }//GEN-LAST:event_btnExitActionPerformed
 
-    private void btnPtntRecMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPtntRecMouseEntered
-       
-    }//GEN-LAST:event_btnPtntRecMouseEntered
-
-    private void btnPtntRecMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPtntRecMouseExited
-        
-    }//GEN-LAST:event_btnPtntRecMouseExited
-
     private void jPanel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseEntered
-       jPanel2.setBackground(new Color(245,198,165));
+        jPanel2.setBackground(new Color(245, 198, 165));
     }//GEN-LAST:event_jPanel2MouseEntered
 
     private void jPanel2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseExited
-        jPanel2.setBackground(new Color(254,241,230));
+        jPanel2.setBackground(new Color(254, 241, 230));
     }//GEN-LAST:event_jPanel2MouseExited
 
     private void jPanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseClicked
-       new MedicineFrame().setVisible(true);
-           this.setVisible(false);    
+        new MedicineFrame().setVisible(true);
     }//GEN-LAST:event_jPanel2MouseClicked
+
+    private void jPanel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseClicked
+        new PatientRecordButtons().setVisible(true);
+    }//GEN-LAST:event_jPanel4MouseClicked
+
+    private void jPanel4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseEntered
+        jPanel4.setBackground(new Color(245, 198, 165));
+    }//GEN-LAST:event_jPanel4MouseEntered
+
+    private void jPanel4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseExited
+        jPanel4.setBackground(new Color(254, 241, 230));
+    }//GEN-LAST:event_jPanel4MouseExited
+
+    private void jPanel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseClicked
+        JOptionPane.showMessageDialog(null, "Feature currently unavailable");
+    }//GEN-LAST:event_jPanel6MouseClicked
+
+    private void jPanel6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseEntered
+        jPanel6.setBackground(new Color(245, 198, 165));
+    }//GEN-LAST:event_jPanel6MouseEntered
+
+    private void jPanel6MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseExited
+        jPanel6.setBackground(new Color(254, 241, 230));
+    }//GEN-LAST:event_jPanel6MouseExited
+
+    private void jPanel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MouseClicked
+        JOptionPane.showMessageDialog(null, "Feature currently unavailable");
+    }//GEN-LAST:event_jPanel7MouseClicked
+
+    private void jPanel7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MouseEntered
+        jPanel7.setBackground(new Color(245, 198, 165));
+    }//GEN-LAST:event_jPanel7MouseEntered
+
+    private void jPanel7MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MouseExited
+        jPanel7.setBackground(new Color(254, 241, 230));
+    }//GEN-LAST:event_jPanel7MouseExited
 
     /**
      * @param args the command line arguments
@@ -339,17 +352,19 @@ new MedicineFrame().setVisible(true);
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel MainPanel;
-    private javax.swing.JButton btnAppointment;
     private javax.swing.JButton btnExit;
-    private javax.swing.JButton btnFees;
-    private javax.swing.JButton btnMedicine;
-    private javax.swing.JButton btnPtntRec;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JLabel lblDate;
     private javax.swing.JLabel lblSecretary;
     private javax.swing.JLabel lblTime;
