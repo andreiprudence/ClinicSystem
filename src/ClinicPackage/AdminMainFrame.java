@@ -27,12 +27,6 @@ import javax.swing.Timer;
  */
 public class AdminMainFrame extends javax.swing.JFrame {
     
-    
-    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-   // setBounds(0,0,screenSize.width, screenSize.height);
-   // setVisible(true);
-    
-   // pack();
     /**
      * Creates new form AdminMainFrame
      */
@@ -145,7 +139,7 @@ public class AdminMainFrame extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(61, 86, 178));
         jLabel2.setText("Admin");
-        sidePanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, -1, -1));
+        sidePanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 50, -1, -1));
 
         btnAddUser.setBackground(new java.awt.Color(254, 241, 230));
         btnAddUser.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
