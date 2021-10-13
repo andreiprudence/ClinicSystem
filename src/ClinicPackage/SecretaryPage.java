@@ -31,6 +31,7 @@ public class SecretaryPage extends javax.swing.JFrame {
         showDate();
         showTime();
         imageResize();
+       // imageResize1();
     
     }
 
@@ -43,6 +44,21 @@ public class SecretaryPage extends javax.swing.JFrame {
 
         lblSecretary.setIcon(i);
     }
+    
+    // For the Letterhead UI  
+   /* void imageResize1(){
+        
+       ImageIcon letterhead = new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getResource("letterhead.png")));
+
+        Image img3 = letterhead.getImage();
+        Image img4 = img3.getScaledInstance(jLabel2.getWidth(), jLabel2.getHeight(), Image.SCALE_SMOOTH);
+        ImageIcon i1 = new ImageIcon(img4);
+
+        jLabel2.setIcon(i1);
+    }
+    
+    */
+    
     void showTime() {
         new javax.swing.Timer(0, new ActionListener() {
             @Override
@@ -71,15 +87,15 @@ public class SecretaryPage extends javax.swing.JFrame {
         lblDate = new javax.swing.JLabel();
         sidePanel = new javax.swing.JPanel();
         lblSecretary = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        userLabel = new javax.swing.JLabel();
         btnExit = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
+        medButton = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
+        ptntRecButton = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        jPanel7 = new javax.swing.JPanel();
+        appointBtton = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
-        jPanel6 = new javax.swing.JPanel();
+        feesButton = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -96,23 +112,23 @@ public class SecretaryPage extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/C.A.R.E.S._Logo(resized).png"))); // NOI18N
-        upperPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 14, -1, 95));
+        upperPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 360, 90));
 
         lblDate.setBackground(new java.awt.Color(61, 86, 178));
         lblDate.setFont(new java.awt.Font("Verdana", 1, 20)); // NOI18N
         lblDate.setForeground(new java.awt.Color(17, 78, 96));
-        upperPanel.add(lblDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 30, 250, 50));
+        upperPanel.add(lblDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 30, 270, 50));
 
-        MainPanel.add(upperPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 120));
+        MainPanel.add(upperPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 110));
 
         sidePanel.setBackground(new java.awt.Color(254, 241, 230));
         sidePanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        sidePanel.add(lblSecretary, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 80, 80));
+        sidePanel.add(lblSecretary, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 80, 80));
 
-        jLabel2.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(61, 86, 178));
-        jLabel2.setText("Secretary");
-        sidePanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 80, 20));
+        userLabel.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 14)); // NOI18N
+        userLabel.setForeground(new java.awt.Color(0, 161, 157));
+        userLabel.setText("Secretary");
+        sidePanel.add(userLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, 80, 20));
 
         btnExit.setBackground(new java.awt.Color(254, 241, 230));
         btnExit.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -125,101 +141,101 @@ public class SecretaryPage extends javax.swing.JFrame {
                 btnExitActionPerformed(evt);
             }
         });
-        sidePanel.add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 490, 200, 50));
+        sidePanel.add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 490, 220, 50));
 
-        jPanel2.setBackground(new java.awt.Color(254, 241, 230));
-        jPanel2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jPanel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
+        medButton.setBackground(new java.awt.Color(254, 241, 230));
+        medButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        medButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        medButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanel2MouseClicked(evt);
+                medButtonMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel2MouseEntered(evt);
+                medButtonMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel2MouseExited(evt);
+                medButtonMouseExited(evt);
             }
         });
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        medButton.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(61, 86, 178));
         jLabel4.setText("Medicine");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, -1));
+        medButton.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, -1, -1));
 
-        sidePanel.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 200, 60));
+        sidePanel.add(medButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 220, 60));
 
-        jPanel4.setBackground(new java.awt.Color(254, 241, 230));
-        jPanel4.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jPanel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel4.addMouseListener(new java.awt.event.MouseAdapter() {
+        ptntRecButton.setBackground(new java.awt.Color(254, 241, 230));
+        ptntRecButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        ptntRecButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ptntRecButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanel4MouseClicked(evt);
+                ptntRecButtonMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel4MouseEntered(evt);
+                ptntRecButtonMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel4MouseExited(evt);
+                ptntRecButtonMouseExited(evt);
             }
         });
-        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        ptntRecButton.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel6.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(61, 86, 178));
         jLabel6.setText("Patient Records");
-        jPanel4.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, -1));
+        ptntRecButton.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, -1, -1));
 
-        sidePanel.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 200, 60));
+        sidePanel.add(ptntRecButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 220, 60));
 
-        jPanel7.setBackground(new java.awt.Color(254, 241, 230));
-        jPanel7.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jPanel7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel7.addMouseListener(new java.awt.event.MouseAdapter() {
+        appointBtton.setBackground(new java.awt.Color(254, 241, 230));
+        appointBtton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        appointBtton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        appointBtton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanel7MouseClicked(evt);
+                appointBttonMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel7MouseEntered(evt);
+                appointBttonMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel7MouseExited(evt);
+                appointBttonMouseExited(evt);
             }
         });
-        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        appointBtton.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel9.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(61, 86, 178));
         jLabel9.setText("Appointments");
-        jPanel7.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, -1));
+        appointBtton.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, -1, -1));
 
-        sidePanel.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 200, 60));
+        sidePanel.add(appointBtton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 220, 60));
 
-        jPanel6.setBackground(new java.awt.Color(254, 241, 230));
-        jPanel6.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jPanel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel6.addMouseListener(new java.awt.event.MouseAdapter() {
+        feesButton.setBackground(new java.awt.Color(254, 241, 230));
+        feesButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        feesButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        feesButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanel6MouseClicked(evt);
+                feesButtonMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel6MouseEntered(evt);
+                feesButtonMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel6MouseExited(evt);
+                feesButtonMouseExited(evt);
             }
         });
-        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        feesButton.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel8.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(61, 86, 178));
         jLabel8.setText("Fees");
-        jPanel6.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, -1));
+        feesButton.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, -1, -1));
 
-        sidePanel.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 200, 60));
+        sidePanel.add(feesButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 220, 60));
 
-        MainPanel.add(sidePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 200, 570));
+        MainPanel.add(sidePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 220, 580));
 
         jPanel1.setBackground(new java.awt.Color(230, 230, 230));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -236,7 +252,7 @@ public class SecretaryPage extends javax.swing.JFrame {
         lblTime.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jPanel1.add(lblTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 470, 260, 60));
 
-        MainPanel.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, 1080, 570));
+        MainPanel.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, 1060, 580));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -267,53 +283,53 @@ public class SecretaryPage extends javax.swing.JFrame {
         }        // TODO add your handling code here:
     }//GEN-LAST:event_btnExitActionPerformed
 
-    private void jPanel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseEntered
-        jPanel2.setBackground(new Color(245, 198, 165));
-    }//GEN-LAST:event_jPanel2MouseEntered
+    private void medButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_medButtonMouseEntered
+        medButton.setBackground(new Color(245, 198, 165));
+    }//GEN-LAST:event_medButtonMouseEntered
 
-    private void jPanel2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseExited
-        jPanel2.setBackground(new Color(254, 241, 230));
-    }//GEN-LAST:event_jPanel2MouseExited
+    private void medButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_medButtonMouseExited
+        medButton.setBackground(new Color(254, 241, 230));
+    }//GEN-LAST:event_medButtonMouseExited
 
-    private void jPanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseClicked
+    private void medButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_medButtonMouseClicked
         new MedicineFrame().setVisible(true);
-    }//GEN-LAST:event_jPanel2MouseClicked
+    }//GEN-LAST:event_medButtonMouseClicked
 
-    private void jPanel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseClicked
+    private void ptntRecButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ptntRecButtonMouseClicked
         new PatientRecordButtons().setVisible(true);
-    }//GEN-LAST:event_jPanel4MouseClicked
+    }//GEN-LAST:event_ptntRecButtonMouseClicked
 
-    private void jPanel4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseEntered
-        jPanel4.setBackground(new Color(245, 198, 165));
-    }//GEN-LAST:event_jPanel4MouseEntered
+    private void ptntRecButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ptntRecButtonMouseEntered
+        ptntRecButton.setBackground(new Color(245, 198, 165));
+    }//GEN-LAST:event_ptntRecButtonMouseEntered
 
-    private void jPanel4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseExited
-        jPanel4.setBackground(new Color(254, 241, 230));
-    }//GEN-LAST:event_jPanel4MouseExited
+    private void ptntRecButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ptntRecButtonMouseExited
+        ptntRecButton.setBackground(new Color(254, 241, 230));
+    }//GEN-LAST:event_ptntRecButtonMouseExited
 
-    private void jPanel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseClicked
+    private void feesButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_feesButtonMouseClicked
         JOptionPane.showMessageDialog(null, "Feature currently unavailable");
-    }//GEN-LAST:event_jPanel6MouseClicked
+    }//GEN-LAST:event_feesButtonMouseClicked
 
-    private void jPanel6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseEntered
-        jPanel6.setBackground(new Color(245, 198, 165));
-    }//GEN-LAST:event_jPanel6MouseEntered
+    private void feesButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_feesButtonMouseEntered
+        feesButton.setBackground(new Color(245, 198, 165));
+    }//GEN-LAST:event_feesButtonMouseEntered
 
-    private void jPanel6MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseExited
-        jPanel6.setBackground(new Color(254, 241, 230));
-    }//GEN-LAST:event_jPanel6MouseExited
+    private void feesButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_feesButtonMouseExited
+        feesButton.setBackground(new Color(254, 241, 230));
+    }//GEN-LAST:event_feesButtonMouseExited
 
-    private void jPanel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MouseClicked
+    private void appointBttonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_appointBttonMouseClicked
         JOptionPane.showMessageDialog(null, "Feature currently unavailable");
-    }//GEN-LAST:event_jPanel7MouseClicked
+    }//GEN-LAST:event_appointBttonMouseClicked
 
-    private void jPanel7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MouseEntered
-        jPanel7.setBackground(new Color(245, 198, 165));
-    }//GEN-LAST:event_jPanel7MouseEntered
+    private void appointBttonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_appointBttonMouseEntered
+        appointBtton.setBackground(new Color(245, 198, 165));
+    }//GEN-LAST:event_appointBttonMouseEntered
 
-    private void jPanel7MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MouseExited
-        jPanel7.setBackground(new Color(254, 241, 230));
-    }//GEN-LAST:event_jPanel7MouseExited
+    private void appointBttonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_appointBttonMouseExited
+        appointBtton.setBackground(new Color(254, 241, 230));
+    }//GEN-LAST:event_appointBttonMouseExited
 
     /**
      * @param args the command line arguments
@@ -352,23 +368,23 @@ public class SecretaryPage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel MainPanel;
+    private javax.swing.JPanel appointBtton;
     private javax.swing.JButton btnExit;
+    private javax.swing.JPanel feesButton;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
     private javax.swing.JLabel lblDate;
     private javax.swing.JLabel lblSecretary;
     private javax.swing.JLabel lblTime;
+    private javax.swing.JPanel medButton;
+    private javax.swing.JPanel ptntRecButton;
     private javax.swing.JPanel sidePanel;
     private javax.swing.JPanel upperPanel;
+    private javax.swing.JLabel userLabel;
     // End of variables declaration//GEN-END:variables
 }
