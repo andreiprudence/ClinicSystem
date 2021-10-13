@@ -117,18 +117,18 @@ public class PatientRecordButtons extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddFrameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddFrameActionPerformed
-      new PatientRecordForm().setVisible(true);
-      this.setVisible(false);
+        new PatientRecordForm().setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_btnAddFrameActionPerformed
 
     private void btnDeleteFrameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteFrameActionPerformed
-new DeletePatientForm().setVisible(true);
-      this.setVisible(false);        // TODO add your handling code here:
+        new DeletePatientForm().setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_btnDeleteFrameActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-      new SecretaryPage().setVisible(true);
-      this.setVisible(false);        // TODO add your handling code here:
+
+        this.setVisible(false);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
