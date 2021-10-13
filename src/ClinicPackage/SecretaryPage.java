@@ -85,6 +85,8 @@ public class SecretaryPage extends javax.swing.JFrame {
         upperPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         lblDate = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        lblTime = new javax.swing.JLabel();
         sidePanel = new javax.swing.JPanel();
         lblSecretary = new javax.swing.JLabel();
         userLabel = new javax.swing.JLabel();
@@ -97,9 +99,7 @@ public class SecretaryPage extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         feesButton = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        lblTime = new javax.swing.JLabel();
+        jDesktopPane1 = new javax.swing.JDesktopPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setSize(new java.awt.Dimension(734, 532));
@@ -116,8 +116,20 @@ public class SecretaryPage extends javax.swing.JFrame {
 
         lblDate.setBackground(new java.awt.Color(61, 86, 178));
         lblDate.setFont(new java.awt.Font("Verdana", 1, 20)); // NOI18N
-        lblDate.setForeground(new java.awt.Color(17, 78, 96));
+        lblDate.setForeground(new java.awt.Color(0, 78, 203));
         upperPanel.add(lblDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 30, 270, 50));
+
+        jLabel3.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(61, 86, 178));
+        jLabel3.setText("Time:");
+        upperPanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 50, 50, -1));
+
+        lblTime.setBackground(new java.awt.Color(255, 255, 255));
+        lblTime.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
+        lblTime.setForeground(new java.awt.Color(61, 86, 178));
+        lblTime.setText(" ");
+        lblTime.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        upperPanel.add(lblTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 30, 260, 60));
 
         MainPanel.add(upperPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 110));
 
@@ -237,22 +249,21 @@ public class SecretaryPage extends javax.swing.JFrame {
 
         MainPanel.add(sidePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 220, 580));
 
-        jPanel1.setBackground(new java.awt.Color(230, 230, 230));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jDesktopPane1.setBackground(new java.awt.Color(255, 248, 229));
+        jDesktopPane1.setForeground(new java.awt.Color(255, 248, 229));
 
-        jLabel3.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(61, 86, 178));
-        jLabel3.setText("Time:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 490, 50, -1));
+        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
+        jDesktopPane1.setLayout(jDesktopPane1Layout);
+        jDesktopPane1Layout.setHorizontalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1060, Short.MAX_VALUE)
+        );
+        jDesktopPane1Layout.setVerticalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 580, Short.MAX_VALUE)
+        );
 
-        lblTime.setBackground(new java.awt.Color(255, 255, 255));
-        lblTime.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
-        lblTime.setForeground(new java.awt.Color(61, 86, 178));
-        lblTime.setText(" ");
-        lblTime.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jPanel1.add(lblTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 470, 260, 60));
-
-        MainPanel.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, 1060, 580));
+        MainPanel.add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, 1060, 580));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -296,7 +307,11 @@ public class SecretaryPage extends javax.swing.JFrame {
     }//GEN-LAST:event_medButtonMouseClicked
 
     private void ptntRecButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ptntRecButtonMouseClicked
-        new PatientRecordButtons().setVisible(true);
+        //new PatientRecordButtons().setVisible(true);
+        InternalFramePatientRec interFrame = new InternalFramePatientRec();
+      //  jDesktopPane1.removeAll();
+        jDesktopPane1.add(interFrame).setVisible(true);
+        
     }//GEN-LAST:event_ptntRecButtonMouseClicked
 
     private void ptntRecButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ptntRecButtonMouseEntered
@@ -371,13 +386,13 @@ public class SecretaryPage extends javax.swing.JFrame {
     private javax.swing.JPanel appointBtton;
     private javax.swing.JButton btnExit;
     private javax.swing.JPanel feesButton;
+    private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblDate;
     private javax.swing.JLabel lblSecretary;
     private javax.swing.JLabel lblTime;

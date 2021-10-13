@@ -104,7 +104,7 @@ public class AdminMainFrame extends javax.swing.JFrame {
 
         lblDate.setBackground(new java.awt.Color(61, 86, 178));
         lblDate.setFont(new java.awt.Font("Verdana", 1, 20)); // NOI18N
-        lblDate.setForeground(new java.awt.Color(17, 78, 96));
+        lblDate.setForeground(new java.awt.Color(0, 78, 203));
 
         javax.swing.GroupLayout upperPanelLayout = new javax.swing.GroupLayout(upperPanel);
         upperPanel.setLayout(upperPanelLayout);

@@ -167,9 +167,9 @@ int cursorRow = 0;
            this.setVisible(false);
        }
        
-       else
+       else{
            JOptionPane.showMessageDialog(null, "Incorrect Username and/or Password");
-   
+       }
     }//GEN-LAST:event_btnLoginActionPerformed
 
     /**
