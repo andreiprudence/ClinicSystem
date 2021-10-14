@@ -156,8 +156,9 @@ public void DoConnect(){
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
-        new SecretaryPage().setVisible(true);
-        this.setVisible(false); 
+
+       // this.setVisible(false); 
+       this.dispose();
     }//GEN-LAST:event_btnCloseActionPerformed
 
     /**
