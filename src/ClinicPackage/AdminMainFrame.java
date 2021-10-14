@@ -77,19 +77,19 @@ public class AdminMainFrame extends javax.swing.JFrame {
 
         MainPanel = new javax.swing.JPanel();
         upperPanel = new javax.swing.JPanel();
+        lblTime = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         lblDate = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         sidePanel = new javax.swing.JPanel();
         lblSecretary = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         btnAddUser = new javax.swing.JButton();
         btnBackup = new javax.swing.JButton();
         btnRestore = new javax.swing.JButton();
-        btnExit = new javax.swing.JButton();
         btnRestore1 = new javax.swing.JButton();
+        btnExit1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        lblTime = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setSize(new java.awt.Dimension(734, 532));
@@ -97,49 +97,42 @@ public class AdminMainFrame extends javax.swing.JFrame {
         MainPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         upperPanel.setBackground(new java.awt.Color(245, 198, 165));
+        upperPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblTime.setBackground(new java.awt.Color(255, 255, 255));
+        lblTime.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        lblTime.setForeground(new java.awt.Color(61, 86, 178));
+        lblTime.setText(" ");
+        lblTime.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        upperPanel.add(lblTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 10, 200, 40));
 
         jLabel1.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/C.A.R.E.S._Logo(resized).png"))); // NOI18N
+        upperPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 12, -1, 95));
 
         lblDate.setBackground(new java.awt.Color(61, 86, 178));
-        lblDate.setFont(new java.awt.Font("Verdana", 1, 20)); // NOI18N
+        lblDate.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         lblDate.setForeground(new java.awt.Color(0, 78, 203));
+        upperPanel.add(lblDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 60, 240, 40));
 
-        javax.swing.GroupLayout upperPanelLayout = new javax.swing.GroupLayout(upperPanel);
-        upperPanel.setLayout(upperPanelLayout);
-        upperPanelLayout.setHorizontalGroup(
-            upperPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(upperPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 609, Short.MAX_VALUE)
-                .addComponent(lblDate, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(74, 74, 74))
-        );
-        upperPanelLayout.setVerticalGroup(
-            upperPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(upperPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-            .addGroup(upperPanelLayout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(lblDate, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        jLabel3.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(61, 86, 178));
+        jLabel3.setText("Time:");
+        upperPanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 150, 50, -1));
 
         MainPanel.add(upperPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1300, 110));
 
         sidePanel.setBackground(new java.awt.Color(254, 241, 230));
+        sidePanel.setPreferredSize(new java.awt.Dimension(220, 540));
         sidePanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        sidePanel.add(lblSecretary, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 70, 70));
+        sidePanel.add(lblSecretary, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 70, 70));
 
         jLabel2.setBackground(new java.awt.Color(61, 86, 178));
-        jLabel2.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(61, 86, 178));
         jLabel2.setText("Admin");
-        sidePanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 50, -1, -1));
+        sidePanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, -1, -1));
 
         btnAddUser.setBackground(new java.awt.Color(254, 241, 230));
         btnAddUser.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -159,7 +152,7 @@ public class AdminMainFrame extends javax.swing.JFrame {
                 btnAddUserActionPerformed(evt);
             }
         });
-        sidePanel.add(btnAddUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 210, 50));
+        sidePanel.add(btnAddUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 220, 50));
 
         btnBackup.setBackground(new java.awt.Color(254, 241, 230));
         btnBackup.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -177,7 +170,7 @@ public class AdminMainFrame extends javax.swing.JFrame {
                 btnBackupActionPerformed(evt);
             }
         });
-        sidePanel.add(btnBackup, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 210, 50));
+        sidePanel.add(btnBackup, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 220, 50));
 
         btnRestore.setBackground(new java.awt.Color(254, 241, 230));
         btnRestore.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -195,21 +188,7 @@ public class AdminMainFrame extends javax.swing.JFrame {
                 btnRestoreActionPerformed(evt);
             }
         });
-        sidePanel.add(btnRestore, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 210, 50));
-
-        btnExit.setBackground(new java.awt.Color(254, 241, 230));
-        btnExit.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btnExit.setForeground(new java.awt.Color(61, 86, 178));
-        btnExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/iconfinder_glyph-20_3403739.png"))); // NOI18N
-        btnExit.setText("Log-Out");
-        btnExit.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        btnExit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnExit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExitActionPerformed(evt);
-            }
-        });
-        sidePanel.add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 470, 210, 50));
+        sidePanel.add(btnRestore, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 220, 50));
 
         btnRestore1.setBackground(new java.awt.Color(254, 241, 230));
         btnRestore1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -227,26 +206,26 @@ public class AdminMainFrame extends javax.swing.JFrame {
                 btnRestore1ActionPerformed(evt);
             }
         });
-        sidePanel.add(btnRestore1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, 210, 50));
+        sidePanel.add(btnRestore1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 220, 50));
 
-        MainPanel.add(sidePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 108, 210, 560));
+        btnExit1.setBackground(new java.awt.Color(254, 241, 230));
+        btnExit1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnExit1.setForeground(new java.awt.Color(61, 86, 178));
+        btnExit1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/618316_arrow_exit_logout_sign out_icon.png"))); // NOI18N
+        btnExit1.setText("Sign-Out");
+        btnExit1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnExit1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExit1ActionPerformed(evt);
+            }
+        });
+        sidePanel.add(btnExit1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 440, 220, 50));
+
+        MainPanel.add(sidePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 108, 220, 560));
 
         jPanel1.setBackground(new java.awt.Color(230, 230, 230));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel3.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(61, 86, 178));
-        jLabel3.setText("Time:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 490, 50, -1));
-
-        lblTime.setBackground(new java.awt.Color(255, 255, 255));
-        lblTime.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
-        lblTime.setForeground(new java.awt.Color(61, 86, 178));
-        lblTime.setText(" ");
-        lblTime.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jPanel1.add(lblTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 470, 260, 60));
-
-        MainPanel.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 110, 1090, 560));
+        MainPanel.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, 1080, 560));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -262,14 +241,6 @@ public class AdminMainFrame extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
-        int msg = JOptionPane.showConfirmDialog(null, "Are you sure you want to log out of account?");
-        if (msg == 0) {
-            new LogInPageforClinic().setVisible(true);
-            this.setVisible(false);
-        }        // TODO add your handling code here:
-    }//GEN-LAST:event_btnExitActionPerformed
 
     private void btnRestoreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRestoreActionPerformed
         JOptionPane.showMessageDialog(null, "Feature currently unavailable");     // TODO add your handling code here:
@@ -288,6 +259,14 @@ public class AdminMainFrame extends javax.swing.JFrame {
     private void btnRestore1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRestore1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnRestore1ActionPerformed
+
+    private void btnExit1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExit1ActionPerformed
+        int msg = JOptionPane.showConfirmDialog(null, "Are you sure you want to log out of account?");
+        if (msg == 0) {
+            new LogInPageforClinic().setVisible(true);
+            this.setVisible(false);
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_btnExit1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -329,7 +308,7 @@ public class AdminMainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel MainPanel;
     private javax.swing.JButton btnAddUser;
     private javax.swing.JButton btnBackup;
-    private javax.swing.JButton btnExit;
+    private javax.swing.JButton btnExit1;
     private javax.swing.JButton btnRestore;
     private javax.swing.JButton btnRestore1;
     private javax.swing.JLabel jLabel1;

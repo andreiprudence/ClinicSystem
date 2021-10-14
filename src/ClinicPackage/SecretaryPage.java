@@ -6,6 +6,7 @@
 package ClinicPackage;
 
 import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -14,6 +15,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.ImageIcon;
 import java.util.Timer;
+import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 //import javax.swing.Timer;
@@ -35,14 +37,14 @@ public class SecretaryPage extends javax.swing.JFrame {
 
         // imageResize1();
     }
-    
+
     void imageResize() {
         ImageIcon myimage = new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getResource("84-512.png")));
-        
+
         Image img1 = myimage.getImage();
         Image img2 = img1.getScaledInstance(lblSecretary.getWidth(), lblSecretary.getHeight(), Image.SCALE_SMOOTH);
         ImageIcon i = new ImageIcon(img2);
-        
+
         lblSecretary.setIcon(i);
     }
 
@@ -59,17 +61,16 @@ public class SecretaryPage extends javax.swing.JFrame {
     }
     
      */
-    
     //To show system time
     void showTime() {
         new javax.swing.Timer(0, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 Date d = new Date();
-                SimpleDateFormat s = new SimpleDateFormat("hh:mm:ss a zzzz");
+                SimpleDateFormat s = new SimpleDateFormat("hh:mm:ss a");
                 lblTime.setText(s.format(d));
             }
-            
+
         }
         ).start();
     }
@@ -87,7 +88,6 @@ public class SecretaryPage extends javax.swing.JFrame {
         upperPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         lblDate = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         lblTime = new javax.swing.JLabel();
         sidePanel = new javax.swing.JPanel();
         lblSecretary = new javax.swing.JLabel();
@@ -98,7 +98,7 @@ public class SecretaryPage extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         ptntRecButton = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
         appointBtton = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -107,7 +107,7 @@ public class SecretaryPage extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         regPtntButton = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         jDesktopPane1 = new javax.swing.JDesktopPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -120,36 +120,31 @@ public class SecretaryPage extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/C.A.R.E.S._Logo(resized).png"))); // NOI18N
-        upperPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 360, 90));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/CARES_Logo - Copy (2).png"))); // NOI18N
+        upperPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 430, 90));
 
         lblDate.setBackground(new java.awt.Color(61, 86, 178));
-        lblDate.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
+        lblDate.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         lblDate.setForeground(new java.awt.Color(61, 86, 178));
-        upperPanel.add(lblDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 30, 270, 60));
-
-        jLabel3.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(61, 86, 178));
-        jLabel3.setText("Time:");
-        upperPanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 50, 50, -1));
+        upperPanel.add(lblDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 20, 220, 40));
 
         lblTime.setBackground(new java.awt.Color(255, 255, 255));
-        lblTime.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
+        lblTime.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         lblTime.setForeground(new java.awt.Color(61, 86, 178));
         lblTime.setText(" ");
         lblTime.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        upperPanel.add(lblTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 30, 260, 60));
+        upperPanel.add(lblTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 60, 130, 40));
 
         MainPanel.add(upperPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1290, 110));
 
         sidePanel.setBackground(new java.awt.Color(254, 241, 230));
         sidePanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        sidePanel.add(lblSecretary, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 60, 60));
+        sidePanel.add(lblSecretary, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 60, 60));
 
         userLabel.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 12)); // NOI18N
         userLabel.setForeground(new java.awt.Color(61, 86, 178));
         userLabel.setText("Secretary");
-        sidePanel.add(userLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, 80, 20));
+        sidePanel.add(userLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 80, 20));
 
         btnExit.setBackground(new java.awt.Color(254, 241, 230));
         btnExit.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -211,10 +206,10 @@ public class SecretaryPage extends javax.swing.JFrame {
         jLabel6.setText("Register Patient");
         ptntRecButton.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, -1, 30));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/314416_list_notebook_icon.png"))); // NOI18N
-        ptntRecButton.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 30, 40));
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/314789_add_folder_icon.png"))); // NOI18N
+        ptntRecButton.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 40, 30));
 
-        sidePanel.add(ptntRecButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 220, 50));
+        sidePanel.add(ptntRecButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 220, 50));
 
         appointBtton.setBackground(new java.awt.Color(254, 241, 230));
         appointBtton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -238,7 +233,7 @@ public class SecretaryPage extends javax.swing.JFrame {
         appointBtton.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, -1, 30));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/5505479_augmented_calendar_mountain_reality_schedule_icon.png"))); // NOI18N
-        appointBtton.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 30, 40));
+        appointBtton.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 8, 30, -1));
 
         sidePanel.add(appointBtton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 220, 50));
 
@@ -289,10 +284,10 @@ public class SecretaryPage extends javax.swing.JFrame {
         jLabel11.setText("Patient Records");
         regPtntButton.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, -1, 30));
 
-        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/314789_add_folder_icon.png"))); // NOI18N
-        regPtntButton.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 40, 40));
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/314416_list_notebook_icon.png"))); // NOI18N
+        regPtntButton.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 40, 30));
 
-        sidePanel.add(regPtntButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 220, 50));
+        sidePanel.add(regPtntButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 220, 50));
 
         MainPanel.add(sidePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 220, 600));
 
@@ -330,10 +325,10 @@ public class SecretaryPage extends javax.swing.JFrame {
 
     public void showDate() {
         Date d = new Date();
-        SimpleDateFormat s = new SimpleDateFormat("E, dd MMMM yyyy");
+        SimpleDateFormat s = new SimpleDateFormat("EEEE, dd MMMM yyyy");
         lblDate.setText(s.format(d));
     }
-    
+
     private void display() {
         JFrame f = new JFrame("NewJavaGUI");
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -360,15 +355,18 @@ public class SecretaryPage extends javax.swing.JFrame {
     }//GEN-LAST:event_medButtonMouseExited
 
     private void medButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_medButtonMouseClicked
+        internalFrameMedicine iFrameMedicine = new internalFrameMedicine();
+        jDesktopPane1.removeAll();
+        jDesktopPane1.add(iFrameMedicine).setVisible(true);
         new MedicineFrame().setVisible(true);
     }//GEN-LAST:event_medButtonMouseClicked
 
     private void ptntRecButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ptntRecButtonMouseClicked
         //new PatientRecordButtons().setVisible(true);
         InternalFramePatientRec interFrame = new InternalFramePatientRec();
-        //  jDesktopPane1.removeAll();
+        jDesktopPane1.removeAll();
         jDesktopPane1.add(interFrame).setVisible(true);
-        
+
     }//GEN-LAST:event_ptntRecButtonMouseClicked
 
     private void ptntRecButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ptntRecButtonMouseEntered
@@ -380,7 +378,10 @@ public class SecretaryPage extends javax.swing.JFrame {
     }//GEN-LAST:event_ptntRecButtonMouseExited
 
     private void feesButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_feesButtonMouseClicked
-        JOptionPane.showMessageDialog(null, "Feature currently unavailable");
+       internalFrameFees iFrameFees = new internalFrameFees();
+       jDesktopPane1.removeAll();
+       jDesktopPane1.add(iFrameFees).setVisible(true);
+// JOptionPane.showMessageDialog(null, "Feature currently unavailable");
     }//GEN-LAST:event_feesButtonMouseClicked
 
     private void feesButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_feesButtonMouseEntered
@@ -392,7 +393,10 @@ public class SecretaryPage extends javax.swing.JFrame {
     }//GEN-LAST:event_feesButtonMouseExited
 
     private void appointBttonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_appointBttonMouseClicked
-        JOptionPane.showMessageDialog(null, "Feature currently unavailable");
+        internalFrameAppoint iFrameAppoint = new internalFrameAppoint();
+        jDesktopPane1.removeAll();
+        jDesktopPane1.add(iFrameAppoint).setVisible(true);
+       // JOptionPane.showMessageDialog(null, "Feature currently unavailable");
     }//GEN-LAST:event_appointBttonMouseClicked
 
     private void appointBttonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_appointBttonMouseEntered
@@ -404,11 +408,13 @@ public class SecretaryPage extends javax.swing.JFrame {
     }//GEN-LAST:event_appointBttonMouseExited
 
     private void regPtntButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regPtntButtonMouseClicked
-        // TODO add your handling code here:
+        PatientRecordsInternalFrame patientRecordinterFrame = new PatientRecordsInternalFrame();
+        jDesktopPane1.removeAll();
+        jDesktopPane1.add(patientRecordinterFrame).setVisible(true);
     }//GEN-LAST:event_regPtntButtonMouseClicked
 
     private void regPtntButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regPtntButtonMouseEntered
-       regPtntButton.setBackground(new Color(245, 198, 165));
+        regPtntButton.setBackground(new Color(245, 198, 165));
     }//GEN-LAST:event_regPtntButtonMouseEntered
 
     private void regPtntButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regPtntButtonMouseExited
@@ -445,11 +451,12 @@ public class SecretaryPage extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-             
+
                 new SecretaryPage().setVisible(true);
             }
         });
     }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel MainPanel;
@@ -462,7 +469,6 @@ public class SecretaryPage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;

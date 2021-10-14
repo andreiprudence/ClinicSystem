@@ -11,33 +11,36 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author andre
  */
 public class AddMedicine extends javax.swing.JFrame {
-Connection con;
-Statement stmt;
-ResultSet rs, rs1, rs2;
-PreparedStatement pst, ps, ps1, ps3;
 
-public void DoConnect(){
-    try{
-        String host = "jdbc:derby://localhost:1527//CaresDB";
-        String uName = "clinic";
-        String uPass = "system";
-        con = DriverManager.getConnection(host, uName, uPass);
-        
-        stmt = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
-        String sql = "SELECT * FROM MEDICINELIST";                             
-        rs = stmt.executeQuery(sql); 
-         }
-    catch(SQLException err) {
-        JOptionPane.showMessageDialog(AddMedicine.this, err.getMessage());
+    Connection con;
+    Statement stmt;
+    ResultSet rs, rs1, rs2;
+    PreparedStatement pst, ps, ps1, ps3;
+    
+    public void DoConnect() {
+        try {
+            String host = "jdbc:derby://localhost:1527//CaresDB";
+            String uName = "clinic";
+            String uPass = "system";
+            con = DriverManager.getConnection(host, uName, uPass);
+            
+            stmt = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            String sql = "SELECT * FROM MEDICINELIST";            
+            rs = stmt.executeQuery(sql);            
+        } catch (SQLException err) {
+            JOptionPane.showMessageDialog(AddMedicine.this, err.getMessage());
+        }
     }
-}
+
     /**
      * Creates new form AddMedicine
      */
@@ -46,6 +49,18 @@ public void DoConnect(){
         DoConnect();
     }
 
+    /* public void show_user(){
+        ArrayList<User> list = userList();
+        DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
+        Object[] row = new Object[2];
+        for (int i=0; i<list.size();i++){
+        row [0] = list.get(i).textIDno();
+        row [1] = list.get(i).textMedName();
+        row [2] = list.get(i).textMedPrice();
+        }
+        
+    }
+    /*
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -212,40 +227,44 @@ public void DoConnect(){
     }//GEN-LAST:event_btnCloseActionPerformed
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-     int msg = JOptionPane.showConfirmDialog(null, "Are you sure you want to add current record?");
-        try{
-        if(msg == 0){
-    PreparedStatement pst = con.prepareStatement("INSERT INTO MEDICINELIST(MEDICINEIDNO, MEDICINENAME, MEDICINEPRICE) VALUES (?,?,?)");
-   // int clientID = textClientID.getInt();
-     rs.next();
-     pst.setString(1, textIDNo.getText());
-     pst.setString(2, textMedName.getText());
-     pst.setString(3, textPrice.getText());
-     pst.executeUpdate();
-     pst.close();
-     JOptionPane.showMessageDialog(null,"Record Saved");
+        int msg = JOptionPane.showConfirmDialog(null, "Are you sure you want to add current record?");
+        try {
+            if (msg == 0) {
+                PreparedStatement pst = con.prepareStatement("INSERT INTO MEDICINELIST(MEDICINEIDNO, MEDICINENAME, MEDICINEPRICE) VALUES (?,?,?)");
+                // int clientID = textClientID.getInt();
+                rs.next();
+                pst.setString(1, textIDNo.getText());
+                pst.setString(2, textMedName.getText());
+                pst.setString(3, textPrice.getText());
+                pst.executeUpdate();
+                DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+                while (model.getRowCount() > 0) {
+                    model.setRowCount(0);
+                }
+                pst.close();
+                JOptionPane.showMessageDialog(null, "Record Saved");
+            }
+        } catch (SQLException err) {
+            System.out.println(err.getMessage());
         }
-       }catch(SQLException err){
-           System.out.println(err.getMessage());
-       }
+        
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnAdd2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdd2ActionPerformed
- int msg = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete current set of records?");
-        try{
-if(msg == 0 ){
+        int msg = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete current set of records?");
+        try {
+            if (msg == 0) {
                 PreparedStatement pst = con.prepareStatement("DELETE FROM MEDICINELIST WHERE IDNO=?");
                 rs.next();
                 pst.setString(1, textIDNo.getText());
                 pst.executeUpdate();
                 pst.close();
                 rs.close();
-                JOptionPane.showMessageDialog(null,"Record Deleted");
-                 }
-        }
-            catch(SQLException err){
-                System.out.println(err.getMessage());
-            }        // TODO add your handling code here:
+                JOptionPane.showMessageDialog(null, "Record Deleted");
+            }
+        } catch (SQLException err) {
+            System.out.println(err.getMessage());
+        }        // TODO add your handling code here:
     }//GEN-LAST:event_btnAdd2ActionPerformed
 
     /**
