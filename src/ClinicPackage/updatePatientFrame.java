@@ -51,8 +51,14 @@ public class updatePatientFrame extends javax.swing.JFrame {
         btnSearch = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Update Patient Record");
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(224, 93, 93));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -67,59 +73,59 @@ public class updatePatientFrame extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 830, Short.MAX_VALUE)
+            .addGap(0, 740, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 10, Short.MAX_VALUE)
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 830, 10));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 740, 10));
 
         jLabel3.setFont(new java.awt.Font("Cambria", 1, 16)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(61, 86, 178));
         jLabel3.setText("Last Name");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
-        jPanel1.add(textLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, 210, 30));
+        jPanel1.add(textLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, 210, 30));
 
         jLabel4.setFont(new java.awt.Font("Cambria", 1, 16)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(61, 86, 178));
         jLabel4.setText("First Name");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, -1, -1));
-        jPanel1.add(textFirstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 160, 210, 30));
+        jPanel1.add(textFirstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, 210, 30));
 
         jLabel9.setFont(new java.awt.Font("Cambria", 1, 16)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(61, 86, 178));
         jLabel9.setText("Phone Number");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, 30));
-        jPanel1.add(textPhoneNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 220, 210, 30));
+        jPanel1.add(textPhoneNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 220, 210, 30));
 
         jLabel5.setFont(new java.awt.Font("Cambria", 1, 16)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(61, 86, 178));
         jLabel5.setText("Address");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 100, -1, -1));
-        jPanel1.add(textAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 90, 390, 30));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 100, -1, 20));
+        jPanel1.add(textAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 90, 290, 30));
 
         jLabel7.setFont(new java.awt.Font("Cambria", 1, 16)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(61, 86, 178));
         jLabel7.setText("Date of Birth");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 170, -1, -1));
-        jPanel1.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 160, 220, 30));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 170, -1, 20));
+        jPanel1.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 160, 220, 30));
 
         jLabel11.setFont(new java.awt.Font("Cambria", 1, 16)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(61, 86, 178));
         jLabel11.setText("Sex");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 230, -1, 30));
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 220, -1, 30));
 
         jComboBox1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female" }));
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 230, 90, 30));
+        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 220, 90, 30));
 
         jLabel10.setFont(new java.awt.Font("Cambria", 1, 16)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(61, 86, 178));
         jLabel10.setText("Age");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 230, -1, 30));
-        jPanel1.add(textAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 230, 40, 30));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 220, -1, 30));
+        jPanel1.add(textAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 220, 40, 30));
 
         jLabel6.setFont(new java.awt.Font("Cambria", 1, 16)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(61, 86, 178));
@@ -130,11 +136,11 @@ public class updatePatientFrame extends javax.swing.JFrame {
         textAssessment.setRows(5);
         jScrollPane1.setViewportView(textAssessment);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 880, 100));
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 430, 170, -1));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 720, 140));
+        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 50, 170, 30));
 
         btnSearch.setText("Search");
-        jPanel1.add(btnSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 430, -1, 20));
+        jPanel1.add(btnSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 50, -1, 30));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -149,22 +155,40 @@ public class updatePatientFrame extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(jTable1);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 470, 940, 260));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 90, 500, 360));
+
+        jButton1.setText("Exit");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 10, 60, 30));
+
+        jButton2.setText("Clear");
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 470, 90, 40));
+
+        jButton3.setText("Update");
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 470, 100, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1290, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 744, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 532, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -203,6 +227,9 @@ public class updatePatientFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSearch;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JComboBox<String> jComboBox1;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;

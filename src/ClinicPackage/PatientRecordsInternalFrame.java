@@ -58,6 +58,9 @@ public class PatientRecordsInternalFrame extends javax.swing.JInternalFrame {
         deleteButton.setBackground(new java.awt.Color(255, 248, 229));
         deleteButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         deleteButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deleteButtonMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 deleteButtonMouseEntered(evt);
             }
@@ -69,9 +72,20 @@ public class PatientRecordsInternalFrame extends javax.swing.JInternalFrame {
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/2303123_bin_delete_garbage_remove_trash_icon.png"))); // NOI18N
         jLabel2.setText("jLabel2");
-        deleteButton.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 120, 130));
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel2MouseExited(evt);
+            }
+        });
+        deleteButton.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 130, 130));
 
-        jPanel1.add(deleteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 170, 180, 180));
+        jPanel1.add(deleteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 180, 150, 170));
 
         viewButton.setBackground(new java.awt.Color(255, 248, 229));
         viewButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -87,7 +101,18 @@ public class PatientRecordsInternalFrame extends javax.swing.JInternalFrame {
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/314233_note_list_icon.png"))); // NOI18N
         jLabel3.setText("jLabel2");
-        viewButton.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 120, -1));
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel3MouseExited(evt);
+            }
+        });
+        viewButton.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 120, 120));
 
         jPanel1.add(viewButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 170, 180, 180));
 
@@ -105,9 +130,20 @@ public class PatientRecordsInternalFrame extends javax.swing.JInternalFrame {
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/314288_edit_clipboard_icon.png"))); // NOI18N
         jLabel4.setText("jLabel2");
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel4MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel4MouseExited(evt);
+            }
+        });
         updateButton.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 120, 130));
 
-        jPanel1.add(updateButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, 180, 180));
+        jPanel1.add(updateButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, 170, 190));
 
         jLabel5.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(61, 86, 178));
@@ -139,28 +175,69 @@ public class PatientRecordsInternalFrame extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void updateButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateButtonMouseEntered
-       updateButton.setBackground(new Color(245,198,165));
+        updateButton.setBackground(new Color(245, 198, 165));
     }//GEN-LAST:event_updateButtonMouseEntered
 
     private void updateButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateButtonMouseExited
-        updateButton.setBackground(new Color(255,248,229));
+        updateButton.setBackground(new Color(255, 248, 229));
     }//GEN-LAST:event_updateButtonMouseExited
 
     private void deleteButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteButtonMouseEntered
-        deleteButton.setBackground(new Color(245,198,165));
+        deleteButton.setBackground(new Color(245, 198, 165));
     }//GEN-LAST:event_deleteButtonMouseEntered
 
     private void deleteButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteButtonMouseExited
-       deleteButton.setBackground(new Color(255,248,229));
+        deleteButton.setBackground(new Color(255, 248, 229));
     }//GEN-LAST:event_deleteButtonMouseExited
 
     private void viewButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewButtonMouseExited
-       viewButton.setBackground(new Color(255,248,229));
+        viewButton.setBackground(new Color(255, 248, 229));
     }//GEN-LAST:event_viewButtonMouseExited
 
     private void viewButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewButtonMouseEntered
-         viewButton.setBackground(new Color(245,198,165));
+        viewButton.setBackground(new Color(245, 198, 165));
     }//GEN-LAST:event_viewButtonMouseEntered
+
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        updatePatientFrame iFramepatient = new updatePatientFrame();
+        iFramepatient.setVisible(true);
+    }//GEN-LAST:event_jLabel4MouseClicked
+
+    private void jLabel4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseEntered
+        updateButton.setBackground(new Color(245, 198, 165));
+    }//GEN-LAST:event_jLabel4MouseEntered
+
+    private void jLabel4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseExited
+        updateButton.setBackground(new Color(255, 248, 229));
+    }//GEN-LAST:event_jLabel4MouseExited
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        new deletePatientFrame().setVisible(true);
+    }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void deleteButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteButtonMouseClicked
+
+    }//GEN-LAST:event_deleteButtonMouseClicked
+
+    private void jLabel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseEntered
+        deleteButton.setBackground(new Color(245, 198, 165));
+    }//GEN-LAST:event_jLabel2MouseEntered
+
+    private void jLabel2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseExited
+        deleteButton.setBackground(new Color(255, 248, 229));
+    }//GEN-LAST:event_jLabel2MouseExited
+
+    private void jLabel3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseEntered
+        viewButton.setBackground(new Color(245, 198, 165));
+    }//GEN-LAST:event_jLabel3MouseEntered
+
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+        new viewRecordFrame().setVisible(true);
+    }//GEN-LAST:event_jLabel3MouseClicked
+
+    private void jLabel3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseExited
+        viewButton.setBackground(new Color(255, 248, 229));
+    }//GEN-LAST:event_jLabel3MouseExited
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

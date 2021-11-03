@@ -5,6 +5,7 @@
  */
 package ClinicPackage;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Frame;
 import java.awt.Image;
@@ -47,7 +48,7 @@ public class AdminMainFrame extends javax.swing.JFrame {
     // Show Current System Date
     void showDate() {
         Date d = new Date();
-        SimpleDateFormat s = new SimpleDateFormat("E, dd MMMM yyyy");
+        SimpleDateFormat s = new SimpleDateFormat("EEEEE, dd MMMM yyyy");
         String date = new SimpleDateFormat("yyyy-MM-dd",   Locale.getDefault()).format(new Date());
         lblDate.setText(s.format(d));
        
@@ -58,7 +59,7 @@ public class AdminMainFrame extends javax.swing.JFrame {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 Date d = new Date();
-                SimpleDateFormat s = new SimpleDateFormat("hh:mm:ss a zzzz");
+                SimpleDateFormat s = new SimpleDateFormat("hh:mm:ss a");
                 lblTime.setText(s.format(d));
             }
 
@@ -84,15 +85,23 @@ public class AdminMainFrame extends javax.swing.JFrame {
         sidePanel = new javax.swing.JPanel();
         lblSecretary = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        btnAddUser = new javax.swing.JButton();
-        btnBackup = new javax.swing.JButton();
-        btnRestore = new javax.swing.JButton();
-        btnRestore1 = new javax.swing.JButton();
         btnExit1 = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
+        medButton = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        restoreDataButton = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        backupButton = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        addUserButton = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jDesktopPane1 = new javax.swing.JDesktopPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setSize(new java.awt.Dimension(734, 532));
+        setSize(new java.awt.Dimension(1273, 670));
 
         MainPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -100,19 +109,19 @@ public class AdminMainFrame extends javax.swing.JFrame {
         upperPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblTime.setBackground(new java.awt.Color(255, 255, 255));
-        lblTime.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        lblTime.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         lblTime.setForeground(new java.awt.Color(61, 86, 178));
         lblTime.setText(" ");
         lblTime.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        upperPanel.add(lblTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 10, 200, 40));
+        upperPanel.add(lblTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 20, 140, 30));
 
         jLabel1.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/C.A.R.E.S._Logo(resized).png"))); // NOI18N
-        upperPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 12, -1, 95));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/CARES_Logo - Copy (2).png"))); // NOI18N
+        upperPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 7, -1, 100));
 
         lblDate.setBackground(new java.awt.Color(61, 86, 178));
-        lblDate.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        lblDate.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         lblDate.setForeground(new java.awt.Color(0, 78, 203));
         upperPanel.add(lblDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 60, 240, 40));
 
@@ -134,80 +143,6 @@ public class AdminMainFrame extends javax.swing.JFrame {
         jLabel2.setText("Admin");
         sidePanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, -1, -1));
 
-        btnAddUser.setBackground(new java.awt.Color(254, 241, 230));
-        btnAddUser.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btnAddUser.setForeground(new java.awt.Color(61, 86, 178));
-        btnAddUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/216487_add_user_icon.png"))); // NOI18N
-        btnAddUser.setText("Add User");
-        btnAddUser.setToolTipText("");
-        btnAddUser.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        btnAddUser.setBorderPainted(false);
-        btnAddUser.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnAddUser.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
-        btnAddUser.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btnAddUser.setIconTextGap(45);
-        btnAddUser.setOpaque(false);
-        btnAddUser.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddUserActionPerformed(evt);
-            }
-        });
-        sidePanel.add(btnAddUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 220, 50));
-
-        btnBackup.setBackground(new java.awt.Color(254, 241, 230));
-        btnBackup.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btnBackup.setForeground(new java.awt.Color(61, 86, 178));
-        btnBackup.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/iconfinder_50_Cloud_Arrow_Up_183360.png"))); // NOI18N
-        btnBackup.setText("Back-up");
-        btnBackup.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        btnBackup.setBorderPainted(false);
-        btnBackup.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnBackup.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
-        btnBackup.setIconTextGap(45);
-        btnBackup.setOpaque(false);
-        btnBackup.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBackupActionPerformed(evt);
-            }
-        });
-        sidePanel.add(btnBackup, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 220, 50));
-
-        btnRestore.setBackground(new java.awt.Color(254, 241, 230));
-        btnRestore.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btnRestore.setForeground(new java.awt.Color(61, 86, 178));
-        btnRestore.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/2561458_list_icon.png"))); // NOI18N
-        btnRestore.setText("User List");
-        btnRestore.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        btnRestore.setBorderPainted(false);
-        btnRestore.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnRestore.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnRestore.setIconTextGap(45);
-        btnRestore.setOpaque(false);
-        btnRestore.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRestoreActionPerformed(evt);
-            }
-        });
-        sidePanel.add(btnRestore, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 220, 50));
-
-        btnRestore1.setBackground(new java.awt.Color(254, 241, 230));
-        btnRestore1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btnRestore1.setForeground(new java.awt.Color(61, 86, 178));
-        btnRestore1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/3669259_ic_restore_icon.png"))); // NOI18N
-        btnRestore1.setText("Restore Data");
-        btnRestore1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        btnRestore1.setBorderPainted(false);
-        btnRestore1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnRestore1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnRestore1.setIconTextGap(30);
-        btnRestore1.setOpaque(false);
-        btnRestore1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRestore1ActionPerformed(evt);
-            }
-        });
-        sidePanel.add(btnRestore1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 220, 50));
-
         btnExit1.setBackground(new java.awt.Color(254, 241, 230));
         btnExit1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnExit1.setForeground(new java.awt.Color(61, 86, 178));
@@ -221,17 +156,133 @@ public class AdminMainFrame extends javax.swing.JFrame {
         });
         sidePanel.add(btnExit1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 440, 220, 50));
 
+        medButton.setBackground(new java.awt.Color(254, 241, 230));
+        medButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        medButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        medButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                medButtonMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                medButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                medButtonMouseExited(evt);
+            }
+        });
+        medButton.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel4.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(61, 86, 178));
+        jLabel4.setText("User List");
+        medButton.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, 10));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/1891012_blue_cercle_hamburger_list_mavigation_icon.png"))); // NOI18N
+        medButton.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 8, 40, -1));
+
+        sidePanel.add(medButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 220, 50));
+
+        restoreDataButton.setBackground(new java.awt.Color(254, 241, 230));
+        restoreDataButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        restoreDataButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        restoreDataButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                restoreDataButtonMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                restoreDataButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                restoreDataButtonMouseExited(evt);
+            }
+        });
+        restoreDataButton.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel8.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(61, 86, 178));
+        jLabel8.setText("Restore Data");
+        restoreDataButton.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, -1, 30));
+
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/1891015_album_binder_circle_folder_portfolio_icon.png"))); // NOI18N
+        restoreDataButton.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 40, 40));
+
+        sidePanel.add(restoreDataButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, 220, 50));
+
+        backupButton.setBackground(new java.awt.Color(254, 241, 230));
+        backupButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        backupButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        backupButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                backupButtonMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                backupButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                backupButtonMouseExited(evt);
+            }
+        });
+        backupButton.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel10.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(61, 86, 178));
+        jLabel10.setText("Back-up");
+        backupButton.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, -1, 30));
+
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/473633_backup_data_disk_diskette_floppy_icon.png"))); // NOI18N
+        backupButton.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 40, 30));
+
+        sidePanel.add(backupButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 220, 50));
+
+        addUserButton.setBackground(new java.awt.Color(254, 241, 230));
+        addUserButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        addUserButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        addUserButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                addUserButtonMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                addUserButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                addUserButtonMouseExited(evt);
+            }
+        });
+        addUserButton.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel12.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(61, 86, 178));
+        jLabel12.setText("Add User");
+        addUserButton.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, -1, 30));
+
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/1891033_add_append_blue_cercle_create_icon.png"))); // NOI18N
+        addUserButton.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 40, 50));
+
+        sidePanel.add(addUserButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 220, 50));
+
         MainPanel.add(sidePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 108, 220, 560));
 
-        jPanel1.setBackground(new java.awt.Color(230, 230, 230));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        MainPanel.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, 1080, 560));
+        jDesktopPane1.setBackground(new java.awt.Color(255, 248, 229));
+        jDesktopPane1.setPreferredSize(new java.awt.Dimension(1070, 600));
+
+        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
+        jDesktopPane1.setLayout(jDesktopPane1Layout);
+        jDesktopPane1Layout.setHorizontalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1050, Short.MAX_VALUE)
+        );
+        jDesktopPane1Layout.setVerticalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 550, Short.MAX_VALUE)
+        );
+
+        MainPanel.add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, 1050, 550));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(MainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 1254, Short.MAX_VALUE)
+            .addComponent(MainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 1273, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -242,24 +293,6 @@ public class AdminMainFrame extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnRestoreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRestoreActionPerformed
-        JOptionPane.showMessageDialog(null, "Feature currently unavailable");     // TODO add your handling code here:
-    }//GEN-LAST:event_btnRestoreActionPerformed
-
-    private void btnBackupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackupActionPerformed
-
-        JOptionPane.showMessageDialog(null, "Feature currently unavailable");
-    }//GEN-LAST:event_btnBackupActionPerformed
-
-    private void btnAddUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddUserActionPerformed
-        new AddUser().setVisible(true);
-
-    }//GEN-LAST:event_btnAddUserActionPerformed
-
-    private void btnRestore1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRestore1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnRestore1ActionPerformed
-
     private void btnExit1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExit1ActionPerformed
         int msg = JOptionPane.showConfirmDialog(null, "Are you sure you want to log out of account?");
         if (msg == 0) {
@@ -267,6 +300,57 @@ public class AdminMainFrame extends javax.swing.JFrame {
             this.setVisible(false);
         }        // TODO add your handling code here:
     }//GEN-LAST:event_btnExit1ActionPerformed
+
+    private void medButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_medButtonMouseClicked
+        internalFrameMedicine iFrameMedicine = new internalFrameMedicine();
+        jDesktopPane1.removeAll();
+        jDesktopPane1.add(iFrameMedicine).setVisible(true);
+        new MedicineFrame().setVisible(true);
+    }//GEN-LAST:event_medButtonMouseClicked
+
+    private void medButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_medButtonMouseEntered
+        medButton.setBackground(new Color(245, 198, 165));
+    }//GEN-LAST:event_medButtonMouseEntered
+
+    private void medButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_medButtonMouseExited
+        medButton.setBackground(new Color(254, 241, 230));
+    }//GEN-LAST:event_medButtonMouseExited
+
+    private void restoreDataButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_restoreDataButtonMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_restoreDataButtonMouseClicked
+
+    private void restoreDataButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_restoreDataButtonMouseEntered
+        restoreDataButton.setBackground(new Color(245, 198, 165));
+    }//GEN-LAST:event_restoreDataButtonMouseEntered
+
+    private void restoreDataButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_restoreDataButtonMouseExited
+        restoreDataButton.setBackground(new Color(254, 241, 230));
+    }//GEN-LAST:event_restoreDataButtonMouseExited
+
+    private void backupButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backupButtonMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_backupButtonMouseClicked
+
+    private void backupButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backupButtonMouseEntered
+        backupButton.setBackground(new Color(245, 198, 165));
+    }//GEN-LAST:event_backupButtonMouseEntered
+
+    private void backupButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backupButtonMouseExited
+        backupButton.setBackground(new Color(254, 241, 230));
+    }//GEN-LAST:event_backupButtonMouseExited
+
+    private void addUserButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addUserButtonMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addUserButtonMouseClicked
+
+    private void addUserButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addUserButtonMouseEntered
+        addUserButton.setBackground(new Color(245, 198, 165));
+    }//GEN-LAST:event_addUserButtonMouseEntered
+
+    private void addUserButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addUserButtonMouseExited
+        addUserButton.setBackground(new Color(254, 241, 230));
+    }//GEN-LAST:event_addUserButtonMouseExited
 
     /**
      * @param args the command line arguments
@@ -306,26 +390,28 @@ public class AdminMainFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel MainPanel;
-    private javax.swing.JButton btnAddUser;
-    private javax.swing.JButton btnBackup;
+    private javax.swing.JPanel addUserButton;
+    private javax.swing.JPanel backupButton;
     private javax.swing.JButton btnExit1;
-    private javax.swing.JButton btnRestore;
-    private javax.swing.JButton btnRestore1;
+    private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel lblDate;
     private javax.swing.JLabel lblSecretary;
     private javax.swing.JLabel lblTime;
+    private javax.swing.JPanel medButton;
+    private javax.swing.JPanel restoreDataButton;
     private javax.swing.JPanel sidePanel;
     private javax.swing.JPanel upperPanel;
     // End of variables declaration//GEN-END:variables
 
-    private static class javaGUI {
-
-        public javaGUI() {
-
-        }
-    }
 }
