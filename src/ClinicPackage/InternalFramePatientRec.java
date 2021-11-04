@@ -104,8 +104,9 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
         btnAddRec.setBackground(new java.awt.Color(0, 166, 89));
         btnAddRec.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         btnAddRec.setForeground(new java.awt.Color(255, 255, 255));
-        btnAddRec.setText("Add Record");
-        jPanel2.add(btnAddRec, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 490, 130, 50));
+        btnAddRec.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/3336950_download_save_icon.png"))); // NOI18N
+        btnAddRec.setText("Save");
+        jPanel2.add(btnAddRec, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 500, 120, 50));
 
         btnBack.setFont(new java.awt.Font("Gadugi", 1, 11)); // NOI18N
         btnBack.setText("X");
@@ -119,13 +120,14 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
         btnCancel.setBackground(new java.awt.Color(255, 0, 51));
         btnCancel.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         btnCancel.setForeground(new java.awt.Color(255, 255, 255));
+        btnCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/330399_bad_cancel_clear_close_decline_icon.png"))); // NOI18N
         btnCancel.setText("Clear");
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelActionPerformed(evt);
             }
         });
-        jPanel2.add(btnCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 490, 110, 50));
+        jPanel2.add(btnCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 500, 120, 50));
 
         jLabel7.setFont(new java.awt.Font("Cambria", 1, 16)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(61, 86, 178));

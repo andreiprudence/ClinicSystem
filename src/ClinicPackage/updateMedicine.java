@@ -19,7 +19,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author andre
  */
-public class AddMedicine extends javax.swing.JFrame {
+public class updateMedicine extends javax.swing.JFrame {
 
     Connection con;
     Statement stmt;
@@ -37,14 +37,14 @@ public class AddMedicine extends javax.swing.JFrame {
             String sql = "SELECT * FROM MEDICINELIST";
             rs = stmt.executeQuery(sql);
         } catch (SQLException err) {
-            JOptionPane.showMessageDialog(AddMedicine.this, err.getMessage());
+            JOptionPane.showMessageDialog(updateMedicine.this, err.getMessage());
         }
     }
 
     /**
      * Creates new form AddMedicine
      */
-    public AddMedicine() {
+    public updateMedicine() {
         initComponents();
         DoConnect();
     }
@@ -95,14 +95,14 @@ public class AddMedicine extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        jLabel1.setText("MEDICINE LIST");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, -1, -1));
+        jLabel1.setText("UPDATE MEDICINE");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 20, -1, -1));
         jPanel1.add(textIDNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 148, -1));
 
         btnSearch.setText("Search");
         jPanel1.add(btnSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, -1, -1));
 
-        btnAdd.setText("Add Medicine");
+        btnAdd.setText("Update Medicine");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddActionPerformed(evt);
@@ -133,7 +133,7 @@ public class AddMedicine extends javax.swing.JFrame {
                 btnAdd2ActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAdd2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 150, 87, -1));
+        jPanel1.add(btnAdd2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 150, 87, -1));
 
         jLabel2.setText("Medicine ID No:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, -1));
@@ -224,20 +224,21 @@ public class AddMedicine extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AddMedicine.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(updateMedicine.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AddMedicine.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(updateMedicine.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AddMedicine.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(updateMedicine.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AddMedicine.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(updateMedicine.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AddMedicine().setVisible(true);
+                new updateMedicine().setVisible(true);
             }
         });
     }

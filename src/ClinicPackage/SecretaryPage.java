@@ -157,8 +157,8 @@ public class SecretaryPage extends javax.swing.JFrame {
         sidePanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         sidePanel.add(lblSecretary, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 60, 60));
 
-        userLabel.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
-        userLabel.setForeground(new java.awt.Color(61, 86, 178));
+        userLabel.setFont(new java.awt.Font("Yu Gothic Medium", 1, 12)); // NOI18N
+        userLabel.setForeground(new java.awt.Color(21, 126, 251));
         userLabel.setText("Secretary");
         sidePanel.add(userLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 70, 20));
 
@@ -192,7 +192,7 @@ public class SecretaryPage extends javax.swing.JFrame {
         medButton.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel4.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(61, 86, 178));
+        jLabel4.setForeground(new java.awt.Color(25, 128, 251));
         jLabel4.setText("Medicine");
         medButton.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, -1, 30));
 
@@ -222,7 +222,7 @@ public class SecretaryPage extends javax.swing.JFrame {
         ptntRecButton.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel6.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(61, 86, 178));
+        jLabel6.setForeground(new java.awt.Color(25, 128, 251));
         jLabel6.setText("Register Patient");
         ptntRecButton.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, -1, 30));
 
@@ -252,7 +252,7 @@ public class SecretaryPage extends javax.swing.JFrame {
         appointBtton.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel9.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(61, 86, 178));
+        jLabel9.setForeground(new java.awt.Color(25, 128, 251));
         jLabel9.setText("Appointments");
         appointBtton.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, -1, 30));
 
@@ -282,7 +282,7 @@ public class SecretaryPage extends javax.swing.JFrame {
         feesButton.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel8.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(61, 86, 178));
+        jLabel8.setForeground(new java.awt.Color(25, 128, 251));
         jLabel8.setText("Fees");
         feesButton.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, -1, 30));
 
@@ -312,7 +312,7 @@ public class SecretaryPage extends javax.swing.JFrame {
         regPtntButton.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel11.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(61, 86, 178));
+        jLabel11.setForeground(new java.awt.Color(25, 128, 251));
         jLabel11.setText("Patient Records");
         regPtntButton.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, -1, 30));
 
@@ -338,10 +338,10 @@ public class SecretaryPage extends javax.swing.JFrame {
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 590, Short.MAX_VALUE)
+            .addGap(0, 580, Short.MAX_VALUE)
         );
 
-        MainPanel.add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, 1070, 590));
+        MainPanel.add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, 1070, 580));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
