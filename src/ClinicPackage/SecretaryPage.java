@@ -120,6 +120,7 @@ public class SecretaryPage extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
+        userLabel1 = new javax.swing.JLabel();
         jDesktopPane1 = new javax.swing.JDesktopPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -133,38 +134,38 @@ public class SecretaryPage extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/CARES_Logo - Copy (2).png"))); // NOI18N
-        upperPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 430, 90));
+        upperPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 430, 100));
 
         lblDate.setBackground(new java.awt.Color(61, 86, 178));
         lblDate.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         lblDate.setForeground(new java.awt.Color(61, 86, 178));
-        upperPanel.add(lblDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 20, 300, 40));
+        upperPanel.add(lblDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 10, 240, 40));
 
         lblTime.setBackground(new java.awt.Color(255, 255, 255));
         lblTime.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         lblTime.setForeground(new java.awt.Color(61, 86, 178));
         lblTime.setText(" ");
-        upperPanel.add(lblTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 60, 140, 40));
+        upperPanel.add(lblTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 50, 140, 40));
 
         jLabel17.setBackground(new java.awt.Color(255, 51, 51));
         jLabel17.setText("Exit");
         jLabel17.setOpaque(true);
         upperPanel.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(1260, 0, 30, 30));
 
-        MainPanel.add(upperPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1290, 110));
+        MainPanel.add(upperPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1290, 100));
 
         sidePanel.setBackground(new java.awt.Color(254, 241, 230));
         sidePanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         sidePanel.add(lblSecretary, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 60, 60));
 
-        userLabel.setFont(new java.awt.Font("Yu Gothic Medium", 1, 12)); // NOI18N
-        userLabel.setForeground(new java.awt.Color(21, 126, 251));
-        userLabel.setText("Secretary");
-        sidePanel.add(userLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 70, 20));
+        userLabel.setFont(new java.awt.Font("Yu Gothic Medium", 0, 10)); // NOI18N
+        userLabel.setForeground(new java.awt.Color(51, 255, 51));
+        userLabel.setText("logged in as");
+        sidePanel.add(userLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, 70, 20));
 
         btnExit.setBackground(new java.awt.Color(254, 241, 230));
         btnExit.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btnExit.setForeground(new java.awt.Color(61, 86, 178));
+        btnExit.setForeground(new java.awt.Color(25, 128, 251));
         btnExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/618316_arrow_exit_logout_sign out_icon.png"))); // NOI18N
         btnExit.setText("Sign-Out");
         btnExit.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -325,7 +326,12 @@ public class SecretaryPage extends javax.swing.JFrame {
 
         sidePanel.add(regPtntButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 220, 50));
 
-        MainPanel.add(sidePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 220, 600));
+        userLabel1.setFont(new java.awt.Font("Yu Gothic Medium", 1, 12)); // NOI18N
+        userLabel1.setForeground(new java.awt.Color(21, 126, 251));
+        userLabel1.setText("Secretary");
+        sidePanel.add(userLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 70, 20));
+
+        MainPanel.add(sidePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 220, 610));
 
         jDesktopPane1.setBackground(new java.awt.Color(255, 248, 229));
         jDesktopPane1.setForeground(new java.awt.Color(255, 248, 229));
@@ -338,10 +344,10 @@ public class SecretaryPage extends javax.swing.JFrame {
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 580, Short.MAX_VALUE)
+            .addGap(0, 610, Short.MAX_VALUE)
         );
 
-        MainPanel.add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, 1070, 580));
+        MainPanel.add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 100, 1070, 610));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -361,7 +367,7 @@ public class SecretaryPage extends javax.swing.JFrame {
     //THIS METHOD SHOWS THE SYSTEM DATE
     public void showDate() {
         Date d = new Date();
-        SimpleDateFormat s = new SimpleDateFormat("EEEE, MMMM dd, yyyy");
+        SimpleDateFormat s = new SimpleDateFormat("EEEE, dd MMM, yyyy");
         lblDate.setText(s.format(d));
     }
 
@@ -540,5 +546,6 @@ public class SecretaryPage extends javax.swing.JFrame {
     private javax.swing.JPanel sidePanel;
     private javax.swing.JPanel upperPanel;
     private javax.swing.JLabel userLabel;
+    private javax.swing.JLabel userLabel1;
     // End of variables declaration//GEN-END:variables
 }

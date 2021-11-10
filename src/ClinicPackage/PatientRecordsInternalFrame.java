@@ -232,6 +232,12 @@ public class PatientRecordsInternalFrame extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jLabel3MouseEntered
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+        internalFrameView interFrame = new internalFrameView();
+        //new internalFrameView().setVisible();
+        // new internalFrameView().();
+        //this.dispose();
+        // jDesktopPane1.removeAll();
+        // jDesktopPane1.add(interFrame).setVisible(true);
         new viewRecordFrame().setVisible(true);
     }//GEN-LAST:event_jLabel3MouseClicked
 
