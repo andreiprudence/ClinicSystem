@@ -32,33 +32,87 @@ public class internalFrameAppoint extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        rSDateChooserBeanInfo1 = new rojeru_san.componentes.RSDateChooserBeanInfo();
+        rSFotoCircleBeanInfo1 = new rojerusan.RSFotoCircleBeanInfo();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        materialButton1 = new necesario.MaterialButton();
         jLabel2 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        rSTableMetro1 = new rojerusan.RSTableMetro();
+        rSButtonIconD1 = new rojerusan.RSButtonIconD();
+        jLabel3 = new javax.swing.JLabel();
+        jCTextField1 = new app.bolivia.swing.JCTextField();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jLabel4 = new javax.swing.JLabel();
+        rSComboMetro1 = new rojerusan.RSComboMetro();
 
-        setPreferredSize(new java.awt.Dimension(1070, 550));
+        setPreferredSize(new java.awt.Dimension(1070, 620));
 
         jPanel1.setBackground(new java.awt.Color(255, 248, 229));
-        jPanel1.setPreferredSize(new java.awt.Dimension(1041, 520));
+        jPanel1.setMinimumSize(new java.awt.Dimension(1070, 620));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1070, 620));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(61, 86, 178));
-        jLabel1.setText("Oops! Feature Currently Under Construction...");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 380, 540, 40));
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 28)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(51, 51, 255));
+        jLabel1.setText("Appointments");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 20, -1, -1));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/4137175_building_construction_industry_worker_icon.png"))); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 70, 270, 290));
+        materialButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/2639799_create_new_icon.png"))); // NOI18N
+        materialButton1.setText("Set an Appointment");
+        materialButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(materialButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 460, 200, 60));
+
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("PATIENT ID: ");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 90, -1, -1));
+
+        rSTableMetro1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(rSTableMetro1);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 1020, 250));
+
+        rSButtonIconD1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/254211_search_view_zoom_icon.png"))); // NOI18N
+        rSButtonIconD1.setText("Search");
+        jPanel1.add(rSButtonIconD1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 80, 110, -1));
+
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("Time:");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 410, -1, 20));
+
+        jCTextField1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 0, 0)));
+        jCTextField1.setPlaceholder("Enter Patient ID...");
+        jPanel1.add(jCTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 80, 230, -1));
+        jPanel1.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 400, 130, 30));
+
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("Date of Appointment:");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, -1, 20));
+
+        jPanel1.add(rSComboMetro1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 400, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 830, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 420, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 640, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -66,8 +120,19 @@ public class internalFrameAppoint extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private app.bolivia.swing.JCTextField jCTextField1;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private necesario.MaterialButton materialButton1;
+    private rojerusan.RSButtonIconD rSButtonIconD1;
+    private rojerusan.RSComboMetro rSComboMetro1;
+    private rojeru_san.componentes.RSDateChooserBeanInfo rSDateChooserBeanInfo1;
+    private rojerusan.RSFotoCircleBeanInfo rSFotoCircleBeanInfo1;
+    private rojerusan.RSTableMetro rSTableMetro1;
     // End of variables declaration//GEN-END:variables
 }

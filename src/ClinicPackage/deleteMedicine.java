@@ -19,7 +19,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author andre
  */
-public class AddMedicine extends javax.swing.JFrame {
+public class deleteMedicine extends javax.swing.JFrame {
 
     Connection con;
     Statement stmt;
@@ -37,14 +37,14 @@ public class AddMedicine extends javax.swing.JFrame {
             String sql = "SELECT * FROM MEDICINELIST";
             rs = stmt.executeQuery(sql);
         } catch (SQLException err) {
-            JOptionPane.showMessageDialog(AddMedicine.this, err.getMessage());
+            JOptionPane.showMessageDialog(deleteMedicine.this, err.getMessage());
         }
     }
 
     /**
      * Creates new form AddMedicine
      */
-    public AddMedicine() {
+    public deleteMedicine() {
         initComponents();
         DoConnect();
     }
@@ -95,20 +95,20 @@ public class AddMedicine extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        jLabel1.setText("MEDICINE LIST");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, -1, -1));
-        jPanel1.add(textIDNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 148, -1));
+        jLabel1.setText("DELETE MEDICINE");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 20, -1, -1));
+        jPanel1.add(textIDNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 148, -1));
 
         btnSearch.setText("Search");
-        jPanel1.add(btnSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, -1, -1));
+        jPanel1.add(btnSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 160, -1, -1));
 
-        btnAdd.setText("Add Medicine");
+        btnAdd.setText("Delete Record");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 150, -1, -1));
+        jPanel1.add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 160, -1, -1));
 
         org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, medicinelistList, jTable1);
         org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${medicineidno}"));
@@ -133,18 +133,18 @@ public class AddMedicine extends javax.swing.JFrame {
                 btnAdd2ActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAdd2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 150, 87, -1));
+        jPanel1.add(btnAdd2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 160, 87, -1));
 
         jLabel2.setText("Medicine ID No:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
 
         jLabel3.setText("Medicine Name:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
-        jPanel1.add(textMedName, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 148, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
+        jPanel1.add(textMedName, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 148, -1));
 
         jLabel4.setText("Price");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, -1, -1));
-        jPanel1.add(textPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 80, 148, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 70, -1, -1));
+        jPanel1.add(textPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, 148, -1));
 
         btnClose.setText("Close");
         btnClose.addActionListener(new java.awt.event.ActionListener() {
@@ -224,20 +224,21 @@ public class AddMedicine extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AddMedicine.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(deleteMedicine.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AddMedicine.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(deleteMedicine.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AddMedicine.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(deleteMedicine.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AddMedicine.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(deleteMedicine.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AddMedicine().setVisible(true);
+                new deleteMedicine().setVisible(true);
             }
         });
     }

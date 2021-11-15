@@ -63,7 +63,7 @@ public class deletePatientFrame extends javax.swing.JFrame {
 
         jLabel31.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jLabel31.setText("Delete Patient Record");
-        jPanel13.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+        jPanel13.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 10, -1, -1));
 
         jPanel14.setBackground(new java.awt.Color(255, 179, 68));
 

@@ -18,26 +18,28 @@ import javax.swing.JOptionPane;
  * @author andre
  */
 public class MedicineFrame extends javax.swing.JFrame {
-Connection con;
-Statement stmt;
-ResultSet rs, rs1, rs2;
-PreparedStatement pst, ps, ps1, ps3;
 
-public void DoConnect(){
-    try{
-        String host = "jdbc:derby://localhost:1527//CaresDB";
-        String uName = "clinic";
-        String uPass = "system";
-        con = DriverManager.getConnection(host, uName, uPass);
-        
-        stmt = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
-        String sql = "SELECT * FROM PATIENTRECORDS";                             
-        rs = stmt.executeQuery(sql); 
-        
-    } catch(SQLException err){
-        JOptionPane.showMessageDialog(MedicineFrame.this, err.getMessage());
+    Connection con;
+    Statement stmt;
+    ResultSet rs, rs1, rs2;
+    PreparedStatement pst, ps, ps1, ps3;
+
+    public void DoConnect() {
+        try {
+            String host = "jdbc:derby://localhost:1527//CaresDB";
+            String uName = "clinic";
+            String uPass = "system";
+            con = DriverManager.getConnection(host, uName, uPass);
+
+            stmt = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            String sql = "SELECT * FROM PATIENTRECORDS";
+            rs = stmt.executeQuery(sql);
+
+        } catch (SQLException err) {
+            JOptionPane.showMessageDialog(MedicineFrame.this, err.getMessage());
+        }
     }
-}
+
     public MedicineFrame() {
         initComponents();
         DoConnect();
@@ -151,14 +153,14 @@ public void DoConnect(){
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-       new AddMedicine().setVisible(true);
-       // TODO add your handling code here:
+        new AddMedicine().setVisible(true);
+        // TODO add your handling code here:
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
 
-       // this.setVisible(false); 
-       this.dispose();
+        // this.setVisible(false); 
+        this.dispose();
     }//GEN-LAST:event_btnCloseActionPerformed
 
     /**

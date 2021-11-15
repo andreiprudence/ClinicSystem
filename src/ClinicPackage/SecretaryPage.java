@@ -30,20 +30,19 @@ public class SecretaryPage extends javax.swing.JFrame {
     /**
      * Creates new form SecretaryPage
      */
-    
     //ASSIGNING A COLOR FOR THE BUTTONS(PANELS)
     Color mouseExitedColor = new Color(254, 241, 230);
     Color mouseEnteredColor = new Color(245, 198, 165);
-    
+
     public SecretaryPage() {
         initComponents();
         showDate();
         showTime();
         imageResize();
 
-        // imageResize1();
     }
 
+    // Method for resizable image for icon
     void imageResize() {
         ImageIcon myimage = new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getResource("84-512.png")));
 
@@ -54,19 +53,6 @@ public class SecretaryPage extends javax.swing.JFrame {
         lblSecretary.setIcon(i);
     }
 
-    // For the Letterhead UI  
-    /* void imageResize1(){
-        
-       ImageIcon letterhead = new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getResource("letterhead.png")));
-
-        Image img3 = letterhead.getImage();
-        Image img4 = img3.getScaledInstance(jLabel2.getWidth(), jLabel2.getHeight(), Image.SCALE_SMOOTH);
-        ImageIcon i1 = new ImageIcon(img4);
-
-        jLabel2.setIcon(i1);
-    }
-    
-     */
     //THIS METHOD SHOWS THE SYSTEM TIME
     void showTime() {
         new javax.swing.Timer(0, new ActionListener() {
@@ -120,9 +106,12 @@ public class SecretaryPage extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
+        userLabel1 = new javax.swing.JLabel();
         jDesktopPane1 = new javax.swing.JDesktopPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        setResizable(false);
         setSize(new java.awt.Dimension(734, 532));
 
         MainPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -133,38 +122,47 @@ public class SecretaryPage extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/CARES_Logo - Copy (2).png"))); // NOI18N
-        upperPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 430, 90));
+        upperPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 430, 100));
 
         lblDate.setBackground(new java.awt.Color(61, 86, 178));
         lblDate.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         lblDate.setForeground(new java.awt.Color(61, 86, 178));
-        upperPanel.add(lblDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 20, 300, 40));
+        lblDate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        upperPanel.add(lblDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 10, 240, 40));
 
         lblTime.setBackground(new java.awt.Color(255, 255, 255));
         lblTime.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         lblTime.setForeground(new java.awt.Color(61, 86, 178));
         lblTime.setText(" ");
-        upperPanel.add(lblTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 60, 140, 40));
+        upperPanel.add(lblTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 50, 140, 40));
 
-        jLabel17.setBackground(new java.awt.Color(255, 51, 51));
-        jLabel17.setText("Exit");
+        jLabel17.setBackground(new java.awt.Color(255, 0, 0));
+        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel17.setText("Close");
+        jLabel17.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel17.setOpaque(true);
-        upperPanel.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(1260, 0, 30, 30));
+        jLabel17.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel17MouseClicked(evt);
+            }
+        });
+        upperPanel.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(1230, 0, 50, 40));
 
-        MainPanel.add(upperPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1290, 110));
+        MainPanel.add(upperPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 100));
 
         sidePanel.setBackground(new java.awt.Color(254, 241, 230));
         sidePanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         sidePanel.add(lblSecretary, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 60, 60));
 
-        userLabel.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
-        userLabel.setForeground(new java.awt.Color(61, 86, 178));
-        userLabel.setText("Secretary");
-        sidePanel.add(userLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 70, 20));
+        userLabel.setFont(new java.awt.Font("Yu Gothic Medium", 0, 10)); // NOI18N
+        userLabel.setForeground(new java.awt.Color(51, 255, 51));
+        userLabel.setText("logged in as");
+        sidePanel.add(userLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, 70, 20));
 
         btnExit.setBackground(new java.awt.Color(254, 241, 230));
         btnExit.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btnExit.setForeground(new java.awt.Color(61, 86, 178));
+        btnExit.setForeground(new java.awt.Color(25, 128, 251));
         btnExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/618316_arrow_exit_logout_sign out_icon.png"))); // NOI18N
         btnExit.setText("Sign-Out");
         btnExit.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -173,7 +171,7 @@ public class SecretaryPage extends javax.swing.JFrame {
                 btnExitActionPerformed(evt);
             }
         });
-        sidePanel.add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 490, 220, 50));
+        sidePanel.add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 550, 220, 50));
 
         medButton.setBackground(new java.awt.Color(254, 241, 230));
         medButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -192,7 +190,7 @@ public class SecretaryPage extends javax.swing.JFrame {
         medButton.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel4.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(61, 86, 178));
+        jLabel4.setForeground(new java.awt.Color(25, 128, 251));
         jLabel4.setText("Medicine");
         medButton.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, -1, 30));
 
@@ -222,7 +220,7 @@ public class SecretaryPage extends javax.swing.JFrame {
         ptntRecButton.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel6.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(61, 86, 178));
+        jLabel6.setForeground(new java.awt.Color(25, 128, 251));
         jLabel6.setText("Register Patient");
         ptntRecButton.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, -1, 30));
 
@@ -252,7 +250,7 @@ public class SecretaryPage extends javax.swing.JFrame {
         appointBtton.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel9.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(61, 86, 178));
+        jLabel9.setForeground(new java.awt.Color(25, 128, 251));
         jLabel9.setText("Appointments");
         appointBtton.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, -1, 30));
 
@@ -282,7 +280,7 @@ public class SecretaryPage extends javax.swing.JFrame {
         feesButton.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel8.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(61, 86, 178));
+        jLabel8.setForeground(new java.awt.Color(25, 128, 251));
         jLabel8.setText("Fees");
         feesButton.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, -1, 30));
 
@@ -312,7 +310,7 @@ public class SecretaryPage extends javax.swing.JFrame {
         regPtntButton.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel11.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(61, 86, 178));
+        jLabel11.setForeground(new java.awt.Color(25, 128, 251));
         jLabel11.setText("Patient Records");
         regPtntButton.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, -1, 30));
 
@@ -325,7 +323,12 @@ public class SecretaryPage extends javax.swing.JFrame {
 
         sidePanel.add(regPtntButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 220, 50));
 
-        MainPanel.add(sidePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 220, 600));
+        userLabel1.setFont(new java.awt.Font("Yu Gothic Medium", 1, 12)); // NOI18N
+        userLabel1.setForeground(new java.awt.Color(21, 126, 251));
+        userLabel1.setText("Secretary");
+        sidePanel.add(userLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 70, 20));
+
+        MainPanel.add(sidePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 220, 620));
 
         jDesktopPane1.setBackground(new java.awt.Color(255, 248, 229));
         jDesktopPane1.setForeground(new java.awt.Color(255, 248, 229));
@@ -334,14 +337,14 @@ public class SecretaryPage extends javax.swing.JFrame {
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1070, Short.MAX_VALUE)
+            .addGap(0, 1060, Short.MAX_VALUE)
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 590, Short.MAX_VALUE)
+            .addGap(0, 620, Short.MAX_VALUE)
         );
 
-        MainPanel.add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, 1070, 590));
+        MainPanel.add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 100, 1060, 620));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -361,7 +364,7 @@ public class SecretaryPage extends javax.swing.JFrame {
     //THIS METHOD SHOWS THE SYSTEM DATE
     public void showDate() {
         Date d = new Date();
-        SimpleDateFormat s = new SimpleDateFormat("EEEE, MMMM dd, yyyy");
+        SimpleDateFormat s = new SimpleDateFormat("EEEE, dd MMM, yyyy");
         lblDate.setText(s.format(d));
     }
 
@@ -379,7 +382,7 @@ public class SecretaryPage extends javax.swing.JFrame {
         if (msg == 0) {
             new LogInPageforClinic().setVisible(true);
             this.setVisible(false);
-        } 
+        }
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void medButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_medButtonMouseEntered
@@ -459,11 +462,15 @@ public class SecretaryPage extends javax.swing.JFrame {
         regPtntButton.setBackground(mouseExitedColor);
     }//GEN-LAST:event_regPtntButtonMouseExited
 
+    private void jLabel17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MouseClicked
+        // Terminate JVM 
+        System.exit(0);
+    }//GEN-LAST:event_jLabel17MouseClicked
+
     /**
      * @param args the command line arguments
      */
-    
-    //BAR GUI AT THE SIDE OF EACH BUTTON IN THE SIDE PANEL 
+    //GUI Bar to display current part of the page
     public void bar(JLabel lab) {
         jLabel3.setOpaque(false);
         jLabel13.setOpaque(false);
@@ -540,5 +547,6 @@ public class SecretaryPage extends javax.swing.JFrame {
     private javax.swing.JPanel sidePanel;
     private javax.swing.JPanel upperPanel;
     private javax.swing.JLabel userLabel;
+    private javax.swing.JLabel userLabel1;
     // End of variables declaration//GEN-END:variables
 }
