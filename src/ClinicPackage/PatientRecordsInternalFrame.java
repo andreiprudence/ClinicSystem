@@ -45,15 +45,16 @@ public class PatientRecordsInternalFrame extends javax.swing.JInternalFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
 
-        setPreferredSize(new java.awt.Dimension(1070, 550));
+        setPreferredSize(new java.awt.Dimension(1070, 620));
 
         jPanel1.setBackground(new java.awt.Color(255, 248, 229));
+        jPanel1.setMinimumSize(new java.awt.Dimension(1070, 620));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(61, 86, 178));
         jLabel1.setText("VIEW");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 360, -1, 30));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 420, -1, 30));
 
         deleteButton.setBackground(new java.awt.Color(255, 248, 229));
         deleteButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -85,7 +86,7 @@ public class PatientRecordsInternalFrame extends javax.swing.JInternalFrame {
         });
         deleteButton.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 130, 130));
 
-        jPanel1.add(deleteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 180, 150, 170));
+        jPanel1.add(deleteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 240, 150, 170));
 
         viewButton.setBackground(new java.awt.Color(255, 248, 229));
         viewButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -114,7 +115,7 @@ public class PatientRecordsInternalFrame extends javax.swing.JInternalFrame {
         });
         viewButton.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 120, 120));
 
-        jPanel1.add(viewButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 170, 180, 180));
+        jPanel1.add(viewButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 230, 180, 180));
 
         updateButton.setBackground(new java.awt.Color(255, 248, 229));
         updateButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -143,22 +144,22 @@ public class PatientRecordsInternalFrame extends javax.swing.JInternalFrame {
         });
         updateButton.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 120, 130));
 
-        jPanel1.add(updateButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, 170, 190));
+        jPanel1.add(updateButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 220, 170, 190));
 
         jLabel5.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(61, 86, 178));
         jLabel5.setText("Patient Records");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 70, -1, 50));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 130, -1, 50));
 
         jLabel6.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(61, 86, 178));
         jLabel6.setText("UPDATE");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 360, -1, 30));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 420, -1, 30));
 
         jLabel7.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(61, 86, 178));
         jLabel7.setText("DELETE");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 360, -1, 30));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 420, -1, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
