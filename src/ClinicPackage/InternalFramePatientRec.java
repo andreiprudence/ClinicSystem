@@ -49,7 +49,6 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane2 = new javax.swing.JScrollPane();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnAddRec = new javax.swing.JButton();
@@ -100,10 +99,6 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
 
         setPreferredSize(new java.awt.Dimension(1070, 620));
 
-        jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        jScrollPane2.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-        jScrollPane2.setViewportBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
         jPanel2.setBackground(new java.awt.Color(255, 248, 229));
         jPanel2.setPreferredSize(new java.awt.Dimension(1060, 620));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -118,7 +113,7 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
         btnAddRec.setForeground(new java.awt.Color(255, 255, 255));
         btnAddRec.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/3336950_download_save_icon.png"))); // NOI18N
         btnAddRec.setText("Save");
-        jPanel2.add(btnAddRec, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 640, 120, 50));
+        jPanel2.add(btnAddRec, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 560, 120, 50));
 
         btnBack.setFont(new java.awt.Font("Gadugi", 1, 11)); // NOI18N
         btnBack.setText("X");
@@ -139,7 +134,7 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
                 btnCancelActionPerformed(evt);
             }
         });
-        jPanel2.add(btnCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 640, 120, 50));
+        jPanel2.add(btnCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 560, 120, 50));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -258,14 +253,14 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(61, 86, 178));
         jLabel6.setText("Medical Assessment:");
-        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, -1, -1));
+        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, -1, -1));
 
         textAssessment.setColumns(20);
         textAssessment.setRows(5);
         textAssessment.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jScrollPane1.setViewportView(textAssessment);
 
-        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 460, 850, 100));
+        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 410, 850, 70));
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Father's Information", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(61, 86, 178))); // NOI18N
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -297,7 +292,7 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female" }));
         jPanel4.add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, 90, 30));
 
-        jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 300, 500, 120));
+        jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 250, 500, 120));
 
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Mother's Information", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(61, 86, 178))); // NOI18N
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -329,7 +324,7 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
         jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female" }));
         jPanel5.add(jComboBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, 90, 30));
 
-        jPanel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 500, 120));
+        jPanel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 500, 120));
 
         ageTxtField.setEditable(false);
         ageTxtField.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -344,19 +339,20 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
         });
         jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 160, 80, -1));
 
-        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 1030, 570));
-
-        jScrollPane2.setViewportView(jPanel2);
+        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 1030, 500));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1060, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 732, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 691, Short.MAX_VALUE)
         );
 
         pack();
@@ -462,7 +458,6 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField textAddress;
     private javax.swing.JTextArea textAssessment;
     private javax.swing.JTextField textFirstName;
