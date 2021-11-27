@@ -91,6 +91,9 @@ public class PatientRecordsInternalFrame extends javax.swing.JInternalFrame {
         viewButton.setBackground(new java.awt.Color(255, 248, 229));
         viewButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         viewButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                viewButtonMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 viewButtonMouseEntered(evt);
             }
@@ -113,7 +116,7 @@ public class PatientRecordsInternalFrame extends javax.swing.JInternalFrame {
                 jLabel3MouseExited(evt);
             }
         });
-        viewButton.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 120, 120));
+        viewButton.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 130, 120));
 
         jPanel1.add(viewButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 230, 180, 180));
 
@@ -245,6 +248,10 @@ public class PatientRecordsInternalFrame extends javax.swing.JInternalFrame {
     private void jLabel3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseExited
         viewButton.setBackground(new Color(255, 248, 229));
     }//GEN-LAST:event_jLabel3MouseExited
+
+    private void viewButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewButtonMouseClicked
+
+    }//GEN-LAST:event_viewButtonMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

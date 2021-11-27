@@ -29,6 +29,23 @@ int cursorRow = 0;
     public LogInPageforClinic() {
         initComponents();
     }
+    
+    //Validating login textfields if empty
+    public boolean validateLogin(){
+        String username = textUsername.getText();
+        String password = textPassword.getText();
+        
+       if(username.equals("")){
+           JOptionPane.showMessageDialog(this, "Please enter a username");
+            return false;
+       }
+       if(password.equals("")){
+           JOptionPane.showMessageDialog(this, "Please enter a password");
+            return false;
+       }
+       
+       return true;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -151,25 +168,7 @@ int cursorRow = 0;
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-    String uname, upass;
-       
-       uname = textUsername.getText();
-       upass = textPassword.getText();
-       
-       if(uname.equals("secretary") && upass.equals("system")) {
-           JOptionPane.showMessageDialog(null, "Username and Password Matched");
-           new SecretaryPage().setVisible(true);
-           this.setVisible(false);
-         
-       }  else if(uname.equals("admin") && upass.equals("system")) {
-           JOptionPane.showMessageDialog(null, "Username and Password Matched");
-           new AdminMainFrame().setVisible(true);
-           this.setVisible(false);
-       }
-       
-       else{
-           JOptionPane.showMessageDialog(null, "Incorrect Username and/or Password");
-       }
+        validateLogin();
     }//GEN-LAST:event_btnLoginActionPerformed
 
     /**

@@ -86,10 +86,6 @@ public class AdminMainFrame1 extends javax.swing.JFrame {
         lblSecretary = new javax.swing.JLabel();
         userLabel = new javax.swing.JLabel();
         btnExit = new javax.swing.JButton();
-        medButton = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
         ptntRecButton = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
@@ -173,36 +169,6 @@ public class AdminMainFrame1 extends javax.swing.JFrame {
         });
         sidePanel.add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 550, 220, 50));
 
-        medButton.setBackground(new java.awt.Color(254, 241, 230));
-        medButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        medButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        medButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                medButtonMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                medButtonMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                medButtonMouseExited(evt);
-            }
-        });
-        medButton.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel4.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(25, 128, 251));
-        jLabel4.setText("Medicine");
-        medButton.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, -1, 30));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/6087975_capsule_drug_medicine_pill_tablet_icon.png"))); // NOI18N
-        medButton.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 40, 40));
-
-        jLabel16.setBackground(new java.awt.Color(245, 198, 165));
-        jLabel16.setForeground(new java.awt.Color(245, 198, 165));
-        medButton.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, 10, 50));
-
-        sidePanel.add(medButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 220, 50));
-
         ptntRecButton.setBackground(new java.awt.Color(254, 241, 230));
         ptntRecButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         ptntRecButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -221,10 +187,10 @@ public class AdminMainFrame1 extends javax.swing.JFrame {
 
         jLabel6.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(25, 128, 251));
-        jLabel6.setText("Register Patient");
+        jLabel6.setText("User List");
         ptntRecButton.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, -1, 30));
 
-        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/314789_add_folder_icon.png"))); // NOI18N
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/(admin)listicon.png"))); // NOI18N
         ptntRecButton.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 40, 30));
 
         jLabel3.setBackground(new java.awt.Color(245, 198, 165));
@@ -251,10 +217,10 @@ public class AdminMainFrame1 extends javax.swing.JFrame {
 
         jLabel9.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(25, 128, 251));
-        jLabel9.setText("Appointments");
+        jLabel9.setText("Back-Up Records");
         appointBtton.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, -1, 30));
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/5505479_augmented_calendar_mountain_reality_schedule_icon.png"))); // NOI18N
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/(admin)backupicon.png"))); // NOI18N
         appointBtton.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 30, -1));
 
         jLabel14.setBackground(new java.awt.Color(245, 198, 165));
@@ -281,10 +247,10 @@ public class AdminMainFrame1 extends javax.swing.JFrame {
 
         jLabel8.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(25, 128, 251));
-        jLabel8.setText("Fees");
+        jLabel8.setText("Restore Records");
         feesButton.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, -1, 30));
 
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/2305592_card_credit_method_pay_payment_icon.png"))); // NOI18N
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/(admin)restoreicon.png"))); // NOI18N
         feesButton.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 30, 40));
 
         jLabel15.setBackground(new java.awt.Color(245, 198, 165));
@@ -311,10 +277,10 @@ public class AdminMainFrame1 extends javax.swing.JFrame {
 
         jLabel11.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(25, 128, 251));
-        jLabel11.setText("Patient Records");
+        jLabel11.setText("Add User");
         regPtntButton.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, -1, 30));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/314416_list_notebook_icon.png"))); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/1086667_deals_examine_form_list_records_icon.png"))); // NOI18N
         regPtntButton.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 40, 30));
 
         jLabel13.setBackground(new java.awt.Color(245, 198, 165));
@@ -385,25 +351,9 @@ public class AdminMainFrame1 extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnExitActionPerformed
 
-    private void medButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_medButtonMouseEntered
-        medButton.setBackground(mouseEnteredColor);
-    }//GEN-LAST:event_medButtonMouseEntered
-
-    private void medButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_medButtonMouseExited
-        medButton.setBackground(mouseExitedColor);
-    }//GEN-LAST:event_medButtonMouseExited
-
-    private void medButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_medButtonMouseClicked
-        bar(jLabel16);
-        internalFrameMedicine iFrameMedicine = new internalFrameMedicine();
-        jDesktopPane1.removeAll();
-        jDesktopPane1.add(iFrameMedicine).setVisible(true);
-        //  new MedicineFrame().setVisible(true);
-    }//GEN-LAST:event_medButtonMouseClicked
-
     private void ptntRecButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ptntRecButtonMouseClicked
         bar(jLabel3);
-        InternalFramePatientRec interFrame = new InternalFramePatientRec();
+        internalFrameUserList interFrame = new internalFrameUserList();
         jDesktopPane1.removeAll();
         jDesktopPane1.add(interFrame).setVisible(true);
     }//GEN-LAST:event_ptntRecButtonMouseClicked
@@ -449,9 +399,9 @@ public class AdminMainFrame1 extends javax.swing.JFrame {
 
     private void regPtntButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regPtntButtonMouseClicked
         bar(jLabel13);
-        PatientRecordsInternalFrame patientRecordinterFrame = new PatientRecordsInternalFrame();
+        InternalFrameAddUser frameAddUser = new InternalFrameAddUser();
         jDesktopPane1.removeAll();
-        jDesktopPane1.add(patientRecordinterFrame).setVisible(true);
+        jDesktopPane1.add(frameAddUser).setVisible(true);
     }//GEN-LAST:event_regPtntButtonMouseClicked
 
     private void regPtntButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regPtntButtonMouseEntered
@@ -476,7 +426,6 @@ public class AdminMainFrame1 extends javax.swing.JFrame {
         jLabel13.setOpaque(false);
         jLabel14.setOpaque(false);
         jLabel15.setOpaque(false);
-        jLabel16.setOpaque(false);
         lab.setOpaque(true);
         sidePanel.repaint();
     }
@@ -529,11 +478,8 @@ public class AdminMainFrame1 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -542,7 +488,6 @@ public class AdminMainFrame1 extends javax.swing.JFrame {
     private javax.swing.JLabel lblDate;
     private javax.swing.JLabel lblSecretary;
     private javax.swing.JLabel lblTime;
-    private javax.swing.JPanel medButton;
     private javax.swing.JPanel ptntRecButton;
     private javax.swing.JPanel regPtntButton;
     private javax.swing.JPanel sidePanel;

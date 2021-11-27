@@ -83,8 +83,8 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
         textLastName2 = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
         textLastName3 = new javax.swing.JTextField();
-        jLabel16 = new javax.swing.JLabel();
-        jComboBox3 = new javax.swing.JComboBox<>();
+        jLabel22 = new javax.swing.JLabel();
+        ageTxtField2 = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
         textLastName4 = new javax.swing.JTextField();
@@ -92,8 +92,8 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
         textLastName5 = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
         textLastName6 = new javax.swing.JTextField();
-        jLabel20 = new javax.swing.JLabel();
-        jComboBox4 = new javax.swing.JComboBox<>();
+        jLabel21 = new javax.swing.JLabel();
+        ageTxtField1 = new javax.swing.JTextField();
         ageTxtField = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
 
@@ -209,12 +209,12 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
 
         jDateChooser1.setDateFormatString("dd/MM/yyyy");
         jDateChooser1.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
                 jDateChooser1AncestorAdded(evt);
             }
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
-            }
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
         });
         jDateChooser1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -252,7 +252,7 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(61, 86, 178));
-        jLabel6.setText("Medical Assessment:");
+        jLabel6.setText("Remarks:");
         jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, -1, -1));
 
         textAssessment.setColumns(20);
@@ -280,17 +280,18 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
         jLabel15.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(61, 86, 178));
         jLabel15.setText("Phone Number");
-        jPanel4.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 80, -1, -1));
-        jPanel4.add(textLastName3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 70, 160, 30));
+        jPanel4.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, -1, -1));
+        jPanel4.add(textLastName3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 70, 260, 30));
 
-        jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(61, 86, 178));
-        jLabel16.setText("Gender");
-        jPanel4.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, 30));
+        jLabel22.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(61, 86, 178));
+        jLabel22.setText("Age");
+        jPanel4.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, 20));
 
-        jComboBox3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female" }));
-        jPanel4.add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, 90, 30));
+        ageTxtField2.setEditable(false);
+        ageTxtField2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        ageTxtField2.setEnabled(false);
+        jPanel4.add(ageTxtField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 40, 25));
 
         jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 250, 500, 120));
 
@@ -312,17 +313,18 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
         jLabel19.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(61, 86, 178));
         jLabel19.setText("Phone Number");
-        jPanel5.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 80, -1, -1));
-        jPanel5.add(textLastName6, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 70, 160, 30));
+        jPanel5.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, -1, -1));
+        jPanel5.add(textLastName6, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, 240, 30));
 
-        jLabel20.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(61, 86, 178));
-        jLabel20.setText("Gender");
-        jPanel5.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, 30));
+        jLabel21.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(61, 86, 178));
+        jLabel21.setText("Age");
+        jPanel5.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, 20));
 
-        jComboBox4.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female" }));
-        jPanel5.add(jComboBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, 90, 30));
+        ageTxtField1.setEditable(false);
+        ageTxtField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        ageTxtField1.setEnabled(false);
+        jPanel5.add(ageTxtField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 40, 25));
 
         jPanel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 500, 120));
 
@@ -424,14 +426,14 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField ageTxtField;
+    private javax.swing.JTextField ageTxtField1;
+    private javax.swing.JTextField ageTxtField2;
     private javax.swing.JButton btnAddRec;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JComboBox<String> jComboBox4;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -440,11 +442,11 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
