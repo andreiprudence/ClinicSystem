@@ -6,26 +6,37 @@
 package ClinicPackage;
 
 import java.awt.Dimension;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.ZoneId;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import org.eclipse.persistence.jpa.jpql.parser.DateTime;
+//import java.sql.*;
 
 /**
  *
  * @author andre
  */
 public class InternalFrameAddUser extends javax.swing.JInternalFrame {
-    
+
+    Connection con;
+
     /**
      * Creates new form InternalFramePatientRec
      */
     public InternalFrameAddUser() {
         initComponents();
         InternalFrameBorder();
+        GenerateID();
         /*   this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
             BasicInternalFrameUI ui = (BasicInternalFrameUI) this.getUI();
             ui.setNorthPane(null);
@@ -40,6 +51,31 @@ public class InternalFrameAddUser extends javax.swing.JInternalFrame {
         ui.setNorthPane(null);
         pack();
     }
+
+    // Function to auto generate ID for user
+    public void GenerateID() {
+
+        try {
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("select MAX(userID) from sales");
+            rs.next();
+
+            rs.getString("MAX(userID)");
+
+            if (rs.getString("MAX(userID)") == null) {
+                userIDLabel.setText("CCS-0001");
+
+            } else {
+                long id = Long.parseLong(rs.getString("MAX(userID)").substring(2, rs.getString("MAX(userID)").length()));
+                id++;
+                userIDLabel.setText("CCS-" + String.format("%03", id));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DatabaseConnection.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+     
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -57,23 +93,25 @@ public class InternalFrameAddUser extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtlastName = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        txtfirstName = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        txtUserName = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jTextField4 = new javax.swing.JTextField();
+        birth_date = new com.toedter.calendar.JDateChooser();
+        txtAge = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        comboRole = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        txtAddress = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
+        txtContactNo = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        userIDLabel = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(1070, 620));
 
@@ -91,6 +129,11 @@ public class InternalFrameAddUser extends javax.swing.JInternalFrame {
         btnAddRec.setForeground(new java.awt.Color(255, 255, 255));
         btnAddRec.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/3336950_download_save_icon.png"))); // NOI18N
         btnAddRec.setText("Save");
+        btnAddRec.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddRecActionPerformed(evt);
+            }
+        });
         jPanel2.add(btnAddRec, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 540, 120, 50));
 
         btnBack.setFont(new java.awt.Font("Gadugi", 1, 11)); // NOI18N
@@ -130,46 +173,53 @@ public class InternalFrameAddUser extends javax.swing.JInternalFrame {
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setText("Birthdate:");
-        jPanel6.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, -1));
-        jPanel6.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 220, 30));
+        jPanel6.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, -1, -1));
+        jPanel6.add(txtlastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 220, 30));
 
         jLabel3.setText("First Name");
-        jPanel6.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, -1, -1));
-        jPanel6.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 60, 220, 30));
+        jPanel6.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 70, -1, -1));
+        jPanel6.add(txtfirstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 100, 220, 30));
 
-        jLabel4.setText("Middle Name");
-        jPanel6.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 30, -1, -1));
-        jPanel6.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 60, 220, 30));
+        jLabel4.setText("Username");
+        jPanel6.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 70, -1, -1));
+        jPanel6.add(txtUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 100, 220, 30));
 
         jLabel5.setText("Last Name");
-        jPanel6.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
-        jPanel6.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 220, 30));
-        jPanel6.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 140, 50, 30));
+        jPanel6.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, -1));
+        jPanel6.add(birth_date, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 220, 30));
+        jPanel6.add(txtAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 180, 50, 30));
 
         jLabel6.setFont(new java.awt.Font("Dialog", 2, 11)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 51, 51));
         jLabel6.setText("*from date of Birth");
-        jPanel6.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 170, -1, -1));
+        jPanel6.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 210, -1, -1));
 
         jButton1.setText("Get Age");
-        jPanel6.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 140, -1, 30));
+        jPanel6.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 180, -1, 30));
 
         jLabel7.setText("Role:");
-        jPanel6.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 110, -1, -1));
+        jPanel6.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 150, -1, -1));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Doctor", "Admin", "Secretary" }));
-        jPanel6.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 140, 220, 30));
+        comboRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Doctor", "Admin", "Secretary" }));
+        jPanel6.add(comboRole, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 180, 220, 30));
 
         jLabel8.setText("Address:");
-        jPanel6.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, -1, -1));
-        jPanel6.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 680, 30));
+        jPanel6.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, -1, -1));
+        jPanel6.add(txtAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 680, 30));
 
         jLabel9.setText("Age");
-        jPanel6.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 110, -1, -1));
+        jPanel6.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 150, -1, -1));
 
         jLabel10.setText("Contact Number:");
-        jPanel6.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 110, -1, -1));
-        jPanel6.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 140, 220, 30));
+        jPanel6.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 150, -1, -1));
+        jPanel6.add(txtContactNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 180, 220, 30));
+
+        jLabel11.setText("User ID:");
+        jPanel6.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
+
+        userIDLabel.setForeground(new java.awt.Color(0, 51, 204));
+        userIDLabel.setText("jLabel12");
+        jPanel6.add(userIDLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 25, 50, 30));
 
         jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, 970, 450));
 
@@ -199,16 +249,51 @@ public class InternalFrameAddUser extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_btnBackActionPerformed
 
+    private void btnAddRecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddRecActionPerformed
+        Connection con;
+
+      // java.util.Date birthDate = birth_date.getDate();
+            
+       java.sql.Date birthDate = new java.sql.Date(birth_date.getDate().getTime());
+        //Creating an instance of the database connection
+        DatabaseConnection connection = new DatabaseConnection();
+        con = connection.getConnection();
+        
+        // Assigned the query into a string
+        String query = "insert into user_table(userID, last_name, first_name, user_name, birth_date, age, contact_number, role, address) values(?,?,?,?,?,?,?,?,?)";
+        
+        // Addingg info from txtfield using preparedstatement
+        try {
+            PreparedStatement pst = con.prepareStatement(query);
+            pst.setString(1, userIDLabel.getText());
+            pst.setString(2, txtlastName.getText());
+            pst.setString(3, txtfirstName.getText());
+            pst.setString(4, txtUserName.getText());
+         //   pst.setDate(5, birth_date.getDate());
+            pst.setString(6, txtAge.getText());
+            pst.setString(7, txtContactNo.getText());
+            pst.setString(8, comboRole.getSelectedItem().toString());
+            pst.setString(9, txtAddress.getText());
+            
+            pst.executeUpdate();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(InternalFrameAddUser.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_btnAddRecActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.toedter.calendar.JDateChooser birth_date;
     private javax.swing.JButton btnAddRec;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnCancel;
+    private javax.swing.JComboBox<String> comboRole;
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -220,11 +305,12 @@ public class InternalFrameAddUser extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField txtAddress;
+    private javax.swing.JTextField txtAge;
+    private javax.swing.JTextField txtContactNo;
+    private javax.swing.JTextField txtUserName;
+    private javax.swing.JTextField txtfirstName;
+    private javax.swing.JTextField txtlastName;
+    private javax.swing.JLabel userIDLabel;
     // End of variables declaration//GEN-END:variables
 }

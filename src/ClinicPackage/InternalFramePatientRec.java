@@ -72,7 +72,6 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jLabel11 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
-        jLabel10 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         textAssessment = new javax.swing.JTextArea();
@@ -96,6 +95,8 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
         ageTxtField1 = new javax.swing.JTextField();
         ageTxtField = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(1070, 620));
 
@@ -155,7 +156,7 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
 
         textIDNo.setEditable(false);
         textIDNo.setEnabled(false);
-        jPanel3.add(textIDNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 30, 60, 25));
+        jPanel3.add(textIDNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, 60, 25));
 
         jLabel8.setFont(new java.awt.Font("Cambria", 1, 16)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(61, 86, 178));
@@ -234,7 +235,7 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
                 jDateChooser1PropertyChange(evt);
             }
         });
-        jPanel3.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 160, 230, 25));
+        jPanel3.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 160, 220, 25));
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(61, 86, 178));
@@ -244,11 +245,6 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
         jComboBox1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female" }));
         jPanel3.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 90, 25));
-
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(61, 86, 178));
-        jLabel10.setText("Age");
-        jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 130, -1, 20));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(61, 86, 178));
@@ -331,15 +327,25 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
         ageTxtField.setEditable(false);
         ageTxtField.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         ageTxtField.setEnabled(false);
-        jPanel3.add(ageTxtField, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 160, 40, 25));
+        jPanel3.add(ageTxtField, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 160, 40, 25));
 
-        jButton1.setText("Calculate");
+        jButton1.setText("Get Age");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 160, 80, -1));
+        jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 160, 80, -1));
+
+        jLabel16.setFont(new java.awt.Font("Dialog", 2, 11)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel16.setText("*from date of Birth");
+        jPanel3.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 190, -1, -1));
+
+        jLabel20.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(61, 86, 178));
+        jLabel20.setText("Age");
+        jPanel3.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 130, -1, -1));
 
         jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 1030, 500));
 
@@ -436,15 +442,16 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<String> jComboBox2;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;

@@ -43,7 +43,7 @@ public class internalFrameUserList extends javax.swing.JInternalFrame {
         setPreferredSize(new java.awt.Dimension(1060, 620));
         setRequestFocusEnabled(false);
 
-        jPanel1.setBackground(new java.awt.Color(255, 248, 229));
+        jPanel1.setBackground(new java.awt.Color(153, 204, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(1060, 620));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 

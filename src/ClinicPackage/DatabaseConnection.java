@@ -1,4 +1,4 @@
- /*
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -14,7 +14,6 @@ import sun.util.logging.PlatformLogger;
  *
  * @author andre
  */
-
 // Class for database connection
 public class DatabaseConnection {
 
@@ -23,13 +22,12 @@ public class DatabaseConnection {
     public DatabaseConnection() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/clinicdb", "root","");
-            System.out.println("Database Connected");
-            // Statement stmt = connect.createStatement();
-
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-
+            // Getting the connection
+            con = DriverManager.getConnection("jdbc:mysql://localhost/clinicdb", "root", "");
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(DatabaseConnection.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(DatabaseConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

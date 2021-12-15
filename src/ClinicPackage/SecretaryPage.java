@@ -82,6 +82,7 @@ public class SecretaryPage extends javax.swing.JFrame {
         lblDate = new javax.swing.JLabel();
         lblTime = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
         sidePanel = new javax.swing.JPanel();
         lblSecretary = new javax.swing.JLabel();
         userLabel = new javax.swing.JLabel();
@@ -148,6 +149,9 @@ public class SecretaryPage extends javax.swing.JFrame {
             }
         });
         upperPanel.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(1230, 0, 50, 40));
+
+        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/CARES System Header BG.jpg"))); // NOI18N
+        upperPanel.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 100));
 
         MainPanel.add(upperPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 100));
 
@@ -530,6 +534,7 @@ public class SecretaryPage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
