@@ -36,7 +36,7 @@ public class InternalFrameAddUser extends javax.swing.JInternalFrame {
     public InternalFrameAddUser() {
         initComponents();
         InternalFrameBorder();
-        GenerateID();
+      //  GenerateID();
         /*   this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
             BasicInternalFrameUI ui = (BasicInternalFrameUI) this.getUI();
             ui.setNorthPane(null);
@@ -53,28 +53,28 @@ public class InternalFrameAddUser extends javax.swing.JInternalFrame {
     }
 
     // Function to auto generate ID for user
-    public void GenerateID() {
+  /*  public void GenerateID() {
 
-        try {
+       try {
             Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("select MAX(userID) from sales");
-            rs.next();
+           ResultSet rs = st.executeQuery("select MAX(userID) from sales");
+           rs.next();
 
-            rs.getString("MAX(userID)");
+    /       rs.getString("MAX(userID)");
 
             if (rs.getString("MAX(userID)") == null) {
-                userIDLabel.setText("CCS-0001");
+               userIDLabel.setText("CCS-0001");
 
             } else {
-                long id = Long.parseLong(rs.getString("MAX(userID)").substring(2, rs.getString("MAX(userID)").length()));
+    /          long id = Long.parseLong(rs.getString("MAX(userID)").substring(2, rs.getString("MAX(userID)").length()));
                 id++;
-                userIDLabel.setText("CCS-" + String.format("%03", id));
-            }
+              userIDLabel.setText("CCS-" + String.format("%03", id));
+           }
         } catch (SQLException ex) {
             Logger.getLogger(DatabaseConnection.class.getName()).log(Level.SEVERE, null, ex);
-        }
+      }
 
-    }
+    } */
      
     /**
      * This method is called from within the constructor to initialize the form.
@@ -112,10 +112,12 @@ public class InternalFrameAddUser extends javax.swing.JInternalFrame {
         txtContactNo = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         userIDLabel = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jPasswordField1 = new javax.swing.JPasswordField();
 
         setPreferredSize(new java.awt.Dimension(1070, 620));
 
-        jPanel2.setBackground(new java.awt.Color(255, 248, 229));
+        jPanel2.setBackground(new java.awt.Color(153, 204, 255));
         jPanel2.setPreferredSize(new java.awt.Dimension(1060, 620));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -170,20 +172,25 @@ public class InternalFrameAddUser extends javax.swing.JInternalFrame {
 
         jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 790, 2));
 
+        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel2.setText("Birthdate:");
         jPanel6.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, -1, -1));
         jPanel6.add(txtlastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 220, 30));
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel3.setText("First Name");
         jPanel6.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 70, -1, -1));
         jPanel6.add(txtfirstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 100, 220, 30));
 
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel4.setText("Username");
         jPanel6.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 70, -1, -1));
         jPanel6.add(txtUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 100, 220, 30));
 
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel5.setText("Last Name");
         jPanel6.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, -1));
         jPanel6.add(birth_date, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 220, 30));
@@ -197,29 +204,43 @@ public class InternalFrameAddUser extends javax.swing.JInternalFrame {
         jButton1.setText("Get Age");
         jPanel6.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 180, -1, 30));
 
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel7.setText("Role:");
         jPanel6.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 150, -1, -1));
 
+        comboRole.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         comboRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Doctor", "Admin", "Secretary" }));
         jPanel6.add(comboRole, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 180, 220, 30));
 
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel8.setText("Address:");
         jPanel6.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, -1, -1));
-        jPanel6.add(txtAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 680, 30));
+        jPanel6.add(txtAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 840, 40));
 
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel9.setText("Age");
         jPanel6.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 150, -1, -1));
 
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel10.setText("Contact Number:");
         jPanel6.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 150, -1, -1));
         jPanel6.add(txtContactNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 180, 220, 30));
 
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel11.setText("User ID:");
-        jPanel6.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
+        jPanel6.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
 
+        userIDLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         userIDLabel.setForeground(new java.awt.Color(0, 51, 204));
-        userIDLabel.setText("jLabel12");
-        jPanel6.add(userIDLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 25, 50, 30));
+        userIDLabel.setText("CCS-001");
+        jPanel6.add(userIDLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, 80, 40));
+
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel12.setText("Assign Password:");
+        jPanel6.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, -1, -1));
+
+        jPasswordField1.setText("jPasswordField1");
+        jPanel6.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, 400, 40));
 
         jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, 970, 450));
 
@@ -294,6 +315,7 @@ public class InternalFrameAddUser extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -305,6 +327,7 @@ public class InternalFrameAddUser extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField txtAddress;
     private javax.swing.JTextField txtAge;
     private javax.swing.JTextField txtContactNo;

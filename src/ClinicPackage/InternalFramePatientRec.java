@@ -6,9 +6,17 @@
 package ClinicPackage;
 
 import java.awt.Dimension;
+import java.awt.event.KeyEvent;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.ZoneId;
+import java.util.Locale;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
@@ -19,7 +27,7 @@ import org.eclipse.persistence.jpa.jpql.parser.DateTime;
  * @author andre
  */
 public class InternalFramePatientRec extends javax.swing.JInternalFrame {
-    
+
     /**
      * Creates new form InternalFramePatientRec
      */
@@ -40,6 +48,7 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
         ui.setNorthPane(null);
         pack();
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -56,7 +65,6 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
         btnCancel = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        textIDNo = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         textLastName = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -66,54 +74,61 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
         textPhoneNo = new javax.swing.JTextField();
         textAddress = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        birthDate = new com.toedter.calendar.JDateChooser();
         jLabel11 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        comboGender = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        textAssessment = new javax.swing.JTextArea();
+        textAreaRemarks = new javax.swing.JTextArea();
         jPanel4 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
-        textLastName1 = new javax.swing.JTextField();
+        textFatherLName = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
-        textLastName2 = new javax.swing.JTextField();
+        textFatherFName = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
-        textLastName3 = new javax.swing.JTextField();
+        textFatherNumber = new javax.swing.JTextField();
         jLabel22 = new javax.swing.JLabel();
-        ageTxtField2 = new javax.swing.JTextField();
+        textFatherAge = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
-        textLastName4 = new javax.swing.JTextField();
+        textMotherLName = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
-        textLastName5 = new javax.swing.JTextField();
+        textMotherFName = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
-        textLastName6 = new javax.swing.JTextField();
+        textMotherNumber = new javax.swing.JTextField();
         jLabel21 = new javax.swing.JLabel();
-        ageTxtField1 = new javax.swing.JTextField();
-        ageTxtField = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        textMotherAge = new javax.swing.JTextField();
+        textAge = new javax.swing.JTextField();
+        btnCalculateAge = new javax.swing.JButton();
         jLabel16 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
+        label_patientID = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        textAreaPrescription = new javax.swing.JTextArea();
 
         setPreferredSize(new java.awt.Dimension(1070, 620));
 
-        jPanel2.setBackground(new java.awt.Color(255, 248, 229));
+        jPanel2.setBackground(new java.awt.Color(153, 204, 255));
         jPanel2.setPreferredSize(new java.awt.Dimension(1060, 620));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(61, 86, 178));
         jLabel1.setText("Patient Information");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 20, -1, -1));
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 10, -1, -1));
 
         btnAddRec.setBackground(new java.awt.Color(0, 166, 89));
         btnAddRec.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         btnAddRec.setForeground(new java.awt.Color(255, 255, 255));
         btnAddRec.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/3336950_download_save_icon.png"))); // NOI18N
         btnAddRec.setText("Save");
+        btnAddRec.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddRecActionPerformed(evt);
+            }
+        });
         jPanel2.add(btnAddRec, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 560, 120, 50));
 
         btnBack.setFont(new java.awt.Font("Gadugi", 1, 11)); // NOI18N
@@ -154,13 +169,9 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Basic Information", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 1, 18), new java.awt.Color(61, 86, 178))); // NOI18N
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        textIDNo.setEditable(false);
-        textIDNo.setEnabled(false);
-        jPanel3.add(textIDNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, 60, 25));
-
         jLabel8.setFont(new java.awt.Font("Cambria", 1, 16)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(61, 86, 178));
-        jLabel8.setText("Patient Number:");
+        jLabel8.setText("Patient ID:");
         jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, 30));
 
         textLastName.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -177,86 +188,83 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
         jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 70, -1, -1));
 
         textFirstName.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel3.add(textFirstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 100, 280, 25));
+        jPanel3.add(textFirstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 100, 400, 25));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(61, 86, 178));
         jLabel9.setText("Phone Number");
-        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 130, 120, 20));
+        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 130, 120, 20));
 
         textPhoneNo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel3.add(textPhoneNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 160, 500, 25));
+        textPhoneNo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                textPhoneNoKeyTyped(evt);
+            }
+        });
+        jPanel3.add(textPhoneNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 160, 240, 25));
 
         textAddress.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel3.add(textAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 730, 25));
+        jPanel3.add(textAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 215, 770, 30));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(61, 86, 178));
         jLabel5.setText("Address");
         jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, -1, 20));
 
-        jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(61, 86, 178));
-        jLabel12.setText("Occupation");
-        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 60, -1, 30));
-
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel3.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 100, 330, -1));
-
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(61, 86, 178));
         jLabel7.setText("Date of Birth");
         jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 130, -1, 20));
 
-        jDateChooser1.setDateFormatString("dd/MM/yyyy");
-        jDateChooser1.addAncestorListener(new javax.swing.event.AncestorListener() {
+        birthDate.setDateFormatString("dd/MM/yyyy");
+        birthDate.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                jDateChooser1AncestorAdded(evt);
+                birthDateAncestorAdded(evt);
             }
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
             }
         });
-        jDateChooser1.addMouseListener(new java.awt.event.MouseAdapter() {
+        birthDate.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jDateChooser1MouseClicked(evt);
+                birthDateMouseClicked(evt);
             }
         });
-        jDateChooser1.addInputMethodListener(new java.awt.event.InputMethodListener() {
+        birthDate.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                birthDateInputMethodTextChanged(evt);
+            }
             public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
             }
-            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
-                jDateChooser1InputMethodTextChanged(evt);
-            }
         });
-        jDateChooser1.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+        birthDate.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                jDateChooser1PropertyChange(evt);
+                birthDatePropertyChange(evt);
             }
         });
-        jPanel3.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 160, 220, 25));
+        jPanel3.add(birthDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 160, 250, 30));
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(61, 86, 178));
         jLabel11.setText("Gender:");
         jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, 20));
 
-        jComboBox1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female" }));
-        jPanel3.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 90, 25));
+        comboGender.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        comboGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female" }));
+        jPanel3.add(comboGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 90, 25));
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(61, 86, 178));
         jLabel6.setText("Remarks:");
         jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, -1, -1));
 
-        textAssessment.setColumns(20);
-        textAssessment.setRows(5);
-        textAssessment.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jScrollPane1.setViewportView(textAssessment);
+        textAreaRemarks.setColumns(20);
+        textAreaRemarks.setRows(5);
+        textAreaRemarks.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jScrollPane1.setViewportView(textAreaRemarks);
 
-        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 410, 850, 70));
+        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 410, 500, 70));
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Father's Information", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(61, 86, 178))); // NOI18N
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -265,29 +273,37 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
         jLabel13.setForeground(new java.awt.Color(61, 86, 178));
         jLabel13.setText("Last Name");
         jPanel4.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, 30));
-        jPanel4.add(textLastName1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, 120, 30));
+        jPanel4.add(textFatherLName, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, 130, 30));
 
         jLabel14.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(61, 86, 178));
         jLabel14.setText("First Name");
         jPanel4.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 30, 70, 30));
-        jPanel4.add(textLastName2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 30, 160, 30));
+        jPanel4.add(textFatherFName, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 30, 160, 30));
 
         jLabel15.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(61, 86, 178));
         jLabel15.setText("Phone Number");
-        jPanel4.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, -1, -1));
-        jPanel4.add(textLastName3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 70, 260, 30));
+        jPanel4.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 78, -1, 20));
 
-        jLabel22.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        textFatherNumber.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                textFatherNumberKeyTyped(evt);
+            }
+        });
+        jPanel4.add(textFatherNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 70, 260, 30));
+
+        jLabel22.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(61, 86, 178));
         jLabel22.setText("Age");
-        jPanel4.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, 20));
+        jPanel4.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, 30));
 
-        ageTxtField2.setEditable(false);
-        ageTxtField2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        ageTxtField2.setEnabled(false);
-        jPanel4.add(ageTxtField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 40, 25));
+        textFatherAge.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                textFatherAgeKeyTyped(evt);
+            }
+        });
+        jPanel4.add(textFatherAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, 50, 30));
 
         jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 250, 500, 120));
 
@@ -298,54 +314,80 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
         jLabel17.setForeground(new java.awt.Color(61, 86, 178));
         jLabel17.setText("Last Name");
         jPanel5.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, 30));
-        jPanel5.add(textLastName4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, 120, 30));
+        jPanel5.add(textMotherLName, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, 130, 30));
 
         jLabel18.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(61, 86, 178));
         jLabel18.setText("First Name");
         jPanel5.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 30, 70, 30));
-        jPanel5.add(textLastName5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 30, 160, 30));
+        jPanel5.add(textMotherFName, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 30, 160, 30));
 
         jLabel19.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(61, 86, 178));
         jLabel19.setText("Phone Number");
-        jPanel5.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, -1, -1));
-        jPanel5.add(textLastName6, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, 240, 30));
+        jPanel5.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 78, -1, 20));
 
-        jLabel21.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        textMotherNumber.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                textMotherNumberKeyTyped(evt);
+            }
+        });
+        jPanel5.add(textMotherNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, 240, 30));
+
+        jLabel21.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(61, 86, 178));
         jLabel21.setText("Age");
-        jPanel5.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, 20));
+        jPanel5.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, 30));
 
-        ageTxtField1.setEditable(false);
-        ageTxtField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        ageTxtField1.setEnabled(false);
-        jPanel5.add(ageTxtField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 40, 25));
+        textMotherAge.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                textMotherAgeKeyTyped(evt);
+            }
+        });
+        jPanel5.add(textMotherAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, 50, 30));
 
         jPanel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 500, 120));
 
-        ageTxtField.setEditable(false);
-        ageTxtField.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        ageTxtField.setEnabled(false);
-        jPanel3.add(ageTxtField, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 160, 40, 25));
+        textAge.setEditable(false);
+        textAge.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        textAge.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        textAge.setEnabled(false);
+        jPanel3.add(textAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 160, 40, 25));
 
-        jButton1.setText("Get Age");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnCalculateAge.setText("Get Age");
+        btnCalculateAge.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnCalculateAgeActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 160, 80, -1));
+        jPanel3.add(btnCalculateAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 160, 80, -1));
 
         jLabel16.setFont(new java.awt.Font("Dialog", 2, 11)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(255, 51, 51));
         jLabel16.setText("*from date of Birth");
-        jPanel3.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 190, -1, -1));
+        jPanel3.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 190, -1, -1));
 
         jLabel20.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(61, 86, 178));
         jLabel20.setText("Age");
-        jPanel3.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 130, -1, -1));
+        jPanel3.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 130, -1, -1));
+
+        label_patientID.setFont(new java.awt.Font("Cambria", 1, 18)); // NOI18N
+        label_patientID.setForeground(new java.awt.Color(0, 255, 0));
+        label_patientID.setText("P-00001");
+        jPanel3.add(label_patientID, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, -1, 30));
+
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(61, 86, 178));
+        jLabel10.setText("Prescription:");
+        jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 380, -1, -1));
+
+        textAreaPrescription.setColumns(20);
+        textAreaPrescription.setRows(5);
+        textAreaPrescription.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jScrollPane2.setViewportView(textAreaPrescription);
+
+        jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 410, 500, 70));
 
         jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 1030, 500));
 
@@ -370,14 +412,14 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
         int msg = JOptionPane.showConfirmDialog(null, "Are you sure you want to clear all the records?");
 
         if (msg == 0) {
-            textIDNo.setText("");
+            // textIDNo.setText("");
             textLastName.setText("");
             textFirstName.setText("");
             textAddress.setText("");
-            textAssessment.setText("");
-            jDateChooser1.setCalendar(null);
+            textAreaRemarks.setText("");
+            birthDate.setCalendar(null);
             textPhoneNo.setText("");
-            ageTxtField.setText("");
+            textAge.setText("");
         }
 
     }//GEN-LAST:event_btnCancelActionPerformed
@@ -387,14 +429,14 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_btnBackActionPerformed
 
-    private void jDateChooser1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jDateChooser1MouseClicked
+    private void birthDateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_birthDateMouseClicked
 
 
-    }//GEN-LAST:event_jDateChooser1MouseClicked
+    }//GEN-LAST:event_birthDateMouseClicked
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnCalculateAgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalculateAgeActionPerformed
         // Takes the string value of the jDateChooser
-        String dateofBirth = ((JTextField) jDateChooser1.getDateEditor().getUiComponent()).getText();
+        String dateofBirth = ((JTextField) birthDate.getDateEditor().getUiComponent()).getText();
 
         //Splits the date into an array
         String dob[] = dateofBirth.split("/");
@@ -408,42 +450,131 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
         LocalDate selectedDate = LocalDate.of(year, month, day);
         LocalDate currentDate = LocalDate.now();
 
-        // Validating to rewrite textfield if not empty 
-        if (ageTxtField.getText() != "") {
-            ageTxtField.setText("");
+        // Validating to rewrite textfield if not empty
+        if (textAge.getText() != "") {
+            textAge.setText("");
             //Outputting the date
             int ResultYear = Period.between(selectedDate, currentDate).getYears();
-            ageTxtField.setText("" + ResultYear);
+            textAge.setText("" + ResultYear);
+        } else if (textAge.getText() == "") {
+            textAge.setText("");
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnCalculateAgeActionPerformed
 
-    private void jDateChooser1AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jDateChooser1AncestorAdded
+    private void birthDateAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_birthDateAncestorAdded
 
-    }//GEN-LAST:event_jDateChooser1AncestorAdded
+    }//GEN-LAST:event_birthDateAncestorAdded
 
-    private void jDateChooser1InputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_jDateChooser1InputMethodTextChanged
+    private void birthDateInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_birthDateInputMethodTextChanged
 
-    }//GEN-LAST:event_jDateChooser1InputMethodTextChanged
+    }//GEN-LAST:event_birthDateInputMethodTextChanged
 
-    private void jDateChooser1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jDateChooser1PropertyChange
+    private void birthDatePropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_birthDatePropertyChange
         // TODO add your handling code here:
-    }//GEN-LAST:event_jDateChooser1PropertyChange
+    }//GEN-LAST:event_birthDatePropertyChange
+
+    private void btnAddRecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddRecActionPerformed
+        Connection con;
+
+        DatabaseConnection connection = new DatabaseConnection();
+        con = connection.getConnection();
+        String query = "insert into patient_info(patient_id, patient_lastname, patient_firstname, patient_gender, patient_DOB, patient_age, patient_contactno, patient_address, mother_lastname, mother_firstname, mother_age, mother_contactno, father_lastname, father_firstname, father_age, father_contactno, remarks, prescription) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+
+        try {
+            PreparedStatement pstmt = con.prepareStatement(query);
+            pstmt.setString(1, label_patientID.getText());
+            pstmt.setString(2, textLastName.getText());
+            pstmt.setString(3, textFirstName.getText());
+            pstmt.setString(4, comboGender.getSelectedItem().toString());
+            //date
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+            String d = sdf.format(birthDate.getDate());
+            pstmt.setString(5, d);
+            //date
+            pstmt.setString(6, textAge.getText());
+            pstmt.setString(7, textPhoneNo.getText());
+            pstmt.setString(8, textAddress.getText());
+            pstmt.setString(9, textMotherLName.getText());
+            pstmt.setString(10, textMotherFName.getText());
+            pstmt.setString(11, textMotherAge.getText());
+            pstmt.setString(12, textMotherNumber.getText());
+            pstmt.setString(13, textFatherLName.getText());
+            pstmt.setString(14, textFatherFName.getText());
+            pstmt.setString(15, textFatherAge.getText());
+            pstmt.setString(16, textFatherNumber.getText());
+            pstmt.setString(17, textAreaRemarks.getText());
+            pstmt.setString(18, textAreaPrescription.getText());
+
+            pstmt.executeUpdate();
+
+            JOptionPane.showMessageDialog(this, "Record Saved");
+        } catch (SQLException ex) {
+            Logger.getLogger(InternalFramePatientRec.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }//GEN-LAST:event_btnAddRecActionPerformed
+
+    private void textPhoneNoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textPhoneNoKeyTyped
+        // function that only accepts integer input
+        char c = evt.getKeyChar();
+
+        if (!Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE)) {
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_textPhoneNoKeyTyped
+
+    private void textMotherAgeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textMotherAgeKeyTyped
+        // function that only accepts integer input
+        char c = evt.getKeyChar();
+
+        if (!Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE)) {
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_textMotherAgeKeyTyped
+
+    private void textMotherNumberKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textMotherNumberKeyTyped
+        // function that only accepts integer input
+        char c = evt.getKeyChar();
+
+        if (!Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE)) {
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_textMotherNumberKeyTyped
+
+    private void textFatherAgeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textFatherAgeKeyTyped
+        // function that only accepts integer input
+        char c = evt.getKeyChar();
+
+        if (!Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE)) {
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_textFatherAgeKeyTyped
+
+    private void textFatherNumberKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textFatherNumberKeyTyped
+        // function that only accepts integer input
+        char c = evt.getKeyChar();
+
+        if (!Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE)) {
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_textFatherNumberKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField ageTxtField;
-    private javax.swing.JTextField ageTxtField1;
-    private javax.swing.JTextField ageTxtField2;
+    private com.toedter.calendar.JDateChooser birthDate;
     private javax.swing.JButton btnAddRec;
     private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnCalculateAge;
     private javax.swing.JButton btnCancel;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private javax.swing.JComboBox<String> comboGender;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
@@ -467,17 +598,22 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel label_patientID;
     private javax.swing.JTextField textAddress;
-    private javax.swing.JTextArea textAssessment;
+    private javax.swing.JTextField textAge;
+    private javax.swing.JTextArea textAreaPrescription;
+    private javax.swing.JTextArea textAreaRemarks;
+    private javax.swing.JTextField textFatherAge;
+    private javax.swing.JTextField textFatherFName;
+    private javax.swing.JTextField textFatherLName;
+    private javax.swing.JTextField textFatherNumber;
     private javax.swing.JTextField textFirstName;
-    private javax.swing.JTextField textIDNo;
     private javax.swing.JTextField textLastName;
-    private javax.swing.JTextField textLastName1;
-    private javax.swing.JTextField textLastName2;
-    private javax.swing.JTextField textLastName3;
-    private javax.swing.JTextField textLastName4;
-    private javax.swing.JTextField textLastName5;
-    private javax.swing.JTextField textLastName6;
+    private javax.swing.JTextField textMotherAge;
+    private javax.swing.JTextField textMotherFName;
+    private javax.swing.JTextField textMotherLName;
+    private javax.swing.JTextField textMotherNumber;
     private javax.swing.JTextField textPhoneNo;
     // End of variables declaration//GEN-END:variables
 }

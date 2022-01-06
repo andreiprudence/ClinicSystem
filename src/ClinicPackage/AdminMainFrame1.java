@@ -5,6 +5,7 @@
  */
 package ClinicPackage;
 
+import ClinicPackage.images.internalFrameRestoreRecords;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -31,8 +32,8 @@ public class AdminMainFrame1 extends javax.swing.JFrame {
      * Creates new form SecretaryPage
      */
     //ASSIGNING A COLOR FOR THE BUTTONS(PANELS)
-    Color mouseExitedColor = new Color(255,255,255);
-    Color mouseEnteredColor = new Color(187, 207,215);
+    Color mouseExitedColor = new Color(255, 255, 255);
+    Color mouseEnteredColor = new Color(187, 207, 215);
 
     public AdminMainFrame1() {
         initComponents();
@@ -132,12 +133,12 @@ public class AdminMainFrame1 extends javax.swing.JFrame {
         lblTime.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         lblTime.setForeground(new java.awt.Color(61, 86, 178));
         lblTime.setText(" ");
-        upperPanel.add(lblTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 50, 140, 40));
+        upperPanel.add(lblTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 50, 140, 40));
 
         jLabel17.setBackground(new java.awt.Color(255, 0, 0));
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel17.setText("Close");
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/closeicon.png"))); // NOI18N
         jLabel17.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel17.setOpaque(true);
         jLabel17.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -163,8 +164,8 @@ public class AdminMainFrame1 extends javax.swing.JFrame {
 
         btnExit.setBackground(new java.awt.Color(255, 255, 255));
         btnExit.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btnExit.setForeground(new java.awt.Color(25, 128, 251));
-        btnExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/618316_arrow_exit_logout_sign out_icon.png"))); // NOI18N
+        btnExit.setForeground(new java.awt.Color(255, 51, 51));
+        btnExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/signout.png"))); // NOI18N
         btnExit.setText("Sign-Out");
         btnExit.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btnExit.setBorderPainted(false);
@@ -392,9 +393,9 @@ public class AdminMainFrame1 extends javax.swing.JFrame {
 
     private void feesButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_feesButtonMouseClicked
         bar(jLabel15);
-        internalFrameFees iFrameFees = new internalFrameFees();
+        internalFrameRestoreRecords iFrameRestore = new internalFrameRestoreRecords();
         jDesktopPane1.removeAll();
-        jDesktopPane1.add(iFrameFees).setVisible(true);
+        jDesktopPane1.add(iFrameRestore).setVisible(true);
 // JOptionPane.showMessageDialog(null, "Feature currently unavailable");
     }//GEN-LAST:event_feesButtonMouseClicked
 
@@ -408,9 +409,9 @@ public class AdminMainFrame1 extends javax.swing.JFrame {
 
     private void appointBttonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_appointBttonMouseClicked
         bar(jLabel14);
-        internalFrameAppoint iFrameAppoint = new internalFrameAppoint();
+        internalFrameBackUpRecords frameBackUp = new internalFrameBackUpRecords();
         jDesktopPane1.removeAll();
-        jDesktopPane1.add(iFrameAppoint).setVisible(true);
+        jDesktopPane1.add(frameBackUp).setVisible(true);
     }//GEN-LAST:event_appointBttonMouseClicked
 
     private void appointBttonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_appointBttonMouseEntered
@@ -438,7 +439,12 @@ public class AdminMainFrame1 extends javax.swing.JFrame {
 
     private void jLabel17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MouseClicked
         // Terminate JVM 
-        System.exit(0);
+        int msg = JOptionPane.showConfirmDialog(null, "Are you sure you want to close the application?");
+
+        if (msg == 0) {
+            System.exit(0);
+        }
+        
     }//GEN-LAST:event_jLabel17MouseClicked
 
     private void btnExitMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExitMouseEntered
@@ -451,7 +457,7 @@ public class AdminMainFrame1 extends javax.swing.JFrame {
         btnExit.setOpaque(false);
         btnExit.setContentAreaFilled(false);
         btnExit.setBorderPainted(false);
-        
+
     }//GEN-LAST:event_btnExitMouseExited
 
     /**
