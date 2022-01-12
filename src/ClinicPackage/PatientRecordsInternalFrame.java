@@ -13,7 +13,8 @@ import javax.swing.plaf.basic.BasicInternalFrameUI;
  * @author andre
  */
 public class PatientRecordsInternalFrame extends javax.swing.JInternalFrame {
-
+    Color mouseExitedColor = new Color(153,204,255);
+    Color mouseEnteredColor = new Color(187, 207, 215);
     /**
      * Creates new form PatientRecordsInternalFrame
      */
@@ -47,7 +48,7 @@ public class PatientRecordsInternalFrame extends javax.swing.JInternalFrame {
 
         setPreferredSize(new java.awt.Dimension(1070, 620));
 
-        jPanel1.setBackground(new java.awt.Color(255, 248, 229));
+        jPanel1.setBackground(new java.awt.Color(153, 204, 255));
         jPanel1.setMinimumSize(new java.awt.Dimension(1070, 620));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -56,7 +57,7 @@ public class PatientRecordsInternalFrame extends javax.swing.JInternalFrame {
         jLabel1.setText("VIEW");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 420, -1, 30));
 
-        deleteButton.setBackground(new java.awt.Color(255, 248, 229));
+        deleteButton.setBackground(new java.awt.Color(153, 204, 255));
         deleteButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         deleteButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -88,9 +89,12 @@ public class PatientRecordsInternalFrame extends javax.swing.JInternalFrame {
 
         jPanel1.add(deleteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 240, 150, 170));
 
-        viewButton.setBackground(new java.awt.Color(255, 248, 229));
+        viewButton.setBackground(new java.awt.Color(153, 204, 255));
         viewButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         viewButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                viewButtonMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 viewButtonMouseEntered(evt);
             }
@@ -113,11 +117,11 @@ public class PatientRecordsInternalFrame extends javax.swing.JInternalFrame {
                 jLabel3MouseExited(evt);
             }
         });
-        viewButton.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 120, 120));
+        viewButton.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 130, 120));
 
         jPanel1.add(viewButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 230, 180, 180));
 
-        updateButton.setBackground(new java.awt.Color(255, 248, 229));
+        updateButton.setBackground(new java.awt.Color(153, 204, 255));
         updateButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         updateButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -149,7 +153,7 @@ public class PatientRecordsInternalFrame extends javax.swing.JInternalFrame {
         jLabel5.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(61, 86, 178));
         jLabel5.setText("Patient Records");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 130, -1, 50));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 110, -1, 50));
 
         jLabel6.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(61, 86, 178));
@@ -159,7 +163,7 @@ public class PatientRecordsInternalFrame extends javax.swing.JInternalFrame {
         jLabel7.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(61, 86, 178));
         jLabel7.setText("DELETE");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 420, -1, 30));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 420, 110, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -176,27 +180,27 @@ public class PatientRecordsInternalFrame extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void updateButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateButtonMouseEntered
-        updateButton.setBackground(new Color(245, 198, 165));
+        updateButton.setBackground(mouseEnteredColor);
     }//GEN-LAST:event_updateButtonMouseEntered
 
     private void updateButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateButtonMouseExited
-        updateButton.setBackground(new Color(255, 248, 229));
+        updateButton.setBackground(mouseExitedColor);
     }//GEN-LAST:event_updateButtonMouseExited
 
     private void deleteButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteButtonMouseEntered
-        deleteButton.setBackground(new Color(245, 198, 165));
+        deleteButton.setBackground(mouseEnteredColor);
     }//GEN-LAST:event_deleteButtonMouseEntered
 
     private void deleteButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteButtonMouseExited
-        deleteButton.setBackground(new Color(255, 248, 229));
+        deleteButton.setBackground(mouseExitedColor);
     }//GEN-LAST:event_deleteButtonMouseExited
 
     private void viewButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewButtonMouseExited
-        viewButton.setBackground(new Color(255, 248, 229));
+        viewButton.setBackground(mouseExitedColor);
     }//GEN-LAST:event_viewButtonMouseExited
 
     private void viewButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewButtonMouseEntered
-        viewButton.setBackground(new Color(245, 198, 165));
+        viewButton.setBackground(mouseEnteredColor);
     }//GEN-LAST:event_viewButtonMouseEntered
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
@@ -205,11 +209,11 @@ public class PatientRecordsInternalFrame extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jLabel4MouseClicked
 
     private void jLabel4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseEntered
-        updateButton.setBackground(new Color(245, 198, 165));
+        updateButton.setBackground(mouseEnteredColor);
     }//GEN-LAST:event_jLabel4MouseEntered
 
     private void jLabel4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseExited
-        updateButton.setBackground(new Color(255, 248, 229));
+        updateButton.setBackground(mouseExitedColor);
     }//GEN-LAST:event_jLabel4MouseExited
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
@@ -221,15 +225,15 @@ public class PatientRecordsInternalFrame extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_deleteButtonMouseClicked
 
     private void jLabel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseEntered
-        deleteButton.setBackground(new Color(245, 198, 165));
+        deleteButton.setBackground(mouseEnteredColor);
     }//GEN-LAST:event_jLabel2MouseEntered
 
     private void jLabel2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseExited
-        deleteButton.setBackground(new Color(255, 248, 229));
+        deleteButton.setBackground(mouseExitedColor);
     }//GEN-LAST:event_jLabel2MouseExited
 
     private void jLabel3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseEntered
-        viewButton.setBackground(new Color(245, 198, 165));
+        viewButton.setBackground(mouseEnteredColor);
     }//GEN-LAST:event_jLabel3MouseEntered
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
@@ -243,8 +247,12 @@ public class PatientRecordsInternalFrame extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jLabel3MouseClicked
 
     private void jLabel3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseExited
-        viewButton.setBackground(new Color(255, 248, 229));
+        viewButton.setBackground(mouseExitedColor);
     }//GEN-LAST:event_jLabel3MouseExited
+
+    private void viewButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewButtonMouseClicked
+
+    }//GEN-LAST:event_viewButtonMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
