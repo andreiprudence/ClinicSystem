@@ -40,10 +40,11 @@ public class viewRecordFrame extends javax.swing.JFrame {
         setTitle("View Patient Record");
         setUndecorated(true);
 
-        jPanel1.setBackground(new java.awt.Color(224, 93, 93));
+        jPanel1.setBackground(new java.awt.Color(0, 78, 103));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel31.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        jLabel31.setForeground(new java.awt.Color(255, 255, 255));
         jLabel31.setText("View Patient Record");
         jPanel1.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 20, -1, -1));
 

@@ -34,6 +34,7 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
     public InternalFramePatientRec() {
         initComponents();
         InternalFrameBorder();
+
         /*   this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
             BasicInternalFrameUI ui = (BasicInternalFrameUI) this.getUI();
             ui.setNorthPane(null);
@@ -374,7 +375,7 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
 
         label_patientID.setFont(new java.awt.Font("Cambria", 1, 18)); // NOI18N
         label_patientID.setForeground(new java.awt.Color(0, 255, 0));
-        label_patientID.setText("P-00001");
+        label_patientID.setText("P-00003");
         jPanel3.add(label_patientID, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, -1, 30));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
@@ -479,49 +480,84 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
         DatabaseConnection connection = new DatabaseConnection();
         con = connection.getConnection();
         String query = "insert into patient_info(patient_id, patient_lastname, patient_firstname, patient_gender, patient_DOB, patient_age, patient_contactno, patient_address, mother_lastname, mother_firstname, mother_age, mother_contactno, father_lastname, father_firstname, father_age, father_contactno, remarks, prescription) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        int msg = JOptionPane.showConfirmDialog(this, "Save the record?");
 
-        try {
-            PreparedStatement pstmt = con.prepareStatement(query);
-            pstmt.setString(1, label_patientID.getText());
-            pstmt.setString(2, textLastName.getText());
-            pstmt.setString(3, textFirstName.getText());
-            pstmt.setString(4, comboGender.getSelectedItem().toString());
-            //date
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
-            String d = sdf.format(birthDate.getDate());
-            pstmt.setString(5, d);
-            //date
-            pstmt.setString(6, textAge.getText());
-            pstmt.setString(7, textPhoneNo.getText());
-            pstmt.setString(8, textAddress.getText());
-            pstmt.setString(9, textMotherLName.getText());
-            pstmt.setString(10, textMotherFName.getText());
-            pstmt.setString(11, textMotherAge.getText());
-            pstmt.setString(12, textMotherNumber.getText());
-            pstmt.setString(13, textFatherLName.getText());
-            pstmt.setString(14, textFatherFName.getText());
-            pstmt.setString(15, textFatherAge.getText());
-            pstmt.setString(16, textFatherNumber.getText());
-            pstmt.setString(17, textAreaRemarks.getText());
-            pstmt.setString(18, textAreaPrescription.getText());
+        if (msg == JOptionPane.YES_OPTION) {
+            try {
+                PreparedStatement pstmt = con.prepareStatement(query);
+                pstmt.setString(1, label_patientID.getText());
+                pstmt.setString(2, textLastName.getText());
+                pstmt.setString(3, textFirstName.getText());
+                pstmt.setString(4, comboGender.getSelectedItem().toString());
+                //date conversion
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+                String d = sdf.format(birthDate.getDate());
+                pstmt.setString(5, d);
+                //end of date conversion
+                pstmt.setString(6, textAge.getText());
+                pstmt.setString(7, textPhoneNo.getText());
+                pstmt.setString(8, textAddress.getText());
+                pstmt.setString(9, textMotherLName.getText());
+                pstmt.setString(10, textMotherFName.getText());
+                pstmt.setString(11, textMotherAge.getText());
+                pstmt.setString(12, textMotherNumber.getText());
+                pstmt.setString(13, textFatherLName.getText());
+                pstmt.setString(14, textFatherFName.getText());
+                pstmt.setString(15, textFatherAge.getText());
+                pstmt.setString(16, textFatherNumber.getText());
+                pstmt.setString(17, textAreaRemarks.getText());
+                pstmt.setString(18, textAreaPrescription.getText());
 
-            pstmt.executeUpdate();
+                pstmt.executeUpdate();
 
-            JOptionPane.showMessageDialog(this, "Record Saved");
-        } catch (SQLException ex) {
-            Logger.getLogger(InternalFramePatientRec.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(this, "Record Saved");
+
+                // Clearing the textfields after saving the record
+                textLastName.setText("");
+                textFirstName.setText("");
+                birthDate.setCalendar(null);
+                textAge.setText("");
+                textPhoneNo.setText("");
+                textAddress.setText("");
+                textMotherLName.setText("");
+                textMotherFName.setText("");
+                textMotherAge.setText("");
+                textMotherNumber.setText("");
+                textFatherLName.setText("");
+                textFatherFName.setText("");
+                textFatherAge.setText("");
+                textFatherNumber.setText("");
+                textAreaRemarks.setText("");
+                textAreaPrescription.setText("");
+
+            } catch (SQLException ex) {
+                Logger.getLogger(InternalFramePatientRec.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
         }
-
     }//GEN-LAST:event_btnAddRecActionPerformed
 
     private void textPhoneNoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textPhoneNoKeyTyped
         // function that only accepts integer input
         char c = evt.getKeyChar();
 
+        int length = textPhoneNo.getText().length();
+
         if (!Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE)) {
             getToolkit().beep();
             evt.consume();
         }
+
+    //    if (evt.getKeyChar()>='0' && evt.getKeyChar() <= '11') {
+    //         if (length < 11) {
+    //            textPhoneNo.setEditable(true);
+     //       } else {
+      //          textPhoneNo.setEditable(false);
+      //          getToolkit().beep();
+      //      }
+     //   }
+
+
     }//GEN-LAST:event_textPhoneNoKeyTyped
 
     private void textMotherAgeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textMotherAgeKeyTyped

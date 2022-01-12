@@ -5,6 +5,7 @@
  */
 package ClinicPackage;
 
+import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
 /**
@@ -18,7 +19,7 @@ public class internalFrameAppoint extends javax.swing.JInternalFrame {
      */
     public internalFrameAppoint() {
         initComponents();
-         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         BasicInternalFrameUI ui = (BasicInternalFrameUI) this.getUI();
         ui.setNorthPane(null);
     }
@@ -36,7 +37,7 @@ public class internalFrameAppoint extends javax.swing.JInternalFrame {
         rSFotoCircleBeanInfo1 = new rojerusan.RSFotoCircleBeanInfo();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        materialButton1 = new necesario.MaterialButton();
+        btnSetAppoint = new necesario.MaterialButton();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         rSTableMetro1 = new rojerusan.RSTableMetro();
@@ -49,7 +50,7 @@ public class internalFrameAppoint extends javax.swing.JInternalFrame {
 
         setPreferredSize(new java.awt.Dimension(1070, 620));
 
-        jPanel1.setBackground(new java.awt.Color(255, 248, 229));
+        jPanel1.setBackground(new java.awt.Color(153, 204, 255));
         jPanel1.setMinimumSize(new java.awt.Dimension(1070, 620));
         jPanel1.setPreferredSize(new java.awt.Dimension(1070, 620));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -59,10 +60,18 @@ public class internalFrameAppoint extends javax.swing.JInternalFrame {
         jLabel1.setText("Appointments");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 20, -1, -1));
 
-        materialButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/2639799_create_new_icon.png"))); // NOI18N
-        materialButton1.setText("Set an Appointment");
-        materialButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(materialButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 460, 200, 60));
+        btnSetAppoint.setBackground(new java.awt.Color(0, 112, 192));
+        btnSetAppoint.setForeground(new java.awt.Color(255, 255, 255));
+        btnSetAppoint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/2639799_create_new_icon.png"))); // NOI18N
+        btnSetAppoint.setText("Set an Appointment");
+        btnSetAppoint.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSetAppoint.setFont(new java.awt.Font("Roboto Medium", 1, 16)); // NOI18N
+        btnSetAppoint.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSetAppointMouseClicked(evt);
+            }
+        });
+        jPanel1.add(btnSetAppoint, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 480, 240, 80));
 
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("PATIENT ID: ");
@@ -79,6 +88,7 @@ public class internalFrameAppoint extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        rSTableMetro1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
         jScrollPane1.setViewportView(rSTableMetro1);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 1020, 250));
@@ -87,20 +97,22 @@ public class internalFrameAppoint extends javax.swing.JInternalFrame {
         rSButtonIconD1.setText("Search");
         jPanel1.add(rSButtonIconD1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 80, 110, -1));
 
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Time:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 410, -1, 20));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 410, -1, 20));
 
         jCTextField1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 0, 0)));
         jCTextField1.setPlaceholder("Enter Patient ID...");
         jPanel1.add(jCTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 80, 230, -1));
-        jPanel1.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 400, 130, 30));
+        jPanel1.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 400, 250, 30));
 
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Date of Appointment:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, -1, 20));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, -1, 30));
 
-        jPanel1.add(rSComboMetro1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 400, -1, -1));
+        jPanel1.add(rSComboMetro1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 400, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -118,8 +130,23 @@ public class internalFrameAppoint extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnSetAppointMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSetAppointMouseClicked
+        int msg = JOptionPane.showConfirmDialog(null, "Save Appointment?");
+
+        if (msg==0)
+        {
+            JOptionPane.showMessageDialog(this, "Appointment Saved!");
+        } else if (msg == 1)
+        {
+           JOptionPane.showMessageDialog(this, "Appointment Cancelled");
+        }
+
+
+    }//GEN-LAST:event_btnSetAppointMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private necesario.MaterialButton btnSetAppoint;
     private app.bolivia.swing.JCTextField jCTextField1;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
@@ -128,7 +155,6 @@ public class internalFrameAppoint extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private necesario.MaterialButton materialButton1;
     private rojerusan.RSButtonIconD rSButtonIconD1;
     private rojerusan.RSComboMetro rSComboMetro1;
     private rojeru_san.componentes.RSDateChooserBeanInfo rSDateChooserBeanInfo1;
