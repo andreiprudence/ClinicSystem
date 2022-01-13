@@ -233,10 +233,10 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
             }
         });
         birthDate.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
                 birthDateInputMethodTextChanged(evt);
-            }
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
             }
         });
         birthDate.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
@@ -375,7 +375,7 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
 
         label_patientID.setFont(new java.awt.Font("Cambria", 1, 18)); // NOI18N
         label_patientID.setForeground(new java.awt.Color(0, 255, 0));
-        label_patientID.setText("P-00003");
+        label_patientID.setText("3");
         jPanel3.add(label_patientID, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, -1, 30));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
@@ -510,7 +510,7 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
 
                 pstmt.executeUpdate();
 
-                JOptionPane.showMessageDialog(this, "Record Saved");
+                JOptionPane.showMessageDialog(this, "Record Saved!");
 
                 // Clearing the textfields after saving the record
                 textLastName.setText("");
@@ -546,6 +546,7 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
         if (!Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE)) {
             getToolkit().beep();
             evt.consume();
+            JOptionPane.showMessageDialog(this, "You can only input numbers in this field");
         }
 
     //    if (evt.getKeyChar()>='0' && evt.getKeyChar() <= '11') {
@@ -567,6 +568,7 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
         if (!Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE)) {
             getToolkit().beep();
             evt.consume();
+            JOptionPane.showMessageDialog(this, "You can only input numbers in this field");
         }
     }//GEN-LAST:event_textMotherAgeKeyTyped
 
@@ -577,6 +579,7 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
         if (!Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE)) {
             getToolkit().beep();
             evt.consume();
+            JOptionPane.showMessageDialog(this, "You can only input numbers in this field");
         }
     }//GEN-LAST:event_textMotherNumberKeyTyped
 
@@ -587,6 +590,7 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
         if (!Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE)) {
             getToolkit().beep();
             evt.consume();
+            JOptionPane.showMessageDialog(this, "You can only input numbers in this field");
         }
     }//GEN-LAST:event_textFatherAgeKeyTyped
 
@@ -597,6 +601,7 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
         if (!Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE)) {
             getToolkit().beep();
             evt.consume();
+            JOptionPane.showMessageDialog(this, "You can only input numbers in this field");
         }
     }//GEN-LAST:event_textFatherNumberKeyTyped
 

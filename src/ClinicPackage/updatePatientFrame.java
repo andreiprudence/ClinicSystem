@@ -19,6 +19,8 @@ import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 import net.proteanit.sql.DbUtils;
 import java.util.Date;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -33,6 +35,21 @@ public class updatePatientFrame extends javax.swing.JFrame {
         initComponents();
         fetch();
         Connection con;
+    }
+
+    //updates the table
+    private void updateTable() {
+        Connection con;
+        DatabaseConnection connection = new DatabaseConnection();
+        con = connection.getConnection();
+        String query = "select * from patient_info";
+        try {
+            PreparedStatement pst = con.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            patient_table.setModel(DbUtils.resultSetToTableModel(rs));
+        } catch (SQLException ex) {
+            Logger.getLogger(updatePatientFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public void fetch() {
@@ -71,7 +88,6 @@ public class updatePatientFrame extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         textAddress = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        birthDate = new com.toedter.calendar.JDateChooser();
         jLabel11 = new javax.swing.JLabel();
         comboGender = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
@@ -109,6 +125,7 @@ public class updatePatientFrame extends javax.swing.JFrame {
         textMotherLname = new javax.swing.JTextField();
         jLabel22 = new javax.swing.JLabel();
         textPatientID = new javax.swing.JTextField();
+        birthDate = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Update Patient Record");
@@ -167,7 +184,6 @@ public class updatePatientFrame extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Date of Birth");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 100, 20));
-        jPanel1.add(birthDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 250, 200, 30));
 
         jLabel11.setFont(new java.awt.Font("Cambria", 1, 16)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
@@ -347,7 +363,38 @@ public class updatePatientFrame extends javax.swing.JFrame {
         jLabel22.setForeground(new java.awt.Color(255, 255, 255));
         jLabel22.setText("Patient ID:");
         jPanel1.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
+
+        textPatientID.setEnabled(false);
         jPanel1.add(textPatientID, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, 120, 30));
+
+        birthDate.setDateFormatString("dd/MM/yyyy");
+        birthDate.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                birthDateAncestorAdded(evt);
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+        birthDate.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                birthDateMouseClicked(evt);
+            }
+        });
+        birthDate.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                birthDateInputMethodTextChanged(evt);
+            }
+        });
+        birthDate.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                birthDatePropertyChange(evt);
+            }
+        });
+        jPanel1.add(birthDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, 250, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -373,6 +420,8 @@ public class updatePatientFrame extends javax.swing.JFrame {
 
         DatabaseConnection connection = new DatabaseConnection();
         con = connection.getConnection();
+        //confirmation dialog message
+        int msg = JOptionPane.showConfirmDialog(this, "Update selected record?");
 
 //assigning textfields into variables for easy calling
         String patientID = textPatientID.getText();
@@ -381,9 +430,7 @@ public class updatePatientFrame extends javax.swing.JFrame {
         String gender = comboGender.getSelectedItem().toString();
         String age = textAge.getText();
 //date of birth
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
-        String d = sdf.format(birthDate.getDate());
-// end of date of birth
+        String date = ((JTextField) birthDate.getDateEditor().getUiComponent()).getText();
         String phoneNumber = textPhoneNo.getText();
         String address = textAddress.getText();
         String MotherLName = textMotherLname.getText();
@@ -397,8 +444,35 @@ public class updatePatientFrame extends javax.swing.JFrame {
         String remarksString = textAreaRemarks.getText();
         String prescriptString = textAreaPrescription.getText();
 
-        //  String query = "update patient_info set "
+        if (msg == JOptionPane.YES_OPTION) {
+        try{
+        String query = "update patient_info set patient_lastname=?, patient_firstname=?, patient_gender=?, patient_DOB=?, patient_age=?, patient_contactno=?, patient_address=?, mother_lastname=?, mother_firstname=?, mother_age=?, mother_contactno=?, father_lastname=?, father_firstname=?, father_age=?, father_contactno=?, remarks=?, prescription=? where patient_ID='" + patientID + "' ";
 
+            PreparedStatement pst = con.prepareStatement(query);
+            pst.setString(1, lname);
+            pst.setString(2, fname);
+            pst.setString(3, gender);
+            pst.setString(4, date);
+            pst.setString(5, age);
+            pst.setString(6, phoneNumber);
+            pst.setString(7, address);
+            pst.setString(8, MotherLName);
+            pst.setString(9, MotherFirstName);
+            pst.setString(10, MotherAge);
+            pst.setString(11, MotherNumber);
+            pst.setString(12, FatherLastName);
+            pst.setString(13, FatherFirstName);
+            pst.setString(14, FatherAge);
+            pst.setString(15, FatherNumber);
+            pst.setString(16, remarksString);
+            pst.setString(17, prescriptString);
+            pst.executeUpdate();
+            JOptionPane.showMessageDialog(this, "Update Successful!");
+            updateTable();
+        } catch (SQLException ex) {
+            Logger.getLogger(updatePatientFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        }
     }//GEN-LAST:event_updateButtonActionPerformed
 
     private void textAgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textAgeActionPerformed
@@ -422,7 +496,7 @@ public class updatePatientFrame extends javax.swing.JFrame {
         int row = patient_table.getSelectedRow();
         String selection = patient_table.getModel().getValueAt(row, 0).toString();
         String query = "select * from patient_info where patient_ID = " + selection;
-        DefaultTableModel d1 = (DefaultTableModel) patient_table.getModel();
+        DefaultTableModel model = (DefaultTableModel) patient_table.getModel();
 
         try {
             PreparedStatement pst = con.prepareStatement(query);
@@ -433,14 +507,7 @@ public class updatePatientFrame extends javax.swing.JFrame {
                 textLastName.setText(rs.getString("patient_lastname"));
                 textFirstName.setText(rs.getString("patient_firstname"));
                 comboGender.setSelectedItem(rs.getString("patient_gender"));
-                try {
-                    //
-                    Date date = new SimpleDateFormat("yyyy-MM-dd").parse((String) d1.getValueAt(row, 0));
-                    birthDate.setDate(date);
-                } catch (ParseException ex) {
-                    Logger.getLogger(updatePatientFrame.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                //
+                ((JTextField) birthDate.getDateEditor().getUiComponent()).setText(rs.getString("patient_DOB"));
                 textAge.setText(rs.getString("patient_age"));
                 textPhoneNo.setText(rs.getString("patient_contactno"));
                 textAddress.setText(rs.getString("patient_address"));
@@ -468,8 +535,8 @@ public class updatePatientFrame extends javax.swing.JFrame {
 
         int row = patient_table.getSelectedRow();
         String selection = patient_table.getModel().getValueAt(row, 0).toString();
-        String query = "select * from patient_info where patient_ID= " + selection;
-        DefaultTableModel d1 = (DefaultTableModel) patient_table.getModel();
+        String query = "select * from patient_info where patient_ID = " + selection;
+        DefaultTableModel model = (DefaultTableModel) patient_table.getModel();
 
         try {
             PreparedStatement pst = con.prepareStatement(query);
@@ -480,14 +547,7 @@ public class updatePatientFrame extends javax.swing.JFrame {
                 textLastName.setText(rs.getString("patient_lastname"));
                 textFirstName.setText(rs.getString("patient_firstname"));
                 comboGender.setSelectedItem(rs.getString("patient_gender"));
-                try {
-                    //
-                    Date date = new SimpleDateFormat("yyyy-MM-dd").parse((String) d1.getValueAt(row, 0));
-                    birthDate.setDate(date);
-                } catch (ParseException ex) {
-                    Logger.getLogger(updatePatientFrame.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                //
+                ((JTextField) birthDate.getDateEditor().getUiComponent()).setText(rs.getString("patient_DOB"));
                 textAge.setText(rs.getString("patient_age"));
                 textPhoneNo.setText(rs.getString("patient_contactno"));
                 textAddress.setText(rs.getString("patient_address"));
@@ -506,6 +566,22 @@ public class updatePatientFrame extends javax.swing.JFrame {
             Logger.getLogger(updatePatientFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_patient_tableKeyReleased
+
+    private void birthDateAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_birthDateAncestorAdded
+
+    }//GEN-LAST:event_birthDateAncestorAdded
+
+    private void birthDateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_birthDateMouseClicked
+
+    }//GEN-LAST:event_birthDateMouseClicked
+
+    private void birthDateInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_birthDateInputMethodTextChanged
+
+    }//GEN-LAST:event_birthDateInputMethodTextChanged
+
+    private void birthDatePropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_birthDatePropertyChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_birthDatePropertyChange
 
     /**
      * @param args the command line arguments
