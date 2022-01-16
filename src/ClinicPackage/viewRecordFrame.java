@@ -20,6 +20,10 @@ import net.proteanit.sql.DbUtils;
  */
 public class viewRecordFrame extends javax.swing.JFrame {
 
+    PreparedStatement pst;
+    ResultSet rs;
+    Connection con;
+
     /**
      * Creates new form viewRecordFrame
      */
@@ -55,7 +59,7 @@ public class viewRecordFrame extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel31 = new javax.swing.JLabel();
         jPanel14 = new javax.swing.JPanel();
-        jTextField4 = new javax.swing.JTextField();
+        searchField = new javax.swing.JTextField();
         btnSearch3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -87,7 +91,13 @@ public class viewRecordFrame extends javax.swing.JFrame {
         );
 
         jPanel1.add(jPanel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 960, 5));
-        jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 90, 390, -1));
+
+        searchField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                searchFieldKeyReleased(evt);
+            }
+        });
+        jPanel1.add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 79, 390, 30));
 
         btnSearch3.setText("Search");
         btnSearch3.addActionListener(new java.awt.event.ActionListener() {
@@ -198,6 +208,34 @@ public class viewRecordFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_patient_tableKeyReleased
 
+    private void searchFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchFieldKeyReleased
+        //search function
+        DatabaseConnection connection = new DatabaseConnection();
+        con = connection.getConnection();
+
+        String search = searchField.getText();
+
+        String query = "select * from patient_info where patient_ID= " + search;
+        String query2 = "select * from patient_info where patient_lastname like '%" + search + "%'";
+        String query3 = "select * from patient_info where patient_firstname like '%" + search + "%'";
+        try {
+            if (search.matches("^[0-9]+$")) {
+
+                pst = con.prepareStatement(query);
+                rs = pst.executeQuery();
+                patient_table.setModel(DbUtils.resultSetToTableModel(rs));
+
+            } else {
+
+                pst = con.prepareStatement(query2);
+                rs = pst.executeQuery();
+                patient_table.setModel(DbUtils.resultSetToTableModel(rs));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(InternalFramePatientRec.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_searchFieldKeyReleased
+
     /**
      * @param args the command line arguments
      */
@@ -240,7 +278,7 @@ public class viewRecordFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel14;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextField jTextField4;
     private rojerusan.RSTableMetro patient_table;
+    private javax.swing.JTextField searchField;
     // End of variables declaration//GEN-END:variables
 }
