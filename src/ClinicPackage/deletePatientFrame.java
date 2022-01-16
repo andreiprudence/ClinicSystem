@@ -28,6 +28,10 @@ import javax.swing.JTextField;
  */
 public class deletePatientFrame extends javax.swing.JFrame {
 
+    PreparedStatement pst;
+    ResultSet rs;
+    Connection con;
+
     /**
      * Creates new form updatePatientFrame
      */
@@ -95,7 +99,7 @@ public class deletePatientFrame extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         textAreaPrescription = new javax.swing.JTextArea();
-        jTextField1 = new javax.swing.JTextField();
+        searchField = new javax.swing.JTextField();
         btnSearch = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         clearButton = new javax.swing.JButton();
@@ -159,30 +163,40 @@ public class deletePatientFrame extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Last Name");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, -1));
+
+        textLastName.setEnabled(false);
         jPanel1.add(textLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, 210, 30));
 
         jLabel4.setFont(new java.awt.Font("Cambria", 1, 16)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("First Name");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
+
+        textFirstName.setEnabled(false);
         jPanel1.add(textFirstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 160, 210, 30));
 
         jLabel9.setFont(new java.awt.Font("Cambria", 1, 16)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Phone Number");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 110, -1, 30));
+
+        textPhoneNo.setEnabled(false);
         jPanel1.add(textPhoneNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 110, 230, 30));
 
         jLabel5.setFont(new java.awt.Font("Cambria", 1, 16)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Address");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 160, -1, 30));
+
+        textAddress.setEnabled(false);
         jPanel1.add(textAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 160, 290, 30));
 
         jLabel7.setFont(new java.awt.Font("Cambria", 1, 16)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Date of Birth");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 100, 20));
+
+        birthDate.setEnabled(false);
         jPanel1.add(birthDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 250, 200, 30));
 
         jLabel11.setFont(new java.awt.Font("Cambria", 1, 16)); // NOI18N
@@ -192,6 +206,7 @@ public class deletePatientFrame extends javax.swing.JFrame {
 
         comboGender.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         comboGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female" }));
+        comboGender.setEnabled(false);
         jPanel1.add(comboGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, 90, 30));
 
         jLabel10.setFont(new java.awt.Font("Cambria", 1, 16)); // NOI18N
@@ -199,6 +214,7 @@ public class deletePatientFrame extends javax.swing.JFrame {
         jLabel10.setText("Age");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 200, -1, 40));
 
+        textAge.setEnabled(false);
         textAge.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textAgeActionPerformed(evt);
@@ -213,10 +229,17 @@ public class deletePatientFrame extends javax.swing.JFrame {
 
         textAreaPrescription.setColumns(20);
         textAreaPrescription.setRows(5);
+        textAreaPrescription.setEnabled(false);
         jScrollPane1.setViewportView(textAreaPrescription);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 320, 330, 60));
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 400, 200, 40));
+
+        searchField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                searchFieldKeyReleased(evt);
+            }
+        });
+        jPanel1.add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 400, 200, 40));
 
         btnSearch.setText("Search");
         jPanel1.add(btnSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 400, 90, 40));
@@ -283,6 +306,7 @@ public class deletePatientFrame extends javax.swing.JFrame {
 
         textAreaRemarks.setColumns(20);
         textAreaRemarks.setRows(5);
+        textAreaRemarks.setEnabled(false);
         jScrollPane2.setViewportView(textAreaRemarks);
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 300, 60));
@@ -295,6 +319,8 @@ public class deletePatientFrame extends javax.swing.JFrame {
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("Age");
         jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 60, -1, 30));
+
+        textFatherFirstName.setEnabled(false);
         jPanel3.add(textFatherFirstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 20, 150, 30));
 
         jLabel16.setFont(new java.awt.Font("Cambria", 1, 16)); // NOI18N
@@ -307,18 +333,23 @@ public class deletePatientFrame extends javax.swing.JFrame {
         jLabel13.setText("First Name");
         jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 20, -1, 30));
 
+        textFatherAge.setEnabled(false);
         textFatherAge.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textFatherAgeActionPerformed(evt);
             }
         });
         jPanel3.add(textFatherAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 60, 40, 30));
+
+        textFatherNumber.setEnabled(false);
         jPanel3.add(textFatherNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, 160, 30));
 
         jLabel12.setFont(new java.awt.Font("Cambria", 1, 16)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Last Name");
         jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 80, 30));
+
+        textFatherLastName.setEnabled(false);
         jPanel3.add(textFatherLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 170, 30));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 180, 550, 120));
@@ -331,6 +362,8 @@ public class deletePatientFrame extends javax.swing.JFrame {
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setText("Age");
         jPanel4.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 60, -1, 30));
+
+        textMotherFirstName.setEnabled(false);
         jPanel4.add(textMotherFirstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 20, 150, 30));
 
         jLabel18.setFont(new java.awt.Font("Cambria", 1, 16)); // NOI18N
@@ -343,18 +376,23 @@ public class deletePatientFrame extends javax.swing.JFrame {
         jLabel19.setText("First Name");
         jPanel4.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 20, -1, 30));
 
+        textMotherAge.setEnabled(false);
         textMotherAge.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textMotherAgeActionPerformed(evt);
             }
         });
         jPanel4.add(textMotherAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 60, 40, 30));
+
+        textMotherNumber.setEnabled(false);
         jPanel4.add(textMotherNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, 160, 30));
 
         jLabel21.setFont(new java.awt.Font("Cambria", 1, 16)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(255, 255, 255));
         jLabel21.setText("Last Name");
         jPanel4.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 80, 30));
+
+        textMotherLname.setEnabled(false);
         jPanel4.add(textMotherLname, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 170, 30));
 
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 40, 550, 120));
@@ -396,13 +434,30 @@ public class deletePatientFrame extends javax.swing.JFrame {
         int msg = JOptionPane.showConfirmDialog(this, "Delete selected record?");
         String patientID = textPatientID.getText();
 
-
         String query = "delete from patient_info where patient_ID='" + patientID + "'";
         try {
             PreparedStatement pst = con.prepareStatement(query);
             pst.execute();
-            JOptionPane.showMessageDialog(this, "Deleted successfully");
+            JOptionPane.showMessageDialog(this, "Record Deleted successfully");
             updateTable();
+
+            //clearing textfields after deletion of data
+            textLastName.setText("");
+            textFirstName.setText("");
+            birthDate.setCalendar(null);
+            textAge.setText("");
+            textPhoneNo.setText("");
+            textAddress.setText("");
+            textMotherLname.setText("");
+            textMotherFirstName.setText("");
+            textMotherAge.setText("");
+            textMotherNumber.setText("");
+            textFatherLastName.setText("");
+            textFatherFirstName.setText("");
+            textFatherAge.setText("");
+            textFatherNumber.setText("");
+            textAreaRemarks.setText("");
+            textAreaPrescription.setText("");
 
         } catch (SQLException ex) {
             Logger.getLogger(deletePatientFrame.class.getName()).log(Level.SEVERE, null, ex);
@@ -503,6 +558,34 @@ public class deletePatientFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_patient_tableKeyReleased
 
+    private void searchFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchFieldKeyReleased
+        //search function 
+        DatabaseConnection connection = new DatabaseConnection();
+        con = connection.getConnection();
+
+        String search = searchField.getText();
+
+        String query = "select * from patient_info where patient_ID= " + search;
+        String query2 = "select * from patient_info where patient_lastname like '%" + search + "%'";
+        String query3 = "select * from patient_info where patient_firstname like '%" + search + "%'";
+        try {
+            if (search.matches("^[0-9]+$")) {
+
+                pst = con.prepareStatement(query);
+                rs = pst.executeQuery();
+                patient_table.setModel(DbUtils.resultSetToTableModel(rs));
+
+            } else {
+
+                pst = con.prepareStatement(query2);
+                rs = pst.executeQuery();
+                patient_table.setModel(DbUtils.resultSetToTableModel(rs));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(InternalFramePatientRec.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_searchFieldKeyReleased
+
     /**
      * @param args the command line arguments
      */
@@ -572,8 +655,8 @@ public class deletePatientFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextField jTextField1;
     private rojerusan.RSTableMetro patient_table;
+    private javax.swing.JTextField searchField;
     private javax.swing.JTextField textAddress;
     private javax.swing.JTextField textAge;
     private javax.swing.JTextArea textAreaPrescription;

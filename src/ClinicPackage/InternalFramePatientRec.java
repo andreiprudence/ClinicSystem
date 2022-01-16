@@ -9,7 +9,9 @@ import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Period;
@@ -28,18 +30,42 @@ import org.eclipse.persistence.jpa.jpql.parser.DateTime;
  */
 public class InternalFramePatientRec extends javax.swing.JInternalFrame {
 
+    Connection con;
+    PreparedStatement pst;
+    ResultSet rs;
+    Statement st;
+
     /**
      * Creates new form InternalFramePatientRec
      */
     public InternalFramePatientRec() {
         initComponents();
         InternalFrameBorder();
-
+        getlastID();
         /*   this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
             BasicInternalFrameUI ui = (BasicInternalFrameUI) this.getUI();
             ui.setNorthPane(null);
             pack();
          */
+    }
+
+    public void getlastID() {
+        try {
+            int lastid;
+            DatabaseConnection connection = new DatabaseConnection();
+            con = connection.getConnection();
+            String query = "select max(patient_ID) from patient_info";
+            st = con.createStatement();
+            rs = st.executeQuery(query);
+            if (rs.next()) {
+                lastid = rs.getInt(1);
+                lastid++;
+                label_patientID.setText(Integer.toString(lastid));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(InternalFramePatientRec.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
 
     // This method removes the border of the InternalFrame
@@ -508,27 +534,32 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
                 pstmt.setString(17, textAreaRemarks.getText());
                 pstmt.setString(18, textAreaPrescription.getText());
 
-                pstmt.executeUpdate();
+                int success = pstmt.executeUpdate();
 
-                JOptionPane.showMessageDialog(this, "Record Saved!");
+                if (success == 1) {
+                    JOptionPane.showMessageDialog(this, "Record Saved!");
 
-                // Clearing the textfields after saving the record
-                textLastName.setText("");
-                textFirstName.setText("");
-                birthDate.setCalendar(null);
-                textAge.setText("");
-                textPhoneNo.setText("");
-                textAddress.setText("");
-                textMotherLName.setText("");
-                textMotherFName.setText("");
-                textMotherAge.setText("");
-                textMotherNumber.setText("");
-                textFatherLName.setText("");
-                textFatherFName.setText("");
-                textFatherAge.setText("");
-                textFatherNumber.setText("");
-                textAreaRemarks.setText("");
-                textAreaPrescription.setText("");
+//                     Clearing the textfields after saving the record
+                    textLastName.setText("");
+                    textFirstName.setText("");
+                    birthDate.setCalendar(null);
+                    textAge.setText("");
+                    textPhoneNo.setText("");
+                    textAddress.setText("");
+                    textMotherLName.setText("");
+                    textMotherFName.setText("");
+                    textMotherAge.setText("");
+                    textMotherNumber.setText("");
+                    textFatherLName.setText("");
+                    textFatherFName.setText("");
+                    textFatherAge.setText("");
+                    textFatherNumber.setText("");
+                    textAreaRemarks.setText("");
+                    textAreaPrescription.setText("");
+                    getlastID();
+                } else {
+                    JOptionPane.showMessageDialog(this, "Record failed to save");
+                }
 
             } catch (SQLException ex) {
                 Logger.getLogger(InternalFramePatientRec.class.getName()).log(Level.SEVERE, null, ex);
@@ -538,70 +569,97 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnAddRecActionPerformed
 
     private void textPhoneNoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textPhoneNoKeyTyped
-        // function that only accepts integer input
+        // input validation that only accepts integer input
         char c = evt.getKeyChar();
 
         int length = textPhoneNo.getText().length();
 
-        if (!Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE)) {
-            getToolkit().beep();
+        if (!Character.isDigit(c)) {
+            //getToolkit().beep();
             evt.consume();
-            JOptionPane.showMessageDialog(this, "You can only input numbers in this field");
+            if (c == KeyEvent.VK_DELETE) {
+                evt.consume();
+            } else if (c == KeyEvent.VK_BACK_SPACE) {
+                evt.consume();
+            } else {
+                JOptionPane.showMessageDialog(this, "You can only input numbers in this field");
+            }
         }
-
-    //    if (evt.getKeyChar()>='0' && evt.getKeyChar() <= '11') {
-    //         if (length < 11) {
-    //            textPhoneNo.setEditable(true);
-     //       } else {
-      //          textPhoneNo.setEditable(false);
-      //          getToolkit().beep();
-      //      }
-     //   }
-
-
     }//GEN-LAST:event_textPhoneNoKeyTyped
 
     private void textMotherAgeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textMotherAgeKeyTyped
-        // function that only accepts integer input
+        // input validation that only accepts integer input
         char c = evt.getKeyChar();
 
-        if (!Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE)) {
-            getToolkit().beep();
+        int length = textPhoneNo.getText().length();
+
+        if (!Character.isDigit(c)) {
+            //getToolkit().beep();
             evt.consume();
-            JOptionPane.showMessageDialog(this, "You can only input numbers in this field");
+            if (c == KeyEvent.VK_DELETE) {
+                evt.consume();
+            } else if (c == KeyEvent.VK_BACK_SPACE) {
+                evt.consume();
+            } else {
+                JOptionPane.showMessageDialog(this, "You can only input numbers in this field");
+            }
         }
     }//GEN-LAST:event_textMotherAgeKeyTyped
 
     private void textMotherNumberKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textMotherNumberKeyTyped
-        // function that only accepts integer input
+        // input validation that only accepts integer input
         char c = evt.getKeyChar();
 
-        if (!Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE)) {
-            getToolkit().beep();
+        int length = textPhoneNo.getText().length();
+
+        if (!Character.isDigit(c)) {
+            //getToolkit().beep();
             evt.consume();
-            JOptionPane.showMessageDialog(this, "You can only input numbers in this field");
+            if (c == KeyEvent.VK_DELETE) {
+                evt.consume();
+            } else if (c == KeyEvent.VK_BACK_SPACE) {
+                evt.consume();
+            } else {
+                JOptionPane.showMessageDialog(this, "You can only input numbers in this field");
+            }
         }
     }//GEN-LAST:event_textMotherNumberKeyTyped
 
     private void textFatherAgeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textFatherAgeKeyTyped
-        // function that only accepts integer input
+        // input validation that only accepts integer input
         char c = evt.getKeyChar();
 
-        if (!Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE)) {
-            getToolkit().beep();
+        int length = textPhoneNo.getText().length();
+
+        if (!Character.isDigit(c)) {
+            //getToolkit().beep();
             evt.consume();
-            JOptionPane.showMessageDialog(this, "You can only input numbers in this field");
+            if (c == KeyEvent.VK_DELETE) {
+                evt.consume();
+            } else if (c == KeyEvent.VK_BACK_SPACE) {
+                evt.consume();
+            } else {
+                JOptionPane.showMessageDialog(this, "You can only input numbers in this field");
+            }
         }
     }//GEN-LAST:event_textFatherAgeKeyTyped
 
     private void textFatherNumberKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textFatherNumberKeyTyped
-        // function that only accepts integer input
+        // input validation that only accepts integer input
         char c = evt.getKeyChar();
 
-        if (!Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE)) {
-            getToolkit().beep();
+        int length = textPhoneNo.getText().length();
+
+        if (!Character.isDigit(c)) {
+            //getToolkit().beep();
             evt.consume();
-            JOptionPane.showMessageDialog(this, "You can only input numbers in this field");
+            if (c == KeyEvent.VK_DELETE) {
+                evt.consume();
+            } else if (c == KeyEvent.VK_BACK_SPACE) {
+                evt.consume();
+            } else {
+                JOptionPane.showMessageDialog(this, "You can only input numbers in this field");
+            }
         }
     }//GEN-LAST:event_textFatherNumberKeyTyped
 

@@ -5,6 +5,15 @@
  */
 package ClinicPackage;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+import net.proteanit.sql.DbUtils;
+
 /**
  *
  * @author andre
@@ -16,6 +25,22 @@ public class viewRecordFrame extends javax.swing.JFrame {
      */
     public viewRecordFrame() {
         initComponents();
+        fetch();
+    }
+
+    public void fetch() {
+        Connection con;
+
+        DatabaseConnection connection = new DatabaseConnection();
+        con = connection.getConnection();
+        try {
+            String query = "select * from patient_info";
+            PreparedStatement pstmt = con.prepareStatement(query);
+            ResultSet rs = pstmt.executeQuery();
+            patient_table.setModel(DbUtils.resultSetToTableModel(rs));
+        } catch (SQLException ex) {
+            Logger.getLogger(deletePatientFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -32,9 +57,9 @@ public class viewRecordFrame extends javax.swing.JFrame {
         jPanel14 = new javax.swing.JPanel();
         jTextField4 = new javax.swing.JTextField();
         btnSearch3 = new javax.swing.JButton();
-        jScrollPane8 = new javax.swing.JScrollPane();
-        jTable4 = new javax.swing.JTable();
         jButton4 = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        patient_table = new rojerusan.RSTableMetro();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("View Patient Record");
@@ -72,21 +97,6 @@ public class viewRecordFrame extends javax.swing.JFrame {
         });
         jPanel1.add(btnSearch3, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 80, 100, 30));
 
-        jTable4.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane8.setViewportView(jTable4);
-
-        jPanel1.add(jScrollPane8, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 120, 800, 330));
-
         jButton4.setText("Exit");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -94,6 +104,34 @@ public class viewRecordFrame extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 10, 60, 30));
+
+        patient_table.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Patient ID", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        patient_table.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        patient_table.setRowHeight(20);
+        patient_table.setRowMargin(2);
+        patient_table.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                patient_tableMouseClicked(evt);
+            }
+        });
+        patient_table.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                patient_tableKeyReleased(evt);
+            }
+        });
+        jScrollPane3.setViewportView(patient_table);
+
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 1270, 330));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -120,6 +158,46 @@ public class viewRecordFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSearch3ActionPerformed
 
+    private void patient_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_patient_tableMouseClicked
+        //instantiating database connection
+        Connection con;
+        DatabaseConnection connection = new DatabaseConnection();
+        con = connection.getConnection();
+
+        int row = patient_table.getSelectedRow();
+        String selection = patient_table.getModel().getValueAt(row, 0).toString();
+        String query = "select * from patient_info where patient_ID = " + selection;
+        DefaultTableModel d1 = (DefaultTableModel) patient_table.getModel();
+
+        try {
+            PreparedStatement pst = con.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(deletePatientFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_patient_tableMouseClicked
+
+    private void patient_tableKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_patient_tableKeyReleased
+        //instantiating database connection
+        Connection con;
+        DatabaseConnection connection = new DatabaseConnection();
+        con = connection.getConnection();
+
+        int row = patient_table.getSelectedRow();
+        String selection = patient_table.getModel().getValueAt(row, 0).toString();
+        String query = "select * from patient_info where patient_ID = " + selection;
+        DefaultTableModel d1 = (DefaultTableModel) patient_table.getModel();
+
+        try {
+            PreparedStatement pst = con.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(deletePatientFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_patient_tableKeyReleased
+
     /**
      * @param args the command line arguments
      */
@@ -127,7 +205,7 @@ public class viewRecordFrame extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -161,8 +239,8 @@ public class viewRecordFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel31;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel14;
-    private javax.swing.JScrollPane jScrollPane8;
-    private javax.swing.JTable jTable4;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextField jTextField4;
+    private rojerusan.RSTableMetro patient_table;
     // End of variables declaration//GEN-END:variables
 }

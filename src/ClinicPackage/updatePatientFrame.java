@@ -28,6 +28,10 @@ import javax.swing.JTextField;
  */
 public class updatePatientFrame extends javax.swing.JFrame {
 
+    PreparedStatement pst;
+    ResultSet rs;
+    Connection con;
+
     /**
      * Creates new form updatePatientFrame
      */
@@ -95,7 +99,7 @@ public class updatePatientFrame extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         textAreaPrescription = new javax.swing.JTextArea();
-        jTextField1 = new javax.swing.JTextField();
+        searchField = new javax.swing.JTextField();
         btnSearch = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         clearButton = new javax.swing.JButton();
@@ -216,7 +220,13 @@ public class updatePatientFrame extends javax.swing.JFrame {
         jScrollPane1.setViewportView(textAreaPrescription);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 320, 330, 60));
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 400, 200, 40));
+
+        searchField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                searchFieldKeyReleased(evt);
+            }
+        });
+        jPanel1.add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 400, 200, 40));
 
         btnSearch.setText("Search");
         jPanel1.add(btnSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 400, 90, 40));
@@ -445,33 +455,33 @@ public class updatePatientFrame extends javax.swing.JFrame {
         String prescriptString = textAreaPrescription.getText();
 
         if (msg == JOptionPane.YES_OPTION) {
-        try{
-        String query = "update patient_info set patient_lastname=?, patient_firstname=?, patient_gender=?, patient_DOB=?, patient_age=?, patient_contactno=?, patient_address=?, mother_lastname=?, mother_firstname=?, mother_age=?, mother_contactno=?, father_lastname=?, father_firstname=?, father_age=?, father_contactno=?, remarks=?, prescription=? where patient_ID='" + patientID + "' ";
+            try {
+                String query = "update patient_info set patient_lastname=?, patient_firstname=?, patient_gender=?, patient_DOB=?, patient_age=?, patient_contactno=?, patient_address=?, mother_lastname=?, mother_firstname=?, mother_age=?, mother_contactno=?, father_lastname=?, father_firstname=?, father_age=?, father_contactno=?, remarks=?, prescription=? where patient_ID='" + patientID + "' ";
 
-            PreparedStatement pst = con.prepareStatement(query);
-            pst.setString(1, lname);
-            pst.setString(2, fname);
-            pst.setString(3, gender);
-            pst.setString(4, date);
-            pst.setString(5, age);
-            pst.setString(6, phoneNumber);
-            pst.setString(7, address);
-            pst.setString(8, MotherLName);
-            pst.setString(9, MotherFirstName);
-            pst.setString(10, MotherAge);
-            pst.setString(11, MotherNumber);
-            pst.setString(12, FatherLastName);
-            pst.setString(13, FatherFirstName);
-            pst.setString(14, FatherAge);
-            pst.setString(15, FatherNumber);
-            pst.setString(16, remarksString);
-            pst.setString(17, prescriptString);
-            pst.executeUpdate();
-            JOptionPane.showMessageDialog(this, "Update Successful!");
-            updateTable();
-        } catch (SQLException ex) {
-            Logger.getLogger(updatePatientFrame.class.getName()).log(Level.SEVERE, null, ex);
-        }
+                PreparedStatement pst = con.prepareStatement(query);
+                pst.setString(1, lname);
+                pst.setString(2, fname);
+                pst.setString(3, gender);
+                pst.setString(4, date);
+                pst.setString(5, age);
+                pst.setString(6, phoneNumber);
+                pst.setString(7, address);
+                pst.setString(8, MotherLName);
+                pst.setString(9, MotherFirstName);
+                pst.setString(10, MotherAge);
+                pst.setString(11, MotherNumber);
+                pst.setString(12, FatherLastName);
+                pst.setString(13, FatherFirstName);
+                pst.setString(14, FatherAge);
+                pst.setString(15, FatherNumber);
+                pst.setString(16, remarksString);
+                pst.setString(17, prescriptString);
+                pst.executeUpdate();
+                JOptionPane.showMessageDialog(this, "Update Successful!");
+                updateTable();
+            } catch (SQLException ex) {
+                Logger.getLogger(updatePatientFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_updateButtonActionPerformed
 
@@ -583,6 +593,34 @@ public class updatePatientFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_birthDatePropertyChange
 
+    private void searchFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchFieldKeyReleased
+       // search function
+        DatabaseConnection connection = new DatabaseConnection();
+        con = connection.getConnection();
+
+        String search = searchField.getText();
+
+        String query = "select * from patient_info where patient_ID= " + search;
+        String query2 = "select * from patient_info where patient_lastname like '%" + search + "%'";
+        String query3 = "select * from patient_info where patient_firstname like '%" + search + "%'";
+        try {
+            if (search.matches("^[0-9]+$")) {
+
+                pst = con.prepareStatement(query);
+                rs = pst.executeQuery();
+                patient_table.setModel(DbUtils.resultSetToTableModel(rs));
+
+            } else {
+
+                pst = con.prepareStatement(query2);
+                rs = pst.executeQuery();
+                patient_table.setModel(DbUtils.resultSetToTableModel(rs));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(InternalFramePatientRec.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_searchFieldKeyReleased
+
     /**
      * @param args the command line arguments
      */
@@ -650,8 +688,8 @@ public class updatePatientFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextField jTextField1;
     private rojerusan.RSTableMetro patient_table;
+    private javax.swing.JTextField searchField;
     private javax.swing.JTextField textAddress;
     private javax.swing.JTextField textAge;
     private javax.swing.JTextArea textAreaPrescription;
