@@ -22,6 +22,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import net.proteanit.sql.DbUtils;
 import org.eclipse.persistence.jpa.jpql.parser.DateTime;
 
 /**
@@ -563,6 +564,21 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
 
             } catch (SQLException ex) {
                 Logger.getLogger(InternalFramePatientRec.class.getName()).log(Level.SEVERE, null, ex);
+
+                // closing the connection
+            } finally {
+                try {
+                    rs.close();
+                } catch (Exception e) {
+                    /* Ignored */ }
+                try {
+                    pst.close();
+                } catch (Exception e) {
+                    /* Ignored */ }
+                try {
+                    con.close();
+                } catch (Exception e) {
+                    /* Ignored */ }
             }
 
         }

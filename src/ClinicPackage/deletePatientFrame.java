@@ -52,6 +52,19 @@ public class deletePatientFrame extends javax.swing.JFrame {
             patient_table.setModel(DbUtils.resultSetToTableModel(rs));
         } catch (SQLException ex) {
             Logger.getLogger(updatePatientFrame.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                rs.close();
+            } catch (Exception e) {
+                /* Ignored */ }
+            try {
+                pst.close();
+            } catch (Exception e) {
+                /* Ignored */ }
+            try {
+                con.close();
+            } catch (Exception e) {
+                /* Ignored */ }
         }
     }
 
@@ -67,6 +80,19 @@ public class deletePatientFrame extends javax.swing.JFrame {
             patient_table.setModel(DbUtils.resultSetToTableModel(rs));
         } catch (SQLException ex) {
             Logger.getLogger(deletePatientFrame.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                rs.close();
+            } catch (Exception e) {
+                /* Ignored */ }
+            try {
+                pst.close();
+            } catch (Exception e) {
+                /* Ignored */ }
+            try {
+                con.close();
+            } catch (Exception e) {
+                /* Ignored */ }
         }
     }
 
@@ -461,9 +487,21 @@ public class deletePatientFrame extends javax.swing.JFrame {
 
         } catch (SQLException ex) {
             Logger.getLogger(deletePatientFrame.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                rs.close();
+            } catch (Exception e) {
+                /* Ignored */ }
+            try {
+                pst.close();
+            } catch (Exception e) {
+                /* Ignored */ }
+            try {
+                con.close();
+            } catch (Exception e) {
+                /* Ignored */ }
+
         }
-
-
     }//GEN-LAST:event_deleteButtonActionPerformed
 
     private void textAgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textAgeActionPerformed
@@ -515,6 +553,20 @@ public class deletePatientFrame extends javax.swing.JFrame {
             }
         } catch (SQLException ex) {
             Logger.getLogger(deletePatientFrame.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                rs.close();
+            } catch (Exception e) {
+                /* Ignored */ }
+            try {
+                pst.close();
+            } catch (Exception e) {
+                /* Ignored */ }
+            try {
+                con.close();
+            } catch (Exception e) {
+                /* Ignored */ }
+
         }
     }//GEN-LAST:event_patient_tableMouseClicked
 
@@ -555,11 +607,24 @@ public class deletePatientFrame extends javax.swing.JFrame {
             }
         } catch (SQLException ex) {
             Logger.getLogger(deletePatientFrame.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                rs.close();
+            } catch (Exception e) {
+                /* Ignored */ }
+            try {
+                pst.close();
+            } catch (Exception e) {
+                /* Ignored */ }
+            try {
+                con.close();
+            } catch (Exception e) {
+                /* Ignored */ }
         }
     }//GEN-LAST:event_patient_tableKeyReleased
 
     private void searchFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchFieldKeyReleased
-        //search function 
+        //search function
         DatabaseConnection connection = new DatabaseConnection();
         con = connection.getConnection();
 
@@ -583,6 +648,19 @@ public class deletePatientFrame extends javax.swing.JFrame {
             }
         } catch (SQLException ex) {
             Logger.getLogger(InternalFramePatientRec.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                rs.close();
+            } catch (Exception e) {
+                /* Ignored */ }
+            try {
+                pst.close();
+            } catch (Exception e) {
+                /* Ignored */ }
+            try {
+                con.close();
+            } catch (Exception e) {
+                /* Ignored */ }
         }
     }//GEN-LAST:event_searchFieldKeyReleased
 

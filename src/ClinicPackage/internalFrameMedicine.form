@@ -91,7 +91,7 @@
           </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="240" y="80" width="630" height="410"/>
+              <AbsoluteConstraints x="250" y="120" width="630" height="410"/>
             </Constraint>
           </Constraints>
 
@@ -149,6 +149,21 @@
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="10" y="260" width="210" height="70"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Component class="app.bolivia.swing.JCTextField" name="jCTextField1">
+          <Properties>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
+                <MatteColorBorder bottom="2" left="0" right="0" top="0"/>
+              </Border>
+            </Property>
+            <Property name="placeholder" type="java.lang.String" value="Enter Name/ID..."/>
+          </Properties>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="360" y="80" width="390" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>

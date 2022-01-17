@@ -40,6 +40,7 @@ public class internalFrameMedicine extends javax.swing.JInternalFrame {
         rSMaterialButtonRectangle1 = new rojerusan.RSMaterialButtonRectangle();
         rSMaterialButtonRectangle2 = new rojerusan.RSMaterialButtonRectangle();
         rSMaterialButtonRectangle3 = new rojerusan.RSMaterialButtonRectangle();
+        jCTextField1 = new app.bolivia.swing.JCTextField();
 
         setPreferredSize(new java.awt.Dimension(1070, 620));
         setVisible(true);
@@ -77,7 +78,7 @@ public class internalFrameMedicine extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(rSTableMetro1);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 80, 630, 410));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 120, 630, 410));
 
         rSMaterialButtonRectangle1.setText("UPDATE MEDICINE");
         rSMaterialButtonRectangle1.addActionListener(new java.awt.event.ActionListener() {
@@ -104,6 +105,10 @@ public class internalFrameMedicine extends javax.swing.JInternalFrame {
         });
         jPanel1.add(rSMaterialButtonRectangle3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 210, 70));
 
+        jCTextField1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 0, 0)));
+        jCTextField1.setPlaceholder("Enter Name/ID...");
+        jPanel1.add(jCTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 80, 390, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -121,7 +126,9 @@ public class internalFrameMedicine extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void rSMaterialButtonRectangle2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSMaterialButtonRectangle2ActionPerformed
-        new AddMedicine().setVisible(true);
+       this.toBack();
+        new AddMedicine().toFront();
+        new AddMedicine().setState(java.awt.Frame.NORMAL);
     }//GEN-LAST:event_rSMaterialButtonRectangle2ActionPerformed
 
     private void rSMaterialButtonRectangle3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSMaterialButtonRectangle3ActionPerformed
@@ -134,6 +141,7 @@ public class internalFrameMedicine extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private app.bolivia.swing.JCTextField jCTextField1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
