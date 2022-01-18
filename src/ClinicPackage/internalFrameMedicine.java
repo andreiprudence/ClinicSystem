@@ -5,7 +5,15 @@
  */
 package ClinicPackage;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import javax.swing.table.DefaultTableModel;
+import net.proteanit.sql.DbUtils;
 
 /**
  *
@@ -13,14 +21,45 @@ import javax.swing.plaf.basic.BasicInternalFrameUI;
  */
 public class internalFrameMedicine extends javax.swing.JInternalFrame {
 
+    Connection con;
+
     /**
      * Creates new form internalFrameMedicine
      */
     public internalFrameMedicine() {
         initComponents();
-         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        fetch();
+        this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         BasicInternalFrameUI ui = (BasicInternalFrameUI) this.getUI();
         ui.setNorthPane(null);
+    }
+
+    public void fetch() {
+        Connection con;
+
+        DatabaseConnection connection = new DatabaseConnection();
+        con = connection.getConnection();
+        try {
+            String query = "select * from medicine_info";
+            PreparedStatement pstmt = con.prepareStatement(query);
+            ResultSet rs = pstmt.executeQuery();
+            medicine_table.setModel(DbUtils.resultSetToTableModel(rs));
+        } catch (SQLException ex) {
+            Logger.getLogger(updatePatientFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    private void updateTable() {
+        Connection con;
+        DatabaseConnection connection = new DatabaseConnection();
+        con = connection.getConnection();
+        String query = "select * from medicine_info";
+        try {
+            PreparedStatement pst = con.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            medicine_table.setModel(DbUtils.resultSetToTableModel(rs));
+        } catch (SQLException ex) {
+            Logger.getLogger(updatePatientFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -36,11 +75,12 @@ public class internalFrameMedicine extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        rSTableMetro1 = new rojerusan.RSTableMetro();
+        medicine_table = new rojerusan.RSTableMetro();
         rSMaterialButtonRectangle1 = new rojerusan.RSMaterialButtonRectangle();
         rSMaterialButtonRectangle2 = new rojerusan.RSMaterialButtonRectangle();
         rSMaterialButtonRectangle3 = new rojerusan.RSMaterialButtonRectangle();
         jCTextField1 = new app.bolivia.swing.JCTextField();
+        rSButtonMetro1 = new rojerusan.RSButtonMetro();
 
         setPreferredSize(new java.awt.Dimension(1070, 620));
         setVisible(true);
@@ -66,7 +106,7 @@ public class internalFrameMedicine extends javax.swing.JInternalFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 60, 610, 2));
 
-        rSTableMetro1.setModel(new javax.swing.table.DefaultTableModel(
+        medicine_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -76,7 +116,7 @@ public class internalFrameMedicine extends javax.swing.JInternalFrame {
                 "Name of Medicine", "Medicine No.", "Medicine Price"
             }
         ));
-        jScrollPane1.setViewportView(rSTableMetro1);
+        jScrollPane1.setViewportView(medicine_table);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 120, 630, 410));
 
@@ -109,6 +149,14 @@ public class internalFrameMedicine extends javax.swing.JInternalFrame {
         jCTextField1.setPlaceholder("Enter Name/ID...");
         jPanel1.add(jCTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 80, 390, -1));
 
+        rSButtonMetro1.setText("Refresh");
+        rSButtonMetro1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rSButtonMetro1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(rSButtonMetro1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 80, 70, 30));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -126,11 +174,14 @@ public class internalFrameMedicine extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void rSMaterialButtonRectangle2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSMaterialButtonRectangle2ActionPerformed
-       this.toBack();
-        new AddMedicine().toFront();
-        new AddMedicine().setState(java.awt.Frame.NORMAL);
+        AddMedicineFrame medicineFrame = new AddMedicineFrame();
+        medicineFrame.setVisible(true);
+        medicineFrame.setLocationRelativeTo(null);
     }//GEN-LAST:event_rSMaterialButtonRectangle2ActionPerformed
-
+    public static void AddRowToJTable(Object[] dataRow) {
+        DefaultTableModel model = (DefaultTableModel) medicine_table.getModel();
+        model.addRow(dataRow);
+    }
     private void rSMaterialButtonRectangle3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSMaterialButtonRectangle3ActionPerformed
         new deleteMedicine().setVisible(true);
     }//GEN-LAST:event_rSMaterialButtonRectangle3ActionPerformed
@@ -139,6 +190,10 @@ public class internalFrameMedicine extends javax.swing.JInternalFrame {
         new updateMedicine().setVisible(true);
     }//GEN-LAST:event_rSMaterialButtonRectangle1ActionPerformed
 
+    private void rSButtonMetro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonMetro1ActionPerformed
+        updateTable();
+    }//GEN-LAST:event_rSButtonMetro1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private app.bolivia.swing.JCTextField jCTextField1;
@@ -146,9 +201,10 @@ public class internalFrameMedicine extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private static rojerusan.RSTableMetro medicine_table;
+    private rojerusan.RSButtonMetro rSButtonMetro1;
     private rojerusan.RSMaterialButtonRectangle rSMaterialButtonRectangle1;
     private rojerusan.RSMaterialButtonRectangle rSMaterialButtonRectangle2;
     private rojerusan.RSMaterialButtonRectangle rSMaterialButtonRectangle3;
-    private rojerusan.RSTableMetro rSTableMetro1;
     // End of variables declaration//GEN-END:variables
 }

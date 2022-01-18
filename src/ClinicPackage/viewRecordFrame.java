@@ -59,11 +59,11 @@ public class viewRecordFrame extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel31 = new javax.swing.JLabel();
         jPanel14 = new javax.swing.JPanel();
-        searchField = new javax.swing.JTextField();
         btnSearch3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         patient_table = new rojerusan.RSTableMetro();
+        searchField = new app.bolivia.swing.JCTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("View Patient Record");
@@ -91,13 +91,6 @@ public class viewRecordFrame extends javax.swing.JFrame {
         );
 
         jPanel1.add(jPanel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 960, 5));
-
-        searchField.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                searchFieldKeyReleased(evt);
-            }
-        });
-        jPanel1.add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 79, 390, 30));
 
         btnSearch3.setText("Search");
         btnSearch3.addActionListener(new java.awt.event.ActionListener() {
@@ -142,6 +135,14 @@ public class viewRecordFrame extends javax.swing.JFrame {
         jScrollPane3.setViewportView(patient_table);
 
         jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 1270, 330));
+
+        searchField.setPlaceholder("Enter ID/Last Name");
+        searchField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                searchFieldKeyReleased(evt);
+            }
+        });
+        jPanel1.add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 80, 320, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -217,7 +218,7 @@ public class viewRecordFrame extends javax.swing.JFrame {
 
         String query = "select * from patient_info where patient_ID= " + search;
         String query2 = "select * from patient_info where patient_lastname like '%" + search + "%'";
-        String query3 = "select * from patient_info where patient_firstname like '%" + search + "%'";
+        //String query3 = "select * from patient_info where patient_firstname like '%" + search + "%'";
         try {
             if (search.matches("^[0-9]+$")) {
 
@@ -233,6 +234,19 @@ public class viewRecordFrame extends javax.swing.JFrame {
             }
         } catch (SQLException ex) {
             Logger.getLogger(InternalFramePatientRec.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                rs.close();
+            } catch (Exception e) {
+                /* Ignored */ }
+            try {
+                pst.close();
+            } catch (Exception e) {
+                /* Ignored */ }
+            try {
+                con.close();
+            } catch (Exception e) {
+                /* Ignored */ }
         }
     }//GEN-LAST:event_searchFieldKeyReleased
 
@@ -279,6 +293,6 @@ public class viewRecordFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel14;
     private javax.swing.JScrollPane jScrollPane3;
     private rojerusan.RSTableMetro patient_table;
-    private javax.swing.JTextField searchField;
+    private app.bolivia.swing.JCTextField searchField;
     // End of variables declaration//GEN-END:variables
 }

@@ -203,6 +203,11 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
         jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, 30));
 
         textLastName.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        textLastName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                textLastNameKeyPressed(evt);
+            }
+        });
         jPanel3.add(textLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 350, 25));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -216,6 +221,11 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
         jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 70, -1, -1));
 
         textFirstName.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        textFirstName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                textFirstNameKeyPressed(evt);
+            }
+        });
         jPanel3.add(textFirstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 100, 400, 25));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -232,6 +242,11 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
         jPanel3.add(textPhoneNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 160, 240, 25));
 
         textAddress.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        textAddress.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                textAddressKeyPressed(evt);
+            }
+        });
         jPanel3.add(textAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 215, 770, 30));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -290,6 +305,11 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
         textAreaRemarks.setColumns(20);
         textAreaRemarks.setRows(5);
         textAreaRemarks.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        textAreaRemarks.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                textAreaRemarksKeyPressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(textAreaRemarks);
 
         jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 410, 500, 70));
@@ -301,12 +321,24 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
         jLabel13.setForeground(new java.awt.Color(61, 86, 178));
         jLabel13.setText("Last Name");
         jPanel4.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, 30));
+
+        textFatherLName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                textFatherLNameKeyPressed(evt);
+            }
+        });
         jPanel4.add(textFatherLName, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, 130, 30));
 
         jLabel14.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(61, 86, 178));
         jLabel14.setText("First Name");
         jPanel4.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 30, 70, 30));
+
+        textFatherFName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                textFatherFNameKeyPressed(evt);
+            }
+        });
         jPanel4.add(textFatherFName, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 30, 160, 30));
 
         jLabel15.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
@@ -342,12 +374,24 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
         jLabel17.setForeground(new java.awt.Color(61, 86, 178));
         jLabel17.setText("Last Name");
         jPanel5.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, 30));
+
+        textMotherLName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                textMotherLNameKeyPressed(evt);
+            }
+        });
         jPanel5.add(textMotherLName, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, 130, 30));
 
         jLabel18.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(61, 86, 178));
         jLabel18.setText("First Name");
         jPanel5.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 30, 70, 30));
+
+        textMotherFName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                textMotherFNameKeyPressed(evt);
+            }
+        });
         jPanel5.add(textMotherFName, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 30, 160, 30));
 
         jLabel19.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
@@ -598,7 +642,7 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
             } else if (c == KeyEvent.VK_BACK_SPACE) {
                 evt.consume();
             } else {
-                JOptionPane.showMessageDialog(this, "You can only input numbers in this field");
+                JOptionPane.showMessageDialog(this, "You can only input numbers in this field", "Invalid Input", JOptionPane.WARNING_MESSAGE);
             }
         }
     }//GEN-LAST:event_textPhoneNoKeyTyped
@@ -607,7 +651,7 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
         // input validation that only accepts integer input
         char c = evt.getKeyChar();
 
-        int length = textPhoneNo.getText().length();
+        int length = textMotherAge.getText().length();
 
         if (!Character.isDigit(c)) {
             //getToolkit().beep();
@@ -617,7 +661,7 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
             } else if (c == KeyEvent.VK_BACK_SPACE) {
                 evt.consume();
             } else {
-                JOptionPane.showMessageDialog(this, "You can only input numbers in this field");
+                JOptionPane.showMessageDialog(this, "You can only input numbers in this field", "Invalid Input", JOptionPane.WARNING_MESSAGE);
             }
         }
     }//GEN-LAST:event_textMotherAgeKeyTyped
@@ -636,7 +680,7 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
             } else if (c == KeyEvent.VK_BACK_SPACE) {
                 evt.consume();
             } else {
-                JOptionPane.showMessageDialog(this, "You can only input numbers in this field");
+                JOptionPane.showMessageDialog(this, "You can only input numbers in this field", "Invalid Input", JOptionPane.WARNING_MESSAGE);
             }
         }
     }//GEN-LAST:event_textMotherNumberKeyTyped
@@ -655,7 +699,7 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
             } else if (c == KeyEvent.VK_BACK_SPACE) {
                 evt.consume();
             } else {
-                JOptionPane.showMessageDialog(this, "You can only input numbers in this field");
+                JOptionPane.showMessageDialog(this, "You can only input numbers in this field", "Invalid Input", JOptionPane.WARNING_MESSAGE);
             }
         }
     }//GEN-LAST:event_textFatherAgeKeyTyped
@@ -674,10 +718,113 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
             } else if (c == KeyEvent.VK_BACK_SPACE) {
                 evt.consume();
             } else {
-                JOptionPane.showMessageDialog(this, "You can only input numbers in this field");
+                JOptionPane.showMessageDialog(this, "You can only input numbers in this field", "Invalid Input", JOptionPane.WARNING_MESSAGE);
             }
         }
     }//GEN-LAST:event_textFatherNumberKeyTyped
+
+    private void textLastNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textLastNameKeyPressed
+        // CODE TO ACCCEPT ONLY ALPHABETS IN THE TEXTFIELDS
+        char c = evt.getKeyChar();
+
+        if(Character.isLetter(c) || Character.isWhitespace(c) || Character.isISOControl(c))
+        {
+            textLastName.setEditable(true);
+        }else
+        {
+            textLastName.setEditable(false);
+            JOptionPane.showMessageDialog(this, "Numbers are not allowed in this field", "Invalid Input", JOptionPane.WARNING_MESSAGE);
+        }
+
+    }//GEN-LAST:event_textLastNameKeyPressed
+
+    private void textFirstNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textFirstNameKeyPressed
+          // CODE TO ACCCEPT ONLY ALPHABETS IN THE TEXTFIELDS
+        char c = evt.getKeyChar();
+
+        if(Character.isLetter(c) || Character.isWhitespace(c) || Character.isISOControl(c))
+        {
+            textFirstName.setEditable(true);
+        }else
+        {
+            textFirstName.setEditable(false);
+            JOptionPane.showMessageDialog(this, "Numbers are not allowed in this field", "Invalid Input", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_textFirstNameKeyPressed
+
+    private void textAddressKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textAddressKeyPressed
+          // CODE TO ACCCEPT ONLY ALPHABETS IN THE TEXTFIELDS
+        char c = evt.getKeyChar();
+
+        if(Character.isLetter(c) || Character.isWhitespace(c) || Character.isISOControl(c))
+        {
+            textAddress.setEditable(true);
+        }else
+        {
+            textAddress.setEditable(false);
+            JOptionPane.showMessageDialog(this, "Numbers are not allowed in this field", "Invalid Input", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_textAddressKeyPressed
+
+    private void textMotherLNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textMotherLNameKeyPressed
+          // CODE TO ACCCEPT ONLY ALPHABETS IN THE TEXTFIELDS
+        char c = evt.getKeyChar();
+
+        if(Character.isLetter(c) || Character.isWhitespace(c) || Character.isISOControl(c))
+        {
+            textMotherLName.setEditable(true);
+        }else
+        {
+            textMotherLName.setEditable(false);
+            JOptionPane.showMessageDialog(this, "Numbers are not allowed in this field", "Invalid Input", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_textMotherLNameKeyPressed
+
+    private void textMotherFNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textMotherFNameKeyPressed
+         // CODE TO ACCCEPT ONLY ALPHABETS IN THE TEXTFIELDS
+        char c = evt.getKeyChar();
+
+        if(Character.isLetter(c) || Character.isWhitespace(c) || Character.isISOControl(c))
+        {
+            textMotherFName.setEditable(true);
+        }else
+        {
+            textMotherFName.setEditable(false);
+            JOptionPane.showMessageDialog(this, "Numbers are not allowed in this field", "Invalid Input", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_textMotherFNameKeyPressed
+
+    private void textFatherLNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textFatherLNameKeyPressed
+          // CODE TO ACCCEPT ONLY ALPHABETS IN THE TEXTFIELDS
+        char c = evt.getKeyChar();
+
+        if(Character.isLetter(c) || Character.isWhitespace(c) || Character.isISOControl(c))
+        {
+            textFatherLName.setEditable(true);
+        }else
+        {
+            textFatherLName.setEditable(false);
+            JOptionPane.showMessageDialog(this, "Numbers are not allowed in this field", "Invalid Input", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_textFatherLNameKeyPressed
+
+    private void textFatherFNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textFatherFNameKeyPressed
+          // CODE TO ACCCEPT ONLY ALPHABETS IN THE TEXTFIELDS
+        char c = evt.getKeyChar();
+
+        if(Character.isLetter(c) || Character.isWhitespace(c) || Character.isISOControl(c))
+        {
+            textFatherFName.setEditable(true);
+        }else
+        {
+            textFatherFName.setEditable(false);
+            JOptionPane.showMessageDialog(this, "Numbers are not allowed in this field", "Invalid Input", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_textFatherFNameKeyPressed
+
+    private void textAreaRemarksKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textAreaRemarksKeyPressed
+
+    }//GEN-LAST:event_textAreaRemarksKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -125,7 +125,6 @@ public class deletePatientFrame extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         textAreaPrescription = new javax.swing.JTextArea();
-        searchField = new javax.swing.JTextField();
         btnSearch = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         clearButton = new javax.swing.JButton();
@@ -155,6 +154,7 @@ public class deletePatientFrame extends javax.swing.JFrame {
         textMotherLname = new javax.swing.JTextField();
         jLabel22 = new javax.swing.JLabel();
         textPatientID = new javax.swing.JTextField();
+        searchField = new app.bolivia.swing.JCTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Update Patient Record");
@@ -259,13 +259,6 @@ public class deletePatientFrame extends javax.swing.JFrame {
         jScrollPane1.setViewportView(textAreaPrescription);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 320, 330, 60));
-
-        searchField.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                searchFieldKeyReleased(evt);
-            }
-        });
-        jPanel1.add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 400, 200, 40));
 
         btnSearch.setText("Search");
         jPanel1.add(btnSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 400, 90, 40));
@@ -430,6 +423,14 @@ public class deletePatientFrame extends javax.swing.JFrame {
 
         textPatientID.setEnabled(false);
         jPanel1.add(textPatientID, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, 120, 30));
+
+        searchField.setPlaceholder("Enter ID/Last Name");
+        searchField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                searchFieldKeyReleased(evt);
+            }
+        });
+        jPanel1.add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 400, -1, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -632,7 +633,7 @@ public class deletePatientFrame extends javax.swing.JFrame {
 
         String query = "select * from patient_info where patient_ID= " + search;
         String query2 = "select * from patient_info where patient_lastname like '%" + search + "%'";
-        String query3 = "select * from patient_info where patient_firstname like '%" + search + "%'";
+        //String query3 = "select * from patient_info where patient_firstname like '%" + search + "%'";
         try {
             if (search.matches("^[0-9]+$")) {
 
@@ -734,7 +735,7 @@ public class deletePatientFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private rojerusan.RSTableMetro patient_table;
-    private javax.swing.JTextField searchField;
+    private app.bolivia.swing.JCTextField searchField;
     private javax.swing.JTextField textAddress;
     private javax.swing.JTextField textAge;
     private javax.swing.JTextArea textAreaPrescription;
