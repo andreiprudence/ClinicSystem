@@ -67,8 +67,10 @@ public class AddMedicineFrame extends javax.swing.JFrame {
         textMedID = new app.bolivia.swing.JCTextField();
         btnCancel = new javax.swing.JButton();
         btnAddRec = new javax.swing.JButton();
+        btnBack = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setUndecorated(true);
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(0, 78, 103));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -148,6 +150,15 @@ public class AddMedicineFrame extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnAddRec, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 300, 120, 50));
+
+        btnBack.setFont(new java.awt.Font("Gadugi", 1, 11)); // NOI18N
+        btnBack.setText("X");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 10, -1, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -237,6 +248,10 @@ public class AddMedicineFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnAddRecActionPerformed
 
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnBackActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -274,6 +289,7 @@ public class AddMedicineFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddRec;
+    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnCancel;
     private com.toedter.calendar.JDateChooser expiryDate;
     private javax.swing.JLabel jLabel1;

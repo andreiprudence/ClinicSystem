@@ -22,6 +22,8 @@ import net.proteanit.sql.DbUtils;
 public class internalFrameMedicine extends javax.swing.JInternalFrame {
 
     Connection con;
+    PreparedStatement pst;
+    ResultSet rs;
 
     /**
      * Creates new form internalFrameMedicine
@@ -76,10 +78,10 @@ public class internalFrameMedicine extends javax.swing.JInternalFrame {
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         medicine_table = new rojerusan.RSTableMetro();
-        rSMaterialButtonRectangle1 = new rojerusan.RSMaterialButtonRectangle();
-        rSMaterialButtonRectangle2 = new rojerusan.RSMaterialButtonRectangle();
-        rSMaterialButtonRectangle3 = new rojerusan.RSMaterialButtonRectangle();
-        jCTextField1 = new app.bolivia.swing.JCTextField();
+        btnUpdateMedicine = new rojerusan.RSMaterialButtonRectangle();
+        btnAddMedicine = new rojerusan.RSMaterialButtonRectangle();
+        btnRemoveMedicine = new rojerusan.RSMaterialButtonRectangle();
+        searchField = new app.bolivia.swing.JCTextField();
         rSButtonMetro1 = new rojerusan.RSButtonMetro();
 
         setPreferredSize(new java.awt.Dimension(1070, 620));
@@ -120,34 +122,39 @@ public class internalFrameMedicine extends javax.swing.JInternalFrame {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 120, 630, 410));
 
-        rSMaterialButtonRectangle1.setText("UPDATE MEDICINE");
-        rSMaterialButtonRectangle1.addActionListener(new java.awt.event.ActionListener() {
+        btnUpdateMedicine.setText("UPDATE MEDICINE");
+        btnUpdateMedicine.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rSMaterialButtonRectangle1ActionPerformed(evt);
+                btnUpdateMedicineActionPerformed(evt);
             }
         });
-        jPanel1.add(rSMaterialButtonRectangle1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 210, 70));
+        jPanel1.add(btnUpdateMedicine, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 210, 70));
 
-        rSMaterialButtonRectangle2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/1086667_deals_examine_form_list_records_icon.png"))); // NOI18N
-        rSMaterialButtonRectangle2.setText("ADD MEDICINE");
-        rSMaterialButtonRectangle2.addActionListener(new java.awt.event.ActionListener() {
+        btnAddMedicine.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/1086667_deals_examine_form_list_records_icon.png"))); // NOI18N
+        btnAddMedicine.setText("ADD MEDICINE");
+        btnAddMedicine.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rSMaterialButtonRectangle2ActionPerformed(evt);
+                btnAddMedicineActionPerformed(evt);
             }
         });
-        jPanel1.add(rSMaterialButtonRectangle2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 210, 70));
+        jPanel1.add(btnAddMedicine, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 210, 70));
 
-        rSMaterialButtonRectangle3.setText("REMOVE MEDICINE");
-        rSMaterialButtonRectangle3.addActionListener(new java.awt.event.ActionListener() {
+        btnRemoveMedicine.setText("REMOVE MEDICINE");
+        btnRemoveMedicine.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rSMaterialButtonRectangle3ActionPerformed(evt);
+                btnRemoveMedicineActionPerformed(evt);
             }
         });
-        jPanel1.add(rSMaterialButtonRectangle3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 210, 70));
+        jPanel1.add(btnRemoveMedicine, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 210, 70));
 
-        jCTextField1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 0, 0)));
-        jCTextField1.setPlaceholder("Enter Name/ID...");
-        jPanel1.add(jCTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 80, 390, -1));
+        searchField.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 0, 0)));
+        searchField.setPlaceholder("Enter Name/ID...");
+        searchField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                searchFieldKeyReleased(evt);
+            }
+        });
+        jPanel1.add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 80, 390, -1));
 
         rSButtonMetro1.setText("Refresh");
         rSButtonMetro1.addActionListener(new java.awt.event.ActionListener() {
@@ -173,38 +180,79 @@ public class internalFrameMedicine extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void rSMaterialButtonRectangle2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSMaterialButtonRectangle2ActionPerformed
+    private void btnAddMedicineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddMedicineActionPerformed
         AddMedicineFrame medicineFrame = new AddMedicineFrame();
         medicineFrame.setVisible(true);
         medicineFrame.setLocationRelativeTo(null);
-    }//GEN-LAST:event_rSMaterialButtonRectangle2ActionPerformed
+    }//GEN-LAST:event_btnAddMedicineActionPerformed
     public static void AddRowToJTable(Object[] dataRow) {
         DefaultTableModel model = (DefaultTableModel) medicine_table.getModel();
         model.addRow(dataRow);
     }
-    private void rSMaterialButtonRectangle3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSMaterialButtonRectangle3ActionPerformed
-        new deleteMedicine().setVisible(true);
-    }//GEN-LAST:event_rSMaterialButtonRectangle3ActionPerformed
+    private void btnRemoveMedicineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveMedicineActionPerformed
+        new RemoveMedicineFrame().setVisible(true);
+    }//GEN-LAST:event_btnRemoveMedicineActionPerformed
 
-    private void rSMaterialButtonRectangle1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSMaterialButtonRectangle1ActionPerformed
-        new updateMedicine().setVisible(true);
-    }//GEN-LAST:event_rSMaterialButtonRectangle1ActionPerformed
+    private void btnUpdateMedicineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateMedicineActionPerformed
+        new UpdateMedicineFrame().setVisible(true);
+    }//GEN-LAST:event_btnUpdateMedicineActionPerformed
 
     private void rSButtonMetro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonMetro1ActionPerformed
         updateTable();
     }//GEN-LAST:event_rSButtonMetro1ActionPerformed
 
+    private void searchFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchFieldKeyReleased
+        //search function
+        DatabaseConnection connection = new DatabaseConnection();
+        con = connection.getConnection();
+
+        String search = searchField.getText();
+
+        String query = "select * from medicine_info where medicine_no= " + search;
+        String query2 = "select * from medicine_info where medicine_name like '%" + search + "%'";
+        //String query3 = "select * from patient_info where patient_firstname like '%" + search + "%'";
+        try {
+            if (search.matches("^[0-9]+$")) {
+
+                pst = con.prepareStatement(query);
+                rs = pst.executeQuery();
+                medicine_table.setModel(DbUtils.resultSetToTableModel(rs));
+
+            } else {
+
+                pst = con.prepareStatement(query2);
+                rs = pst.executeQuery();
+                medicine_table.setModel(DbUtils.resultSetToTableModel(rs));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(InternalFramePatientRec.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                rs.close();
+            } catch (Exception e) {
+                /* Ignored */ }
+            try {
+                pst.close();
+            } catch (Exception e) {
+                /* Ignored */ }
+            try {
+                con.close();
+            } catch (Exception e) {
+                /* Ignored */ }
+        }
+    }//GEN-LAST:event_searchFieldKeyReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private app.bolivia.swing.JCTextField jCTextField1;
+    private rojerusan.RSMaterialButtonRectangle btnAddMedicine;
+    private rojerusan.RSMaterialButtonRectangle btnRemoveMedicine;
+    private rojerusan.RSMaterialButtonRectangle btnUpdateMedicine;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private static rojerusan.RSTableMetro medicine_table;
     private rojerusan.RSButtonMetro rSButtonMetro1;
-    private rojerusan.RSMaterialButtonRectangle rSMaterialButtonRectangle1;
-    private rojerusan.RSMaterialButtonRectangle rSMaterialButtonRectangle2;
-    private rojerusan.RSMaterialButtonRectangle rSMaterialButtonRectangle3;
+    private app.bolivia.swing.JCTextField searchField;
     // End of variables declaration//GEN-END:variables
 }
