@@ -11,9 +11,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.ZoneId;
+import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -29,6 +31,9 @@ import org.eclipse.persistence.jpa.jpql.parser.DateTime;
 public class InternalFrameAddUser extends javax.swing.JInternalFrame {
 
     Connection con;
+    PreparedStatement pst;
+    ResultSet rs;
+    Statement st;
 
     /**
      * Creates new form InternalFramePatientRec
@@ -36,6 +41,7 @@ public class InternalFrameAddUser extends javax.swing.JInternalFrame {
     public InternalFrameAddUser() {
         initComponents();
         InternalFrameBorder();
+        autoID();
       //  GenerateID();
         /*   this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
             BasicInternalFrameUI ui = (BasicInternalFrameUI) this.getUI();
@@ -75,7 +81,44 @@ public class InternalFrameAddUser extends javax.swing.JInternalFrame {
       }
 
     } */
-     
+     public void autoID()
+     {
+        try {
+            DatabaseConnection connection = new DatabaseConnection();
+            con = connection.getConnection();
+            String query = "select max(user_ID) from user_info";
+
+            st = con.createStatement();
+            rs = st.executeQuery(query);
+            rs.next();
+
+            rs.getString("max(user_ID)");
+
+            if(rs.getString("max(user_ID)")==null){
+                userIDLabel.setText("CS001");
+            }else{
+                Long id = Long.parseLong(rs.getString("max(user_ID)").substring(2, rs.getString("max(user_ID)").length()));
+                id++;
+                userIDLabel.setText("CS" + String.format("%03d", id));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(InternalFrameAddUser.class.getName()).log(Level.SEVERE, null, ex);
+        }finally {
+                try {
+                    rs.close();
+                } catch (Exception e) {
+                    /* Ignored */ }
+                try {
+                    pst.close();
+                } catch (Exception e) {
+                    /* Ignored */ }
+                try {
+                    con.close();
+                } catch (Exception e) {
+                    /* Ignored */ }
+            }
+
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -99,10 +142,7 @@ public class InternalFrameAddUser extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         txtUserName = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        birth_date = new com.toedter.calendar.JDateChooser();
-        txtAge = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         comboRole = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
@@ -113,7 +153,10 @@ public class InternalFrameAddUser extends javax.swing.JInternalFrame {
         jLabel11 = new javax.swing.JLabel();
         userIDLabel = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        txtPassword = new javax.swing.JPasswordField();
+        btnCalculateAge = new javax.swing.JButton();
+        textAge = new javax.swing.JTextField();
+        birthDate = new com.toedter.calendar.JDateChooser();
 
         setPreferredSize(new java.awt.Dimension(1070, 620));
 
@@ -193,16 +236,11 @@ public class InternalFrameAddUser extends javax.swing.JInternalFrame {
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel5.setText("Last Name");
         jPanel6.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, -1));
-        jPanel6.add(birth_date, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 220, 30));
-        jPanel6.add(txtAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 180, 50, 30));
 
         jLabel6.setFont(new java.awt.Font("Dialog", 2, 11)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 51, 51));
         jLabel6.setText("*from date of Birth");
         jPanel6.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 210, -1, -1));
-
-        jButton1.setText("Get Age");
-        jPanel6.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 180, -1, 30));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel7.setText("Role:");
@@ -232,15 +270,58 @@ public class InternalFrameAddUser extends javax.swing.JInternalFrame {
 
         userIDLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         userIDLabel.setForeground(new java.awt.Color(0, 51, 204));
-        userIDLabel.setText("CCS-001");
+        userIDLabel.setText("CS001");
         jPanel6.add(userIDLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, 80, 40));
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel12.setText("Assign Password:");
         jPanel6.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, -1, -1));
 
-        jPasswordField1.setText("jPasswordField1");
-        jPanel6.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, 400, 40));
+        txtPassword.setText("jPasswordField1");
+        jPanel6.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, 450, 40));
+
+        btnCalculateAge.setText("Get Age");
+        btnCalculateAge.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCalculateAgeActionPerformed(evt);
+            }
+        });
+        jPanel6.add(btnCalculateAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 180, 80, 30));
+
+        textAge.setEditable(false);
+        textAge.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        textAge.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        textAge.setEnabled(false);
+        jPanel6.add(textAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 180, 40, 30));
+
+        birthDate.setDateFormatString("dd/MM/yyyy");
+        birthDate.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                birthDateAncestorAdded(evt);
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+        birthDate.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                birthDateMouseClicked(evt);
+            }
+        });
+        birthDate.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                birthDateInputMethodTextChanged(evt);
+            }
+        });
+        birthDate.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                birthDatePropertyChange(evt);
+            }
+        });
+        jPanel6.add(birthDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 230, 30));
 
         jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, 970, 450));
 
@@ -273,45 +354,122 @@ public class InternalFrameAddUser extends javax.swing.JInternalFrame {
     private void btnAddRecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddRecActionPerformed
         Connection con;
 
-      // java.util.Date birthDate = birth_date.getDate();
-            
-       java.sql.Date birthDate = new java.sql.Date(birth_date.getDate().getTime());
-        //Creating an instance of the database connection
         DatabaseConnection connection = new DatabaseConnection();
         con = connection.getConnection();
-        
-        // Assigned the query into a string
-        String query = "insert into user_table(userID, last_name, first_name, user_name, birth_date, age, contact_number, role, address) values(?,?,?,?,?,?,?,?,?)";
-        
-        // Addingg info from txtfield using preparedstatement
-        try {
-            PreparedStatement pst = con.prepareStatement(query);
-            pst.setString(1, userIDLabel.getText());
-            pst.setString(2, txtlastName.getText());
-            pst.setString(3, txtfirstName.getText());
-            pst.setString(4, txtUserName.getText());
-         //   pst.setDate(5, birth_date.getDate());
-            pst.setString(6, txtAge.getText());
-            pst.setString(7, txtContactNo.getText());
-            pst.setString(8, comboRole.getSelectedItem().toString());
-            pst.setString(9, txtAddress.getText());
-            
-            pst.executeUpdate();
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(InternalFrameAddUser.class.getName()).log(Level.SEVERE, null, ex);
+        String query = "insert into user_info(user_id, last_name, first_name, username, birth_date, age, contact_number, role, address, password) values (?,?,?,?,?,?,?,?,?,?)";
+        int msg = JOptionPane.showConfirmDialog(this, "Save the record?");
+
+        if (msg == JOptionPane.YES_OPTION) {
+            try {
+                PreparedStatement pstmt = con.prepareStatement(query);
+                pstmt.setString(1, userIDLabel.getText());
+                pstmt.setString(2, txtlastName.getText());
+                pstmt.setString(3, txtfirstName.getText());
+                pstmt.setString(4, txtUserName.getText());
+                // date
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+                String d = sdf.format(birthDate.getDate());
+                pstmt.setString(5, d);
+                // date
+                pstmt.setString(6, textAge.getText());
+                pstmt.setString(7, txtContactNo.getText());
+                pstmt.setString(8, comboRole.getSelectedItem().toString());
+                pstmt.setString(9, txtAddress.getText());
+                pstmt.setString(10, txtPassword.getText());
+
+                int success = pstmt.executeUpdate();
+
+                if (success == 1) {
+                    JOptionPane.showMessageDialog(this, "Record Saved!");
+
+//                     Clearing the textfields after saving the record
+                    txtlastName.setText("");
+                    txtfirstName.setText("");
+                    birthDate.setCalendar(null);
+                    txtUserName.setText("");
+                    textAge.setText("");
+                    txtContactNo.setText("");
+                    txtAddress.setText("");
+                    txtPassword.setText("");
+
+                    autoID();
+                } else {
+                    JOptionPane.showMessageDialog(this, "Record failed to save");
+                }
+
+            } catch (SQLException ex) {
+                Logger.getLogger(InternalFramePatientRec.class.getName()).log(Level.SEVERE, null, ex);
+
+                // closing the connection
+            } finally {
+                try {
+                    rs.close();
+                } catch (Exception e) {
+                    /* Ignored */ }
+                try {
+                    pst.close();
+                } catch (Exception e) {
+                    /* Ignored */ }
+                try {
+                    con.close();
+                } catch (Exception e) {
+                    /* Ignored */ }
+            }
+
         }
-        
     }//GEN-LAST:event_btnAddRecActionPerformed
+
+    private void btnCalculateAgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalculateAgeActionPerformed
+        // Takes the string value of the jDateChooser
+        String dateofBirth = ((JTextField) birthDate.getDateEditor().getUiComponent()).getText();
+
+        //Splits the date into an array
+        String dob[] = dateofBirth.split("/");
+
+        // Elements in the declared array
+        int day = Integer.parseInt(dob[0]);
+        int month = Integer.parseInt(dob[1]);
+        int year = Integer.parseInt(dob[2]);
+
+        // Storing the localdates
+        LocalDate selectedDate = LocalDate.of(year, month, day);
+        LocalDate currentDate = LocalDate.now();
+
+        // Validating to rewrite textfield if not empty
+        if (textAge.getText() != "") {
+            textAge.setText("");
+            //Outputting the date
+            int ResultYear = Period.between(selectedDate, currentDate).getYears();
+            textAge.setText("" + ResultYear);
+        } else if (textAge.getText() == "") {
+            textAge.setText("");
+        }
+    }//GEN-LAST:event_btnCalculateAgeActionPerformed
+
+    private void birthDateAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_birthDateAncestorAdded
+
+    }//GEN-LAST:event_birthDateAncestorAdded
+
+    private void birthDateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_birthDateMouseClicked
+
+    }//GEN-LAST:event_birthDateMouseClicked
+
+    private void birthDateInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_birthDateInputMethodTextChanged
+
+    }//GEN-LAST:event_birthDateInputMethodTextChanged
+
+    private void birthDatePropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_birthDatePropertyChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_birthDatePropertyChange
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.toedter.calendar.JDateChooser birth_date;
+    private com.toedter.calendar.JDateChooser birthDate;
     private javax.swing.JButton btnAddRec;
     private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnCalculateAge;
     private javax.swing.JButton btnCancel;
     private javax.swing.JComboBox<String> comboRole;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -327,10 +485,10 @@ public class InternalFrameAddUser extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JTextField textAge;
     private javax.swing.JTextField txtAddress;
-    private javax.swing.JTextField txtAge;
     private javax.swing.JTextField txtContactNo;
+    private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtUserName;
     private javax.swing.JTextField txtfirstName;
     private javax.swing.JTextField txtlastName;

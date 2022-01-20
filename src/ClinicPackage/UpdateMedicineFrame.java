@@ -42,7 +42,7 @@ public class UpdateMedicineFrame extends javax.swing.JFrame {
         DatabaseConnection connection = new DatabaseConnection();
         con = connection.getConnection();
         try {
-            String query = "select * from medicine_info";
+            String query = "select medicine_no as 'Medicine ID', medicine_name as 'Name', medicine_price as 'Price', medicine_expiry as 'Expiry Date' from medicine_info";
             PreparedStatement pstmt = con.prepareStatement(query);
             ResultSet rs = pstmt.executeQuery();
             medicine_table.setModel(DbUtils.resultSetToTableModel(rs));

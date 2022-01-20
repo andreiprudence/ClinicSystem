@@ -525,8 +525,9 @@ public class deletePatientFrame extends javax.swing.JFrame {
 
         int row = patient_table.getSelectedRow();
         String selection = patient_table.getModel().getValueAt(row, 0).toString();
-        String query = "select * from patient_info where patient_ID = " + selection;
-        DefaultTableModel d1 = (DefaultTableModel) patient_table.getModel();
+        DefaultTableModel model = (DefaultTableModel) patient_table.getModel();
+        String id = (String) model.getValueAt(row, 0);
+        String query = "select * from patient_info where patient_ID = '"+id+"'";
 
         try {
             PreparedStatement pst = con.prepareStatement(query);
@@ -553,7 +554,7 @@ public class deletePatientFrame extends javax.swing.JFrame {
                 textAreaPrescription.setText(rs.getString("prescription"));
             }
         } catch (SQLException ex) {
-            Logger.getLogger(deletePatientFrame.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(updatePatientFrame.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             try {
                 rs.close();

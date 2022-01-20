@@ -42,7 +42,8 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
     public InternalFramePatientRec() {
         initComponents();
         InternalFrameBorder();
-        getlastID();
+        autoID();
+        //getlastID();
         /*   this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
             BasicInternalFrameUI ui = (BasicInternalFrameUI) this.getUI();
             ui.setNorthPane(null);
@@ -65,6 +66,45 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
             }
         } catch (SQLException ex) {
             Logger.getLogger(InternalFramePatientRec.class.getName()).log(Level.SEVERE, null, ex);
+        }finally {
+                try {
+                    rs.close();
+                } catch (Exception e) {
+                    /* Ignored */ }
+                try {
+                    pst.close();
+                } catch (Exception e) {
+                    /* Ignored */ }
+                try {
+                    con.close();
+                } catch (Exception e) {
+                    /* Ignored */ }
+            }
+
+    }
+
+    //a method that auto generates the patient ID
+    public void autoID() {
+        try {
+            DatabaseConnection connection = new DatabaseConnection();
+            con = connection.getConnection();
+            String query = "select max(patient_ID) from patient_info";
+
+            st = con.createStatement();
+            rs = st.executeQuery(query);
+            rs.next();
+
+            rs.getString("max(patient_ID)");
+
+            if (rs.getString("max(patient_ID)") == null) {
+                label_patientID.setText("P0001");
+            } else {
+                Long id = Long.parseLong(rs.getString("max(patient_ID)").substring(2, rs.getString("max(patient_ID)").length()));
+                id++;
+                label_patientID.setText("P" + String.format("%04d", id));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(InternalFrameAddUser.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
@@ -601,7 +641,7 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
                     textFatherNumber.setText("");
                     textAreaRemarks.setText("");
                     textAreaPrescription.setText("");
-                    getlastID();
+                    autoID();
                 } else {
                     JOptionPane.showMessageDialog(this, "Record failed to save");
                 }
@@ -724,101 +764,95 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_textFatherNumberKeyTyped
 
     private void textLastNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textLastNameKeyPressed
-        // CODE TO ACCCEPT ONLY ALPHABETS IN THE TEXTFIELDS
+            // CODE TO ACCCEPT ONLY ALPHABETS IN THE TEXTFIELDS
         char c = evt.getKeyChar();
 
-        if(Character.isLetter(c) || Character.isWhitespace(c) || Character.isISOControl(c))
-        {
+        if (Character.isLetter(c) || Character.isWhitespace(c) || Character.isISOControl(c)) {
             textLastName.setEditable(true);
-        }else
-        {
-            textLastName.setEditable(false);
+        } else {
             JOptionPane.showMessageDialog(this, "Numbers are not allowed in this field", "Invalid Input", JOptionPane.WARNING_MESSAGE);
+            textLastName.setText("");
+            textLastName.setEditable(false);
         }
 
     }//GEN-LAST:event_textLastNameKeyPressed
 
     private void textFirstNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textFirstNameKeyPressed
-          // CODE TO ACCCEPT ONLY ALPHABETS IN THE TEXTFIELDS
+        // CODE TO ACCCEPT ONLY ALPHABETS IN THE TEXTFIELDS
         char c = evt.getKeyChar();
 
-        if(Character.isLetter(c) || Character.isWhitespace(c) || Character.isISOControl(c))
-        {
+        if (Character.isLetter(c) || Character.isWhitespace(c) || Character.isISOControl(c)) {
             textFirstName.setEditable(true);
-        }else
-        {
-            textFirstName.setEditable(false);
+        } else {
             JOptionPane.showMessageDialog(this, "Numbers are not allowed in this field", "Invalid Input", JOptionPane.WARNING_MESSAGE);
+            textFirstName.setText("");
+            textFirstName.setEditable(false);
         }
     }//GEN-LAST:event_textFirstNameKeyPressed
 
     private void textAddressKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textAddressKeyPressed
-          // CODE TO ACCCEPT ONLY ALPHABETS IN THE TEXTFIELDS
+        // CODE TO ACCCEPT ONLY ALPHABETS IN THE TEXTFIELDS
         char c = evt.getKeyChar();
 
-        if(Character.isLetter(c) || Character.isWhitespace(c) || Character.isISOControl(c))
-        {
+        if (Character.isLetter(c) || Character.isWhitespace(c) || Character.isISOControl(c)) {
             textAddress.setEditable(true);
-        }else
-        {
-            textAddress.setEditable(false);
+        } else {
             JOptionPane.showMessageDialog(this, "Numbers are not allowed in this field", "Invalid Input", JOptionPane.WARNING_MESSAGE);
+            textAddress.setText("");
+            textAddress.setEditable(false);
         }
     }//GEN-LAST:event_textAddressKeyPressed
 
     private void textMotherLNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textMotherLNameKeyPressed
-          // CODE TO ACCCEPT ONLY ALPHABETS IN THE TEXTFIELDS
+        // CODE TO ACCCEPT ONLY ALPHABETS IN THE TEXTFIELDS
         char c = evt.getKeyChar();
 
-        if(Character.isLetter(c) || Character.isWhitespace(c) || Character.isISOControl(c))
-        {
+        if (Character.isLetter(c) || Character.isWhitespace(c) || Character.isISOControl(c)) {
             textMotherLName.setEditable(true);
-        }else
-        {
-            textMotherLName.setEditable(false);
+        } else {
             JOptionPane.showMessageDialog(this, "Numbers are not allowed in this field", "Invalid Input", JOptionPane.WARNING_MESSAGE);
+            textMotherLName.setText("");
+            textMotherLName.setEditable(false);
         }
     }//GEN-LAST:event_textMotherLNameKeyPressed
 
     private void textMotherFNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textMotherFNameKeyPressed
-         // CODE TO ACCCEPT ONLY ALPHABETS IN THE TEXTFIELDS
+        // CODE TO ACCCEPT ONLY ALPHABETS IN THE TEXTFIELDS
         char c = evt.getKeyChar();
 
-        if(Character.isLetter(c) || Character.isWhitespace(c) || Character.isISOControl(c))
-        {
+        if (Character.isLetter(c) || Character.isWhitespace(c) || Character.isISOControl(c)) {
             textMotherFName.setEditable(true);
-        }else
-        {
+        } else {
+           JOptionPane.showMessageDialog(this, "Numbers are not allowed in this field", "Invalid Input", JOptionPane.WARNING_MESSAGE);
+            textMotherFName.setText("");
             textMotherFName.setEditable(false);
-            JOptionPane.showMessageDialog(this, "Numbers are not allowed in this field", "Invalid Input", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_textMotherFNameKeyPressed
 
     private void textFatherLNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textFatherLNameKeyPressed
-          // CODE TO ACCCEPT ONLY ALPHABETS IN THE TEXTFIELDS
+        // CODE TO ACCCEPT ONLY ALPHABETS IN THE TEXTFIELDS
         char c = evt.getKeyChar();
 
-        if(Character.isLetter(c) || Character.isWhitespace(c) || Character.isISOControl(c))
-        {
+        if (Character.isLetter(c) || Character.isWhitespace(c) || Character.isISOControl(c)) {
             textFatherLName.setEditable(true);
-        }else
-        {
-            textFatherLName.setEditable(false);
+        } else {
             JOptionPane.showMessageDialog(this, "Numbers are not allowed in this field", "Invalid Input", JOptionPane.WARNING_MESSAGE);
+            textFatherLName.setText("");
+            textFatherLName.setEditable(false);
         }
     }//GEN-LAST:event_textFatherLNameKeyPressed
 
     private void textFatherFNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textFatherFNameKeyPressed
-          // CODE TO ACCCEPT ONLY ALPHABETS IN THE TEXTFIELDS
+        // CODE TO ACCCEPT ONLY ALPHABETS IN THE TEXTFIELDS
         char c = evt.getKeyChar();
 
-        if(Character.isLetter(c) || Character.isWhitespace(c) || Character.isISOControl(c))
-        {
+        if (Character.isLetter(c) || Character.isWhitespace(c) || Character.isISOControl(c)) {
             textFatherFName.setEditable(true);
-        }else
-        {
-            textFatherFName.setEditable(false);
+        } else {
             JOptionPane.showMessageDialog(this, "Numbers are not allowed in this field", "Invalid Input", JOptionPane.WARNING_MESSAGE);
+            textFatherFName.setText("");
+            textFatherFName.setEditable(false);
+        //    JOptionPane.showMessageDialog(this, "Numbers are not allowed in this field", "Invalid Input", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_textFatherFNameKeyPressed
 

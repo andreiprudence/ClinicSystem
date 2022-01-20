@@ -171,7 +171,6 @@ public class AdminMainFrame1 extends javax.swing.JFrame {
         btnExit.setBorderPainted(false);
         btnExit.setContentAreaFilled(false);
         btnExit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnExit.setOpaque(false);
         btnExit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnExitMouseEntered(evt);
@@ -206,7 +205,7 @@ public class AdminMainFrame1 extends javax.swing.JFrame {
 
         jLabel6.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(25, 128, 251));
-        jLabel6.setText("User List");
+        jLabel6.setText("Manage Users");
         ptntRecButton.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, -1, 30));
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/(admin)listicon.png"))); // NOI18N
@@ -216,7 +215,7 @@ public class AdminMainFrame1 extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(245, 198, 165));
         ptntRecButton.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, 10, 50));
 
-        sidePanel.add(ptntRecButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 220, 50));
+        sidePanel.add(ptntRecButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 220, 50));
 
         appointBtton.setBackground(new java.awt.Color(255, 255, 255));
         appointBtton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -309,7 +308,7 @@ public class AdminMainFrame1 extends javax.swing.JFrame {
         jLabel13.setForeground(new java.awt.Color(245, 198, 165));
         regPtntButton.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, 10, 50));
 
-        sidePanel.add(regPtntButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 220, 50));
+        sidePanel.add(regPtntButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 220, 50));
 
         userLabel1.setFont(new java.awt.Font("Yu Gothic Medium", 1, 12)); // NOI18N
         userLabel1.setForeground(new java.awt.Color(21, 126, 251));
@@ -438,13 +437,13 @@ public class AdminMainFrame1 extends javax.swing.JFrame {
     }//GEN-LAST:event_regPtntButtonMouseExited
 
     private void jLabel17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MouseClicked
-        // Terminate JVM 
+        // Terminate JVM
         int msg = JOptionPane.showConfirmDialog(null, "Are you sure you want to close the application?");
 
         if (msg == 0) {
             System.exit(0);
         }
-        
+
     }//GEN-LAST:event_jLabel17MouseClicked
 
     private void btnExitMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExitMouseEntered
@@ -477,7 +476,7 @@ public class AdminMainFrame1 extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {

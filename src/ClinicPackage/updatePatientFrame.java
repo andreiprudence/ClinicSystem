@@ -98,7 +98,6 @@ public class updatePatientFrame extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         textAreaPrescription = new javax.swing.JTextArea();
-        btnSearch = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         clearButton = new javax.swing.JButton();
         updateButton = new javax.swing.JButton();
@@ -129,6 +128,7 @@ public class updatePatientFrame extends javax.swing.JFrame {
         textPatientID = new javax.swing.JTextField();
         birthDate = new com.toedter.calendar.JDateChooser();
         searchField = new app.bolivia.swing.JCTextField();
+        rSMaterialButtonRectangle2 = new rojerusan.RSMaterialButtonRectangle();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Update Patient Record");
@@ -219,9 +219,6 @@ public class updatePatientFrame extends javax.swing.JFrame {
         jScrollPane1.setViewportView(textAreaPrescription);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 320, 330, 60));
-
-        btnSearch.setText("Search");
-        jPanel1.add(btnSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 400, 90, 40));
 
         jButton1.setText("Exit");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -401,13 +398,22 @@ public class updatePatientFrame extends javax.swing.JFrame {
     });
     jPanel1.add(birthDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, 250, 30));
 
-    searchField.setPlaceholder("Enter ID/Last Name");
+    searchField.setPlaceholder("Enter Last Name");
     searchField.addKeyListener(new java.awt.event.KeyAdapter() {
         public void keyReleased(java.awt.event.KeyEvent evt) {
             searchFieldKeyReleased(evt);
         }
     });
     jPanel1.add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 400, -1, 40));
+
+    rSMaterialButtonRectangle2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/1086667_deals_examine_form_list_records_icon.png"))); // NOI18N
+    rSMaterialButtonRectangle2.setText("Show All");
+    rSMaterialButtonRectangle2.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            rSMaterialButtonRectangle2ActionPerformed(evt);
+        }
+    });
+    jPanel1.add(rSMaterialButtonRectangle2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 400, 100, 40));
 
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
     getContentPane().setLayout(layout);
@@ -508,8 +514,9 @@ public class updatePatientFrame extends javax.swing.JFrame {
 
         int row = patient_table.getSelectedRow();
         String selection = patient_table.getModel().getValueAt(row, 0).toString();
-        String query = "select * from patient_info where patient_ID = " + selection;
         DefaultTableModel model = (DefaultTableModel) patient_table.getModel();
+        String id = (String) model.getValueAt(row, 0);
+        String query = "select * from patient_info where patient_ID = '" + id + "'";
 
         try {
             PreparedStatement pst = con.prepareStatement(query);
@@ -537,6 +544,20 @@ public class updatePatientFrame extends javax.swing.JFrame {
             }
         } catch (SQLException ex) {
             Logger.getLogger(updatePatientFrame.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                rs.close();
+            } catch (Exception e) {
+                /* Ignored */ }
+            try {
+                pst.close();
+            } catch (Exception e) {
+                /* Ignored */ }
+            try {
+                con.close();
+            } catch (Exception e) {
+                /* Ignored */ }
+
         }
     }//GEN-LAST:event_patient_tableMouseClicked
 
@@ -609,28 +630,41 @@ public class updatePatientFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_birthDatePropertyChange
 
     private void searchFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchFieldKeyReleased
-         //search function
+        //search function
         DatabaseConnection connection = new DatabaseConnection();
         con = connection.getConnection();
 
+//        int row = patient_table.getSelectedRow();
+//        DefaultTableModel model = (DefaultTableModel) patient_table.getModel();
+//        String id = (String) model.getValueAt(row, 0);
+
+        //   String query = "select * from patient_info where patient_ID = '" + id + "'";
         String search = searchField.getText();
 
         String query = "select * from patient_info where patient_ID= " + search;
         String query2 = "select * from patient_info where patient_lastname like '%" + search + "%'";
         //String query3 = "select * from patient_info where patient_firstname like '%" + search + "%'";
         try {
-            if (search.matches("^[0-9]+$")) {
+//            if (search.matches("^[0-9]+$")) {
+//
+//                pst = con.prepareStatement(query);
+//                rs = pst.executeQuery();
+//                patient_table.setModel(DbUtils.resultSetToTableModel(rs));
+//
+//            }
+//            else{
+//
+//                pst = con.prepareStatement(query2);
+//                rs = pst.executeQuery();
+//                patient_table.setModel(DbUtils.resultSetToTableModel(rs));
+//            }
+            String query4 = "select * from patient_info where patient_lastname=?";
+            pst = con.prepareStatement(query4);
+            pst.setString(1, searchField.getText());
+            rs = pst.executeQuery();
+            patient_table.setModel(DbUtils.resultSetToTableModel(rs));
 
-                pst = con.prepareStatement(query);
-                rs = pst.executeQuery();
-                patient_table.setModel(DbUtils.resultSetToTableModel(rs));
 
-            } else {
-
-                pst = con.prepareStatement(query2);
-                rs = pst.executeQuery();
-                patient_table.setModel(DbUtils.resultSetToTableModel(rs));
-            }
         } catch (SQLException ex) {
             Logger.getLogger(InternalFramePatientRec.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
@@ -648,6 +682,10 @@ public class updatePatientFrame extends javax.swing.JFrame {
                 /* Ignored */ }
         }
     }//GEN-LAST:event_searchFieldKeyReleased
+
+    private void rSMaterialButtonRectangle2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSMaterialButtonRectangle2ActionPerformed
+        fetch();
+    }//GEN-LAST:event_rSMaterialButtonRectangle2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -686,7 +724,6 @@ public class updatePatientFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.toedter.calendar.JDateChooser birthDate;
-    private javax.swing.JButton btnSearch;
     private javax.swing.JButton clearButton;
     private javax.swing.JComboBox<String> comboGender;
     private javax.swing.JButton jButton1;
@@ -717,6 +754,7 @@ public class updatePatientFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private rojerusan.RSTableMetro patient_table;
+    private rojerusan.RSMaterialButtonRectangle rSMaterialButtonRectangle2;
     private app.bolivia.swing.JCTextField searchField;
     private javax.swing.JTextField textAddress;
     private javax.swing.JTextField textAge;
