@@ -42,7 +42,7 @@ public class InternalFrameAddUser extends javax.swing.JInternalFrame {
         initComponents();
         InternalFrameBorder();
         autoID();
-      //  GenerateID();
+        //  GenerateID();
         /*   this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
             BasicInternalFrameUI ui = (BasicInternalFrameUI) this.getUI();
             ui.setNorthPane(null);
@@ -59,7 +59,7 @@ public class InternalFrameAddUser extends javax.swing.JInternalFrame {
     }
 
     // Function to auto generate ID for user
-  /*  public void GenerateID() {
+    /*  public void GenerateID() {
 
        try {
             Statement st = con.createStatement();
@@ -81,8 +81,7 @@ public class InternalFrameAddUser extends javax.swing.JInternalFrame {
       }
 
     } */
-     public void autoID()
-     {
+    public void autoID() {
         try {
             DatabaseConnection connection = new DatabaseConnection();
             con = connection.getConnection();
@@ -94,31 +93,32 @@ public class InternalFrameAddUser extends javax.swing.JInternalFrame {
 
             rs.getString("max(user_ID)");
 
-            if(rs.getString("max(user_ID)")==null){
+            if (rs.getString("max(user_ID)") == null) {
                 userIDLabel.setText("CS001");
-            }else{
+            } else {
                 Long id = Long.parseLong(rs.getString("max(user_ID)").substring(2, rs.getString("max(user_ID)").length()));
                 id++;
                 userIDLabel.setText("CS" + String.format("%03d", id));
             }
         } catch (SQLException ex) {
             Logger.getLogger(InternalFrameAddUser.class.getName()).log(Level.SEVERE, null, ex);
-        }finally {
-                try {
-                    rs.close();
-                } catch (Exception e) {
-                    /* Ignored */ }
-                try {
-                    pst.close();
-                } catch (Exception e) {
-                    /* Ignored */ }
-                try {
-                    con.close();
-                } catch (Exception e) {
-                    /* Ignored */ }
-            }
+        } finally {
+            try {
+                rs.close();
+            } catch (Exception e) {
+                /* Ignored */ }
+            try {
+                pst.close();
+            } catch (Exception e) {
+                /* Ignored */ }
+            try {
+                con.close();
+            } catch (Exception e) {
+                /* Ignored */ }
+        }
 
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -157,6 +157,8 @@ public class InternalFrameAddUser extends javax.swing.JInternalFrame {
         btnCalculateAge = new javax.swing.JButton();
         textAge = new javax.swing.JTextField();
         birthDate = new com.toedter.calendar.JDateChooser();
+        jLabel13 = new javax.swing.JLabel();
+        txtConfirmPassword = new javax.swing.JPasswordField();
 
         setPreferredSize(new java.awt.Dimension(1070, 620));
 
@@ -274,11 +276,11 @@ public class InternalFrameAddUser extends javax.swing.JInternalFrame {
         jPanel6.add(userIDLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, 80, 40));
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel12.setText("Assign Password:");
-        jPanel6.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, -1, -1));
+        jLabel12.setText("Password:");
+        jPanel6.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, -1, -1));
 
         txtPassword.setText("jPasswordField1");
-        jPanel6.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, 450, 40));
+        jPanel6.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, 350, 40));
 
         btnCalculateAge.setText("Get Age");
         btnCalculateAge.addActionListener(new java.awt.event.ActionListener() {
@@ -323,7 +325,14 @@ public class InternalFrameAddUser extends javax.swing.JInternalFrame {
         });
         jPanel6.add(birthDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 230, 30));
 
-        jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, 970, 450));
+        jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel13.setText("Confirm Password:");
+        jPanel6.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 330, -1, -1));
+
+        txtConfirmPassword.setText("jPasswordField1");
+        jPanel6.add(txtConfirmPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 360, 370, 40));
+
+        jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, 970, 460));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -354,6 +363,10 @@ public class InternalFrameAddUser extends javax.swing.JInternalFrame {
     private void btnAddRecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddRecActionPerformed
         Connection con;
 
+        //Password
+        String password = new String(txtPassword.getPassword());
+        String confirmpassword = new String(txtConfirmPassword.getPassword());
+        //End Password
         DatabaseConnection connection = new DatabaseConnection();
         con = connection.getConnection();
         String query = "insert into user_info(user_id, last_name, first_name, username, birth_date, age, contact_number, role, address, password) values (?,?,?,?,?,?,?,?,?,?)";
@@ -377,9 +390,9 @@ public class InternalFrameAddUser extends javax.swing.JInternalFrame {
                 pstmt.setString(9, txtAddress.getText());
                 pstmt.setString(10, txtPassword.getText());
 
-                int success = pstmt.executeUpdate();
-
-                if (success == 1) {
+            //    int success = pstmt.executeUpdate();
+                if (password.equals(confirmpassword)) {
+                    pstmt.executeUpdate();
                     JOptionPane.showMessageDialog(this, "Record Saved!");
 
 //                     Clearing the textfields after saving the record
@@ -393,9 +406,24 @@ public class InternalFrameAddUser extends javax.swing.JInternalFrame {
                     txtPassword.setText("");
 
                     autoID();
-                } else {
-                    JOptionPane.showMessageDialog(this, "Record failed to save");
+                } else{
+                    JOptionPane.showMessageDialog(this, "Passwords do not match. Double check your password", "User not registered", JOptionPane.WARNING_MESSAGE);
                 }
+
+//                if (success == 1) {
+//                    JOptionPane.showMessageDialog(this, "Record Saved!");
+//
+//
+//                    txtlastName.setText("");
+//                    txtfirstName.setText("");
+//                    birthDate.setCalendar(null);
+//                    txtUserName.setText("");
+//                    textAge.setText("");
+//                    txtContactNo.setText("");
+//                    txtAddress.setText("");
+//                    txtPassword.setText("");
+//
+//                    autoID();
 
             } catch (SQLException ex) {
                 Logger.getLogger(InternalFramePatientRec.class.getName()).log(Level.SEVERE, null, ex);
@@ -474,6 +502,7 @@ public class InternalFrameAddUser extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -487,6 +516,7 @@ public class InternalFrameAddUser extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JTextField textAge;
     private javax.swing.JTextField txtAddress;
+    private javax.swing.JPasswordField txtConfirmPassword;
     private javax.swing.JTextField txtContactNo;
     private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtUserName;

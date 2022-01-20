@@ -16,6 +16,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.ZoneId;
+import java.util.Date;
 import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -43,12 +44,18 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
         initComponents();
         InternalFrameBorder();
         autoID();
+        showDate();
         //getlastID();
         /*   this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
             BasicInternalFrameUI ui = (BasicInternalFrameUI) this.getUI();
             ui.setNorthPane(null);
             pack();
          */
+    }
+     public void showDate() {
+        Date d = new Date();
+        SimpleDateFormat s = new SimpleDateFormat("EEEE, dd MMM, yyyy");
+        lblDate.setText(s.format(d));
     }
 
     public void getlastID() {
@@ -175,6 +182,7 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
         jLabel10 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         textAreaPrescription = new javax.swing.JTextArea();
+        lblDate = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(1070, 620));
 
@@ -503,6 +511,12 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
 
         jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 1030, 500));
 
+        lblDate.setBackground(new java.awt.Color(61, 86, 178));
+        lblDate.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        lblDate.setForeground(new java.awt.Color(153, 204, 255));
+        lblDate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel2.add(lblDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 10, 240, 40));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -590,8 +604,13 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
 
         DatabaseConnection connection = new DatabaseConnection();
         con = connection.getConnection();
-        String query = "insert into patient_info(patient_id, patient_lastname, patient_firstname, patient_gender, patient_DOB, patient_age, patient_contactno, patient_address, mother_lastname, mother_firstname, mother_age, mother_contactno, father_lastname, father_firstname, father_age, father_contactno, remarks, prescription) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String query = "insert into patient_info(patient_id, patient_lastname, patient_firstname, patient_gender, patient_DOB, patient_age, patient_contactno, patient_address, mother_lastname, mother_firstname, mother_age, mother_contactno, father_lastname, father_firstname, father_age, father_contactno, remarks, prescription, date_added) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         int msg = JOptionPane.showConfirmDialog(this, "Save the record?");
+
+
+        //GET CURRENT DATE
+        Date date = new Date();
+        java.sql.Date sqlDate = new java.sql.Date(date.getTime());
 
         if (msg == JOptionPane.YES_OPTION) {
             try {
@@ -618,6 +637,10 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
                 pstmt.setString(16, textFatherNumber.getText());
                 pstmt.setString(17, textAreaRemarks.getText());
                 pstmt.setString(18, textAreaPrescription.getText());
+                // DATE ADDED
+                SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+                String d1 = sdf1.format(sqlDate);
+                pstmt.setString(19, d1);
 
                 int success = pstmt.executeUpdate();
 
@@ -896,6 +919,7 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel label_patientID;
+    public static javax.swing.JLabel lblDate;
     private javax.swing.JTextField textAddress;
     private javax.swing.JTextField textAge;
     private javax.swing.JTextArea textAreaPrescription;

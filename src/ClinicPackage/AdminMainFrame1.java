@@ -5,7 +5,7 @@
  */
 package ClinicPackage;
 
-import ClinicPackage.images.internalFrameRestoreRecords;
+//import ClinicPackage.images.internalFrameRestoreRecords;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -271,7 +271,7 @@ public class AdminMainFrame1 extends javax.swing.JFrame {
         feesButton.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, -1, 30));
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/(admin)restoreicon.png"))); // NOI18N
-        feesButton.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 30, 40));
+        feesButton.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 30, 50));
 
         jLabel15.setBackground(new java.awt.Color(187, 207, 215));
         jLabel15.setForeground(new java.awt.Color(245, 198, 165));

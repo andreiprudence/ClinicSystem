@@ -57,7 +57,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="c0" green="70" red="0" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Back-up Records"/>
+            <Property name="text" type="java.lang.String" value="Restore Records"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -87,18 +87,17 @@
         </Container>
         <Component class="rojerusan.RSMaterialButtonRectangle" name="rSMaterialButtonRectangle1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Create Back-Up"/>
+            <Property name="text" type="java.lang.String" value="RESTORE RECORD"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Roboto Medium" size="24" style="0"/>
             </Property>
-            <Property name="iconTextGap" type="int" value="7"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rSMaterialButtonRectangle1ActionPerformed"/>
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="410" y="220" width="330" height="110"/>
+              <AbsoluteConstraints x="400" y="230" width="330" height="110"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -111,7 +110,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="320" y="90" width="320" height="60"/>
+              <AbsoluteConstraints x="330" y="100" width="330" height="60"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -124,14 +123,14 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="650" y="90" width="130" height="60"/>
+              <AbsoluteConstraints x="680" y="100" width="130" height="60"/>
             </Constraint>
           </Constraints>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="320" y="150" width="300" height="40"/>
+              <AbsoluteConstraints x="330" y="170" width="330" height="40"/>
             </Constraint>
           </Constraints>
         </Component>

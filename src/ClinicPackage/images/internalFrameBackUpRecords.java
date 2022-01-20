@@ -12,12 +12,12 @@ import javax.swing.plaf.basic.BasicInternalFrameUI;
  *
  * @author andre
  */
-public class internalFrameRestoreRecords extends javax.swing.JInternalFrame {
+public class internalFrameBackUpRecords extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form internalFrameMedicine
      */
-    public internalFrameRestoreRecords() {
+    public internalFrameBackUpRecords() {
         initComponents();
          this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         BasicInternalFrameUI ui = (BasicInternalFrameUI) this.getUI();
@@ -48,7 +48,7 @@ public class internalFrameRestoreRecords extends javax.swing.JInternalFrame {
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 112, 192));
-        jLabel1.setText("Restore Records");
+        jLabel1.setText("Back-up Records");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 10, -1, 30));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -65,8 +65,8 @@ public class internalFrameRestoreRecords extends javax.swing.JInternalFrame {
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 50, 610, 2));
         jPanel1.add(jFileChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, 800, -1));
 
-        rSMaterialButtonRectangle1.setText("Restore Records");
-        jPanel1.add(rSMaterialButtonRectangle1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 430, -1, -1));
+        rSMaterialButtonRectangle1.setText("Create Back-Up");
+        jPanel1.add(rSMaterialButtonRectangle1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 440, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
