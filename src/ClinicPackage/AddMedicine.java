@@ -25,42 +25,12 @@ public class AddMedicine extends javax.swing.JFrame {
     Statement stmt;
     ResultSet rs, rs1, rs2;
     PreparedStatement pst, ps, ps1, ps3;
-
-    public void DoConnect() {
-        try {
-            String host = "jdbc:derby://localhost:1527//CaresDB";
-            String uName = "clinic";
-            String uPass = "system";
-            con = DriverManager.getConnection(host, uName, uPass);
-
-            stmt = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
-            String sql = "SELECT * FROM MEDICINELIST";
-            rs = stmt.executeQuery(sql);
-        } catch (SQLException err) {
-            JOptionPane.showMessageDialog(AddMedicine.this, err.getMessage());
-        }
-    }
-
     /**
      * Creates new form AddMedicine
      */
     public AddMedicine() {
         initComponents();
-        DoConnect();
     }
-
-    /* public void show_user(){
-        ArrayList<User> list = userList();
-        DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
-        Object[] row = new Object[2];
-        for (int i=0; i<list.size();i++){
-        row [0] = list.get(i).textIDno();
-        row [1] = list.get(i).textMedName();
-        row [2] = list.get(i).textMedPrice();
-        }
-        
-    }
-    /*
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -158,7 +128,10 @@ public class AddMedicine extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 565, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -214,7 +187,7 @@ public class AddMedicine extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {

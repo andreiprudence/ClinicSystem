@@ -5,22 +5,61 @@
  */
 package ClinicPackage;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import net.proteanit.sql.DbUtils;
 
 /**
  *
  * @author andre
  */
 public class internalFrameUserList extends javax.swing.JInternalFrame {
-
+    PreparedStatement pst;
+    ResultSet rs;
+    Connection con;
     /**
      * Creates new form internalFrameMedicine
      */
     public internalFrameUserList() {
         initComponents();
+        fetch();
          this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         BasicInternalFrameUI ui = (BasicInternalFrameUI) this.getUI();
         ui.setNorthPane(null);
+    }
+    public void fetch() {
+        Connection con;
+
+        DatabaseConnection connection = new DatabaseConnection();
+        con = connection.getConnection();
+        try {
+            String query = "select user_ID as 'User ID', last_name as 'Last Name', first_name as 'First Name', username as 'Username', contact_number as 'Contact Number', role as 'Role' from user_info";
+            PreparedStatement pstmt = con.prepareStatement(query);
+            ResultSet rs = pstmt.executeQuery();
+            user_table.setModel(DbUtils.resultSetToTableModel(rs));
+        } catch (SQLException ex) {
+            Logger.getLogger(updatePatientFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    finally {
+                try {
+                    rs.close();
+                } catch (Exception e) {
+                    /* Ignored */ }
+                try {
+                    pst.close();
+                } catch (Exception e) {
+                    /* Ignored */ }
+                try {
+                    con.close();
+                } catch (Exception e) {
+                    /* Ignored */ }
+            }
+
     }
 
     /**
@@ -36,9 +75,11 @@ public class internalFrameUserList extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         rSMaterialButtonRectangle2 = new rojerusan.RSMaterialButtonRectangle();
-        rSMetroTextPlaceHolder1 = new rojerusan.RSMetroTextPlaceHolder();
         jScrollPane2 = new javax.swing.JScrollPane();
-        rSTableMetro2 = new rojerusan.RSTableMetro();
+        user_table = new rojerusan.RSTableMetro();
+        searchField = new app.bolivia.swing.JCTextField();
+        btnUpdateMedicine = new rojerusan.RSMaterialButtonRectangle();
+        btnRemoveMedicine = new rojerusan.RSMaterialButtonRectangle();
 
         setPreferredSize(new java.awt.Dimension(1060, 620));
         setRequestFocusEnabled(false);
@@ -66,7 +107,7 @@ public class internalFrameUserList extends javax.swing.JInternalFrame {
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 50, 610, 2));
 
         rSMaterialButtonRectangle2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/1086667_deals_examine_form_list_records_icon.png"))); // NOI18N
-        rSMaterialButtonRectangle2.setText("Search");
+        rSMaterialButtonRectangle2.setText("Refresh");
         rSMaterialButtonRectangle2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rSMaterialButtonRectangle2ActionPerformed(evt);
@@ -74,10 +115,7 @@ public class internalFrameUserList extends javax.swing.JInternalFrame {
         });
         jPanel1.add(rSMaterialButtonRectangle2, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 70, 100, 40));
 
-        rSMetroTextPlaceHolder1.setText("Search user...");
-        jPanel1.add(rSMetroTextPlaceHolder1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 70, -1, -1));
-
-        rSTableMetro2.setModel(new javax.swing.table.DefaultTableModel(
+        user_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null},
@@ -88,9 +126,33 @@ public class internalFrameUserList extends javax.swing.JInternalFrame {
                 "User ID", "Last Name", "First Name", "Username", "Date of Birth", "Age", "Contact Number", "Role", "Address"
             }
         ));
-        jScrollPane2.setViewportView(rSTableMetro2);
+        jScrollPane2.setViewportView(user_table);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 980, -1));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 130, 810, -1));
+
+        searchField.setPlaceholder("Enter ID/Last Name");
+        searchField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                searchFieldKeyReleased(evt);
+            }
+        });
+        jPanel1.add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 70, 240, 40));
+
+        btnUpdateMedicine.setText("UPDATE USER DETAILS");
+        btnUpdateMedicine.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateMedicineActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnUpdateMedicine, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 210, 70));
+
+        btnRemoveMedicine.setText("DELETE USER RECORD");
+        btnRemoveMedicine.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRemoveMedicineActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnRemoveMedicine, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 210, 70));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -107,17 +169,84 @@ public class internalFrameUserList extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void rSMaterialButtonRectangle2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSMaterialButtonRectangle2ActionPerformed
-        new AddMedicine().setVisible(true);
+        fetch();
     }//GEN-LAST:event_rSMaterialButtonRectangle2ActionPerformed
+
+    private void searchFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchFieldKeyReleased
+//search function
+        DatabaseConnection connection = new DatabaseConnection();
+        con = connection.getConnection();
+
+//        int row = patient_table.getSelectedRow();
+//        DefaultTableModel model = (DefaultTableModel) patient_table.getModel();
+//        String id = (String) model.getValueAt(row, 0);
+
+        //   String query = "select * from patient_info where patient_ID = '" + id + "'";
+        String search = searchField.getText().toString();
+
+        String query = "select user_ID as 'User ID', last_name as 'Last Name', first_name as 'First Name', username as 'Username', contact_number as 'Contact Number', role as 'Role' from user_info where user_ID= " + search;
+        String query2 = "select user_ID as 'User ID', last_name as 'Last Name', first_name as 'First Name', username as 'Username', contact_number as 'Contact Number', role as 'Role' from user_info where last_name like '%" + search + "%'";
+
+
+        //String query3 = "select * from patient_info where patient_firstname like '%" + search + "%'";
+        try {
+            if(search.matches("CS")){
+//            if (search.matches("^[0-9]+$")) {
+
+                pst = con.prepareStatement(query);
+                rs = pst.executeQuery();
+                user_table.setModel(DbUtils.resultSetToTableModel(rs));
+
+            }
+            else{
+
+                pst = con.prepareStatement(query2);
+                rs = pst.executeQuery();
+                user_table.setModel(DbUtils.resultSetToTableModel(rs));
+            }
+//
+//            String query4 = "select * from user_info where last_name=?";
+//            pst = con.prepareStatement(query4);
+//            pst.setString(1, searchField.getText());
+//            rs = pst.executeQuery();
+//            user_table.setModel(DbUtils.resultSetToTableModel(rs));
+
+        } catch (SQLException ex) {
+            Logger.getLogger(InternalFramePatientRec.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                rs.close();
+            } catch (Exception e) {
+                /* Ignored */ }
+            try {
+                pst.close();
+            } catch (Exception e) {
+                /* Ignored */ }
+            try {
+                con.close();
+            } catch (Exception e) {
+                /* Ignored */ }
+        }
+    }//GEN-LAST:event_searchFieldKeyReleased
+
+    private void btnUpdateMedicineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateMedicineActionPerformed
+        new updateUserFrame().setVisible(true);
+    }//GEN-LAST:event_btnUpdateMedicineActionPerformed
+
+    private void btnRemoveMedicineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveMedicineActionPerformed
+        new deleteUserFrame().setVisible(true);
+    }//GEN-LAST:event_btnRemoveMedicineActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private rojerusan.RSMaterialButtonRectangle btnRemoveMedicine;
+    private rojerusan.RSMaterialButtonRectangle btnUpdateMedicine;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
     private rojerusan.RSMaterialButtonRectangle rSMaterialButtonRectangle2;
-    private rojerusan.RSMetroTextPlaceHolder rSMetroTextPlaceHolder1;
-    private rojerusan.RSTableMetro rSTableMetro2;
+    private app.bolivia.swing.JCTextField searchField;
+    private rojerusan.RSTableMetro user_table;
     // End of variables declaration//GEN-END:variables
 }

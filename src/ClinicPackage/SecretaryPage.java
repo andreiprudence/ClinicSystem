@@ -486,7 +486,7 @@ public class SecretaryPage extends javax.swing.JFrame {
     }//GEN-LAST:event_regPtntButtonMouseExited
 
     private void jLabel17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MouseClicked
-        // Terminate JVM 
+        // Terminate JVM
         int msg = JOptionPane.showConfirmDialog(null, "Are you sure you want to close the application?");
 
         if (msg == 0) {
@@ -526,7 +526,7 @@ public class SecretaryPage extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -581,7 +581,7 @@ public class SecretaryPage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JLabel lblDate;
+    public static javax.swing.JLabel lblDate;
     private javax.swing.JLabel lblSecretary;
     private javax.swing.JLabel lblTime;
     private javax.swing.JPanel medButton;

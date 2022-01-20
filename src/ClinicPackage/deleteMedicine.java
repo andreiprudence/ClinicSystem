@@ -46,21 +46,7 @@ public class deleteMedicine extends javax.swing.JFrame {
      */
     public deleteMedicine() {
         initComponents();
-        DoConnect();
     }
-
-    /* public void show_user(){
-        ArrayList<User> list = userList();
-        DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
-        Object[] row = new Object[2];
-        for (int i=0; i<list.size();i++){
-        row [0] = list.get(i).textIDno();
-        row [1] = list.get(i).textMedName();
-        row [2] = list.get(i).textMedPrice();
-        }
-        
-    }
-    /*
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -214,7 +200,7 @@ public class deleteMedicine extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {

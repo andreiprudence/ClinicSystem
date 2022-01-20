@@ -9,17 +9,21 @@ import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.ZoneId;
+import java.util.Date;
 import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import net.proteanit.sql.DbUtils;
 import org.eclipse.persistence.jpa.jpql.parser.DateTime;
 
 /**
@@ -28,18 +32,88 @@ import org.eclipse.persistence.jpa.jpql.parser.DateTime;
  */
 public class InternalFramePatientRec extends javax.swing.JInternalFrame {
 
+    Connection con;
+    PreparedStatement pst;
+    ResultSet rs;
+    Statement st;
+
     /**
      * Creates new form InternalFramePatientRec
      */
     public InternalFramePatientRec() {
         initComponents();
         InternalFrameBorder();
-
+        autoID();
+        showDate();
+        //getlastID();
         /*   this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
             BasicInternalFrameUI ui = (BasicInternalFrameUI) this.getUI();
             ui.setNorthPane(null);
             pack();
          */
+    }
+     public void showDate() {
+        Date d = new Date();
+        SimpleDateFormat s = new SimpleDateFormat("EEEE, dd MMM, yyyy");
+        lblDate.setText(s.format(d));
+    }
+
+    public void getlastID() {
+        try {
+            int lastid;
+            DatabaseConnection connection = new DatabaseConnection();
+            con = connection.getConnection();
+            String query = "select max(patient_ID) from patient_info";
+            st = con.createStatement();
+            rs = st.executeQuery(query);
+            if (rs.next()) {
+                lastid = rs.getInt(1);
+                lastid++;
+                label_patientID.setText(Integer.toString(lastid));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(InternalFramePatientRec.class.getName()).log(Level.SEVERE, null, ex);
+        }finally {
+                try {
+                    rs.close();
+                } catch (Exception e) {
+                    /* Ignored */ }
+                try {
+                    pst.close();
+                } catch (Exception e) {
+                    /* Ignored */ }
+                try {
+                    con.close();
+                } catch (Exception e) {
+                    /* Ignored */ }
+            }
+
+    }
+
+    //a method that auto generates the patient ID
+    public void autoID() {
+        try {
+            DatabaseConnection connection = new DatabaseConnection();
+            con = connection.getConnection();
+            String query = "select max(patient_ID) from patient_info";
+
+            st = con.createStatement();
+            rs = st.executeQuery(query);
+            rs.next();
+
+            rs.getString("max(patient_ID)");
+
+            if (rs.getString("max(patient_ID)") == null) {
+                label_patientID.setText("P0001");
+            } else {
+                Long id = Long.parseLong(rs.getString("max(patient_ID)").substring(2, rs.getString("max(patient_ID)").length()));
+                id++;
+                label_patientID.setText("P" + String.format("%04d", id));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(InternalFrameAddUser.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
 
     // This method removes the border of the InternalFrame
@@ -108,6 +182,7 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
         jLabel10 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         textAreaPrescription = new javax.swing.JTextArea();
+        lblDate = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(1070, 620));
 
@@ -176,6 +251,11 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
         jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, 30));
 
         textLastName.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        textLastName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                textLastNameKeyPressed(evt);
+            }
+        });
         jPanel3.add(textLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 350, 25));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -189,6 +269,11 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
         jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 70, -1, -1));
 
         textFirstName.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        textFirstName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                textFirstNameKeyPressed(evt);
+            }
+        });
         jPanel3.add(textFirstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 100, 400, 25));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -205,6 +290,11 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
         jPanel3.add(textPhoneNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 160, 240, 25));
 
         textAddress.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        textAddress.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                textAddressKeyPressed(evt);
+            }
+        });
         jPanel3.add(textAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 215, 770, 30));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -233,10 +323,10 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
             }
         });
         birthDate.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
                 birthDateInputMethodTextChanged(evt);
-            }
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
             }
         });
         birthDate.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
@@ -263,6 +353,11 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
         textAreaRemarks.setColumns(20);
         textAreaRemarks.setRows(5);
         textAreaRemarks.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        textAreaRemarks.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                textAreaRemarksKeyPressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(textAreaRemarks);
 
         jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 410, 500, 70));
@@ -274,12 +369,24 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
         jLabel13.setForeground(new java.awt.Color(61, 86, 178));
         jLabel13.setText("Last Name");
         jPanel4.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, 30));
+
+        textFatherLName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                textFatherLNameKeyPressed(evt);
+            }
+        });
         jPanel4.add(textFatherLName, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, 130, 30));
 
         jLabel14.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(61, 86, 178));
         jLabel14.setText("First Name");
         jPanel4.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 30, 70, 30));
+
+        textFatherFName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                textFatherFNameKeyPressed(evt);
+            }
+        });
         jPanel4.add(textFatherFName, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 30, 160, 30));
 
         jLabel15.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
@@ -315,12 +422,24 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
         jLabel17.setForeground(new java.awt.Color(61, 86, 178));
         jLabel17.setText("Last Name");
         jPanel5.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, 30));
+
+        textMotherLName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                textMotherLNameKeyPressed(evt);
+            }
+        });
         jPanel5.add(textMotherLName, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, 130, 30));
 
         jLabel18.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(61, 86, 178));
         jLabel18.setText("First Name");
         jPanel5.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 30, 70, 30));
+
+        textMotherFName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                textMotherFNameKeyPressed(evt);
+            }
+        });
         jPanel5.add(textMotherFName, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 30, 160, 30));
 
         jLabel19.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
@@ -375,7 +494,7 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
 
         label_patientID.setFont(new java.awt.Font("Cambria", 1, 18)); // NOI18N
         label_patientID.setForeground(new java.awt.Color(0, 255, 0));
-        label_patientID.setText("P-00003");
+        label_patientID.setText("3");
         jPanel3.add(label_patientID, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, -1, 30));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
@@ -391,6 +510,12 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
         jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 410, 500, 70));
 
         jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 1030, 500));
+
+        lblDate.setBackground(new java.awt.Color(61, 86, 178));
+        lblDate.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        lblDate.setForeground(new java.awt.Color(153, 204, 255));
+        lblDate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel2.add(lblDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 10, 240, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -479,8 +604,13 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
 
         DatabaseConnection connection = new DatabaseConnection();
         con = connection.getConnection();
-        String query = "insert into patient_info(patient_id, patient_lastname, patient_firstname, patient_gender, patient_DOB, patient_age, patient_contactno, patient_address, mother_lastname, mother_firstname, mother_age, mother_contactno, father_lastname, father_firstname, father_age, father_contactno, remarks, prescription) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String query = "insert into patient_info(patient_id, patient_lastname, patient_firstname, patient_gender, patient_DOB, patient_age, patient_contactno, patient_address, mother_lastname, mother_firstname, mother_age, mother_contactno, father_lastname, father_firstname, father_age, father_contactno, remarks, prescription, date_added) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         int msg = JOptionPane.showConfirmDialog(this, "Save the record?");
+
+
+        //GET CURRENT DATE
+        Date date = new Date();
+        java.sql.Date sqlDate = new java.sql.Date(date.getTime());
 
         if (msg == JOptionPane.YES_OPTION) {
             try {
@@ -507,98 +637,251 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
                 pstmt.setString(16, textFatherNumber.getText());
                 pstmt.setString(17, textAreaRemarks.getText());
                 pstmt.setString(18, textAreaPrescription.getText());
+                // DATE ADDED
+                SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+                String d1 = sdf1.format(sqlDate);
+                pstmt.setString(19, d1);
 
-                pstmt.executeUpdate();
+                int success = pstmt.executeUpdate();
 
-                JOptionPane.showMessageDialog(this, "Record Saved");
+                if (success == 1) {
+                    JOptionPane.showMessageDialog(this, "Record Saved!");
 
-                // Clearing the textfields after saving the record
-                textLastName.setText("");
-                textFirstName.setText("");
-                birthDate.setCalendar(null);
-                textAge.setText("");
-                textPhoneNo.setText("");
-                textAddress.setText("");
-                textMotherLName.setText("");
-                textMotherFName.setText("");
-                textMotherAge.setText("");
-                textMotherNumber.setText("");
-                textFatherLName.setText("");
-                textFatherFName.setText("");
-                textFatherAge.setText("");
-                textFatherNumber.setText("");
-                textAreaRemarks.setText("");
-                textAreaPrescription.setText("");
+//                     Clearing the textfields after saving the record
+                    textLastName.setText("");
+                    textFirstName.setText("");
+                    birthDate.setCalendar(null);
+                    textAge.setText("");
+                    textPhoneNo.setText("");
+                    textAddress.setText("");
+                    textMotherLName.setText("");
+                    textMotherFName.setText("");
+                    textMotherAge.setText("");
+                    textMotherNumber.setText("");
+                    textFatherLName.setText("");
+                    textFatherFName.setText("");
+                    textFatherAge.setText("");
+                    textFatherNumber.setText("");
+                    textAreaRemarks.setText("");
+                    textAreaPrescription.setText("");
+                    autoID();
+                } else {
+                    JOptionPane.showMessageDialog(this, "Record failed to save");
+                }
 
             } catch (SQLException ex) {
                 Logger.getLogger(InternalFramePatientRec.class.getName()).log(Level.SEVERE, null, ex);
+
+                // closing the connection
+            } finally {
+                try {
+                    rs.close();
+                } catch (Exception e) {
+                    /* Ignored */ }
+                try {
+                    pst.close();
+                } catch (Exception e) {
+                    /* Ignored */ }
+                try {
+                    con.close();
+                } catch (Exception e) {
+                    /* Ignored */ }
             }
 
         }
     }//GEN-LAST:event_btnAddRecActionPerformed
 
     private void textPhoneNoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textPhoneNoKeyTyped
-        // function that only accepts integer input
+        // input validation that only accepts integer input
         char c = evt.getKeyChar();
 
         int length = textPhoneNo.getText().length();
 
-        if (!Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE)) {
-            getToolkit().beep();
+        if (!Character.isDigit(c)) {
+            //getToolkit().beep();
             evt.consume();
+            if (c == KeyEvent.VK_DELETE) {
+                evt.consume();
+            } else if (c == KeyEvent.VK_BACK_SPACE) {
+                evt.consume();
+            } else {
+                JOptionPane.showMessageDialog(this, "You can only input numbers in this field", "Invalid Input", JOptionPane.WARNING_MESSAGE);
+            }
         }
-
-    //    if (evt.getKeyChar()>='0' && evt.getKeyChar() <= '11') {
-    //         if (length < 11) {
-    //            textPhoneNo.setEditable(true);
-     //       } else {
-      //          textPhoneNo.setEditable(false);
-      //          getToolkit().beep();
-      //      }
-     //   }
-
-
     }//GEN-LAST:event_textPhoneNoKeyTyped
 
     private void textMotherAgeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textMotherAgeKeyTyped
-        // function that only accepts integer input
+        // input validation that only accepts integer input
         char c = evt.getKeyChar();
 
-        if (!Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE)) {
-            getToolkit().beep();
+        int length = textMotherAge.getText().length();
+
+        if (!Character.isDigit(c)) {
+            //getToolkit().beep();
             evt.consume();
+            if (c == KeyEvent.VK_DELETE) {
+                evt.consume();
+            } else if (c == KeyEvent.VK_BACK_SPACE) {
+                evt.consume();
+            } else {
+                JOptionPane.showMessageDialog(this, "You can only input numbers in this field", "Invalid Input", JOptionPane.WARNING_MESSAGE);
+            }
         }
     }//GEN-LAST:event_textMotherAgeKeyTyped
 
     private void textMotherNumberKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textMotherNumberKeyTyped
-        // function that only accepts integer input
+        // input validation that only accepts integer input
         char c = evt.getKeyChar();
 
-        if (!Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE)) {
-            getToolkit().beep();
+        int length = textPhoneNo.getText().length();
+
+        if (!Character.isDigit(c)) {
+            //getToolkit().beep();
             evt.consume();
+            if (c == KeyEvent.VK_DELETE) {
+                evt.consume();
+            } else if (c == KeyEvent.VK_BACK_SPACE) {
+                evt.consume();
+            } else {
+                JOptionPane.showMessageDialog(this, "You can only input numbers in this field", "Invalid Input", JOptionPane.WARNING_MESSAGE);
+            }
         }
     }//GEN-LAST:event_textMotherNumberKeyTyped
 
     private void textFatherAgeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textFatherAgeKeyTyped
-        // function that only accepts integer input
+        // input validation that only accepts integer input
         char c = evt.getKeyChar();
 
-        if (!Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE)) {
-            getToolkit().beep();
+        int length = textPhoneNo.getText().length();
+
+        if (!Character.isDigit(c)) {
+            //getToolkit().beep();
             evt.consume();
+            if (c == KeyEvent.VK_DELETE) {
+                evt.consume();
+            } else if (c == KeyEvent.VK_BACK_SPACE) {
+                evt.consume();
+            } else {
+                JOptionPane.showMessageDialog(this, "You can only input numbers in this field", "Invalid Input", JOptionPane.WARNING_MESSAGE);
+            }
         }
     }//GEN-LAST:event_textFatherAgeKeyTyped
 
     private void textFatherNumberKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textFatherNumberKeyTyped
-        // function that only accepts integer input
+        // input validation that only accepts integer input
         char c = evt.getKeyChar();
 
-        if (!Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE)) {
-            getToolkit().beep();
+        int length = textPhoneNo.getText().length();
+
+        if (!Character.isDigit(c)) {
+            //getToolkit().beep();
             evt.consume();
+            if (c == KeyEvent.VK_DELETE) {
+                evt.consume();
+            } else if (c == KeyEvent.VK_BACK_SPACE) {
+                evt.consume();
+            } else {
+                JOptionPane.showMessageDialog(this, "You can only input numbers in this field", "Invalid Input", JOptionPane.WARNING_MESSAGE);
+            }
         }
     }//GEN-LAST:event_textFatherNumberKeyTyped
+
+    private void textLastNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textLastNameKeyPressed
+            // CODE TO ACCCEPT ONLY ALPHABETS IN THE TEXTFIELDS
+        char c = evt.getKeyChar();
+
+        if (Character.isLetter(c) || Character.isWhitespace(c) || Character.isISOControl(c)) {
+            textLastName.setEditable(true);
+        } else {
+            JOptionPane.showMessageDialog(this, "Numbers are not allowed in this field", "Invalid Input", JOptionPane.WARNING_MESSAGE);
+            textLastName.setText("");
+            textLastName.setEditable(false);
+        }
+
+    }//GEN-LAST:event_textLastNameKeyPressed
+
+    private void textFirstNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textFirstNameKeyPressed
+        // CODE TO ACCCEPT ONLY ALPHABETS IN THE TEXTFIELDS
+        char c = evt.getKeyChar();
+
+        if (Character.isLetter(c) || Character.isWhitespace(c) || Character.isISOControl(c)) {
+            textFirstName.setEditable(true);
+        } else {
+            JOptionPane.showMessageDialog(this, "Numbers are not allowed in this field", "Invalid Input", JOptionPane.WARNING_MESSAGE);
+            textFirstName.setText("");
+            textFirstName.setEditable(false);
+        }
+    }//GEN-LAST:event_textFirstNameKeyPressed
+
+    private void textAddressKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textAddressKeyPressed
+        // CODE TO ACCCEPT ONLY ALPHABETS IN THE TEXTFIELDS
+        char c = evt.getKeyChar();
+
+        if (Character.isLetter(c) || Character.isWhitespace(c) || Character.isISOControl(c)) {
+            textAddress.setEditable(true);
+        } else {
+            JOptionPane.showMessageDialog(this, "Numbers are not allowed in this field", "Invalid Input", JOptionPane.WARNING_MESSAGE);
+            textAddress.setText("");
+            textAddress.setEditable(false);
+        }
+    }//GEN-LAST:event_textAddressKeyPressed
+
+    private void textMotherLNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textMotherLNameKeyPressed
+        // CODE TO ACCCEPT ONLY ALPHABETS IN THE TEXTFIELDS
+        char c = evt.getKeyChar();
+
+        if (Character.isLetter(c) || Character.isWhitespace(c) || Character.isISOControl(c)) {
+            textMotherLName.setEditable(true);
+        } else {
+            JOptionPane.showMessageDialog(this, "Numbers are not allowed in this field", "Invalid Input", JOptionPane.WARNING_MESSAGE);
+            textMotherLName.setText("");
+            textMotherLName.setEditable(false);
+        }
+    }//GEN-LAST:event_textMotherLNameKeyPressed
+
+    private void textMotherFNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textMotherFNameKeyPressed
+        // CODE TO ACCCEPT ONLY ALPHABETS IN THE TEXTFIELDS
+        char c = evt.getKeyChar();
+
+        if (Character.isLetter(c) || Character.isWhitespace(c) || Character.isISOControl(c)) {
+            textMotherFName.setEditable(true);
+        } else {
+           JOptionPane.showMessageDialog(this, "Numbers are not allowed in this field", "Invalid Input", JOptionPane.WARNING_MESSAGE);
+            textMotherFName.setText("");
+            textMotherFName.setEditable(false);
+        }
+    }//GEN-LAST:event_textMotherFNameKeyPressed
+
+    private void textFatherLNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textFatherLNameKeyPressed
+        // CODE TO ACCCEPT ONLY ALPHABETS IN THE TEXTFIELDS
+        char c = evt.getKeyChar();
+
+        if (Character.isLetter(c) || Character.isWhitespace(c) || Character.isISOControl(c)) {
+            textFatherLName.setEditable(true);
+        } else {
+            JOptionPane.showMessageDialog(this, "Numbers are not allowed in this field", "Invalid Input", JOptionPane.WARNING_MESSAGE);
+            textFatherLName.setText("");
+            textFatherLName.setEditable(false);
+        }
+    }//GEN-LAST:event_textFatherLNameKeyPressed
+
+    private void textFatherFNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textFatherFNameKeyPressed
+        // CODE TO ACCCEPT ONLY ALPHABETS IN THE TEXTFIELDS
+        char c = evt.getKeyChar();
+
+        if (Character.isLetter(c) || Character.isWhitespace(c) || Character.isISOControl(c)) {
+            textFatherFName.setEditable(true);
+        } else {
+            JOptionPane.showMessageDialog(this, "Numbers are not allowed in this field", "Invalid Input", JOptionPane.WARNING_MESSAGE);
+            textFatherFName.setText("");
+            textFatherFName.setEditable(false);
+        //    JOptionPane.showMessageDialog(this, "Numbers are not allowed in this field", "Invalid Input", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_textFatherFNameKeyPressed
+
+    private void textAreaRemarksKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textAreaRemarksKeyPressed
+
+    }//GEN-LAST:event_textAreaRemarksKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -636,6 +919,7 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel label_patientID;
+    public static javax.swing.JLabel lblDate;
     private javax.swing.JTextField textAddress;
     private javax.swing.JTextField textAge;
     private javax.swing.JTextArea textAreaPrescription;

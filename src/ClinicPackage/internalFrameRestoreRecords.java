@@ -17,12 +17,12 @@ import javax.swing.plaf.basic.BasicInternalFrameUI;
  *
  * @author andre
  */
-public class internalFrameBackUpRecords extends javax.swing.JInternalFrame {
+public class internalFrameRestoreRecords extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form internalFrameMedicine
      */
-    public internalFrameBackUpRecords() {
+    public internalFrameRestoreRecords() {
         initComponents();
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         BasicInternalFrameUI ui = (BasicInternalFrameUI) this.getUI();
@@ -67,7 +67,7 @@ public class internalFrameBackUpRecords extends javax.swing.JInternalFrame {
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 112, 192));
-        jLabel1.setText("Back-up Records");
+        jLabel1.setText("Restore Records");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 10, -1, 30));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -83,19 +83,18 @@ public class internalFrameBackUpRecords extends javax.swing.JInternalFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 50, 610, 2));
 
-        rSMaterialButtonRectangle1.setText("Create Back-Up");
+        rSMaterialButtonRectangle1.setText("RESTORE RECORD");
         rSMaterialButtonRectangle1.setFont(new java.awt.Font("Roboto Medium", 0, 24)); // NOI18N
-        rSMaterialButtonRectangle1.setIconTextGap(7);
         rSMaterialButtonRectangle1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rSMaterialButtonRectangle1ActionPerformed(evt);
             }
         });
-        jPanel1.add(rSMaterialButtonRectangle1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 220, 330, 110));
+        jPanel1.add(rSMaterialButtonRectangle1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 230, 330, 110));
 
         jCTextField1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jCTextField1.setPlaceholder("Select file location");
-        jPanel1.add(jCTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 90, 320, 60));
+        jPanel1.add(jCTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 100, 330, 60));
 
         rSMaterialButtonRectangle2.setText("Browse");
         rSMaterialButtonRectangle2.addActionListener(new java.awt.event.ActionListener() {
@@ -103,8 +102,8 @@ public class internalFrameBackUpRecords extends javax.swing.JInternalFrame {
                 rSMaterialButtonRectangle2ActionPerformed(evt);
             }
         });
-        jPanel1.add(rSMaterialButtonRectangle2, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 90, 130, 60));
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 150, 300, 40));
+        jPanel1.add(rSMaterialButtonRectangle2, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 100, 130, 60));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 170, 330, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -122,29 +121,48 @@ public class internalFrameBackUpRecords extends javax.swing.JInternalFrame {
 
     private void rSMaterialButtonRectangle1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSMaterialButtonRectangle1ActionPerformed
         Process p = null;
+        String user = "root";
+        String password = "";
+
+        String[] restoreCmd = new String[]{"C:/xampp2/mysql/bin/mysql.exe", "--user=" + user, "-e", "source " + path};
+
+        Process process;
         try {
-            Runtime runtime = Runtime.getRuntime();
-            p = runtime.exec("C://xampp2/mysql/bin/mysqldump.exe -uroot --add-drop-database -B clinicdb -r" + path);
+            process = Runtime.getRuntime().exec(restoreCmd);
+            int procCom = process.waitFor();
 
-            if (jCTextField1.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Select a path");
-            }
-
-            int processComplete = p.waitFor();
-            if (processComplete == 0) {
-                jLabel2.setText("Backup Created Success");
+            if (procCom == 0) {
+                jLabel2.setText("Restore successful");
             } else {
-                jLabel2.setText("Can't Create backup");
+                jLabel2.setText("Restore unsuccessful");
+
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
+//        try {
+//            Runtime runtime = Runtime.getRuntime();
+//            p = runtime.exec("C://xampp2/mysql/bin/mysql.exe -uroot --add-drop-database -B clinicdb -r" + path);
+//
+//            if(jCTextField1.getText().isEmpty()){
+//                JOptionPane.showMessageDialog(this, "Select a path");
+//            }
+//
+//            int processComplete = p.waitFor();
+//            if (processComplete == 0) {
+//                jLabel2.setText("Backup Created Success");
+//            } else {
+//                jLabel2.setText("Can't Create backup");
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
     }//GEN-LAST:event_rSMaterialButtonRectangle1ActionPerformed
 
     private void rSMaterialButtonRectangle2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSMaterialButtonRectangle2ActionPerformed
         JFileChooser fc = new JFileChooser();
         fc.showOpenDialog(this);
-        String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+        //   String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
 
         try {
             if (jCTextField1.getText().isEmpty()) {
@@ -154,7 +172,6 @@ public class internalFrameBackUpRecords extends javax.swing.JInternalFrame {
                 File f = fc.getSelectedFile();
                 path = f.getAbsolutePath();
                 path = path.replace('\\', '/');
-                path = path + "_" + date + ".sql";
                 jCTextField1.setText(path);
             }
         } catch (Exception e) {

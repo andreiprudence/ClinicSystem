@@ -104,7 +104,7 @@ public class internalFrameAppoint extends javax.swing.JInternalFrame {
 
         jCTextField1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 0, 0)));
         jCTextField1.setPlaceholder("Enter Patient ID...");
-        jPanel1.add(jCTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 80, 230, -1));
+        jPanel1.add(jCTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 80, 230, 40));
         jPanel1.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 400, 250, 30));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
