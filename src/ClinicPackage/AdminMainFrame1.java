@@ -40,6 +40,9 @@ public class AdminMainFrame1 extends javax.swing.JFrame {
         showDate();
         showTime();
         imageResize();
+        InternalFrameAddUser frameAddUser = new InternalFrameAddUser();
+        jDesktopPane1.removeAll();
+        jDesktopPane1.add(frameAddUser).setVisible(true);
 
     }
 
@@ -104,6 +107,8 @@ public class AdminMainFrame1 extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
+        labelWelcome = new javax.swing.JLabel();
+        labelUser = new javax.swing.JLabel();
         userLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jDesktopPane1 = new javax.swing.JDesktopPane();
@@ -160,7 +165,7 @@ public class AdminMainFrame1 extends javax.swing.JFrame {
         userLabel.setFont(new java.awt.Font("Yu Gothic Medium", 0, 10)); // NOI18N
         userLabel.setForeground(new java.awt.Color(51, 255, 51));
         userLabel.setText("logged in as");
-        sidePanel.add(userLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, 70, 20));
+        sidePanel.add(userLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, 70, 20));
 
         btnExit.setBackground(new java.awt.Color(255, 255, 255));
         btnExit.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -310,10 +315,20 @@ public class AdminMainFrame1 extends javax.swing.JFrame {
 
         sidePanel.add(regPtntButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 220, 50));
 
+        labelWelcome.setFont(new java.awt.Font("Yu Gothic Medium", 1, 12)); // NOI18N
+        labelWelcome.setForeground(new java.awt.Color(21, 126, 251));
+        labelWelcome.setText("Welcome,");
+        sidePanel.add(labelWelcome, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 70, 20));
+
+        labelUser.setFont(new java.awt.Font("Yu Gothic Medium", 1, 12)); // NOI18N
+        labelUser.setForeground(new java.awt.Color(21, 126, 251));
+        labelUser.setText("andrei");
+        sidePanel.add(labelUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, 60, 20));
+
         userLabel1.setFont(new java.awt.Font("Yu Gothic Medium", 1, 12)); // NOI18N
         userLabel1.setForeground(new java.awt.Color(21, 126, 251));
         userLabel1.setText("Admin");
-        sidePanel.add(userLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 70, 20));
+        sidePanel.add(userLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 70, 20));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/CARES System Sidebar BG.jpg"))); // NOI18N
         sidePanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 220, 620));
@@ -529,6 +544,8 @@ public class AdminMainFrame1 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel labelUser;
+    private javax.swing.JLabel labelWelcome;
     private javax.swing.JLabel lblDate;
     private javax.swing.JLabel lblSecretary;
     private javax.swing.JLabel lblTime;

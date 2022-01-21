@@ -175,13 +175,13 @@ public class InternalFrameAddUser extends javax.swing.JInternalFrame {
         btnAddRec.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         btnAddRec.setForeground(new java.awt.Color(255, 255, 255));
         btnAddRec.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/3336950_download_save_icon.png"))); // NOI18N
-        btnAddRec.setText("Save");
+        btnAddRec.setText("Register");
         btnAddRec.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddRecActionPerformed(evt);
             }
         });
-        jPanel2.add(btnAddRec, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 540, 120, 50));
+        jPanel2.add(btnAddRec, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 540, 160, 50));
 
         btnBack.setFont(new java.awt.Font("Gadugi", 1, 11)); // NOI18N
         btnBack.setText("X");
@@ -312,10 +312,10 @@ public class InternalFrameAddUser extends javax.swing.JInternalFrame {
             }
         });
         birthDate.addInputMethodListener(new java.awt.event.InputMethodListener() {
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
-            }
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
                 birthDateInputMethodTextChanged(evt);
+            }
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
             }
         });
         birthDate.addPropertyChangeListener(new java.beans.PropertyChangeListener() {

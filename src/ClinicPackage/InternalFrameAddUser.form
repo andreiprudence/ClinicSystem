@@ -82,14 +82,14 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/ClinicPackage/images/3336950_download_save_icon.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Save"/>
+            <Property name="text" type="java.lang.String" value="Register"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAddRecActionPerformed"/>
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="450" y="540" width="120" height="50"/>
+              <AbsoluteConstraints x="410" y="540" width="160" height="50"/>
             </Constraint>
           </Constraints>
         </Component>
