@@ -38,6 +38,8 @@ public class deleteUserFrame extends javax.swing.JFrame {
     public deleteUserFrame() {
         initComponents();
         fetch();
+        // CODE THAT MAKES THE CELLS UNEDITABLE
+        user_table.setDefaultEditor(Object.class, null);
     }
 
     //updates the table
@@ -371,7 +373,7 @@ public class deleteUserFrame extends javax.swing.JFrame {
             textUserID.setText("");
             textUsername.setText("");
             textPassword.setText("");
-           
+
 
         } catch (SQLException ex) {
             Logger.getLogger(deletePatientFrame.class.getName()).log(Level.SEVERE, null, ex);

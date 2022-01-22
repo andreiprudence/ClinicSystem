@@ -38,6 +38,8 @@ public class updatePatientFrame extends javax.swing.JFrame {
     public updatePatientFrame() {
         initComponents();
         fetch();
+        // CODE THAT MAKES THE CELLS UNEDITABLE
+        patient_table.setDefaultEditor(Object.class, null);
     }
 
     //updates the table

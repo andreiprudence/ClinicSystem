@@ -223,7 +223,7 @@ public class SecretaryPage extends javax.swing.JFrame {
         jLabel16.setForeground(new java.awt.Color(245, 198, 165));
         medButton.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, 10, 50));
 
-        sidePanel.add(medButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 360, 220, 50));
+        sidePanel.add(medButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, 220, 50));
 
         ptntRecButton.setBackground(new java.awt.Color(255, 255, 255));
         ptntRecButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -254,7 +254,7 @@ public class SecretaryPage extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(245, 198, 165));
         ptntRecButton.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, 10, 50));
 
-        sidePanel.add(ptntRecButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 220, 50));
+        sidePanel.add(ptntRecButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 220, 50));
 
         appointBtton.setBackground(new java.awt.Color(255, 255, 255));
         appointBtton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -285,7 +285,7 @@ public class SecretaryPage extends javax.swing.JFrame {
         jLabel14.setForeground(new java.awt.Color(245, 198, 165));
         appointBtton.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, 10, 50));
 
-        sidePanel.add(appointBtton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 220, 50));
+        sidePanel.add(appointBtton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, 220, 50));
 
         feesButton.setBackground(new java.awt.Color(255, 255, 255));
         feesButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -316,7 +316,7 @@ public class SecretaryPage extends javax.swing.JFrame {
         jLabel15.setForeground(new java.awt.Color(245, 198, 165));
         feesButton.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, 10, 50));
 
-        sidePanel.add(feesButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 220, 50));
+        sidePanel.add(feesButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 220, 50));
 
         regPtntButton.setBackground(new java.awt.Color(255, 255, 255));
         regPtntButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -347,7 +347,7 @@ public class SecretaryPage extends javax.swing.JFrame {
         jLabel13.setForeground(new java.awt.Color(245, 198, 165));
         regPtntButton.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, 10, 50));
 
-        sidePanel.add(regPtntButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 220, 50));
+        sidePanel.add(regPtntButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 220, 50));
 
         btnDashboard.setBackground(new java.awt.Color(255, 255, 255));
         btnDashboard.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -378,7 +378,7 @@ public class SecretaryPage extends javax.swing.JFrame {
         jLabel22.setForeground(new java.awt.Color(245, 198, 165));
         btnDashboard.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, 10, 60));
 
-        sidePanel.add(btnDashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 220, 60));
+        sidePanel.add(btnDashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 220, -1));
 
         labelUser.setFont(new java.awt.Font("Yu Gothic Medium", 1, 12)); // NOI18N
         labelUser.setForeground(new java.awt.Color(21, 126, 251));

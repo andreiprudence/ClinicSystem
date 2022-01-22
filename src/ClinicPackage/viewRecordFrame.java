@@ -5,14 +5,21 @@
  */
 package ClinicPackage;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import net.proteanit.sql.DbUtils;
+import org.eclipse.persistence.sessions.Record;
 
 /**
  *
@@ -30,8 +37,11 @@ public class viewRecordFrame extends javax.swing.JFrame {
     public viewRecordFrame() {
         initComponents();
         fetch();
+        // CODE THAT MAKES THE CELLS UNEDITABLE
+        patient_table.setDefaultEditor(Object.class, null);
     }
 
+    // FETCHES THE DATABASE DATA TO TABLE
     public void fetch() {
         Connection con;
 
@@ -59,11 +69,12 @@ public class viewRecordFrame extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel31 = new javax.swing.JLabel();
         jPanel14 = new javax.swing.JPanel();
-        btnSearch3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         patient_table = new rojerusan.RSTableMetro();
         searchField = new app.bolivia.swing.JCTextField();
+        buttonExport = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("View Patient Record");
@@ -92,21 +103,13 @@ public class viewRecordFrame extends javax.swing.JFrame {
 
         jPanel1.add(jPanel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 960, 5));
 
-        btnSearch3.setText("Search");
-        btnSearch3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSearch3ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnSearch3, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 80, 100, 30));
-
         jButton4.setText("Exit");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 10, 60, 30));
+        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 10, 60, 30));
 
         patient_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -122,6 +125,8 @@ public class viewRecordFrame extends javax.swing.JFrame {
         patient_table.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         patient_table.setRowHeight(20);
         patient_table.setRowMargin(2);
+        patient_table.getTableHeader().setResizingAllowed(false);
+        patient_table.getTableHeader().setReorderingAllowed(false);
         patient_table.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 patient_tableMouseClicked(evt);
@@ -134,7 +139,7 @@ public class viewRecordFrame extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(patient_table);
 
-        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 1270, 330));
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 1250, 330));
 
         searchField.setPlaceholder("Enter ID/Last Name");
         searchField.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -143,6 +148,22 @@ public class viewRecordFrame extends javax.swing.JFrame {
             }
         });
         jPanel1.add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 80, 320, -1));
+
+        buttonExport.setText("Export to .csv");
+        buttonExport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonExportActionPerformed(evt);
+            }
+        });
+        jPanel1.add(buttonExport, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 80, -1, 30));
+
+        jButton1.setText("Refresh");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 80, 80, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -164,50 +185,6 @@ public class viewRecordFrame extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         this.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void btnSearch3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearch3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnSearch3ActionPerformed
-
-    private void patient_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_patient_tableMouseClicked
-        //instantiating database connection
-        Connection con;
-        DatabaseConnection connection = new DatabaseConnection();
-        con = connection.getConnection();
-
-        int row = patient_table.getSelectedRow();
-        String selection = patient_table.getModel().getValueAt(row, 0).toString();
-        String query = "select * from patient_info where patient_ID = " + selection;
-        DefaultTableModel d1 = (DefaultTableModel) patient_table.getModel();
-
-        try {
-            PreparedStatement pst = con.prepareStatement(query);
-            ResultSet rs = pst.executeQuery();
-
-        } catch (SQLException ex) {
-            Logger.getLogger(deletePatientFrame.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_patient_tableMouseClicked
-
-    private void patient_tableKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_patient_tableKeyReleased
-        //instantiating database connection
-        Connection con;
-        DatabaseConnection connection = new DatabaseConnection();
-        con = connection.getConnection();
-
-        int row = patient_table.getSelectedRow();
-        String selection = patient_table.getModel().getValueAt(row, 0).toString();
-        String query = "select * from patient_info where patient_ID = " + selection;
-        DefaultTableModel d1 = (DefaultTableModel) patient_table.getModel();
-
-        try {
-            PreparedStatement pst = con.prepareStatement(query);
-            ResultSet rs = pst.executeQuery();
-
-        } catch (SQLException ex) {
-            Logger.getLogger(deletePatientFrame.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_patient_tableKeyReleased
 
     private void searchFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchFieldKeyReleased
         //search function
@@ -250,6 +227,90 @@ public class viewRecordFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_searchFieldKeyReleased
 
+    private void buttonExportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonExportActionPerformed
+        // SUPPOSEDLY EXPORTS THE TABLE TO CSV FILE
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Select file location");
+        int userSelection = fileChooser.showSaveDialog(this);
+
+        if (userSelection == JFileChooser.APPROVE_OPTION) {
+            File filetoSave = fileChooser.getSelectedFile();
+
+            try {
+                FileWriter fw = new FileWriter(filetoSave);
+                BufferedWriter bw = new BufferedWriter(fw);
+                for (int i = 0; i < patient_table.getRowCount(); i++) {
+                    for (int j = 0; j < patient_table.getColumnCount(); j++) {
+                        bw.write(patient_table.getValueAt(i, j).toString() + ",");
+                    }
+                    bw.newLine();
+                }
+                bw.close();
+                fw.close();
+                JOptionPane.showMessageDialog(this, "File successfully created");
+            } catch (IOException ex) {
+                Logger.getLogger(viewRecordFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        }
+
+    }//GEN-LAST:event_buttonExportActionPerformed
+
+    private void patient_tableKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_patient_tableKeyReleased
+        //instantiating database connection
+        Connection con;
+        DatabaseConnection connection = new DatabaseConnection();
+        con = connection.getConnection();
+
+        int row = patient_table.getSelectedRow();
+        String selection = patient_table.getModel().getValueAt(row, 0).toString();
+        String query = "select * from patient_info where patient_ID = " + selection;
+        DefaultTableModel d1 = (DefaultTableModel) patient_table.getModel();
+
+        try {
+            PreparedStatement pst = con.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(deletePatientFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_patient_tableKeyReleased
+
+    private void patient_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_patient_tableMouseClicked
+        DefaultTableModel model = (DefaultTableModel) patient_table.getModel();
+        int selectedRow = patient_table.getSelectedRow();
+
+        String id, lastName, firstName, gender, birthDate, age, PhoneNo, address, motherLastName, motherFirstName, motherAge, motherPhoneNo, fatherLastName, fatherFirstName, fatherAge, fatherPhoneNo, remarks, prescription, dateAdded;
+
+        id = model.getValueAt(selectedRow, 0).toString();
+        lastName = model.getValueAt(selectedRow, 1).toString();
+        firstName = model.getValueAt(selectedRow, 2).toString();
+        gender = model.getValueAt(selectedRow, 3).toString();
+        birthDate = model.getValueAt(selectedRow, 4).toString();
+        age = model.getValueAt(selectedRow, 5).toString();
+        PhoneNo = model.getValueAt(selectedRow, 6).toString();
+        address = model.getValueAt(selectedRow, 7).toString();
+        motherLastName = model.getValueAt(selectedRow, 8).toString();
+        motherFirstName = model.getValueAt(selectedRow, 9).toString();
+        motherAge = model.getValueAt(selectedRow, 10).toString();
+        motherPhoneNo = model.getValueAt(selectedRow, 11).toString();
+        fatherLastName = model.getValueAt(selectedRow, 12).toString();
+        fatherFirstName = model.getValueAt(selectedRow, 13).toString();
+        fatherAge = model.getValueAt(selectedRow, 14).toString();
+        fatherPhoneNo = model.getValueAt(selectedRow, 15).toString();
+        remarks = model.getValueAt(selectedRow, 16).toString();
+        prescription = model.getValueAt(selectedRow, 17).toString();
+        dateAdded = model.getValueAt(selectedRow, 18).toString();
+
+        displayDataToFrame dataToFrame = new displayDataToFrame();
+        dataToFrame.GetInfo(id, lastName, firstName, gender, birthDate, age, PhoneNo, address, motherLastName, motherFirstName, motherAge, motherPhoneNo, fatherLastName, fatherFirstName, fatherAge, fatherPhoneNo, remarks, prescription, dateAdded);
+        dataToFrame.setVisible(true);
+    }//GEN-LAST:event_patient_tableMouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        fetch();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -264,16 +325,24 @@ public class viewRecordFrame extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(viewRecordFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(viewRecordFrame.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(viewRecordFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(viewRecordFrame.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(viewRecordFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(viewRecordFrame.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(viewRecordFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(viewRecordFrame.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -286,7 +355,8 @@ public class viewRecordFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnSearch3;
+    private javax.swing.JButton buttonExport;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JPanel jPanel1;

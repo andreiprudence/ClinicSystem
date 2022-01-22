@@ -38,7 +38,8 @@ public class deletePatientFrame extends javax.swing.JFrame {
     public deletePatientFrame() {
         initComponents();
         fetch();
-        Connection con;
+        // CODE THAT MAKES THE CELLS UNEDITABLE
+        patient_table.setDefaultEditor(Object.class, null);
     }
 
     private void updateTable() {

@@ -18,6 +18,8 @@ public class internalFrameView extends javax.swing.JInternalFrame {
      */
     public internalFrameView() {
         initComponents();
+        // CODE THAT MAKES THE CELLS UNEDITABLE
+       // med_table.setDefaultEditor(Object.class, null);
          this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         BasicInternalFrameUI ui = (BasicInternalFrameUI) this.getUI();
         ui.setNorthPane(null);
