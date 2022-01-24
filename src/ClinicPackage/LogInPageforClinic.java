@@ -118,13 +118,18 @@ public class LogInPageforClinic extends javax.swing.JFrame {
         jPanel2.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 500, 120, 30));
 
         jButton1.setBackground(new java.awt.Color(38, 133, 187));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Clear");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 630, 270, 50));
 
         loginButton.setBackground(new java.awt.Color(38, 133, 187));
-        loginButton.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        loginButton.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         loginButton.setForeground(new java.awt.Color(255, 255, 255));
         loginButton.setText("Login");
         loginButton.addActionListener(new java.awt.event.ActionListener() {
@@ -143,13 +148,13 @@ public class LogInPageforClinic extends javax.swing.JFrame {
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/Hello,  welcome_[691].png"))); // NOI18N
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, -1, -1));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Secretary", "Admin" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select Role", "Secretary", "Admin" }));
         jComboBox1.setAutoscrolls(true);
         jComboBox1.setColorArrow(new java.awt.Color(38, 133, 187));
         jComboBox1.setColorBorde(new java.awt.Color(38, 133, 187));
         jComboBox1.setColorFondo(new java.awt.Color(38, 133, 187));
         jComboBox1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jPanel2.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, 220, 40));
+        jPanel2.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, 310, 40));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/646197_cancel_close_cross_delete_remove_icon.png"))); // NOI18N
         jLabel8.setText("jLabel8");
@@ -197,8 +202,8 @@ public class LogInPageforClinic extends javax.swing.JFrame {
         DatabaseConnection connection = new DatabaseConnection();
         String query = "select * from user_info where username=? and password=?";
 
-        if (uname.equals("") || password.equals("") || role.equals("Select")) {
-            JOptionPane.showMessageDialog(rootPane, "Some fields are empty", "Error", 1);
+        if (uname.equals("") || password.equals("") || role.equals("Select Role")) {
+            JOptionPane.showMessageDialog(rootPane, "Some fields are empty", "Error", 2);
         } else {
             try {
                 con = connection.getConnection();
@@ -212,7 +217,7 @@ public class LogInPageforClinic extends javax.swing.JFrame {
                     String usernameString = rs.getString("username");
                     if (role.equalsIgnoreCase("Admin") && s1.equalsIgnoreCase("admin")) {
                         AdminMainFrame1 adminFrame = new AdminMainFrame1(usernameString);
-                        JOptionPane.showMessageDialog(rootPane, "Login successfully");
+                        JOptionPane.showMessageDialog(rootPane, "Login successful");
                         adminFrame.setVisible(true);
                         this.dispose();
                     }
@@ -240,6 +245,11 @@ public class LogInPageforClinic extends javax.swing.JFrame {
             System.exit(0);
         }
     }//GEN-LAST:event_jLabel8MouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+      textFieldUsername.setText("");
+      textFieldPassword.setText("");
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
          * @param args the command line arguments

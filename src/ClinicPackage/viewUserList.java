@@ -51,7 +51,7 @@ public class viewUserList extends javax.swing.JFrame {
         DatabaseConnection connection = new DatabaseConnection();
         con = connection.getConnection();
         try {
-            String query = "select user_ID as 'ID', last_name as 'Last Name',first_name as 'First Name', username as 'Username', birth_date as 'Birth Date', age as 'Age', contact_number as 'Phone Number', role as 'Role', address as 'Address',password as 'Password' from user_info";
+            String query = "select user_ID as 'ID', last_name as 'Last Name',first_name as 'First Name', username as 'Username', birth_date as 'Birth Date', age as 'Age', contact_number as 'Phone Number', role as 'Role', address as 'Address' from user_info";
             PreparedStatement pstmt = con.prepareStatement(query);
             ResultSet rs = pstmt.executeQuery();
             user_table.setModel(DbUtils.resultSetToTableModel(rs));
@@ -71,58 +71,47 @@ public class viewUserList extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel31 = new javax.swing.JLabel();
-        jPanel14 = new javax.swing.JPanel();
         jButton4 = new javax.swing.JButton();
         searchField = new app.bolivia.swing.JCTextField();
         rSMaterialButtonRectangle2 = new rojerusan.RSMaterialButtonRectangle();
-        buttonExport2 = new javax.swing.JButton();
-        buttonPrint = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         user_table = new rojerusan.RSTableMetro();
+        jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("View Patient Record");
         setUndecorated(true);
 
-        jPanel1.setBackground(new java.awt.Color(0, 78, 103));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(38, 133, 187), 2));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel31.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        jLabel31.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel31.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
+        jLabel31.setForeground(new java.awt.Color(38, 133, 187));
         jLabel31.setText("View User List");
-        jPanel1.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 20, -1, -1));
+        jPanel1.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 10, -1, -1));
 
-        jPanel14.setBackground(new java.awt.Color(255, 179, 68));
-
-        javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
-        jPanel14.setLayout(jPanel14Layout);
-        jPanel14Layout.setHorizontalGroup(
-            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 960, Short.MAX_VALUE)
-        );
-        jPanel14Layout.setVerticalGroup(
-            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 5, Short.MAX_VALUE)
-        );
-
-        jPanel1.add(jPanel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 960, 5));
-
-        jButton4.setText("Exit");
+        jButton4.setBackground(new java.awt.Color(255, 0, 51));
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/close.png"))); // NOI18N
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 10, 60, 30));
+        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1190, 0, 50, 40));
 
+        searchField.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(38, 133, 187)));
+        searchField.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        searchField.setOpaque(false);
         searchField.setPlaceholder("Enter ID/Last Name");
         searchField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 searchFieldKeyReleased(evt);
             }
         });
-        jPanel1.add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 80, 240, 40));
+        jPanel1.add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 70, 240, 50));
 
+        rSMaterialButtonRectangle2.setBackground(new java.awt.Color(38, 133, 187));
         rSMaterialButtonRectangle2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/1086667_deals_examine_form_list_records_icon.png"))); // NOI18N
         rSMaterialButtonRectangle2.setText("Refresh");
         rSMaterialButtonRectangle2.addActionListener(new java.awt.event.ActionListener() {
@@ -130,23 +119,7 @@ public class viewUserList extends javax.swing.JFrame {
                 rSMaterialButtonRectangle2ActionPerformed(evt);
             }
         });
-        jPanel1.add(rSMaterialButtonRectangle2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 80, 100, 40));
-
-        buttonExport2.setText("Export to .csv");
-        buttonExport2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonExport2ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(buttonExport2, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 90, -1, 30));
-
-        buttonPrint.setText("Print table");
-        buttonPrint.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonPrintActionPerformed(evt);
-            }
-        });
-        jPanel1.add(buttonPrint, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 90, -1, 30));
+        jPanel1.add(rSMaterialButtonRectangle2, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 70, 120, 50));
 
         user_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -159,6 +132,14 @@ public class viewUserList extends javax.swing.JFrame {
                 "User ID", "Last Name", "First Name", "Username", "Date of Birth", "Age", "Contact Number", "Role", "Address"
             }
         ));
+        user_table.setCellSelectionEnabled(true);
+        user_table.setColorBackgoundHead(new java.awt.Color(38, 133, 187));
+        user_table.setColorBordeFilas(new java.awt.Color(38, 133, 187));
+        user_table.setColorBordeHead(new java.awt.Color(38, 133, 187));
+        user_table.setColorFilasBackgound2(new java.awt.Color(255, 255, 255));
+        user_table.setColorFilasForeground1(new java.awt.Color(38, 133, 187));
+        user_table.setColorFilasForeground2(new java.awt.Color(38, 133, 187));
+        user_table.setColorSelBackgound(new java.awt.Color(38, 133, 187));
         user_table.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 user_tableMouseClicked(evt);
@@ -166,7 +147,22 @@ public class viewUserList extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(user_table);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 1230, 300));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 1210, 300));
+
+        jPanel2.setBackground(new java.awt.Color(255, 179, 68));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 50, 670, 3));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -200,8 +196,8 @@ public class viewUserList extends javax.swing.JFrame {
         //   String query = "select * from patient_info where patient_ID = '" + id + "'";
         String search = searchField.getText().toString();
 
-        String query = "select user_ID as 'ID', last_name as 'Last Name',first_name as 'First Name', username as 'Username', birth_date as 'Birth Date', age as 'Age', contact_number as 'Phone Number', role as 'Role', address as 'Address',password as 'Password' from user_info where user_ID= " + search;
-        String query2 = "select user_ID as 'ID', last_name as 'Last Name',first_name as 'First Name', username as 'Username', birth_date as 'Birth Date', age as 'Age', contact_number as 'Phone Number', role as 'Role', address as 'Address',password as 'Password' from user_info where last_name like '%" + search + "%'";
+        String query = "select user_ID as 'ID', last_name as 'Last Name',first_name as 'First Name', username as 'Username', birth_date as 'Birth Date', age as 'Age', contact_number as 'Phone Number', role as 'Role', address as 'Address' from user_info where user_ID= " + search;
+        String query2 = "select user_ID as 'ID', last_name as 'Last Name',first_name as 'First Name', username as 'Username', birth_date as 'Birth Date', age as 'Age', contact_number as 'Phone Number', role as 'Role', address as 'Address' from user_info where last_name like '%" + search + "%'";
 
         //String query3 = "select * from patient_info where patient_firstname like '%" + search + "%'";
         try {
@@ -247,53 +243,6 @@ public class viewUserList extends javax.swing.JFrame {
         fetch();
     }//GEN-LAST:event_rSMaterialButtonRectangle2ActionPerformed
 
-    private void buttonExport2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonExport2ActionPerformed
-        JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setDialogTitle("Select file location");
-        int userSelection = fileChooser.showSaveDialog(this);
-        if (userSelection == JFileChooser.APPROVE_OPTION) {
-            File fileToSave = fileChooser.getSelectedFile();
-            //lets write to file
-
-            try {
-                FileWriter fw = new FileWriter(fileToSave);
-                BufferedWriter bw = new BufferedWriter(fw);
-                for (int i = 0; i < user_table.getRowCount();
-                    i++) {
-                    for (int j = 0; j < user_table.getColumnCount();
-                        j++) {
-                        //write
-                        bw.write(user_table.getValueAt(i, j).toString() + ",");
-                    }
-                    bw.newLine();//record per line
-                }
-                JOptionPane.showMessageDialog(this, "File created successfully", "INFORMATION", JOptionPane.INFORMATION_MESSAGE);
-                bw.close();
-                fw.close();
-            } catch (IOException ex) {
-                JOptionPane.showMessageDialog(this, "ERROR", "ERROR MESSAGE", JOptionPane.ERROR_MESSAGE);
-            }
-
-        }
-    }//GEN-LAST:event_buttonExport2ActionPerformed
-
-    private void buttonPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPrintActionPerformed
-        try {
-            MessageFormat header = new MessageFormat("C.A.R.E.S Clinic and Laboratory - La Union");
-            MessageFormat footer = new MessageFormat("C.A.R.E.S Clinic and Laboratory - La Union");
-            //
-            //        try {
-                //            patient_table.print(JTable.PrintMode.NORMAL, header, footer);
-                //        } catch (Exception e) {
-                //            JOptionPane.showMessageDialog(this, e);
-                //        }
-
-            user_table.print(JTable.PrintMode.NORMAL, null, footer);
-        } catch (PrinterException ex) {
-            Logger.getLogger(viewRecordFrame.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_buttonPrintActionPerformed
-
     private void user_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_user_tableMouseClicked
         DefaultTableModel model = (DefaultTableModel) user_table.getModel();
         int selectedRow = user_table.getSelectedRow();
@@ -309,10 +258,10 @@ public class viewUserList extends javax.swing.JFrame {
         PhoneNo = model.getValueAt(selectedRow, 6).toString();
         role = model.getValueAt(selectedRow, 7).toString();
         address = model.getValueAt(selectedRow, 8).toString();
-        password = model.getValueAt(selectedRow, 9).toString();
+       // password = model.getValueAt(selectedRow, 9).toString();
 
         displayDataToFrameforUserList dataToFrame = new displayDataToFrameforUserList();
-        dataToFrame.GetInfo(id, lastName, firstName, userName, birthDate, age, PhoneNo, role, address, password);
+        dataToFrame.GetInfo(id, lastName, firstName, userName, birthDate, age, PhoneNo, role, address);
         dataToFrame.setVisible(true);
     }//GEN-LAST:event_user_tableMouseClicked
 
@@ -361,12 +310,10 @@ public class viewUserList extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton buttonExport2;
-    private javax.swing.JButton buttonPrint;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel14;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
     private rojerusan.RSMaterialButtonRectangle rSMaterialButtonRectangle2;
     private app.bolivia.swing.JCTextField searchField;

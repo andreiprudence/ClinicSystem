@@ -42,7 +42,7 @@ public class UpdateMedicineFrame extends javax.swing.JFrame {
         DatabaseConnection connection = new DatabaseConnection();
         con = connection.getConnection();
         try {
-            String query = "select medicine_no as 'Medicine ID', medicine_name as 'Name', medicine_price as 'Price', medicine_expiry as 'Expiry Date' from medicine_info";
+            String query = "select medicine_no as 'Medicine ID', medicine_name as 'Name', medicine_price as 'Price', medicine_expiry as 'Expiry Date', quantity as 'Quantity' from medicine_info";
             PreparedStatement pstmt = con.prepareStatement(query);
             ResultSet rs = pstmt.executeQuery();
             medicine_table.setModel(DbUtils.resultSetToTableModel(rs));
@@ -92,6 +92,8 @@ public class UpdateMedicineFrame extends javax.swing.JFrame {
         medicine_table = new rojerusan.RSTableMetro();
         searchField = new app.bolivia.swing.JCTextField();
         jPanel14 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        jSpinnerQuantity = new javax.swing.JSpinner();
 
         setUndecorated(true);
         setResizable(false);
@@ -130,8 +132,8 @@ public class UpdateMedicineFrame extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(38, 133, 187));
-        jLabel5.setText("Expiry:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 290, -1, -1));
+        jLabel5.setText("Quantity:");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 340, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(38, 133, 187));
@@ -172,7 +174,7 @@ public class UpdateMedicineFrame extends javax.swing.JFrame {
                 btnCancelActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 370, 120, 50));
+        jPanel1.add(btnCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 390, 120, 50));
 
         btnDeleteRec.setBackground(new java.awt.Color(0, 166, 89));
         btnDeleteRec.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
@@ -184,7 +186,7 @@ public class UpdateMedicineFrame extends javax.swing.JFrame {
                 btnDeleteRecActionPerformed(evt);
             }
         });
-        jPanel1.add(btnDeleteRec, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 370, 130, 50));
+        jPanel1.add(btnDeleteRec, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 390, 130, 50));
 
         btnBack.setBackground(new java.awt.Color(255, 0, 51));
         btnBack.setFont(new java.awt.Font("Gadugi", 1, 11)); // NOI18N
@@ -246,6 +248,12 @@ public class UpdateMedicineFrame extends javax.swing.JFrame {
 
         jPanel1.add(jPanel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 60, 550, 3));
 
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(38, 133, 187));
+        jLabel7.setText("Expiry:");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 290, -1, -1));
+        jPanel1.add(jSpinnerQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 340, 50, 30));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -274,6 +282,7 @@ public class UpdateMedicineFrame extends javax.swing.JFrame {
             textMedicineName.setText("");
             textMedID.setText("");
             expiryDate.setCalendar(null);
+            jSpinnerQuantity.setValue(0);
 
         }
     }//GEN-LAST:event_btnCancelActionPerformed
@@ -290,15 +299,17 @@ public class UpdateMedicineFrame extends javax.swing.JFrame {
         String medicineID = textMedID.getText();
         String medicineName = textMedicineName.getText();
         String medicinePrice = textMedicinePrice.getText();
+        String quantity = jSpinnerQuantity.getValue().toString();
         if (msg == JOptionPane.YES_OPTION) {
             try {
-                String query = "update medicine_info set medicine_no=?, medicine_name=?, medicine_price=?, medicine_expiry=? where medicine_no='" + medicineID + "' ";
+                String query = "update medicine_info set medicine_no=?, medicine_name=?, medicine_price=?, medicine_expiry=?, quantity=? where medicine_no='" + medicineID + "' ";
 
                 PreparedStatement pst = con.prepareStatement(query);
                 pst.setString(1, medicineID);
                 pst.setString(2, medicineName);
                 pst.setString(3, medicinePrice);
                 pst.setString(4, expirydate);
+                pst.setString(5, quantity);
                 pst.executeUpdate();
                 JOptionPane.showMessageDialog(this, "Update Successful!");
                 updateTable();
@@ -457,10 +468,12 @@ public class UpdateMedicineFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSpinner jSpinnerQuantity;
     private static rojerusan.RSTableMetro medicine_table;
     private app.bolivia.swing.JCTextField searchField;
     private app.bolivia.swing.JCTextField textMedID;

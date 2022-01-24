@@ -95,16 +95,9 @@ public class deleteUserFrame extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         textAge = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
         clearButton = new javax.swing.JButton();
         updateButton = new javax.swing.JButton();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel19 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
-        textConfirmPassword = new javax.swing.JPasswordField();
-        textPassword = new javax.swing.JPasswordField();
         jLabel22 = new javax.swing.JLabel();
-        textUserID = new javax.swing.JTextField();
         birthDate = new com.toedter.calendar.JDateChooser();
         jLabel15 = new javax.swing.JLabel();
         textUsername = new javax.swing.JTextField();
@@ -114,19 +107,22 @@ public class deleteUserFrame extends javax.swing.JFrame {
         searchField = new app.bolivia.swing.JCTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         user_table = new rojerusan.RSTableMetro();
+        jButton4 = new javax.swing.JButton();
+        textUserID = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Update Patient Record");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setUndecorated(true);
 
-        jPanel1.setBackground(new java.awt.Color(0, 78, 103));
-        jPanel1.setPreferredSize(new java.awt.Dimension(1280, 900));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(38, 133, 187)));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1200, 900));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Delete User Record");
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(38, 133, 187));
+        jLabel1.setText("DELETE USER RECORD");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
         jPanel2.setBackground(new java.awt.Color(255, 179, 68));
@@ -139,45 +135,69 @@ public class deleteUserFrame extends javax.swing.JFrame {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 10, Short.MAX_VALUE)
+            .addGap(0, 3, Short.MAX_VALUE)
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 660, 10));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 660, 3));
 
-        jLabel3.setFont(new java.awt.Font("Cambria", 1, 16)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Last Name");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(38, 133, 187));
+        jLabel3.setText("Last Name:");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, -1, -1));
+
+        textLastName.setEditable(false);
+        textLastName.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        textLastName.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(38, 133, 187)));
+        textLastName.setOpaque(false);
         jPanel1.add(textLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, 210, 30));
 
-        jLabel4.setFont(new java.awt.Font("Cambria", 1, 16)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("First Name");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(38, 133, 187));
+        jLabel4.setText("First Name:");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, -1, -1));
+
+        textFirstName.setEditable(false);
+        textFirstName.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        textFirstName.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(38, 133, 187)));
+        textFirstName.setOpaque(false);
         jPanel1.add(textFirstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, 210, 30));
 
-        jLabel9.setFont(new java.awt.Font("Cambria", 1, 16)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(38, 133, 187));
         jLabel9.setText("Role:");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 180, -1, 30));
-        jPanel1.add(textPhoneNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 120, 240, 30));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 180, -1, 30));
 
-        jLabel5.setFont(new java.awt.Font("Cambria", 1, 16)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Address");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, -1, 30));
-        jPanel1.add(textAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 320, 480, 30));
+        textPhoneNo.setEditable(false);
+        textPhoneNo.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        textPhoneNo.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(38, 133, 187)));
+        textPhoneNo.setOpaque(false);
+        jPanel1.add(textPhoneNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 120, 240, 30));
 
-        jLabel7.setFont(new java.awt.Font("Cambria", 1, 16)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Date of Birth");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 100, 20));
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(38, 133, 187));
+        jLabel5.setText("Address:");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 320, -1, 30));
 
-        jLabel10.setFont(new java.awt.Font("Cambria", 1, 16)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        textAddress.setEditable(false);
+        textAddress.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        textAddress.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(38, 133, 187)));
+        textAddress.setOpaque(false);
+        jPanel1.add(textAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 320, 480, 30));
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(38, 133, 187));
+        jLabel7.setText("Date of Birth:");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 110, 20));
+
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(38, 133, 187));
         jLabel10.setText("Age");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 260, -1, 40));
 
+        textAge.setEditable(false);
+        textAge.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        textAge.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(38, 133, 187)));
+        textAge.setOpaque(false);
         textAge.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textAgeActionPerformed(evt);
@@ -185,62 +205,36 @@ public class deleteUserFrame extends javax.swing.JFrame {
         });
         jPanel1.add(textAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 270, 40, 30));
 
-        jButton1.setText("Exit");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1230, 0, 60, 30));
-
         clearButton.setBackground(new java.awt.Color(255, 51, 51));
-        clearButton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        clearButton.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         clearButton.setForeground(new java.awt.Color(255, 255, 255));
         clearButton.setText("Clear");
         clearButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel1.add(clearButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 390, 100, 50));
+        clearButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        clearButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clearButtonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(clearButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 400, 110, 50));
 
         updateButton.setBackground(new java.awt.Color(0, 153, 51));
-        updateButton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        updateButton.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         updateButton.setForeground(new java.awt.Color(255, 255, 255));
         updateButton.setText("Delete");
         updateButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        updateButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         updateButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 updateButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(updateButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 390, 110, 50));
+        jPanel1.add(updateButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 400, 120, 50));
 
-        jPanel4.setBackground(new java.awt.Color(0, 78, 103));
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Change password", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 11), new java.awt.Color(255, 255, 255))); // NOI18N
-        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel19.setFont(new java.awt.Font("Cambria", 1, 16)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel19.setText("New Password:");
-        jPanel4.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, 30));
-
-        jLabel21.setFont(new java.awt.Font("Cambria", 1, 16)); // NOI18N
-        jLabel21.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel21.setText("Old Password:");
-        jPanel4.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 120, 30));
-
-        textConfirmPassword.setText("jPasswordField1");
-        jPanel4.add(textConfirmPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, 330, 30));
-
-        textPassword.setText("jPasswordField1");
-        jPanel4.add(textPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, 330, 30));
-
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 100, 550, 140));
-
-        jLabel22.setFont(new java.awt.Font("Cambria", 1, 16)); // NOI18N
-        jLabel22.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel22.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(38, 133, 187));
         jLabel22.setText("User ID:");
-        jPanel1.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
-
-        textUserID.setEnabled(false);
-        jPanel1.add(textUserID, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, 120, 30));
+        jPanel1.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, -1, -1));
 
         birthDate.setDateFormatString("dd/MM/yyyy");
         birthDate.addAncestorListener(new javax.swing.event.AncestorListener() {
@@ -271,36 +265,47 @@ public class deleteUserFrame extends javax.swing.JFrame {
         });
         jPanel1.add(birthDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 270, 250, 30));
 
-        jLabel15.setFont(new java.awt.Font("Cambria", 1, 16)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(38, 133, 187));
         jLabel15.setText("Username:");
-        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, -1));
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, -1, -1));
+
+        textUsername.setEditable(false);
+        textUsername.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        textUsername.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(38, 133, 187)));
+        textUsername.setOpaque(false);
         jPanel1.add(textUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 210, 210, 30));
 
-        jLabel20.setFont(new java.awt.Font("Cambria", 1, 16)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel20.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(38, 133, 187));
         jLabel20.setText("Phone Number");
         jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 120, -1, 30));
 
-        comboRole.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Secretary", "Admin", "Doctor" }));
-        jPanel1.add(comboRole, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 180, 150, -1));
+        comboRole.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Secretary", "Admin" }));
+        comboRole.setColorArrow(new java.awt.Color(38, 133, 187));
+        comboRole.setColorBorde(new java.awt.Color(38, 133, 187));
+        comboRole.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jPanel1.add(comboRole, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 172, 170, 40));
 
         rSMaterialButtonRectangle2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/1086667_deals_examine_form_list_records_icon.png"))); // NOI18N
-        rSMaterialButtonRectangle2.setText("Show All");
+        rSMaterialButtonRectangle2.setText("REFRESH");
         rSMaterialButtonRectangle2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rSMaterialButtonRectangle2ActionPerformed(evt);
             }
         });
-        jPanel1.add(rSMaterialButtonRectangle2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 390, 100, 40));
+        jPanel1.add(rSMaterialButtonRectangle2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 400, 120, 50));
 
-        searchField.setPlaceholder("Enter ID/Last Name");
+        searchField.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(38, 133, 187)));
+        searchField.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        searchField.setOpaque(false);
+        searchField.setPlaceholder("Enter Last Name...");
         searchField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 searchFieldKeyReleased(evt);
             }
         });
-        jPanel1.add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, 240, 40));
+        jPanel1.add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, 240, 50));
 
         user_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -313,6 +318,10 @@ public class deleteUserFrame extends javax.swing.JFrame {
                 "User ID", "Last Name", "First Name", "Username", "Date of Birth", "Age", "Contact Number", "Role", "Address"
             }
         ));
+        user_table.setColorBordeFilas(new java.awt.Color(38, 133, 187));
+        user_table.setColorBordeHead(new java.awt.Color(38, 133, 187));
+        user_table.setColorFilasBackgound2(new java.awt.Color(255, 255, 255));
+        user_table.setRowHeight(25);
         user_table.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 user_tableMouseClicked(evt);
@@ -325,26 +334,38 @@ public class deleteUserFrame extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(user_table);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 460, 1270, 360));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 460, 1080, 280));
+
+        jButton4.setBackground(new java.awt.Color(255, 0, 51));
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/close.png"))); // NOI18N
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 0, 50, 40));
+
+        textUserID.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        textUserID.setForeground(new java.awt.Color(51, 255, 0));
+        jPanel1.add(textUserID, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, 170, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1314, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1090, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 756, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(4, 4, 4))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
        Connection con;
@@ -372,7 +393,7 @@ public class deleteUserFrame extends javax.swing.JFrame {
             textAddress.setText("");
             textUserID.setText("");
             textUsername.setText("");
-            textPassword.setText("");
+           // textPassword.setText("");
 
 
         } catch (SQLException ex) {
@@ -498,7 +519,7 @@ public class deleteUserFrame extends javax.swing.JFrame {
                 textPhoneNo.setText(rs.getString("contact_number"));
                 textAddress.setText(rs.getString("address"));
                 textUsername.setText(rs.getString("username"));
-                textPassword.setText(rs.getString("password"));
+
             }
         } catch (SQLException ex) {
             Logger.getLogger(updatePatientFrame.class.getName()).log(Level.SEVERE, null, ex);
@@ -545,7 +566,7 @@ public class deleteUserFrame extends javax.swing.JFrame {
                 textPhoneNo.setText(rs.getString("contact_number"));
                 textAddress.setText(rs.getString("address"));
                 textUsername.setText(rs.getString("username"));
-                textPassword.setText(rs.getString("password"));
+          //      textPassword.setText(rs.getString("password"));
             }
         } catch (SQLException ex) {
             Logger.getLogger(updatePatientFrame.class.getName()).log(Level.SEVERE, null, ex);
@@ -565,6 +586,25 @@ public class deleteUserFrame extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_user_tableKeyReleased
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void clearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearButtonActionPerformed
+       int msg = JOptionPane.showConfirmDialog(this, "Are you sure you want to clear all fields?", "Message", JOptionPane.WARNING_MESSAGE);
+
+       if(msg == 0){
+           textUserID.setText("");
+           textLastName.setText("");
+           textFirstName.setText("");
+           textAge.setText("");
+           textPhoneNo.setText("");
+           textAddress.setText("");
+           textUsername.setText("");
+           birthDate.setCalendar(null);
+       }
+    }//GEN-LAST:event_clearButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -608,13 +648,11 @@ public class deleteUserFrame extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser birthDate;
     private javax.swing.JButton clearButton;
     private rojerusan.RSComboMetro comboRole;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -623,18 +661,15 @@ public class deleteUserFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane2;
     private rojerusan.RSMaterialButtonRectangle rSMaterialButtonRectangle2;
     private app.bolivia.swing.JCTextField searchField;
     private javax.swing.JTextField textAddress;
     private javax.swing.JTextField textAge;
-    private javax.swing.JPasswordField textConfirmPassword;
     private javax.swing.JTextField textFirstName;
     private javax.swing.JTextField textLastName;
-    private javax.swing.JPasswordField textPassword;
     private javax.swing.JTextField textPhoneNo;
-    private javax.swing.JTextField textUserID;
+    private javax.swing.JLabel textUserID;
     private javax.swing.JTextField textUsername;
     private javax.swing.JButton updateButton;
     private rojerusan.RSTableMetro user_table;

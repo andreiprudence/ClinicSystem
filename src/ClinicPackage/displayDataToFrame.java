@@ -118,7 +118,7 @@ public class displayDataToFrame extends javax.swing.JFrame {
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(38, 133, 187), 2, true));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel31.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel31.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
         jLabel31.setForeground(new java.awt.Color(38, 133, 187));
         jLabel31.setText("PATIENT RECORD");
         jPanel1.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 10, -1, -1));

@@ -91,11 +91,11 @@ public class internalFrameDashboard extends javax.swing.JInternalFrame {
 
             DatabaseConnection connection = new DatabaseConnection();
             con = connection.getConnection();
-            String query = "select medicine_name ,count(*) as medicine_count from medicine_info group by medicine_name";
+            String query = "select medicine_name ,count(*) as quantity_count from medicine_info group by quantity";
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(query);
             while (rs.next()) {
-                barDataset.setValue(rs.getString("medicine_name"), new Double(rs.getDouble("medicine_count")));
+                barDataset.setValue(rs.getString("medicine_name"), new Double(rs.getDouble("quantity_count")));
             }
 
             //create chart
@@ -191,7 +191,7 @@ public class internalFrameDashboard extends javax.swing.JInternalFrame {
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, 30));
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 10, 330, 40));
 
-        jPanel3.setBackground(new java.awt.Color(102, 255, 102));
+        jPanel3.setBackground(new java.awt.Color(0, 204, 0));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         medicineNumber.setFont(new java.awt.Font("Segoe UI Black", 1, 48)); // NOI18N

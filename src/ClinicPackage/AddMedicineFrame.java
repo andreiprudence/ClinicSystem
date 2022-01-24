@@ -69,6 +69,8 @@ public class AddMedicineFrame extends javax.swing.JFrame {
         btnAddRec = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
         jPanel14 = new javax.swing.JPanel();
+        jSpinnerQuantity = new javax.swing.JSpinner();
+        jLabel7 = new javax.swing.JLabel();
 
         setUndecorated(true);
         setResizable(false);
@@ -98,23 +100,23 @@ public class AddMedicineFrame extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(38, 133, 187));
         jLabel3.setText("Medicine ID: ");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 100, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(38, 133, 187));
         jLabel4.setText("Medicine Name:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(38, 133, 187));
         jLabel5.setText("Expiry:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 250, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 240, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(38, 133, 187));
         jLabel6.setText("Medicine Price:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, -1, -1));
-        jPanel1.add(expiryDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 250, 270, 30));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, -1, -1));
+        jPanel1.add(expiryDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 240, 270, 30));
 
         textMedicineName.setPlaceholder("Enter Name...");
         textMedicineName.addActionListener(new java.awt.event.ActionListener() {
@@ -122,13 +124,13 @@ public class AddMedicineFrame extends javax.swing.JFrame {
                 textMedicineNameActionPerformed(evt);
             }
         });
-        jPanel1.add(textMedicineName, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, 270, -1));
+        jPanel1.add(textMedicineName, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 140, 270, -1));
 
         textMedicinePrice.setPlaceholder("Enter Price...");
-        jPanel1.add(textMedicinePrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, 270, -1));
+        jPanel1.add(textMedicinePrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 190, 270, -1));
 
         textMedID.setPlaceholder("Enter ID...");
-        jPanel1.add(textMedID, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, 270, -1));
+        jPanel1.add(textMedID, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, 270, -1));
 
         btnCancel.setBackground(new java.awt.Color(255, 0, 51));
         btnCancel.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
@@ -140,7 +142,7 @@ public class AddMedicineFrame extends javax.swing.JFrame {
                 btnCancelActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 320, 120, 50));
+        jPanel1.add(btnCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 330, 120, 50));
 
         btnAddRec.setBackground(new java.awt.Color(0, 166, 89));
         btnAddRec.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
@@ -152,7 +154,7 @@ public class AddMedicineFrame extends javax.swing.JFrame {
                 btnAddRecActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAddRec, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 320, 120, 50));
+        jPanel1.add(btnAddRec, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 330, 120, 50));
 
         btnBack.setBackground(new java.awt.Color(255, 0, 51));
         btnBack.setFont(new java.awt.Font("Gadugi", 1, 11)); // NOI18N
@@ -178,6 +180,12 @@ public class AddMedicineFrame extends javax.swing.JFrame {
         );
 
         jPanel1.add(jPanel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 550, 3));
+        jPanel1.add(jSpinnerQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 280, 70, 30));
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(38, 133, 187));
+        jLabel7.setText("Quantity:");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 290, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -215,11 +223,27 @@ public class AddMedicineFrame extends javax.swing.JFrame {
         Connection con;
         DatabaseConnection connection = new DatabaseConnection();
         con = connection.getConnection();
-        String query = "insert into medicine_info(medicine_no, medicine_name, medicine_price, medicine_expiry) values (?,?,?,?)";
+        String query = "insert into medicine_info(medicine_no, medicine_name, medicine_price, medicine_expiry, quantity) values (?,?,?,?,?)";
         int msg = JOptionPane.showConfirmDialog(this, "Save record?");
 
         if (msg == JOptionPane.YES_OPTION) {
            try {
+               if (textMedID.getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(this, "Please fill in all the fields");
+                    return;
+                }
+                if (textMedicineName.getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(this, "Please fill in all the fields");
+                    return;
+                }
+                if (textMedicinePrice.getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(this, "Please fill in all the fields");
+                    return;
+                }
+                if (this.expiryDate.getDate() != null) {
+                    JOptionPane.showMessageDialog(this, "Enter an expiry date");
+                    return;
+                }
                 PreparedStatement pstmt = con.prepareStatement(query);
                 pstmt.setString(1, textMedID.getText());
                 pstmt.setString(2, textMedicineName.getText());
@@ -229,7 +253,7 @@ public class AddMedicineFrame extends javax.swing.JFrame {
                 String d = sdf.format(expiryDate.getDate());
                 pstmt.setString(4, d);
                 //end of date conversion
-
+                pstmt.setString(5, jSpinnerQuantity.getValue().toString());
                 int success = pstmt.executeUpdate();
 
                 if (success == 1) {
@@ -316,9 +340,11 @@ public class AddMedicineFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JSpinner jSpinnerQuantity;
     private app.bolivia.swing.JCTextField textMedID;
     private app.bolivia.swing.JCTextField textMedicineName;
     private app.bolivia.swing.JCTextField textMedicinePrice;

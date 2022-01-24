@@ -42,7 +42,7 @@ public class internalFrameMedicine extends javax.swing.JInternalFrame {
         DatabaseConnection connection = new DatabaseConnection();
         con = connection.getConnection();
         try {
-            String query = "select medicine_no as 'Medicine ID', medicine_name as 'Name', medicine_price as 'Price', medicine_expiry as 'Expiry Date' from medicine_info";
+            String query = "select medicine_no as 'Medicine ID', medicine_name as 'Name', medicine_price as 'Price', medicine_expiry as 'Expiry Date', quantity as 'Quantity' from medicine_info";
             PreparedStatement pstmt = con.prepareStatement(query);
             ResultSet rs = pstmt.executeQuery();
             medicine_table.setModel(DbUtils.resultSetToTableModel(rs));
@@ -221,8 +221,8 @@ public class internalFrameMedicine extends javax.swing.JInternalFrame {
         //   String query = "select * from patient_info where patient_ID = '" + id + "'";
         String search = searchField.getText();
 
-        String query = "select medicine_no as 'Medicine ID', medicine_name as 'Name', medicine_price as 'Price', medicine_expiry as 'Expiry Date' from medicine_info where medicine_no= " + search;
-        String query2 = "select medicine_no as 'Medicine ID', medicine_name as 'Name', medicine_price as 'Price', medicine_expiry as 'Expiry Date' from medicine_info where medicine_name like '%" + search + "%'";
+        String query = "select medicine_no as 'Medicine ID', medicine_name as 'Name', medicine_price as 'Price', medicine_expiry as 'Expiry Date', quantity as 'Quantity' from medicine_info where medicine_no= " + search;
+        String query2 = "select medicine_no as 'Medicine ID', medicine_name as 'Name', medicine_price as 'Price', medicine_expiry as 'Expiry Date', quantity as 'Quantity' from medicine_info where medicine_name like '%" + search + "%'";
         //String query3 = "select * from patient_info where patient_firstname like '%" + search + "%'";
         try {
             if (search.matches("^[0-9]+$")) {
