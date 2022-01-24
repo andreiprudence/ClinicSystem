@@ -5,13 +5,23 @@
  */
 package ClinicPackage;
 
+import java.awt.print.PrinterException;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.MessageFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import javax.swing.table.DefaultTableModel;
 import net.proteanit.sql.DbUtils;
 
 /**
@@ -19,19 +29,22 @@ import net.proteanit.sql.DbUtils;
  * @author andre
  */
 public class internalFrameUserList extends javax.swing.JInternalFrame {
+
     PreparedStatement pst;
     ResultSet rs;
     Connection con;
+
     /**
      * Creates new form internalFrameMedicine
      */
     public internalFrameUserList() {
         initComponents();
         fetch();
-         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         BasicInternalFrameUI ui = (BasicInternalFrameUI) this.getUI();
         ui.setNorthPane(null);
     }
+
     public void fetch() {
         Connection con;
 
@@ -44,21 +57,20 @@ public class internalFrameUserList extends javax.swing.JInternalFrame {
             user_table.setModel(DbUtils.resultSetToTableModel(rs));
         } catch (SQLException ex) {
             Logger.getLogger(updatePatientFrame.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                rs.close();
+            } catch (Exception e) {
+                /* Ignored */ }
+            try {
+                pst.close();
+            } catch (Exception e) {
+                /* Ignored */ }
+            try {
+                con.close();
+            } catch (Exception e) {
+                /* Ignored */ }
         }
-    finally {
-                try {
-                    rs.close();
-                } catch (Exception e) {
-                    /* Ignored */ }
-                try {
-                    pst.close();
-                } catch (Exception e) {
-                    /* Ignored */ }
-                try {
-                    con.close();
-                } catch (Exception e) {
-                    /* Ignored */ }
-            }
 
     }
 
@@ -80,6 +92,9 @@ public class internalFrameUserList extends javax.swing.JInternalFrame {
         searchField = new app.bolivia.swing.JCTextField();
         btnUpdateMedicine = new rojerusan.RSMaterialButtonRectangle();
         btnRemoveMedicine = new rojerusan.RSMaterialButtonRectangle();
+        buttonExport2 = new javax.swing.JButton();
+        buttonPrint = new javax.swing.JButton();
+        btnRemoveMedicine1 = new rojerusan.RSMaterialButtonRectangle();
 
         setPreferredSize(new java.awt.Dimension(1060, 620));
         setRequestFocusEnabled(false);
@@ -126,6 +141,11 @@ public class internalFrameUserList extends javax.swing.JInternalFrame {
                 "User ID", "Last Name", "First Name", "Username", "Date of Birth", "Age", "Contact Number", "Role", "Address"
             }
         ));
+        user_table.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                user_tableMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(user_table);
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 130, 810, -1));
@@ -154,6 +174,30 @@ public class internalFrameUserList extends javax.swing.JInternalFrame {
         });
         jPanel1.add(btnRemoveMedicine, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 210, 70));
 
+        buttonExport2.setText("Export to .csv");
+        buttonExport2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonExport2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(buttonExport2, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 80, -1, 30));
+
+        buttonPrint.setText("Print table");
+        buttonPrint.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonPrintActionPerformed(evt);
+            }
+        });
+        jPanel1.add(buttonPrint, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 80, -1, 30));
+
+        btnRemoveMedicine1.setText("VIEW USER RECORD");
+        btnRemoveMedicine1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRemoveMedicine1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnRemoveMedicine1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 390, 210, 70));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -180,25 +224,22 @@ public class internalFrameUserList extends javax.swing.JInternalFrame {
 //        int row = patient_table.getSelectedRow();
 //        DefaultTableModel model = (DefaultTableModel) patient_table.getModel();
 //        String id = (String) model.getValueAt(row, 0);
-
         //   String query = "select * from patient_info where patient_ID = '" + id + "'";
         String search = searchField.getText().toString();
 
         String query = "select user_ID as 'User ID', last_name as 'Last Name', first_name as 'First Name', username as 'Username', contact_number as 'Contact Number', role as 'Role' from user_info where user_ID= " + search;
         String query2 = "select user_ID as 'User ID', last_name as 'Last Name', first_name as 'First Name', username as 'Username', contact_number as 'Contact Number', role as 'Role' from user_info where last_name like '%" + search + "%'";
 
-
         //String query3 = "select * from patient_info where patient_firstname like '%" + search + "%'";
         try {
-            if(search.matches("CS")){
+            if (search.matches("CS")) {
 //            if (search.matches("^[0-9]+$")) {
 
                 pst = con.prepareStatement(query);
                 rs = pst.executeQuery();
                 user_table.setModel(DbUtils.resultSetToTableModel(rs));
 
-            }
-            else{
+            } else {
 
                 pst = con.prepareStatement(query2);
                 rs = pst.executeQuery();
@@ -237,10 +278,68 @@ public class internalFrameUserList extends javax.swing.JInternalFrame {
         new deleteUserFrame().setVisible(true);
     }//GEN-LAST:event_btnRemoveMedicineActionPerformed
 
+    private void buttonExport2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonExport2ActionPerformed
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Select file location");
+        int userSelection = fileChooser.showSaveDialog(this);
+        if (userSelection == JFileChooser.APPROVE_OPTION) {
+            File fileToSave = fileChooser.getSelectedFile();
+            //lets write to file
+
+            try {
+                FileWriter fw = new FileWriter(fileToSave);
+                BufferedWriter bw = new BufferedWriter(fw);
+                for (int i = 0; i < user_table.getRowCount();
+                        i++) {
+                    for (int j = 0; j < user_table.getColumnCount();
+                            j++) {
+                        //write
+                        bw.write(user_table.getValueAt(i, j).toString() + ",");
+                    }
+                    bw.newLine();//record per line
+                }
+                JOptionPane.showMessageDialog(this, "File created successfully", "INFORMATION", JOptionPane.INFORMATION_MESSAGE);
+                bw.close();
+                fw.close();
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(this, "ERROR", "ERROR MESSAGE", JOptionPane.ERROR_MESSAGE);
+            }
+
+        }
+    }//GEN-LAST:event_buttonExport2ActionPerformed
+
+    private void buttonPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPrintActionPerformed
+        try {
+            MessageFormat header = new MessageFormat("C.A.R.E.S Clinic and Laboratory - La Union");
+            MessageFormat footer = new MessageFormat("C.A.R.E.S Clinic and Laboratory - La Union");
+            //
+            //        try {
+            //            patient_table.print(JTable.PrintMode.NORMAL, header, footer);
+            //        } catch (Exception e) {
+            //            JOptionPane.showMessageDialog(this, e);
+            //        }
+
+            user_table.print(JTable.PrintMode.NORMAL, null, footer);
+        } catch (PrinterException ex) {
+            Logger.getLogger(viewRecordFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_buttonPrintActionPerformed
+
+    private void user_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_user_tableMouseClicked
+    
+    }//GEN-LAST:event_user_tableMouseClicked
+
+    private void btnRemoveMedicine1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveMedicine1ActionPerformed
+        new viewUserList().setVisible(true);
+    }//GEN-LAST:event_btnRemoveMedicine1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private rojerusan.RSMaterialButtonRectangle btnRemoveMedicine;
+    private rojerusan.RSMaterialButtonRectangle btnRemoveMedicine1;
     private rojerusan.RSMaterialButtonRectangle btnUpdateMedicine;
+    private javax.swing.JButton buttonExport2;
+    private javax.swing.JButton buttonPrint;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

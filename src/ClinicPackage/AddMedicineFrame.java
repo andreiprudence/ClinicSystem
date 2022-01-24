@@ -68,11 +68,13 @@ public class AddMedicineFrame extends javax.swing.JFrame {
         btnCancel = new javax.swing.JButton();
         btnAddRec = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
+        jPanel14 = new javax.swing.JPanel();
 
         setUndecorated(true);
         setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(0, 78, 103));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(38, 133, 187)));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -88,30 +90,31 @@ public class AddMedicineFrame extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 530, -1));
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        jLabel1.setText("ADD MEDICINE");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, -1, 50));
+        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(38, 133, 187));
+        jLabel1.setText("ADD MEDICINE RECORD");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, -1, 50));
 
-        jLabel3.setFont(new java.awt.Font("Cambria", 1, 16)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(38, 133, 187));
         jLabel3.setText("Medicine ID: ");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 100, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Cambria", 1, 16)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(38, 133, 187));
         jLabel4.setText("Medicine Name:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, -1, -1));
 
-        jLabel5.setFont(new java.awt.Font("Cambria", 1, 16)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(38, 133, 187));
         jLabel5.setText("Expiry:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 250, -1, -1));
 
-        jLabel6.setFont(new java.awt.Font("Cambria", 1, 16)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(38, 133, 187));
         jLabel6.setText("Medicine Price:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
-        jPanel1.add(expiryDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 240, 230, 30));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, -1, -1));
+        jPanel1.add(expiryDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 250, 270, 30));
 
         textMedicineName.setPlaceholder("Enter Name...");
         textMedicineName.addActionListener(new java.awt.event.ActionListener() {
@@ -119,13 +122,13 @@ public class AddMedicineFrame extends javax.swing.JFrame {
                 textMedicineNameActionPerformed(evt);
             }
         });
-        jPanel1.add(textMedicineName, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, 230, -1));
+        jPanel1.add(textMedicineName, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, 270, -1));
 
         textMedicinePrice.setPlaceholder("Enter Price...");
-        jPanel1.add(textMedicinePrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, 230, -1));
+        jPanel1.add(textMedicinePrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, 270, -1));
 
         textMedID.setPlaceholder("Enter ID...");
-        jPanel1.add(textMedID, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, 230, -1));
+        jPanel1.add(textMedID, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, 270, -1));
 
         btnCancel.setBackground(new java.awt.Color(255, 0, 51));
         btnCancel.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
@@ -137,7 +140,7 @@ public class AddMedicineFrame extends javax.swing.JFrame {
                 btnCancelActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 300, 120, 50));
+        jPanel1.add(btnCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 320, 120, 50));
 
         btnAddRec.setBackground(new java.awt.Color(0, 166, 89));
         btnAddRec.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
@@ -149,8 +152,9 @@ public class AddMedicineFrame extends javax.swing.JFrame {
                 btnAddRecActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAddRec, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 300, 120, 50));
+        jPanel1.add(btnAddRec, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 320, 120, 50));
 
+        btnBack.setBackground(new java.awt.Color(255, 0, 51));
         btnBack.setFont(new java.awt.Font("Gadugi", 1, 11)); // NOI18N
         btnBack.setText("X");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -158,7 +162,22 @@ public class AddMedicineFrame extends javax.swing.JFrame {
                 btnBackActionPerformed(evt);
             }
         });
-        jPanel1.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 10, -1, 30));
+        jPanel1.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 0, -1, 30));
+
+        jPanel14.setBackground(new java.awt.Color(255, 179, 68));
+
+        javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
+        jPanel14.setLayout(jPanel14Layout);
+        jPanel14Layout.setHorizontalGroup(
+            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 550, Short.MAX_VALUE)
+        );
+        jPanel14Layout.setVerticalGroup(
+            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(jPanel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 550, 3));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -298,6 +317,7 @@ public class AddMedicineFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel2;
     private app.bolivia.swing.JCTextField textMedID;
     private app.bolivia.swing.JCTextField textMedicineName;

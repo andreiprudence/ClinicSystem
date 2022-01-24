@@ -249,7 +249,7 @@ public class InternalFrameAddUser extends javax.swing.JInternalFrame {
         jPanel6.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 150, -1, -1));
 
         comboRole.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        comboRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Doctor", "Admin", "Secretary" }));
+        comboRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "Secretary" }));
         jPanel6.add(comboRole, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 180, 220, 30));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -312,10 +312,10 @@ public class InternalFrameAddUser extends javax.swing.JInternalFrame {
             }
         });
         birthDate.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
                 birthDateInputMethodTextChanged(evt);
-            }
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
             }
         });
         birthDate.addPropertyChangeListener(new java.beans.PropertyChangeListener() {

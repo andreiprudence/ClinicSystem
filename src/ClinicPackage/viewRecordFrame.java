@@ -5,6 +5,7 @@
  */
 package ClinicPackage;
 
+import java.awt.print.PrinterException;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -13,10 +14,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.MessageFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import net.proteanit.sql.DbUtils;
 import org.eclipse.persistence.sessions.Record;
@@ -69,24 +72,26 @@ public class viewRecordFrame extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel31 = new javax.swing.JLabel();
         jPanel14 = new javax.swing.JPanel();
-        jButton4 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         patient_table = new rojerusan.RSTableMetro();
         searchField = new app.bolivia.swing.JCTextField();
-        buttonExport = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        jLabel20 = new javax.swing.JLabel();
+        refreshButton = new rojerusan.RSButtonIconD();
+        buttonExport = new rojerusan.RSButtonIconD();
+        buttonPrint = new rojerusan.RSButtonIconD();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("View Patient Record");
         setUndecorated(true);
 
-        jPanel1.setBackground(new java.awt.Color(0, 78, 103));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(38, 133, 187), 3));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel31.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        jLabel31.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel31.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel31.setForeground(new java.awt.Color(38, 133, 187));
         jLabel31.setText("View Patient Record");
-        jPanel1.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 20, -1, -1));
+        jPanel1.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 20, -1, -1));
 
         jPanel14.setBackground(new java.awt.Color(255, 179, 68));
 
@@ -98,18 +103,10 @@ public class viewRecordFrame extends javax.swing.JFrame {
         );
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 5, Short.MAX_VALUE)
+            .addGap(0, 3, Short.MAX_VALUE)
         );
 
-        jPanel1.add(jPanel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 960, 5));
-
-        jButton4.setText("Exit");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 10, 60, 30));
+        jPanel1.add(jPanel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, 960, 3));
 
         patient_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -139,31 +136,67 @@ public class viewRecordFrame extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(patient_table);
 
-        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 1250, 330));
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 1230, 330));
 
-        searchField.setPlaceholder("Enter ID/Last Name");
+        searchField.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(38, 133, 187)));
+        searchField.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        searchField.setOpaque(false);
+        searchField.setPlaceholder("Enter Last Name");
         searchField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 searchFieldKeyReleased(evt);
             }
         });
-        jPanel1.add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 80, 320, -1));
+        jPanel1.add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 72, 320, 40));
 
-        buttonExport.setText("Export to .csv");
+        jLabel20.setBackground(new java.awt.Color(255, 0, 0));
+        jLabel20.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/closeicon.png"))); // NOI18N
+        jLabel20.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel20.setOpaque(true);
+        jLabel20.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel20MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(1240, 0, 40, 40));
+
+        refreshButton.setBackground(new java.awt.Color(38, 133, 187));
+        refreshButton.setBorder(null);
+        refreshButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/refresh_32px.png"))); // NOI18N
+        refreshButton.setText("Refresh");
+        refreshButton.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        refreshButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refreshButtonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(refreshButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 80, 110, 30));
+
+        buttonExport.setBackground(new java.awt.Color(38, 133, 187));
+        buttonExport.setBorder(null);
+        buttonExport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/export_csv_32px.png"))); // NOI18N
+        buttonExport.setText("Export to");
+        buttonExport.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         buttonExport.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonExportActionPerformed(evt);
             }
         });
-        jPanel1.add(buttonExport, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 80, -1, 30));
+        jPanel1.add(buttonExport, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 80, 110, 30));
 
-        jButton1.setText("Refresh");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        buttonPrint.setBackground(new java.awt.Color(38, 133, 187));
+        buttonPrint.setBorder(null);
+        buttonPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/print_32px.png"))); // NOI18N
+        buttonPrint.setText("Print table");
+        buttonPrint.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        buttonPrint.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                buttonPrintActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 80, 80, 30));
+        jPanel1.add(buttonPrint, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 80, 120, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -181,10 +214,6 @@ public class viewRecordFrame extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_jButton4ActionPerformed
 
     private void searchFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchFieldKeyReleased
         //search function
@@ -226,35 +255,6 @@ public class viewRecordFrame extends javax.swing.JFrame {
                 /* Ignored */ }
         }
     }//GEN-LAST:event_searchFieldKeyReleased
-
-    private void buttonExportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonExportActionPerformed
-        // SUPPOSEDLY EXPORTS THE TABLE TO CSV FILE
-        JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setDialogTitle("Select file location");
-        int userSelection = fileChooser.showSaveDialog(this);
-
-        if (userSelection == JFileChooser.APPROVE_OPTION) {
-            File filetoSave = fileChooser.getSelectedFile();
-
-            try {
-                FileWriter fw = new FileWriter(filetoSave);
-                BufferedWriter bw = new BufferedWriter(fw);
-                for (int i = 0; i < patient_table.getRowCount(); i++) {
-                    for (int j = 0; j < patient_table.getColumnCount(); j++) {
-                        bw.write(patient_table.getValueAt(i, j).toString() + ",");
-                    }
-                    bw.newLine();
-                }
-                bw.close();
-                fw.close();
-                JOptionPane.showMessageDialog(this, "File successfully created");
-            } catch (IOException ex) {
-                Logger.getLogger(viewRecordFrame.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-        }
-
-    }//GEN-LAST:event_buttonExportActionPerformed
 
     private void patient_tableKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_patient_tableKeyReleased
         //instantiating database connection
@@ -307,9 +307,65 @@ public class viewRecordFrame extends javax.swing.JFrame {
         dataToFrame.setVisible(true);
     }//GEN-LAST:event_patient_tableMouseClicked
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jLabel20MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel20MouseClicked
+        // Terminate JVM
+        this.dispose();
+    }//GEN-LAST:event_jLabel20MouseClicked
+
+    private void refreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshButtonActionPerformed
         fetch();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_refreshButtonActionPerformed
+
+    private void buttonExportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonExportActionPerformed
+       JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Select file location");
+        int userSelection = fileChooser.showSaveDialog(this);
+        if (userSelection == JFileChooser.APPROVE_OPTION) {
+            File fileToSave = fileChooser.getSelectedFile();
+            //lets write to file
+
+            try {
+                FileWriter fw = new FileWriter(fileToSave);
+                BufferedWriter bw = new BufferedWriter(fw);
+                for (int i = 0; i < patient_table.getRowCount();
+                i++
+
+                    ) {
+                    for (int j = 0; j < patient_table.getColumnCount();
+                    j++
+
+                        ) {
+                        //write
+                        bw.write(patient_table.getValueAt(i, j).toString() + ",");
+                    }
+                    bw.newLine();//record per line
+                }
+                JOptionPane.showMessageDialog(this, "File created", "INFORMATION", JOptionPane.INFORMATION_MESSAGE);
+                bw.close();
+                fw.close();
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(this, "ERROR", "ERROR MESSAGE", JOptionPane.ERROR_MESSAGE);
+            }
+
+        }
+    }//GEN-LAST:event_buttonExportActionPerformed
+
+    private void buttonPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPrintActionPerformed
+     try {
+            MessageFormat header = new MessageFormat("C.A.R.E.S Clinic and Laboratory - La Union");
+            MessageFormat footer = new MessageFormat("C.A.R.E.S Clinic and Laboratory - La Union");
+//
+//        try {
+//            patient_table.print(JTable.PrintMode.NORMAL, header, footer);
+//        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(this, e);
+//        }
+
+            patient_table.print(JTable.PrintMode.NORMAL, null, footer);
+        } catch (PrinterException ex) {
+            Logger.getLogger(viewRecordFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_buttonPrintActionPerformed
 
     /**
      * @param args the command line arguments
@@ -355,14 +411,15 @@ public class viewRecordFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton buttonExport;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton4;
+    private rojerusan.RSButtonIconD buttonExport;
+    private rojerusan.RSButtonIconD buttonPrint;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel14;
     private javax.swing.JScrollPane jScrollPane3;
     private rojerusan.RSTableMetro patient_table;
+    private rojerusan.RSButtonIconD refreshButton;
     private app.bolivia.swing.JCTextField searchField;
     // End of variables declaration//GEN-END:variables
 }

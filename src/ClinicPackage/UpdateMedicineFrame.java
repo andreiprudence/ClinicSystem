@@ -91,11 +91,13 @@ public class UpdateMedicineFrame extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         medicine_table = new rojerusan.RSTableMetro();
         searchField = new app.bolivia.swing.JCTextField();
+        jPanel14 = new javax.swing.JPanel();
 
         setUndecorated(true);
         setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(0, 78, 103));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(38, 133, 187), 3, true));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -111,44 +113,54 @@ public class UpdateMedicineFrame extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 530, -1));
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(38, 133, 187));
         jLabel1.setText("UPDATE MEDICINE");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 10, -1, 50));
 
-        jLabel3.setFont(new java.awt.Font("Cambria", 1, 16)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(38, 133, 187));
         jLabel3.setText("Medicine ID: ");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Cambria", 1, 16)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(38, 133, 187));
         jLabel4.setText("Medicine Name:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, -1, -1));
 
-        jLabel5.setFont(new java.awt.Font("Cambria", 1, 16)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(38, 133, 187));
         jLabel5.setText("Expiry:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 290, -1, -1));
 
-        jLabel6.setFont(new java.awt.Font("Cambria", 1, 16)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(38, 133, 187));
         jLabel6.setText("Medicine Price:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, -1, -1));
-        jPanel1.add(expiryDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 290, 230, 30));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, -1));
 
+        expiryDate.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(38, 133, 187)));
+        expiryDate.setOpaque(false);
+        jPanel1.add(expiryDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 280, 230, 40));
+
+        textMedicineName.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(38, 133, 187)));
+        textMedicineName.setOpaque(false);
         textMedicineName.setPlaceholder("Enter Name...");
         textMedicineName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textMedicineNameActionPerformed(evt);
             }
         });
-        jPanel1.add(textMedicineName, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, 230, -1));
+        jPanel1.add(textMedicineName, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 172, 230, 40));
 
+        textMedicinePrice.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(38, 133, 187)));
+        textMedicinePrice.setOpaque(false);
         textMedicinePrice.setPlaceholder("Enter Price...");
-        jPanel1.add(textMedicinePrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 230, 230, -1));
+        jPanel1.add(textMedicinePrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 222, 230, 40));
 
+        textMedID.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(38, 133, 187)));
+        textMedID.setOpaque(false);
         textMedID.setPlaceholder("Enter ID...");
-        jPanel1.add(textMedID, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, 230, -1));
+        jPanel1.add(textMedID, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 122, 230, 40));
 
         btnCancel.setBackground(new java.awt.Color(255, 0, 51));
         btnCancel.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
@@ -160,7 +172,7 @@ public class UpdateMedicineFrame extends javax.swing.JFrame {
                 btnCancelActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 360, 120, 50));
+        jPanel1.add(btnCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 370, 120, 50));
 
         btnDeleteRec.setBackground(new java.awt.Color(0, 166, 89));
         btnDeleteRec.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
@@ -172,8 +184,9 @@ public class UpdateMedicineFrame extends javax.swing.JFrame {
                 btnDeleteRecActionPerformed(evt);
             }
         });
-        jPanel1.add(btnDeleteRec, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 360, 130, 50));
+        jPanel1.add(btnDeleteRec, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 370, 130, 50));
 
+        btnBack.setBackground(new java.awt.Color(255, 0, 51));
         btnBack.setFont(new java.awt.Font("Gadugi", 1, 11)); // NOI18N
         btnBack.setText("X");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -181,7 +194,7 @@ public class UpdateMedicineFrame extends javax.swing.JFrame {
                 btnBackActionPerformed(evt);
             }
         });
-        jPanel1.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 10, -1, 30));
+        jPanel1.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 0, -1, 30));
 
         medicine_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -193,6 +206,11 @@ public class UpdateMedicineFrame extends javax.swing.JFrame {
                 "Name of Medicine", "Medicine No.", "Medicine Price"
             }
         ));
+        medicine_table.setColorBackgoundHead(new java.awt.Color(38, 133, 187));
+        medicine_table.setColorBordeFilas(new java.awt.Color(38, 133, 187));
+        medicine_table.setColorBordeHead(new java.awt.Color(38, 133, 187));
+        medicine_table.setColorFilasBackgound2(new java.awt.Color(255, 255, 255));
+        medicine_table.setColorSelBackgound(new java.awt.Color(38, 133, 187));
         medicine_table.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 medicine_tableMouseClicked(evt);
@@ -200,16 +218,33 @@ public class UpdateMedicineFrame extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(medicine_table);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 110, 470, 330));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 120, 470, 330));
 
-        searchField.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 0, 0)));
-        searchField.setPlaceholder("Enter Name/ID...");
+        searchField.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(38, 133, 187)));
+        searchField.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        searchField.setOpaque(false);
+        searchField.setPlaceholder("Enter ID/Name...");
         searchField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 searchFieldKeyReleased(evt);
             }
         });
-        jPanel1.add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 70, 220, -1));
+        jPanel1.add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 72, 220, 40));
+
+        jPanel14.setBackground(new java.awt.Color(255, 179, 68));
+
+        javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
+        jPanel14.setLayout(jPanel14Layout);
+        jPanel14Layout.setHorizontalGroup(
+            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 550, Short.MAX_VALUE)
+        );
+        jPanel14Layout.setVerticalGroup(
+            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(jPanel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 60, 550, 3));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -423,6 +458,7 @@ public class UpdateMedicineFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private static rojerusan.RSTableMetro medicine_table;

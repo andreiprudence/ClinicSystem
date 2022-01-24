@@ -102,7 +102,7 @@ public class internalFrameView extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void rSMaterialButtonRectangle2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSMaterialButtonRectangle2ActionPerformed
-        new AddMedicine().setVisible(true);
+   //     new AddMedicine().setVisible(true);
     }//GEN-LAST:event_rSMaterialButtonRectangle2ActionPerformed
 
 

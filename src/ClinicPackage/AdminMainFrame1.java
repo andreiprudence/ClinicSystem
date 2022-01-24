@@ -35,14 +35,23 @@ public class AdminMainFrame1 extends javax.swing.JFrame {
     Color mouseExitedColor = new Color(255, 255, 255);
     Color mouseEnteredColor = new Color(187, 207, 215);
 
+ //   ImageIcon logo = new ImageIcon(getClass().getClassLoader().getResource("CARES.png"));
     public AdminMainFrame1() {
         initComponents();
         showDate();
         showTime();
-        imageResize();
+        setIconImage();
+   //     setIconImage(logo.getImage());
+   //     imageResize();
         InternalFrameAddUser frameAddUser = new InternalFrameAddUser();
         jDesktopPane1.removeAll();
         jDesktopPane1.add(frameAddUser).setVisible(true);
+
+    }
+    public AdminMainFrame1(String Uname) {
+        initComponents();
+        labelUser.setText(Uname);
+
 
     }
 
@@ -82,12 +91,17 @@ public class AdminMainFrame1 extends javax.swing.JFrame {
 
         MainPanel = new javax.swing.JPanel();
         upperPanel = new javax.swing.JPanel();
+        jLabel18 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         lblDate = new javax.swing.JLabel();
         lblTime = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         sidePanel = new javax.swing.JPanel();
+        btnDashboard = new javax.swing.JPanel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
         lblSecretary = new javax.swing.JLabel();
         userLabel = new javax.swing.JLabel();
         btnExit = new javax.swing.JButton();
@@ -117,11 +131,28 @@ public class AdminMainFrame1 extends javax.swing.JFrame {
         setUndecorated(true);
         setResizable(false);
         setSize(new java.awt.Dimension(734, 532));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         MainPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         upperPanel.setBackground(new java.awt.Color(245, 198, 165));
         upperPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel18.setBackground(new java.awt.Color(255, 0, 0));
+        jLabel18.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/minimize.png"))); // NOI18N
+        jLabel18.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel18.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel18MouseClicked(evt);
+            }
+        });
+        upperPanel.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(1190, 20, 40, 30));
 
         jLabel1.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -132,18 +163,18 @@ public class AdminMainFrame1 extends javax.swing.JFrame {
         lblDate.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         lblDate.setForeground(new java.awt.Color(61, 86, 178));
         lblDate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        upperPanel.add(lblDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 10, 240, 40));
+        upperPanel.add(lblDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 10, 240, 40));
 
         lblTime.setBackground(new java.awt.Color(255, 255, 255));
         lblTime.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         lblTime.setForeground(new java.awt.Color(61, 86, 178));
         lblTime.setText(" ");
-        upperPanel.add(lblTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 50, 140, 40));
+        upperPanel.add(lblTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 50, 140, 40));
 
         jLabel17.setBackground(new java.awt.Color(255, 0, 0));
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/closeicon.png"))); // NOI18N
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/close.png"))); // NOI18N
         jLabel17.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel17.setOpaque(true);
         jLabel17.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -158,14 +189,47 @@ public class AdminMainFrame1 extends javax.swing.JFrame {
 
         MainPanel.add(upperPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 100));
 
-        sidePanel.setBackground(new java.awt.Color(187, 207, 215));
+        sidePanel.setBackground(new java.awt.Color(204, 255, 255));
         sidePanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        sidePanel.add(lblSecretary, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 60, 60));
+
+        btnDashboard.setBackground(new java.awt.Color(255, 255, 255));
+        btnDashboard.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnDashboard.setForeground(new java.awt.Color(255, 255, 255));
+        btnDashboard.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnDashboard.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnDashboardMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnDashboardMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnDashboardMouseExited(evt);
+            }
+        });
+        btnDashboard.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel20.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(25, 128, 251));
+        jLabel20.setText("Dashboard");
+        btnDashboard.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, -1, 40));
+
+        jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/combo_chart_32px.png"))); // NOI18N
+        btnDashboard.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 40, 50));
+
+        jLabel22.setBackground(new java.awt.Color(187, 207, 215));
+        jLabel22.setForeground(new java.awt.Color(245, 198, 165));
+        btnDashboard.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, 10, 60));
+
+        sidePanel.add(btnDashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 220, -1));
+
+        lblSecretary.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/test_account_80px.png"))); // NOI18N
+        sidePanel.add(lblSecretary, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 80, 90));
 
         userLabel.setFont(new java.awt.Font("Yu Gothic Medium", 0, 10)); // NOI18N
         userLabel.setForeground(new java.awt.Color(51, 255, 51));
         userLabel.setText("logged in as");
-        sidePanel.add(userLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, 70, 20));
+        sidePanel.add(userLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, 70, 20));
 
         btnExit.setBackground(new java.awt.Color(255, 255, 255));
         btnExit.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -220,7 +284,7 @@ public class AdminMainFrame1 extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(245, 198, 165));
         ptntRecButton.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, 10, 50));
 
-        sidePanel.add(ptntRecButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 220, 50));
+        sidePanel.add(ptntRecButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 220, 50));
 
         appointBtton.setBackground(new java.awt.Color(255, 255, 255));
         appointBtton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -251,7 +315,7 @@ public class AdminMainFrame1 extends javax.swing.JFrame {
         jLabel14.setForeground(new java.awt.Color(245, 198, 165));
         appointBtton.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, 10, 50));
 
-        sidePanel.add(appointBtton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 220, 50));
+        sidePanel.add(appointBtton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 220, 50));
 
         feesButton.setBackground(new java.awt.Color(255, 255, 255));
         feesButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -282,7 +346,7 @@ public class AdminMainFrame1 extends javax.swing.JFrame {
         jLabel15.setForeground(new java.awt.Color(245, 198, 165));
         feesButton.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, 10, 50));
 
-        sidePanel.add(feesButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 220, 50));
+        sidePanel.add(feesButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 220, 50));
 
         regPtntButton.setBackground(new java.awt.Color(255, 255, 255));
         regPtntButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -313,22 +377,22 @@ public class AdminMainFrame1 extends javax.swing.JFrame {
         jLabel13.setForeground(new java.awt.Color(245, 198, 165));
         regPtntButton.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, 10, 50));
 
-        sidePanel.add(regPtntButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 220, 50));
+        sidePanel.add(regPtntButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 220, 50));
 
-        labelWelcome.setFont(new java.awt.Font("Yu Gothic Medium", 1, 12)); // NOI18N
+        labelWelcome.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         labelWelcome.setForeground(new java.awt.Color(21, 126, 251));
         labelWelcome.setText("Welcome,");
-        sidePanel.add(labelWelcome, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 70, 20));
+        sidePanel.add(labelWelcome, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, 70, 20));
 
-        labelUser.setFont(new java.awt.Font("Yu Gothic Medium", 1, 12)); // NOI18N
+        labelUser.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         labelUser.setForeground(new java.awt.Color(21, 126, 251));
         labelUser.setText("andrei");
-        sidePanel.add(labelUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, 60, 20));
+        sidePanel.add(labelUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 100, 30));
 
         userLabel1.setFont(new java.awt.Font("Yu Gothic Medium", 1, 12)); // NOI18N
         userLabel1.setForeground(new java.awt.Color(21, 126, 251));
         userLabel1.setText("Admin");
-        sidePanel.add(userLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 70, 20));
+        sidePanel.add(userLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, 70, 20));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/CARES System Sidebar BG.jpg"))); // NOI18N
         sidePanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 220, 620));
@@ -474,12 +538,37 @@ public class AdminMainFrame1 extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnExitMouseExited
 
+    private void btnDashboardMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDashboardMouseClicked
+        bar(jLabel22);
+        internalFrameDashboard interFrame = new internalFrameDashboard();
+        jDesktopPane1.removeAll();
+        jDesktopPane1.add(interFrame).setVisible(true);
+    }//GEN-LAST:event_btnDashboardMouseClicked
+
+    private void btnDashboardMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDashboardMouseEntered
+        btnDashboard.setBackground(mouseEnteredColor);
+    }//GEN-LAST:event_btnDashboardMouseEntered
+
+    private void btnDashboardMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDashboardMouseExited
+        btnDashboard.setBackground(mouseExitedColor);
+    }//GEN-LAST:event_btnDashboardMouseExited
+
+    private void jLabel18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseClicked
+      this.setExtendedState(JFrame.ICONIFIED);
+    }//GEN-LAST:event_jLabel18MouseClicked
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+      showDate();
+        showTime();
+    }//GEN-LAST:event_formWindowOpened
+
     /**
      * @param args the command line arguments
      */
     //GUI Bar to display current part of the page
     public void bar(JLabel lab) {
         jLabel3.setOpaque(false);
+        jLabel22.setOpaque(false);
         jLabel13.setOpaque(false);
         jLabel14.setOpaque(false);
         jLabel15.setOpaque(false);
@@ -525,6 +614,7 @@ public class AdminMainFrame1 extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel MainPanel;
     private javax.swing.JPanel appointBtton;
+    private javax.swing.JPanel btnDashboard;
     private javax.swing.JButton btnExit;
     private javax.swing.JPanel feesButton;
     private javax.swing.JDesktopPane jDesktopPane1;
@@ -536,7 +626,11 @@ public class AdminMainFrame1 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -556,4 +650,8 @@ public class AdminMainFrame1 extends javax.swing.JFrame {
     private javax.swing.JLabel userLabel;
     private javax.swing.JLabel userLabel1;
     // End of variables declaration//GEN-END:variables
+
+    private void setIconImage() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("CARES.png")));
+    }
 }

@@ -27,7 +27,7 @@ import javax.swing.Timer;
  * @author andre
  */
 public class AdminMainFrame extends javax.swing.JFrame {
-    
+
     /**
      * Creates new form AdminMainFrame
      */
@@ -51,7 +51,7 @@ public class AdminMainFrame extends javax.swing.JFrame {
         SimpleDateFormat s = new SimpleDateFormat("EEEEE, dd MMMM yyyy");
         String date = new SimpleDateFormat("yyyy-MM-dd",   Locale.getDefault()).format(new Date());
         lblDate.setText(s.format(d));
-       
+
     }
     // Show Current System Time
     void showTime() {
@@ -305,7 +305,7 @@ public class AdminMainFrame extends javax.swing.JFrame {
         internalFrameMedicine iFrameMedicine = new internalFrameMedicine();
         jDesktopPane1.removeAll();
         jDesktopPane1.add(iFrameMedicine).setVisible(true);
-        new MedicineFrame().setVisible(true);
+   //     new MedicineFrame().setVisible(true);
     }//GEN-LAST:event_medButtonMouseClicked
 
     private void medButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_medButtonMouseEntered
@@ -360,7 +360,7 @@ public class AdminMainFrame extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -383,7 +383,7 @@ public class AdminMainFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                
+
             }
         });
     }

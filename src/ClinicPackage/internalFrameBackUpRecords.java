@@ -147,16 +147,17 @@ public class internalFrameBackUpRecords extends javax.swing.JInternalFrame {
         String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
 
         try {
-            if (jCTextField1.getText().isEmpty()) {
-                jLabel2.setForeground(Color.red);
-                jLabel2.setText("*Message: Please select file location");
-            } else {
+//            if (jCTextField1.getText().isEmpty()) {
+//                jLabel2.setForeground(Color.red);
+//                jLabel2.setText("*Message: Please select file location");
+
+//            } else {
                 File f = fc.getSelectedFile();
                 path = f.getAbsolutePath();
                 path = path.replace('\\', '/');
                 path = path + "_" + date + ".sql";
                 jCTextField1.setText(path);
-            }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
