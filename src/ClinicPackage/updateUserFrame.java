@@ -422,7 +422,7 @@ public class updateUserFrame extends javax.swing.JFrame {
 
         if (msg == JOptionPane.YES_OPTION) {
             try {
-                String query = "update user_info set last_name=?, first_name=?, username=?, birth_date=?, age=?, contact_number=?, role=?, address=?, password='"+newPassword+"' where user_ID='" + userID + "' ";
+                String query = "update user_info set last_name=?, first_name=?, username=?, birth_date=?, age=?, contact_number=?, role=?, address=?, password=? where user_ID='" + userID + "' ";
 
                 PreparedStatement pst = con.prepareStatement(query);
                 pst.setString(1, lname);

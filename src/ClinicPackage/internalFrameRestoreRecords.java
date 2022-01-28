@@ -73,7 +73,7 @@ public class internalFrameRestoreRecords extends javax.swing.JInternalFrame {
                 rSMaterialButtonRectangle1ActionPerformed(evt);
             }
         });
-        jPanel1.add(rSMaterialButtonRectangle1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 270, 330, 110));
+        jPanel1.add(rSMaterialButtonRectangle1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 270, 330, 110));
 
         jCTextField1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 112, 192)));
         jCTextField1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
@@ -173,15 +173,19 @@ public class internalFrameRestoreRecords extends javax.swing.JInternalFrame {
         //   String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
 
         try {
-            if (jCTextField1.getText().isEmpty()) {
-                jLabel2.setForeground(Color.red);
-                jLabel2.setText("*Message: Please select file location");
-            } else {
+//            if (jCTextField1.getText().isEmpty()) {
+//                jLabel2.setForeground(Color.red);
+//                jLabel2.setText("*Message: Please select file location");
+//             else {
                 File f = fc.getSelectedFile();
                 path = f.getAbsolutePath();
                 path = path.replace('\\', '/');
                 jCTextField1.setText(path);
-            }
+
+                if (jCTextField1.getText().isEmpty()) {
+               jLabel2.setText("*Message: Please select file location");
+                }
+         //   }
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -132,7 +132,6 @@ public class viewUserList extends javax.swing.JFrame {
                 "User ID", "Last Name", "First Name", "Username", "Date of Birth", "Age", "Contact Number", "Role", "Address"
             }
         ));
-        user_table.setCellSelectionEnabled(true);
         user_table.setColorBackgoundHead(new java.awt.Color(38, 133, 187));
         user_table.setColorBordeFilas(new java.awt.Color(38, 133, 187));
         user_table.setColorBordeHead(new java.awt.Color(38, 133, 187));

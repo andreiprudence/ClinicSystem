@@ -96,6 +96,8 @@ public class internalFrameMedicine extends javax.swing.JInternalFrame {
         jLabel1.setText("Medicine Management");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 20, -1, 30));
 
+        jPanel2.setBackground(new java.awt.Color(255, 179, 68));
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(

@@ -135,15 +135,24 @@ public class internalFrameBackUpRecords extends javax.swing.JInternalFrame {
             p = runtime.exec("C://xampp2/mysql/bin/mysqldump.exe -uroot --add-drop-database -B clinicdb -r" + path);
 
             if (jCTextField1.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Select a path");
-            }
+                jLabel2.setText("*Message: Please select a file location");
+                jLabel2.setForeground(Color.RED);
 
-            int processComplete = p.waitFor();
-            if (processComplete == 0) {
-                jLabel2.setText("Backup Created Success");
             } else {
-                jLabel2.setText("Can't Create backup");
+                int processComplete = p.waitFor();
+                if (processComplete == 0) {
+                    jLabel2.setText("Backup Created Success");
+                } else {
+                    jLabel2.setText("Can't Create backup");
+                }
             }
+//
+//            if (processComplete == 0) {
+//                jLabel2.setText("Backup Created Success");
+//            } else {
+//                jLabel2.setText("Can't Create backup");
+//            }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -160,11 +169,16 @@ public class internalFrameBackUpRecords extends javax.swing.JInternalFrame {
 //                jLabel2.setText("*Message: Please select file location");
 
 //            } else {
-                File f = fc.getSelectedFile();
-                path = f.getAbsolutePath();
-                path = path.replace('\\', '/');
-                path = path + "_" + date + ".sql";
-                jCTextField1.setText(path);
+            if (jCTextField1.getText().isEmpty()) {
+                jLabel2.setForeground(Color.red);
+                jLabel2.setText("*Message: Please select file location");
+
+            }
+            File f = fc.getSelectedFile();
+            path = f.getAbsolutePath();
+            path = path.replace('\\', '/');
+            path = path + "_" + date + ".sql";
+            jCTextField1.setText(path);
 
         } catch (Exception e) {
             e.printStackTrace();

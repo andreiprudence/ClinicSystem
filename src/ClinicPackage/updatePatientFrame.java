@@ -261,8 +261,8 @@ public class updatePatientFrame extends javax.swing.JFrame {
     patient_table.setColorFilasForeground1(new java.awt.Color(38, 133, 187));
     patient_table.setColorFilasForeground2(new java.awt.Color(38, 133, 187));
     patient_table.setColorSelBackgound(new java.awt.Color(38, 133, 187));
+    patient_table.setIntercellSpacing(new java.awt.Dimension(1, 1));
     patient_table.setRowHeight(20);
-    patient_table.setRowMargin(5);
     patient_table.getTableHeader().setResizingAllowed(false);
     patient_table.getTableHeader().setReorderingAllowed(false);
     patient_table.addMouseListener(new java.awt.event.MouseAdapter() {

@@ -123,8 +123,6 @@ public class internalFrameUserList extends javax.swing.JInternalFrame {
         user_table.setColorBordeFilas(new java.awt.Color(38, 133, 187));
         user_table.setColorBordeHead(new java.awt.Color(38, 133, 187));
         user_table.setColorFilasBackgound2(new java.awt.Color(255, 255, 255));
-        user_table.setColorFilasForeground1(new java.awt.Color(38, 133, 187));
-        user_table.setColorSelForeground(new java.awt.Color(38, 133, 187));
         user_table.setIntercellSpacing(new java.awt.Dimension(0, 0));
         user_table.setRowHeight(30);
         user_table.addMouseListener(new java.awt.event.MouseAdapter() {

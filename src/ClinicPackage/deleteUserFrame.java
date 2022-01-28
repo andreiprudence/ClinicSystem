@@ -63,7 +63,7 @@ public class deleteUserFrame extends javax.swing.JFrame {
         DatabaseConnection connection = new DatabaseConnection();
         con = connection.getConnection();
         try {
-            String query = "select user_ID as 'User ID', last_name as 'Last Name', first_name as 'First Name', username as 'Username', birth_date as 'Birthdate', age as 'Age', contact_number as 'Contact Number', role as 'Role', address as 'Address', password as 'Password' from user_info";
+            String query = "select user_ID as 'User ID', last_name as 'Last Name', first_name as 'First Name', username as 'Username', birth_date as 'Birthdate', age as 'Age', contact_number as 'Contact Number', role as 'Role', address as 'Address' from user_info";
             PreparedStatement pstmt = con.prepareStatement(query);
             ResultSet rs = pstmt.executeQuery();
             user_table.setModel(DbUtils.resultSetToTableModel(rs));
@@ -450,8 +450,8 @@ public class deleteUserFrame extends javax.swing.JFrame {
         //   String query = "select * from patient_info where patient_ID = '" + id + "'";
         String search = searchField.getText().toString();
 
-        String query = "select user_ID as 'User ID', last_name as 'Last Name', first_name as 'First Name', username as 'Username', birth_date as 'Birthdate', age as 'Age', contact_number as 'Contact Number', role as 'Role', address as 'Address', password as 'Password' from user_info where user_ID= " + search;
-        String query2 = "select user_ID as 'User ID', last_name as 'Last Name', first_name as 'First Name', username as 'Username', birth_date as 'Birthdate', age as 'Age', contact_number as 'Contact Number', role as 'Role', address as 'Address', password as 'Password' from user_info where last_name like '%" + search + "%'";
+        String query = "select user_ID as 'User ID', last_name as 'Last Name', first_name as 'First Name', username as 'Username', birth_date as 'Birthdate', age as 'Age', contact_number as 'Contact Number', role as 'Role', address as 'Address' from user_info where user_ID= " + search;
+        String query2 = "select user_ID as 'User ID', last_name as 'Last Name', first_name as 'First Name', username as 'Username', birth_date as 'Birthdate', age as 'Age', contact_number as 'Contact Number', role as 'Role', address as 'Address' from user_info where last_name like '%" + search + "%'";
 
         //String query3 = "select * from patient_info where patient_firstname like '%" + search + "%'";
         try {

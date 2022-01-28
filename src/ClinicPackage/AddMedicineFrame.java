@@ -254,6 +254,8 @@ public class AddMedicineFrame extends javax.swing.JFrame {
                 pstmt.setString(4, d);
                 //end of date conversion
                 pstmt.setString(5, jSpinnerQuantity.getValue().toString());
+
+                
                 int success = pstmt.executeUpdate();
 
                 if (success == 1) {

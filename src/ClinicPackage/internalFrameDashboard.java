@@ -91,11 +91,11 @@ public class internalFrameDashboard extends javax.swing.JInternalFrame {
 
             DatabaseConnection connection = new DatabaseConnection();
             con = connection.getConnection();
-            String query = "select medicine_name ,count(*) as quantity_count from medicine_info group by quantity";
+            String query = "select quantity ,count(*) as quantity_count from medicine_info group by medicine_name, quantity";
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(query);
             while (rs.next()) {
-                barDataset.setValue(rs.getString("medicine_name"), new Double(rs.getDouble("quantity_count")));
+                barDataset.setValue(rs.getString("quantity"), new Double(rs.getDouble("quantity_count")));
             }
 
             //create chart
@@ -159,11 +159,9 @@ public class internalFrameDashboard extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        medicineNumber = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
+        panelBarChart = new javax.swing.JPanel();
+        panelBarChart1 = new javax.swing.JPanel();
+        jPanel14 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         patientNumber = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -174,14 +172,17 @@ public class internalFrameDashboard extends javax.swing.JInternalFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        panelBarChart = new javax.swing.JPanel();
-        panelBarChart1 = new javax.swing.JPanel();
-        jPanel14 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        medicineNumber = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
 
         setPreferredSize(new java.awt.Dimension(1060, 620));
         setRequestFocusEnabled(false);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(204, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(1060, 620));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -191,32 +192,31 @@ public class internalFrameDashboard extends javax.swing.JInternalFrame {
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, 30));
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 10, 330, 40));
 
-        jPanel3.setBackground(new java.awt.Color(0, 204, 0));
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panelBarChart.setOpaque(false);
+        panelBarChart.setLayout(new java.awt.BorderLayout());
+        jPanel1.add(panelBarChart, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, 410, 240));
 
-        medicineNumber.setFont(new java.awt.Font("Segoe UI Black", 1, 48)); // NOI18N
-        medicineNumber.setForeground(new java.awt.Color(255, 255, 255));
-        medicineNumber.setText("10");
-        jPanel3.add(medicineNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, 56));
+        panelBarChart1.setOpaque(false);
+        panelBarChart1.setLayout(new java.awt.BorderLayout());
+        jPanel1.add(panelBarChart1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 340, 410, 240));
 
-        jLabel12.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel12.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel12.setText("MEDICINES");
-        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, -1, 40));
+        jPanel14.setBackground(new java.awt.Color(255, 179, 68));
 
-        jLabel13.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel13.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel13.setText("Total No. of Medicine");
-        jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, 20));
+        javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
+        jPanel14.setLayout(jPanel14Layout);
+        jPanel14Layout.setHorizontalGroup(
+            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 380, Short.MAX_VALUE)
+        );
+        jPanel14Layout.setVerticalGroup(
+            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
 
-        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/pill_bottle_100px.png"))); // NOI18N
-        jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 30, 90, -1));
-
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 420, 310, 150));
+        jPanel1.add(jPanel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 380, 3));
 
         jPanel4.setBackground(new java.awt.Color(51, 153, 255));
+        jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         patientNumber.setFont(new java.awt.Font("Segoe UI Black", 1, 48)); // NOI18N
@@ -242,6 +242,7 @@ public class internalFrameDashboard extends javax.swing.JInternalFrame {
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 60, 310, 150));
 
         jPanel5.setBackground(new java.awt.Color(255, 51, 102));
+        jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         userNumber.setFont(new java.awt.Font("Segoe UI Black", 1, 48)); // NOI18N
@@ -266,26 +267,46 @@ public class internalFrameDashboard extends javax.swing.JInternalFrame {
 
         jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 240, 310, 150));
 
-        panelBarChart.setLayout(new java.awt.BorderLayout());
-        jPanel1.add(panelBarChart, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, 410, 240));
+        jPanel3.setBackground(new java.awt.Color(0, 204, 0));
+        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        panelBarChart1.setLayout(new java.awt.BorderLayout());
-        jPanel1.add(panelBarChart1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 340, 410, 240));
+        medicineNumber.setFont(new java.awt.Font("Segoe UI Black", 1, 48)); // NOI18N
+        medicineNumber.setForeground(new java.awt.Color(255, 255, 255));
+        medicineNumber.setText("10");
+        jPanel3.add(medicineNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, 56));
 
-        jPanel14.setBackground(new java.awt.Color(255, 179, 68));
+        jLabel12.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel12.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setText("MEDICINES");
+        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, -1, 40));
 
-        javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
-        jPanel14.setLayout(jPanel14Layout);
-        jPanel14Layout.setHorizontalGroup(
-            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 380, Short.MAX_VALUE)
+        jLabel13.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel13.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel13.setText("Total No. of Medicine");
+        jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, 20));
+
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/pill_bottle_100px.png"))); // NOI18N
+        jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 30, 90, -1));
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 420, 310, 150));
+
+        jPanel2.setBackground(new java.awt.Color(255, 179, 68));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 520, Short.MAX_VALUE)
         );
-        jPanel14Layout.setVerticalGroup(
-            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 620, Short.MAX_VALUE)
         );
 
-        jPanel1.add(jPanel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 380, 3));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 0, 520, 620));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -316,6 +337,7 @@ public class internalFrameDashboard extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel14;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;

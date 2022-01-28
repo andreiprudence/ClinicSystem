@@ -90,7 +90,7 @@ public class viewRecordFrame extends javax.swing.JFrame {
 
         jLabel31.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel31.setForeground(new java.awt.Color(38, 133, 187));
-        jLabel31.setText("View Patient Record");
+        jLabel31.setText("VIEW PATIENT RECORD");
         jPanel1.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 20, -1, -1));
 
         jPanel14.setBackground(new java.awt.Color(255, 179, 68));
@@ -120,6 +120,10 @@ public class viewRecordFrame extends javax.swing.JFrame {
             }
         ));
         patient_table.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        patient_table.setColorBackgoundHead(new java.awt.Color(38, 133, 187));
+        patient_table.setColorBordeFilas(new java.awt.Color(38, 133, 187));
+        patient_table.setColorBordeHead(new java.awt.Color(38, 133, 187));
+        patient_table.setColorFilasBackgound2(new java.awt.Color(255, 255, 255));
         patient_table.setRowHeight(20);
         patient_table.setRowMargin(2);
         patient_table.getTableHeader().setResizingAllowed(false);
@@ -172,7 +176,7 @@ public class viewRecordFrame extends javax.swing.JFrame {
                 refreshButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(refreshButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 80, 110, 30));
+        jPanel1.add(refreshButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 70, 110, 40));
 
         buttonExport.setBackground(new java.awt.Color(38, 133, 187));
         buttonExport.setBorder(null);
@@ -184,7 +188,7 @@ public class viewRecordFrame extends javax.swing.JFrame {
                 buttonExportActionPerformed(evt);
             }
         });
-        jPanel1.add(buttonExport, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 80, 110, 30));
+        jPanel1.add(buttonExport, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 70, 110, 40));
 
         buttonPrint.setBackground(new java.awt.Color(38, 133, 187));
         buttonPrint.setBorder(null);
@@ -196,7 +200,7 @@ public class viewRecordFrame extends javax.swing.JFrame {
                 buttonPrintActionPerformed(evt);
             }
         });
-        jPanel1.add(buttonPrint, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 80, 120, 30));
+        jPanel1.add(buttonPrint, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 70, 120, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

@@ -72,6 +72,16 @@ public class displayDataToFrameforUserList extends javax.swing.JFrame {
         lblRole = new javax.swing.JLabel();
         rSButtonIconD1 = new rojerusan.RSButtonIconD();
         jButton6 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
+        jTextField4 = new javax.swing.JTextField();
+        jTextField5 = new javax.swing.JTextField();
+        jTextField6 = new javax.swing.JTextField();
+        jTextField7 = new javax.swing.JTextField();
+        jTextField8 = new javax.swing.JTextField();
+        jTextField9 = new javax.swing.JTextField();
+        jTextField10 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -92,95 +102,95 @@ public class displayDataToFrameforUserList extends javax.swing.JFrame {
         jLabel31.setText("USER RECORD");
         jPanel1.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 30, -1, -1));
 
-        jLabel22.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        jLabel22.setFont(new java.awt.Font("Yu Gothic Medium", 1, 18)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(38, 133, 187));
         jLabel22.setText("User ID:");
         jPanel1.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 90, -1));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Yu Gothic Medium", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(38, 133, 187));
         jLabel3.setText("Role:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 150, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 110, 60, -1));
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Yu Gothic Medium", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(38, 133, 187));
         jLabel4.setText("First Name:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, -1, 20));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, -1, 20));
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Yu Gothic Medium", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(38, 133, 187));
         jLabel7.setText("Date of Birth:");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 160, 140, 20));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 160, 140, 20));
 
-        jLabel10.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Yu Gothic Medium", 1, 18)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(38, 133, 187));
         jLabel10.setText("Age:");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 190, -1, 40));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 190, -1, 40));
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Yu Gothic Medium", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(38, 133, 187));
         jLabel5.setText("Address:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 240, -1, 40));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 240, -1, 40));
 
-        jLabel21.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        jLabel21.setFont(new java.awt.Font("Yu Gothic Medium", 1, 18)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(38, 133, 187));
         jLabel21.setText("Last Name:");
         jPanel1.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 120, 30));
 
-        jLabel16.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        jLabel16.setFont(new java.awt.Font("Yu Gothic Medium", 1, 18)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(38, 133, 187));
         jLabel16.setText("Phone Number:");
-        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 110, 160, 30));
+        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 160, 160, 30));
 
-        jLabel19.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        jLabel19.setFont(new java.awt.Font("Yu Gothic Medium", 1, 18)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(38, 133, 187));
         jLabel19.setText("Username:");
-        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 110, -1, 30));
+        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 110, -1, 30));
 
         lblUserID.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         lblUserID.setForeground(new java.awt.Color(38, 133, 187));
         lblUserID.setText("jLabel1");
-        jPanel1.add(lblUserID, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, -1, -1));
+        jPanel1.add(lblUserID, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, -1, 30));
 
         lblLastName.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         lblLastName.setForeground(new java.awt.Color(38, 133, 187));
         lblLastName.setText("jLabel1");
-        jPanel1.add(lblLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 160, -1, -1));
+        jPanel1.add(lblLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 149, -1, 30));
 
         lblFirstName.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         lblFirstName.setForeground(new java.awt.Color(38, 133, 187));
         lblFirstName.setText("jLabel1");
-        jPanel1.add(lblFirstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, -1, -1));
+        jPanel1.add(lblFirstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 189, -1, 30));
 
         lblPhoneNumber.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         lblPhoneNumber.setForeground(new java.awt.Color(38, 133, 187));
         lblPhoneNumber.setText("jLabel1");
-        jPanel1.add(lblPhoneNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 110, -1, -1));
+        jPanel1.add(lblPhoneNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 190, -1, 30));
 
         lblBirthDate.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         lblBirthDate.setForeground(new java.awt.Color(38, 133, 187));
         lblBirthDate.setText("jLabel1");
-        jPanel1.add(lblBirthDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 160, -1, 20));
+        jPanel1.add(lblBirthDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 150, -1, 30));
 
         lblAddress.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         lblAddress.setForeground(new java.awt.Color(38, 133, 187));
         lblAddress.setText("jLabel1");
-        jPanel1.add(lblAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 240, 400, 40));
+        jPanel1.add(lblAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 240, 420, 40));
 
         lblAge.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         lblAge.setForeground(new java.awt.Color(38, 133, 187));
         lblAge.setText("jLabel1");
-        jPanel1.add(lblAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 200, -1, 20));
+        jPanel1.add(lblAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 190, -1, 30));
 
         lblUserName.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         lblUserName.setForeground(new java.awt.Color(38, 133, 187));
         lblUserName.setText("jLabel1");
-        jPanel1.add(lblUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 120, -1, 20));
+        jPanel1.add(lblUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 110, -1, 30));
 
         lblRole.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         lblRole.setForeground(new java.awt.Color(38, 133, 187));
         lblRole.setText("jLabel1");
-        jPanel1.add(lblRole, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 150, -1, -1));
+        jPanel1.add(lblRole, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 110, -1, 30));
 
         rSButtonIconD1.setBackground(new java.awt.Color(38, 133, 187));
         rSButtonIconD1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/print_32px.png"))); // NOI18N
@@ -200,13 +210,54 @@ public class displayDataToFrameforUserList extends javax.swing.JFrame {
                 jButton6ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 0, 50, 30));
+        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 0, 50, 30));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/C.A.R.E.S._Logo(resized)(1).png"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
+
+        jTextField2.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(38, 133, 187)));
+        jTextField2.setOpaque(false);
+        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 240, 470, 40));
+
+        jTextField3.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(38, 133, 187)));
+        jTextField3.setOpaque(false);
+        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, 160, 30));
+
+        jTextField4.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(38, 133, 187)));
+        jTextField4.setOpaque(false);
+        jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 150, 160, 30));
+
+        jTextField5.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(38, 133, 187)));
+        jTextField5.setOpaque(false);
+        jPanel1.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, 160, 30));
+
+        jTextField6.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(38, 133, 187)));
+        jTextField6.setOpaque(false);
+        jPanel1.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 110, 160, 30));
+
+        jTextField7.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(38, 133, 187)));
+        jTextField7.setOpaque(false);
+        jPanel1.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 150, 160, 30));
+
+        jTextField8.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(38, 133, 187)));
+        jTextField8.setOpaque(false);
+        jPanel1.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 190, 160, 30));
+
+        jTextField9.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(38, 133, 187)));
+        jTextField9.setOpaque(false);
+        jPanel1.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 190, 190, 30));
+
+        jTextField10.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(38, 133, 187)));
+        jTextField10.setOpaque(false);
+        jPanel1.add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 110, 160, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 798, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 831, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -307,6 +358,7 @@ public class displayDataToFrameforUserList extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton6;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel19;
@@ -318,6 +370,15 @@ public class displayDataToFrameforUserList extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField jTextField10;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField jTextField7;
+    private javax.swing.JTextField jTextField8;
+    private javax.swing.JTextField jTextField9;
     private javax.swing.JLabel lblAddress;
     private javax.swing.JLabel lblAge;
     private javax.swing.JLabel lblBirthDate;
