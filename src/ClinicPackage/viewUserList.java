@@ -139,6 +139,7 @@ public class viewUserList extends javax.swing.JFrame {
         user_table.setColorFilasForeground1(new java.awt.Color(38, 133, 187));
         user_table.setColorFilasForeground2(new java.awt.Color(38, 133, 187));
         user_table.setColorSelBackgound(new java.awt.Color(38, 133, 187));
+        user_table.setRowHeight(25);
         user_table.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 user_tableMouseClicked(evt);

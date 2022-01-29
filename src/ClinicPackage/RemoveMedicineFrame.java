@@ -85,13 +85,13 @@ public class RemoveMedicineFrame extends javax.swing.JFrame {
         textMedicineName = new app.bolivia.swing.JCTextField();
         textMedicinePrice = new app.bolivia.swing.JCTextField();
         textMedID = new app.bolivia.swing.JCTextField();
-        btnCancel = new javax.swing.JButton();
-        btnDeleteRec = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         medicine_table = new rojerusan.RSTableMetro();
         searchField = new app.bolivia.swing.JCTextField();
         jPanel14 = new javax.swing.JPanel();
+        btnAddRec1 = new rojerusan.RSMaterialButtonCircle();
+        clearButton = new rojerusan.RSMaterialButtonCircle();
 
         setUndecorated(true);
         setResizable(false);
@@ -173,30 +173,6 @@ public class RemoveMedicineFrame extends javax.swing.JFrame {
         textMedID.setPlaceholder("Enter ID...");
         jPanel1.add(textMedID, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 122, 230, 40));
 
-        btnCancel.setBackground(new java.awt.Color(255, 0, 51));
-        btnCancel.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        btnCancel.setForeground(new java.awt.Color(255, 255, 255));
-        btnCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/330399_bad_cancel_clear_close_decline_icon.png"))); // NOI18N
-        btnCancel.setText("Clear");
-        btnCancel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 350, 120, 50));
-
-        btnDeleteRec.setBackground(new java.awt.Color(0, 166, 89));
-        btnDeleteRec.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        btnDeleteRec.setForeground(new java.awt.Color(255, 255, 255));
-        btnDeleteRec.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/3336950_download_save_icon.png"))); // NOI18N
-        btnDeleteRec.setText("DELETE");
-        btnDeleteRec.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteRecActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnDeleteRec, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 350, 130, 50));
-
         btnBack.setBackground(new java.awt.Color(255, 0, 0));
         btnBack.setFont(new java.awt.Font("Gadugi", 1, 11)); // NOI18N
         btnBack.setForeground(new java.awt.Color(255, 255, 255));
@@ -259,6 +235,28 @@ public class RemoveMedicineFrame extends javax.swing.JFrame {
 
         jPanel1.add(jPanel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 60, 550, 3));
 
+        btnAddRec1.setBackground(new java.awt.Color(0, 166, 89));
+        btnAddRec1.setBorder(null);
+        btnAddRec1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/103765_close_user_settings_icon (1).png"))); // NOI18N
+        btnAddRec1.setText("DELETE");
+        btnAddRec1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddRec1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnAddRec1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 360, 160, 60));
+
+        clearButton.setBackground(new java.awt.Color(255, 0, 51));
+        clearButton.setBorder(null);
+        clearButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/103765_close_user_settings_icon (1).png"))); // NOI18N
+        clearButton.setText("clear");
+        clearButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clearButtonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(clearButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 360, 150, 60));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -277,61 +275,6 @@ public class RemoveMedicineFrame extends javax.swing.JFrame {
     private void textMedicineNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textMedicineNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textMedicineNameActionPerformed
-
-    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
-        int msg = JOptionPane.showConfirmDialog(null, "Are you sure you want to clear all the records?");
-
-        if (msg == 0) {
-            // textIDNo.setText("");
-            textMedicinePrice.setText("");
-            textMedicineName.setText("");
-            textMedID.setText("");
-            expiryDate.setCalendar(null);
-
-        }
-    }//GEN-LAST:event_btnCancelActionPerformed
-
-    private void btnDeleteRecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteRecActionPerformed
-        Connection con;
-
-        DatabaseConnection connection = new DatabaseConnection();
-        con = connection.getConnection();
-
-        //confirmation dialog message
-        int msg = JOptionPane.showConfirmDialog(this, "Delete selected record?");
-        String medicineID = textMedID.getText();
-        String query = "delete from medicine_info where medicine_no='" + medicineID + "'";
-        if (msg == JOptionPane.YES_OPTION) {
-            try {
-                PreparedStatement pst = con.prepareStatement(query);
-                pst.execute();
-                JOptionPane.showMessageDialog(this, "Record Deleted successfully");
-                updateTable();
-
-                //clearing textfields after deletion of data
-                textMedID.setText("");
-                textMedicineName.setText("");
-                expiryDate.setCalendar(null);
-                textMedicinePrice.setText("");
-
-            } catch (SQLException ex) {
-                Logger.getLogger(deletePatientFrame.class.getName()).log(Level.SEVERE, null, ex);
-            } finally {
-                try {
-                    rs.close();
-                } catch (Exception e) {
-                    /* Ignored */ }
-                try {
-                    pst.close();
-                } catch (Exception e) {
-                    /* Ignored */ }
-                try {
-                    con.close();
-                } catch (Exception e) {
-                    /* Ignored */ }
-            }
-        }
-    }//GEN-LAST:event_btnDeleteRecActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         this.dispose();
@@ -418,6 +361,61 @@ public class RemoveMedicineFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_medicine_tableMouseClicked
 
+    private void btnAddRec1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddRec1ActionPerformed
+          Connection con;
+
+        DatabaseConnection connection = new DatabaseConnection();
+        con = connection.getConnection();
+
+        //confirmation dialog message
+        int msg = JOptionPane.showConfirmDialog(this, "Delete selected record?");
+        String medicineID = textMedID.getText();
+        String query = "delete from medicine_info where medicine_no='" + medicineID + "'";
+        if (msg == JOptionPane.YES_OPTION) {
+            try {
+                PreparedStatement pst = con.prepareStatement(query);
+                pst.execute();
+                JOptionPane.showMessageDialog(this, "Record Deleted successfully");
+                updateTable();
+
+                //clearing textfields after deletion of data
+                textMedID.setText("");
+                textMedicineName.setText("");
+                expiryDate.setCalendar(null);
+                textMedicinePrice.setText("");
+
+            } catch (SQLException ex) {
+                Logger.getLogger(deletePatientFrame.class.getName()).log(Level.SEVERE, null, ex);
+            } finally {
+                try {
+                    rs.close();
+                } catch (Exception e) {
+                    /* Ignored */ }
+                try {
+                    pst.close();
+                } catch (Exception e) {
+                    /* Ignored */ }
+                try {
+                    con.close();
+                } catch (Exception e) {
+                    /* Ignored */ }
+            }
+        }
+    }//GEN-LAST:event_btnAddRec1ActionPerformed
+
+    private void clearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearButtonActionPerformed
+      int msg = JOptionPane.showConfirmDialog(null, "Are you sure you want to clear all the records?");
+
+        if (msg == 0) {
+            // textIDNo.setText("");
+            textMedicinePrice.setText("");
+            textMedicineName.setText("");
+            textMedID.setText("");
+            expiryDate.setCalendar(null);
+
+        }
+    }//GEN-LAST:event_clearButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -455,9 +453,9 @@ public class RemoveMedicineFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private rojerusan.RSMaterialButtonCircle btnAddRec1;
     private javax.swing.JButton btnBack;
-    private javax.swing.JButton btnCancel;
-    private javax.swing.JButton btnDeleteRec;
+    private rojerusan.RSMaterialButtonCircle clearButton;
     private com.toedter.calendar.JDateChooser expiryDate;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;

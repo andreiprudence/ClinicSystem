@@ -98,8 +98,6 @@ public class updatePatientFrame extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         textAreaPrescription = new javax.swing.JTextArea();
-        clearButton = new javax.swing.JButton();
-        updateButton = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         patient_table = new rojerusan.RSTableMetro();
         jLabel8 = new javax.swing.JLabel();
@@ -131,6 +129,8 @@ public class updatePatientFrame extends javax.swing.JFrame {
         jLabel20 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        clearButton1 = new rojerusan.RSMaterialButtonCircle();
+        btnAddRec1 = new rojerusan.RSMaterialButtonCircle();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Update Patient Record");
@@ -222,25 +222,6 @@ public class updatePatientFrame extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 320, 370, 80));
 
-        clearButton.setBackground(new java.awt.Color(255, 51, 51));
-        clearButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        clearButton.setForeground(new java.awt.Color(255, 255, 255));
-        clearButton.setText("Clear");
-        clearButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel1.add(clearButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 420, 100, 50));
-
-        updateButton.setBackground(new java.awt.Color(0, 153, 51));
-        updateButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        updateButton.setForeground(new java.awt.Color(255, 255, 255));
-        updateButton.setText("Update");
-        updateButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        updateButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                updateButtonActionPerformed(evt);
-            }
-        });
-        jPanel1.add(updateButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 420, 110, 50));
-
         patient_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -261,7 +242,6 @@ public class updatePatientFrame extends javax.swing.JFrame {
     patient_table.setColorFilasForeground1(new java.awt.Color(38, 133, 187));
     patient_table.setColorFilasForeground2(new java.awt.Color(38, 133, 187));
     patient_table.setColorSelBackgound(new java.awt.Color(38, 133, 187));
-    patient_table.setIntercellSpacing(new java.awt.Dimension(1, 1));
     patient_table.setRowHeight(20);
     patient_table.getTableHeader().setResizingAllowed(false);
     patient_table.getTableHeader().setReorderingAllowed(false);
@@ -482,6 +462,28 @@ public class updatePatientFrame extends javax.swing.JFrame {
     jLabel1.setText("UPDATE PATIENT RECORD");
     jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
+    clearButton1.setBackground(new java.awt.Color(255, 0, 51));
+    clearButton1.setBorder(null);
+    clearButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/103765_close_user_settings_icon (1).png"))); // NOI18N
+    clearButton1.setText("clear");
+    clearButton1.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            clearButton1ActionPerformed(evt);
+        }
+    });
+    jPanel1.add(clearButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 410, 150, 60));
+
+    btnAddRec1.setBackground(new java.awt.Color(0, 166, 89));
+    btnAddRec1.setBorder(null);
+    btnAddRec1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/103765_close_user_settings_icon (1).png"))); // NOI18N
+    btnAddRec1.setText("update");
+    btnAddRec1.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            btnAddRec1ActionPerformed(evt);
+        }
+    });
+    jPanel1.add(btnAddRec1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 410, 160, 60));
+
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
     getContentPane().setLayout(layout);
     layout.setHorizontalGroup(
@@ -496,66 +498,6 @@ public class updatePatientFrame extends javax.swing.JFrame {
     pack();
     setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
-        Connection con;
-
-        DatabaseConnection connection = new DatabaseConnection();
-        con = connection.getConnection();
-        //confirmation dialog message
-        int msg = JOptionPane.showConfirmDialog(this, "Update selected record?");
-
-//assigning textfields into variables for easy calling
-        String patientID = textPatientID1.getText();
-        String lname = textLastName.getText();
-        String fname = textFirstName.getText();
-        String gender = comboGender.getSelectedItem().toString();
-        String age = textAge.getText();
-//date of birth
-        String date = ((JTextField) birthDate.getDateEditor().getUiComponent()).getText();
-        String phoneNumber = textPhoneNo.getText();
-        String address = textAddress.getText();
-        String MotherLName = textMotherLname.getText();
-        String MotherFirstName = textMotherFirstName.getText();
-        String MotherAge = textMotherAge.getText();
-        String MotherNumber = textMotherNumber.getText();
-        String FatherLastName = textFatherLastName.getText();
-        String FatherFirstName = textFatherFirstName.getText();
-        String FatherAge = textFatherAge.getText();
-        String FatherNumber = textFatherNumber.getText();
-        String remarksString = textAreaRemarks.getText();
-        String prescriptString = textAreaPrescription.getText();
-
-        if (msg == JOptionPane.YES_OPTION) {
-            try {
-                String query = "update patient_info set patient_lastname=?, patient_firstname=?, patient_gender=?, patient_DOB=?, patient_age=?, patient_contactno=?, patient_address=?, mother_lastname=?, mother_firstname=?, mother_age=?, mother_contactno=?, father_lastname=?, father_firstname=?, father_age=?, father_contactno=?, remarks=?, prescription=? where patient_ID='" + patientID + "' ";
-
-                PreparedStatement pst = con.prepareStatement(query);
-                pst.setString(1, lname);
-                pst.setString(2, fname);
-                pst.setString(3, gender);
-                pst.setString(4, date);
-                pst.setString(5, age);
-                pst.setString(6, phoneNumber);
-                pst.setString(7, address);
-                pst.setString(8, MotherLName);
-                pst.setString(9, MotherFirstName);
-                pst.setString(10, MotherAge);
-                pst.setString(11, MotherNumber);
-                pst.setString(12, FatherLastName);
-                pst.setString(13, FatherFirstName);
-                pst.setString(14, FatherAge);
-                pst.setString(15, FatherNumber);
-                pst.setString(16, remarksString);
-                pst.setString(17, prescriptString);
-                pst.executeUpdate();
-                JOptionPane.showMessageDialog(this, "Update Successful!");
-                updateTable();
-            } catch (SQLException ex) {
-                Logger.getLogger(updatePatientFrame.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-    }//GEN-LAST:event_updateButtonActionPerformed
 
     private void textAgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textAgeActionPerformed
         // TODO add your handling code here:
@@ -762,6 +704,90 @@ public class updatePatientFrame extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jLabel20MouseClicked
 
+    private void clearButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearButton1ActionPerformed
+         int msg = JOptionPane.showConfirmDialog(this, "Are you sure you want to remove all fields?", "Remove Fields", JOptionPane.WARNING_MESSAGE);
+
+        if (msg == 0) {
+            // textIDNo.setText("");
+            textLastName.setText("");
+            textFirstName.setText("");
+            birthDate.setCalendar(null);
+            textAge.setText("");
+            textPhoneNo.setText("");
+            textAddress.setText("");
+            textMotherLname.setText("");
+            textMotherFirstName.setText("");
+            textMotherAge.setText("");
+            textMotherNumber.setText("");
+            textFatherLastName.setText("");
+            textFatherFirstName.setText("");
+            textFatherAge.setText("");
+            textFatherNumber.setText("");
+            textAreaRemarks.setText("");
+            textAreaPrescription.setText("");
+        }
+    }//GEN-LAST:event_clearButton1ActionPerformed
+
+    private void btnAddRec1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddRec1ActionPerformed
+        Connection con;
+
+        DatabaseConnection connection = new DatabaseConnection();
+        con = connection.getConnection();
+        //confirmation dialog message
+        int msg = JOptionPane.showConfirmDialog(this, "Update selected record?");
+
+//assigning textfields into variables for easy calling
+        String patientID = textPatientID1.getText();
+        String lname = textLastName.getText();
+        String fname = textFirstName.getText();
+        String gender = comboGender.getSelectedItem().toString();
+        String age = textAge.getText();
+//date of birth
+        String date = ((JTextField) birthDate.getDateEditor().getUiComponent()).getText();
+        String phoneNumber = textPhoneNo.getText();
+        String address = textAddress.getText();
+        String MotherLName = textMotherLname.getText();
+        String MotherFirstName = textMotherFirstName.getText();
+        String MotherAge = textMotherAge.getText();
+        String MotherNumber = textMotherNumber.getText();
+        String FatherLastName = textFatherLastName.getText();
+        String FatherFirstName = textFatherFirstName.getText();
+        String FatherAge = textFatherAge.getText();
+        String FatherNumber = textFatherNumber.getText();
+        String remarksString = textAreaRemarks.getText();
+        String prescriptString = textAreaPrescription.getText();
+
+        if (msg == JOptionPane.YES_OPTION) {
+            try {
+                String query = "update patient_info set patient_lastname=?, patient_firstname=?, patient_gender=?, patient_DOB=?, patient_age=?, patient_contactno=?, patient_address=?, mother_lastname=?, mother_firstname=?, mother_age=?, mother_contactno=?, father_lastname=?, father_firstname=?, father_age=?, father_contactno=?, remarks=?, prescription=? where patient_ID='" + patientID + "' ";
+
+                PreparedStatement pst = con.prepareStatement(query);
+                pst.setString(1, lname);
+                pst.setString(2, fname);
+                pst.setString(3, gender);
+                pst.setString(4, date);
+                pst.setString(5, age);
+                pst.setString(6, phoneNumber);
+                pst.setString(7, address);
+                pst.setString(8, MotherLName);
+                pst.setString(9, MotherFirstName);
+                pst.setString(10, MotherAge);
+                pst.setString(11, MotherNumber);
+                pst.setString(12, FatherLastName);
+                pst.setString(13, FatherFirstName);
+                pst.setString(14, FatherAge);
+                pst.setString(15, FatherNumber);
+                pst.setString(16, remarksString);
+                pst.setString(17, prescriptString);
+                pst.executeUpdate();
+                JOptionPane.showMessageDialog(this, "Update Successful!");
+                updateTable();
+            } catch (SQLException ex) {
+                Logger.getLogger(updatePatientFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_btnAddRec1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -799,7 +825,8 @@ public class updatePatientFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.toedter.calendar.JDateChooser birthDate;
-    private javax.swing.JButton clearButton;
+    private rojerusan.RSMaterialButtonCircle btnAddRec1;
+    private rojerusan.RSMaterialButtonCircle clearButton1;
     private javax.swing.JComboBox<String> comboGender;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -847,6 +874,5 @@ public class updatePatientFrame extends javax.swing.JFrame {
     private javax.swing.JTextField textMotherNumber;
     private javax.swing.JLabel textPatientID1;
     private javax.swing.JTextField textPhoneNo;
-    private javax.swing.JButton updateButton;
     // End of variables declaration//GEN-END:variables
 }

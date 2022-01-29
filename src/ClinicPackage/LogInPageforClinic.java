@@ -256,6 +256,7 @@ public class LogInPageforClinic extends javax.swing.JFrame {
                 if (rs.next()) {
                     String s1 = rs.getString("role");
                     String usernameString = rs.getString("username");
+
                     if (role.equalsIgnoreCase("Admin") && s1.equalsIgnoreCase("admin")) {
                         AdminMainFrame1 adminFrame = new AdminMainFrame1(usernameString);
                         JOptionPane.showMessageDialog(rootPane, "Login successful");
@@ -263,9 +264,11 @@ public class LogInPageforClinic extends javax.swing.JFrame {
                         this.dispose();
                     }
                     if (role.equalsIgnoreCase("Secretary") && s1.equalsIgnoreCase("secretary")) {
+                        JOptionPane.showMessageDialog(null, "Logged in successfully");
                         SecretaryPage secretaryPage = new SecretaryPage(usernameString);
                         secretaryPage.setVisible(true);
                         this.dispose();
+
                     }else{
                         JOptionPane.showMessageDialog(rootPane, "Username and password do not match", "Error", 1);
                     }

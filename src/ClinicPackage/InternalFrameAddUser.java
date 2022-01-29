@@ -131,7 +131,6 @@ public class InternalFrameAddUser extends javax.swing.JInternalFrame {
 
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        btnBack = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         txtlastName = new javax.swing.JTextField();
@@ -167,69 +166,66 @@ public class InternalFrameAddUser extends javax.swing.JInternalFrame {
         jPanel2.setPreferredSize(new java.awt.Dimension(1060, 620));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 33)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(61, 86, 178));
         jLabel1.setText("ADD NEW USER");
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 10, -1, -1));
-
-        btnBack.setFont(new java.awt.Font("Gadugi", 1, 11)); // NOI18N
-        btnBack.setText("X");
-        btnBack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBackActionPerformed(evt);
-            }
-        });
-        jPanel2.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 10, 50, 30));
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
         jPanel6.setOpaque(false);
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Yu Gothic Medium", 0, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(38, 133, 187));
         jLabel2.setText("Birthdate:");
-        jPanel6.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, -1, -1));
+        jPanel6.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, -1));
 
-        txtlastName.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(38, 133, 187)));
+        txtlastName.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        txtlastName.setForeground(new java.awt.Color(51, 51, 51));
+        txtlastName.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(38, 133, 187), 1, true));
         txtlastName.setOpaque(false);
         txtlastName.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtlastNameKeyTyped(evt);
             }
         });
-        jPanel6.add(txtlastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 220, 30));
+        jPanel6.add(txtlastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 250, 30));
 
-        jLabel3.setFont(new java.awt.Font("Yu Gothic Medium", 0, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(38, 133, 187));
-        jLabel3.setText("First Name");
-        jPanel6.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 70, -1, -1));
+        jLabel3.setText("First Name:");
+        jPanel6.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 70, -1, -1));
 
-        txtfirstName.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(38, 133, 187)));
+        txtfirstName.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        txtfirstName.setForeground(new java.awt.Color(51, 51, 51));
+        txtfirstName.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(38, 133, 187), 1, true));
         txtfirstName.setOpaque(false);
         txtfirstName.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtfirstNameKeyTyped(evt);
             }
         });
-        jPanel6.add(txtfirstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 100, 220, 30));
+        jPanel6.add(txtfirstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 100, 280, 30));
 
-        jLabel4.setFont(new java.awt.Font("Yu Gothic Medium", 0, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(38, 133, 187));
-        jLabel4.setText("Username");
-        jPanel6.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 70, -1, -1));
+        jLabel4.setText("Username:");
+        jPanel6.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 70, -1, -1));
 
-        txtUserName.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(38, 133, 187)));
+        txtUserName.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        txtUserName.setForeground(new java.awt.Color(51, 51, 51));
+        txtUserName.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(38, 133, 187), 1, true));
         txtUserName.setOpaque(false);
         txtUserName.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtUserNameKeyTyped(evt);
             }
         });
-        jPanel6.add(txtUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 100, 220, 30));
+        jPanel6.add(txtUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 100, 280, 30));
 
-        jLabel5.setFont(new java.awt.Font("Yu Gothic Medium", 0, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(38, 133, 187));
-        jLabel5.setText("Last Name");
+        jLabel5.setText("Last Name:");
         jPanel6.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Dialog", 2, 11)); // NOI18N
@@ -237,17 +233,19 @@ public class InternalFrameAddUser extends javax.swing.JInternalFrame {
         jLabel6.setText("*from date of Birth");
         jPanel6.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 210, -1, -1));
 
-        jLabel7.setFont(new java.awt.Font("Yu Gothic Medium", 0, 18)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(38, 133, 187));
         jLabel7.setText("Role:");
-        jPanel6.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 150, -1, -1));
+        jPanel6.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 140, -1, -1));
 
-        jLabel8.setFont(new java.awt.Font("Yu Gothic Medium", 0, 18)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(38, 133, 187));
         jLabel8.setText("Address:");
         jPanel6.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, -1, -1));
 
-        txtAddress.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(38, 133, 187)));
+        txtAddress.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        txtAddress.setForeground(new java.awt.Color(51, 51, 51));
+        txtAddress.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(38, 133, 187), 1, true));
         txtAddress.setOpaque(false);
         txtAddress.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -256,17 +254,19 @@ public class InternalFrameAddUser extends javax.swing.JInternalFrame {
         });
         jPanel6.add(txtAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 840, 40));
 
-        jLabel9.setFont(new java.awt.Font("Yu Gothic Medium", 0, 18)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(38, 133, 187));
         jLabel9.setText("Age");
-        jPanel6.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 150, -1, -1));
+        jPanel6.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 140, -1, -1));
 
-        jLabel10.setFont(new java.awt.Font("Yu Gothic Medium", 0, 18)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(38, 133, 187));
         jLabel10.setText("Contact Number:");
-        jPanel6.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 150, -1, -1));
+        jPanel6.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 140, -1, -1));
 
-        txtContactNo.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(38, 133, 187)));
+        txtContactNo.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        txtContactNo.setForeground(new java.awt.Color(51, 51, 51));
+        txtContactNo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(38, 133, 187), 1, true));
         txtContactNo.setOpaque(false);
         txtContactNo.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -285,23 +285,29 @@ public class InternalFrameAddUser extends javax.swing.JInternalFrame {
         userIDLabel.setText("CS001");
         jPanel6.add(userIDLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 0, 80, 30));
 
-        jLabel12.setFont(new java.awt.Font("Yu Gothic Medium", 0, 18)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(38, 133, 187));
         jLabel12.setText("Password:");
-        jPanel6.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, -1, -1));
+        jPanel6.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, -1, -1));
 
-        txtPassword.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(38, 133, 187)));
+        txtPassword.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        txtPassword.setForeground(new java.awt.Color(51, 51, 51));
+        txtPassword.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(38, 133, 187), 1, true));
         txtPassword.setOpaque(false);
-        jPanel6.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, 350, 40));
+        jPanel6.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, 380, 40));
 
         textAge.setEditable(false);
+        textAge.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        textAge.setForeground(new java.awt.Color(51, 51, 51));
         textAge.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        textAge.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(38, 133, 187)));
+        textAge.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(38, 133, 187), 1, true));
         textAge.setEnabled(false);
         textAge.setOpaque(false);
-        jPanel6.add(textAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 180, 40, 30));
+        jPanel6.add(textAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 180, 50, 30));
 
+        birthDate.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(38, 133, 187), 1, true));
         birthDate.setDateFormatString("dd/MM/yyyy");
+        birthDate.setOpaque(false);
         birthDate.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
@@ -328,25 +334,28 @@ public class InternalFrameAddUser extends javax.swing.JInternalFrame {
                 birthDatePropertyChange(evt);
             }
         });
-        jPanel6.add(birthDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 230, 30));
+        jPanel6.add(birthDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 230, 35));
 
-        jLabel13.setFont(new java.awt.Font("Yu Gothic Medium", 0, 18)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(38, 133, 187));
         jLabel13.setText("Confirm Password:");
-        jPanel6.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 330, -1, -1));
+        jPanel6.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 320, -1, -1));
 
-        txtConfirmPassword.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(38, 133, 187)));
+        txtConfirmPassword.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        txtConfirmPassword.setForeground(new java.awt.Color(51, 51, 51));
+        txtConfirmPassword.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(38, 133, 187), 1, true));
         txtConfirmPassword.setOpaque(false);
-        jPanel6.add(txtConfirmPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 360, 370, 40));
+        jPanel6.add(txtConfirmPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 360, 440, 40));
 
         comboRole.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Secretary", "Admin" }));
         comboRole.setColorArrow(new java.awt.Color(38, 133, 187));
         comboRole.setColorBorde(new java.awt.Color(38, 133, 187));
         comboRole.setColorFondo(new java.awt.Color(38, 133, 187));
         comboRole.setDoubleBuffered(true);
-        comboRole.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jPanel6.add(comboRole, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 180, 210, -1));
+        comboRole.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 16)); // NOI18N
+        jPanel6.add(comboRole, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 180, 210, 30));
 
+        rSMaterialButtonRectangle1.setBackground(new java.awt.Color(38, 133, 187));
         rSMaterialButtonRectangle1.setText("Get Age");
         rSMaterialButtonRectangle1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -405,16 +414,11 @@ public class InternalFrameAddUser extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 590, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 4918, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        this.dispose();
-
-    }//GEN-LAST:event_btnBackActionPerformed
 
     private void birthDateAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_birthDateAncestorAdded
 
@@ -644,7 +648,6 @@ public class InternalFrameAddUser extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.toedter.calendar.JDateChooser birthDate;
     private rojerusan.RSMaterialButtonCircle btnAddRec;
-    private javax.swing.JButton btnBack;
     private rojerusan.RSMaterialButtonCircle clearButton;
     private rojerusan.RSComboMetro comboRole;
     private javax.swing.JLabel jLabel1;

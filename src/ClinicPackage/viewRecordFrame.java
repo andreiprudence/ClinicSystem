@@ -200,7 +200,7 @@ public class viewRecordFrame extends javax.swing.JFrame {
                 buttonPrintActionPerformed(evt);
             }
         });
-        jPanel1.add(buttonPrint, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 70, 120, 40));
+        jPanel1.add(buttonPrint, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 70, 130, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
