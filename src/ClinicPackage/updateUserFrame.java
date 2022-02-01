@@ -207,7 +207,7 @@ public class updateUserFrame extends javax.swing.JFrame {
         jLabel22.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(38, 133, 187));
         jLabel22.setText("User ID:");
-        jPanel1.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, -1, -1));
+        jPanel1.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, -1, -1));
 
         birthDate.setDateFormatString("dd/MM/yyyy");
         birthDate.addAncestorListener(new javax.swing.event.AncestorListener() {
@@ -257,6 +257,7 @@ public class updateUserFrame extends javax.swing.JFrame {
         comboRole.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jPanel1.add(comboRole, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 180, 170, -1));
 
+        rSMaterialButtonRectangle2.setBackground(new java.awt.Color(38, 133, 187));
         rSMaterialButtonRectangle2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/1086667_deals_examine_form_list_records_icon.png"))); // NOI18N
         rSMaterialButtonRectangle2.setText("REFRESH");
         rSMaterialButtonRectangle2.addActionListener(new java.awt.event.ActionListener() {
@@ -348,7 +349,7 @@ public class updateUserFrame extends javax.swing.JFrame {
 
         textUserID1.setFont(new java.awt.Font("Dialog", 1, 20)); // NOI18N
         textUserID1.setForeground(new java.awt.Color(51, 255, 0));
-        jPanel1.add(textUserID1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 60, 120, 30));
+        jPanel1.add(textUserID1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, 120, 30));
 
         jButton4.setBackground(new java.awt.Color(255, 0, 51));
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/close.png"))); // NOI18N

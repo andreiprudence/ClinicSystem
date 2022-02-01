@@ -103,7 +103,7 @@ public class viewUserList extends javax.swing.JFrame {
         searchField.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(38, 133, 187)));
         searchField.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         searchField.setOpaque(false);
-        searchField.setPlaceholder("Enter ID/Last Name");
+        searchField.setPlaceholder("Enter Last Name");
         searchField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 searchFieldKeyReleased(evt);

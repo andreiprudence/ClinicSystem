@@ -176,13 +176,13 @@ public class RemoveMedicineFrame extends javax.swing.JFrame {
         btnBack.setBackground(new java.awt.Color(255, 0, 0));
         btnBack.setFont(new java.awt.Font("Gadugi", 1, 11)); // NOI18N
         btnBack.setForeground(new java.awt.Color(255, 255, 255));
-        btnBack.setText("X");
+        btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/close.png"))); // NOI18N
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
             }
         });
-        jPanel1.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 0, -1, 30));
+        jPanel1.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(846, 0, 60, 40));
 
         medicine_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -200,6 +200,7 @@ public class RemoveMedicineFrame extends javax.swing.JFrame {
         medicine_table.setColorFilasBackgound2(new java.awt.Color(255, 255, 255));
         medicine_table.setColorFilasForeground1(new java.awt.Color(38, 133, 187));
         medicine_table.setColorFilasForeground2(new java.awt.Color(38, 133, 187));
+        medicine_table.setRowHeight(25);
         medicine_table.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 medicine_tableMouseClicked(evt);

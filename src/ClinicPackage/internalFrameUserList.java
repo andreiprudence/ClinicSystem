@@ -103,10 +103,10 @@ public class internalFrameUserList extends javax.swing.JInternalFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(1060, 620));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(38, 133, 187));
-        jLabel1.setText("User List");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 10, -1, 30));
+        jLabel1.setText("USER LIST");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 10, -1, 30));
 
         user_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -119,6 +119,7 @@ public class internalFrameUserList extends javax.swing.JInternalFrame {
                 "User ID", "Last Name", "First Name", "Username", "Date of Birth", "Age", "Contact Number", "Role", "Address"
             }
         ));
+        user_table.setCellSelectionEnabled(true);
         user_table.setColorBackgoundHead(new java.awt.Color(38, 133, 187));
         user_table.setColorBordeFilas(new java.awt.Color(38, 133, 187));
         user_table.setColorBordeHead(new java.awt.Color(38, 133, 187));
@@ -156,7 +157,7 @@ public class internalFrameUserList extends javax.swing.JInternalFrame {
                 btnUpdateMedicineActionPerformed(evt);
             }
         });
-        jPanel1.add(btnUpdateMedicine, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 210, 70));
+        jPanel1.add(btnUpdateMedicine, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 210, 90));
 
         btnRemoveMedicine.setBackground(new java.awt.Color(38, 133, 187));
         btnRemoveMedicine.setText("DELETE USER RECORD");
@@ -166,7 +167,7 @@ public class internalFrameUserList extends javax.swing.JInternalFrame {
                 btnRemoveMedicineActionPerformed(evt);
             }
         });
-        jPanel1.add(btnRemoveMedicine, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 210, 70));
+        jPanel1.add(btnRemoveMedicine, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 210, 90));
 
         btnRemoveMedicine1.setBackground(new java.awt.Color(38, 133, 187));
         btnRemoveMedicine1.setText("VIEW USER RECORD");
@@ -176,7 +177,7 @@ public class internalFrameUserList extends javax.swing.JInternalFrame {
                 btnRemoveMedicine1ActionPerformed(evt);
             }
         });
-        jPanel1.add(btnRemoveMedicine1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 390, 210, 70));
+        jPanel1.add(btnRemoveMedicine1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 370, 210, 90));
 
         refreshButton.setBackground(new java.awt.Color(38, 133, 187));
         refreshButton.setBorder(null);
@@ -322,7 +323,9 @@ public class internalFrameUserList extends javax.swing.JInternalFrame {
     private void buttonExportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonExportActionPerformed
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setDialogTitle("Select file location");
+
         int userSelection = fileChooser.showSaveDialog(this);
+
         if (userSelection == JFileChooser.APPROVE_OPTION) {
             File fileToSave = fileChooser.getSelectedFile();
             //lets write to file
@@ -339,9 +342,10 @@ public class internalFrameUserList extends javax.swing.JInternalFrame {
                     }
                     bw.newLine();//record per line
                 }
-                JOptionPane.showMessageDialog(this, "File created successfully", "INFORMATION", JOptionPane.INFORMATION_MESSAGE);
+
                 bw.close();
                 fw.close();
+                JOptionPane.showMessageDialog(this, "File created successfully", "INFORMATION", JOptionPane.INFORMATION_MESSAGE);
             } catch (IOException ex) {
                 JOptionPane.showMessageDialog(this, "ERROR", "ERROR MESSAGE", JOptionPane.ERROR_MESSAGE);
             }

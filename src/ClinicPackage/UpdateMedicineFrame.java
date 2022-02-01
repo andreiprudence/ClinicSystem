@@ -42,7 +42,7 @@ public class UpdateMedicineFrame extends javax.swing.JFrame {
         DatabaseConnection connection = new DatabaseConnection();
         con = connection.getConnection();
         try {
-            String query = "select medicine_no as 'Medicine ID', medicine_name as 'Name', medicine_price as 'Price', medicine_expiry as 'Expiry Date', quantity as 'Quantity' from medicine_info";
+            String query = "select medicine_no as 'ID', medicine_name as 'Name', medicine_price as 'Price', medicine_expiry as 'Expiry', quantity as 'Quantity' from medicine_info";
             PreparedStatement pstmt = con.prepareStatement(query);
             ResultSet rs = pstmt.executeQuery();
             medicine_table.setModel(DbUtils.resultSetToTableModel(rs));
@@ -85,8 +85,6 @@ public class UpdateMedicineFrame extends javax.swing.JFrame {
         textMedicineName = new app.bolivia.swing.JCTextField();
         textMedicinePrice = new app.bolivia.swing.JCTextField();
         textMedID = new app.bolivia.swing.JCTextField();
-        btnCancel = new javax.swing.JButton();
-        btnDeleteRec = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         medicine_table = new rojerusan.RSTableMetro();
@@ -94,6 +92,8 @@ public class UpdateMedicineFrame extends javax.swing.JFrame {
         jPanel14 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jSpinnerQuantity = new javax.swing.JSpinner();
+        btnAddRec1 = new rojerusan.RSMaterialButtonCircle();
+        clearButton1 = new rojerusan.RSMaterialButtonCircle();
 
         setUndecorated(true);
         setResizable(false);
@@ -133,7 +133,7 @@ public class UpdateMedicineFrame extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(38, 133, 187));
         jLabel5.setText("Quantity:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 340, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 340, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(38, 133, 187));
@@ -164,30 +164,6 @@ public class UpdateMedicineFrame extends javax.swing.JFrame {
         textMedID.setPlaceholder("Enter ID...");
         jPanel1.add(textMedID, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 122, 230, 40));
 
-        btnCancel.setBackground(new java.awt.Color(255, 0, 51));
-        btnCancel.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        btnCancel.setForeground(new java.awt.Color(255, 255, 255));
-        btnCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/330399_bad_cancel_clear_close_decline_icon.png"))); // NOI18N
-        btnCancel.setText("Clear");
-        btnCancel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 390, 120, 50));
-
-        btnDeleteRec.setBackground(new java.awt.Color(0, 166, 89));
-        btnDeleteRec.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        btnDeleteRec.setForeground(new java.awt.Color(255, 255, 255));
-        btnDeleteRec.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/3336950_download_save_icon.png"))); // NOI18N
-        btnDeleteRec.setText("UPDATE");
-        btnDeleteRec.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteRecActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnDeleteRec, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 390, 130, 50));
-
         btnBack.setBackground(new java.awt.Color(255, 0, 51));
         btnBack.setFont(new java.awt.Font("Gadugi", 1, 11)); // NOI18N
         btnBack.setText("X");
@@ -213,6 +189,7 @@ public class UpdateMedicineFrame extends javax.swing.JFrame {
         medicine_table.setColorBordeHead(new java.awt.Color(38, 133, 187));
         medicine_table.setColorFilasBackgound2(new java.awt.Color(255, 255, 255));
         medicine_table.setColorSelBackgound(new java.awt.Color(38, 133, 187));
+        medicine_table.setRowHeight(25);
         medicine_table.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 medicine_tableMouseClicked(evt);
@@ -251,8 +228,30 @@ public class UpdateMedicineFrame extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(38, 133, 187));
         jLabel7.setText("Expiry:");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 290, -1, -1));
-        jPanel1.add(jSpinnerQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 340, 50, 30));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 290, -1, -1));
+        jPanel1.add(jSpinnerQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 340, 50, 30));
+
+        btnAddRec1.setBackground(new java.awt.Color(0, 166, 89));
+        btnAddRec1.setBorder(null);
+        btnAddRec1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/103765_close_user_settings_icon (1).png"))); // NOI18N
+        btnAddRec1.setText("update");
+        btnAddRec1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddRec1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnAddRec1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 390, 140, 60));
+
+        clearButton1.setBackground(new java.awt.Color(255, 0, 51));
+        clearButton1.setBorder(null);
+        clearButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/103765_close_user_settings_icon (1).png"))); // NOI18N
+        clearButton1.setText("clear");
+        clearButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clearButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(clearButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 390, 130, 60));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -272,68 +271,6 @@ public class UpdateMedicineFrame extends javax.swing.JFrame {
     private void textMedicineNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textMedicineNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textMedicineNameActionPerformed
-
-    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
-        int msg = JOptionPane.showConfirmDialog(null, "Are you sure you want to clear all the records?");
-
-        if (msg == 0) {
-            // textIDNo.setText("");
-            textMedicinePrice.setText("");
-            textMedicineName.setText("");
-            textMedID.setText("");
-            expiryDate.setCalendar(null);
-            jSpinnerQuantity.setValue(0);
-
-        }
-    }//GEN-LAST:event_btnCancelActionPerformed
-
-    private void btnDeleteRecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteRecActionPerformed
-        Connection con;
-
-        DatabaseConnection connection = new DatabaseConnection();
-        con = connection.getConnection();
-        //confirmation dialog message
-        int msg = JOptionPane.showConfirmDialog(this, "Update selected record?");
-
-        String expirydate = ((JTextField) expiryDate.getDateEditor().getUiComponent()).getText();
-        String medicineID = textMedID.getText();
-        String medicineName = textMedicineName.getText();
-        String medicinePrice = textMedicinePrice.getText();
-        String quantity = jSpinnerQuantity.getValue().toString();
-        if (msg == JOptionPane.YES_OPTION) {
-            try {
-                String query = "update medicine_info set medicine_no=?, medicine_name=?, medicine_price=?, medicine_expiry=?, quantity=? where medicine_no='" + medicineID + "' ";
-
-                PreparedStatement pst = con.prepareStatement(query);
-                pst.setString(1, medicineID);
-                pst.setString(2, medicineName);
-                pst.setString(3, medicinePrice);
-                pst.setString(4, expirydate);
-                pst.setString(5, quantity);
-                pst.executeUpdate();
-                JOptionPane.showMessageDialog(this, "Update Successful!");
-                updateTable();
-            } catch (SQLException ex) {
-                Logger.getLogger(updatePatientFrame.class.getName()).log(Level.SEVERE, null, ex);
-
-            } finally {
-                try {
-                    rs.close();
-                } catch (Exception e) {
-                    /* Ignored */ }
-                try {
-                    pst.close();
-                } catch (Exception e) {
-                    /* Ignored */ }
-                try {
-                    con.close();
-                } catch (Exception e) {
-                    /* Ignored */ }
-            }
-        }else{
-            JOptionPane.showMessageDialog(this, "Update unsuccessful", "Error", JOptionPane.WARNING_MESSAGE);
-        }
-    }//GEN-LAST:event_btnDeleteRecActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         this.dispose();
@@ -355,12 +292,14 @@ public class UpdateMedicineFrame extends javax.swing.JFrame {
                 pst = con.prepareStatement(query);
                 rs = pst.executeQuery();
                 medicine_table.setModel(DbUtils.resultSetToTableModel(rs));
+                fetch();
 
             } else {
 
                 pst = con.prepareStatement(query2);
                 rs = pst.executeQuery();
                 medicine_table.setModel(DbUtils.resultSetToTableModel(rs));
+                fetch();
             }
         } catch (SQLException ex) {
             Logger.getLogger(InternalFramePatientRec.class.getName()).log(Level.SEVERE, null, ex);
@@ -420,6 +359,68 @@ public class UpdateMedicineFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_medicine_tableMouseClicked
 
+    private void btnAddRec1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddRec1ActionPerformed
+              Connection con;
+
+        DatabaseConnection connection = new DatabaseConnection();
+        con = connection.getConnection();
+        //confirmation dialog message
+        int msg = JOptionPane.showConfirmDialog(this, "Update selected record?");
+
+        String expirydate = ((JTextField) expiryDate.getDateEditor().getUiComponent()).getText();
+        String medicineID = textMedID.getText();
+        String medicineName = textMedicineName.getText();
+        String medicinePrice = textMedicinePrice.getText();
+        String quantity = jSpinnerQuantity.getValue().toString();
+        if (msg == JOptionPane.YES_OPTION) {
+            try {
+                String query = "update medicine_info set medicine_no=?, medicine_name=?, medicine_price=?, medicine_expiry=?, quantity=? where medicine_no='" + medicineID + "' ";
+
+                PreparedStatement pst = con.prepareStatement(query);
+                pst.setString(1, medicineID);
+                pst.setString(2, medicineName);
+                pst.setString(3, medicinePrice);
+                pst.setString(4, expirydate);
+                pst.setString(5, quantity);
+                pst.executeUpdate();
+                JOptionPane.showMessageDialog(this, "Update Successful!");
+                fetch();
+            } catch (SQLException ex) {
+                Logger.getLogger(updatePatientFrame.class.getName()).log(Level.SEVERE, null, ex);
+
+            } finally {
+                try {
+                    rs.close();
+                } catch (Exception e) {
+                    /* Ignored */ }
+                try {
+                    pst.close();
+                } catch (Exception e) {
+                    /* Ignored */ }
+                try {
+                    con.close();
+                } catch (Exception e) {
+                    /* Ignored */ }
+            }
+        }else{
+            JOptionPane.showMessageDialog(this, "Update unsuccessful", "Error", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_btnAddRec1ActionPerformed
+
+    private void clearButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearButton1ActionPerformed
+         int msg = JOptionPane.showConfirmDialog(null, "Are you sure you want to clear all the records?");
+
+        if (msg == 0) {
+            // textIDNo.setText("");
+            textMedicinePrice.setText("");
+            textMedicineName.setText("");
+            textMedID.setText("");
+            expiryDate.setCalendar(null);
+            jSpinnerQuantity.setValue(0);
+
+        }
+    }//GEN-LAST:event_clearButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -459,9 +460,9 @@ public class UpdateMedicineFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private rojerusan.RSMaterialButtonCircle btnAddRec1;
     private javax.swing.JButton btnBack;
-    private javax.swing.JButton btnCancel;
-    private javax.swing.JButton btnDeleteRec;
+    private rojerusan.RSMaterialButtonCircle clearButton1;
     private com.toedter.calendar.JDateChooser expiryDate;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;

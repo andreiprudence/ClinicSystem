@@ -197,13 +197,13 @@ public class displayDataToFrameforUserList extends javax.swing.JFrame {
 
         jButton6.setBackground(new java.awt.Color(255, 0, 0));
         jButton6.setForeground(new java.awt.Color(255, 255, 255));
-        jButton6.setText("X");
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/close.png"))); // NOI18N
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 0, 50, 30));
+        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 0, 50, 40));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/CARES_Logo - Copy (2).png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, -1, -1));

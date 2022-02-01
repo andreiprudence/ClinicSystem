@@ -390,7 +390,7 @@ public class InternalFrameAddUser extends javax.swing.JInternalFrame {
                 clearButtonActionPerformed(evt);
             }
         });
-        jPanel2.add(clearButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 510, 150, 70));
+        jPanel2.add(clearButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 510, 190, 80));
 
         btnAddRec.setBackground(new java.awt.Color(0, 166, 89));
         btnAddRec.setBorder(null);
@@ -401,7 +401,7 @@ public class InternalFrameAddUser extends javax.swing.JInternalFrame {
                 btnAddRecActionPerformed(evt);
             }
         });
-        jPanel2.add(btnAddRec, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 510, 150, 70));
+        jPanel2.add(btnAddRec, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 510, 190, 80));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -414,7 +414,7 @@ public class InternalFrameAddUser extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 4918, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 634, Short.MAX_VALUE)
         );
 
         pack();

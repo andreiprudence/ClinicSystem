@@ -113,31 +113,34 @@ public class internalFrameMedicine extends javax.swing.JInternalFrame {
 
         btnUpdateMedicine.setBackground(new java.awt.Color(38, 133, 187));
         btnUpdateMedicine.setText("UPDATE MEDICINE");
+        btnUpdateMedicine.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         btnUpdateMedicine.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUpdateMedicineActionPerformed(evt);
             }
         });
-        jPanel1.add(btnUpdateMedicine, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 210, 70));
+        jPanel1.add(btnUpdateMedicine, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 210, 80));
 
         btnAddMedicine.setBackground(new java.awt.Color(38, 133, 187));
         btnAddMedicine.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/1214628_calendar_date_day_event_month_icon.png"))); // NOI18N
         btnAddMedicine.setText("ADD MEDICINE");
+        btnAddMedicine.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         btnAddMedicine.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddMedicineActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAddMedicine, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 210, 70));
+        jPanel1.add(btnAddMedicine, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 210, 80));
 
         btnRemoveMedicine.setBackground(new java.awt.Color(38, 133, 187));
         btnRemoveMedicine.setText("REMOVE MEDICINE");
+        btnRemoveMedicine.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         btnRemoveMedicine.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRemoveMedicineActionPerformed(evt);
             }
         });
-        jPanel1.add(btnRemoveMedicine, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 210, 70));
+        jPanel1.add(btnRemoveMedicine, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 210, 80));
 
         searchField.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(38, 133, 187)));
         searchField.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -176,6 +179,7 @@ public class internalFrameMedicine extends javax.swing.JInternalFrame {
         medicine_table.setColorBordeFilas(new java.awt.Color(38, 133, 187));
         medicine_table.setColorBordeHead(new java.awt.Color(38, 133, 187));
         medicine_table.setColorFilasBackgound2(new java.awt.Color(255, 255, 255));
+        medicine_table.setRowHeight(30);
         jScrollPane2.setViewportView(medicine_table);
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 130, 800, -1));

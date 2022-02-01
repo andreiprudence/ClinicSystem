@@ -196,7 +196,7 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(61, 86, 178));
+        jLabel1.setForeground(new java.awt.Color(38, 133, 187));
         jLabel1.setText("ADD NEW PATIENT");
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 10, -1, -1));
 
@@ -205,7 +205,7 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(61, 86, 178));
+        jLabel8.setForeground(new java.awt.Color(38, 133, 187));
         jLabel8.setText("Patient ID:");
         jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, 30));
 
@@ -575,7 +575,7 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
                 btnAddRec1ActionPerformed(evt);
             }
         });
-        jPanel2.add(btnAddRec1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 550, 160, 60));
+        jPanel2.add(btnAddRec1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 560, 160, 60));
 
         clearButton.setBackground(new java.awt.Color(255, 0, 51));
         clearButton.setBorder(null);
@@ -586,7 +586,7 @@ public class InternalFramePatientRec extends javax.swing.JInternalFrame {
                 clearButtonActionPerformed(evt);
             }
         });
-        jPanel2.add(clearButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 550, 150, 60));
+        jPanel2.add(clearButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 560, 150, 60));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

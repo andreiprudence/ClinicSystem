@@ -68,7 +68,7 @@
               <Font name="Segoe UI" size="24" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="b2" green="56" red="3d" type="rgb"/>
+              <Color blue="bb" green="85" red="26" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="ADD NEW PATIENT"/>
           </Properties>
@@ -101,7 +101,7 @@
                   <Font name="Segoe UI" size="20" style="1"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="b2" green="56" red="3d" type="rgb"/>
+                  <Color blue="bb" green="85" red="26" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Patient ID:"/>
               </Properties>
@@ -1038,7 +1038,7 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="420" y="550" width="160" height="60"/>
+              <AbsoluteConstraints x="430" y="560" width="160" height="60"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -1060,7 +1060,7 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="580" y="550" width="150" height="60"/>
+              <AbsoluteConstraints x="590" y="560" width="150" height="60"/>
             </Constraint>
           </Constraints>
         </Component>

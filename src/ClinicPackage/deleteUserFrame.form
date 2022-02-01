@@ -132,10 +132,10 @@
               <Color blue="33" green="33" red="33" type="rgb"/>
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
-                <MatteColorBorder bottom="2" left="0" right="0" top="0">
+              <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                <LineBorder roundedCorners="true">
                   <Color PropertyName="color" blue="bb" green="85" red="26" type="rgb"/>
-                </MatteColorBorder>
+                </LineBorder>
               </Border>
             </Property>
             <Property name="opaque" type="boolean" value="false"/>
@@ -175,10 +175,10 @@
               <Color blue="33" green="33" red="33" type="rgb"/>
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
-                <MatteColorBorder bottom="2" left="0" right="0" top="0">
+              <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                <LineBorder roundedCorners="true">
                   <Color PropertyName="color" blue="bb" green="85" red="26" type="rgb"/>
-                </MatteColorBorder>
+                </LineBorder>
               </Border>
             </Property>
             <Property name="opaque" type="boolean" value="false"/>
@@ -218,10 +218,10 @@
               <Color blue="33" green="33" red="33" type="rgb"/>
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
-                <MatteColorBorder bottom="2" left="0" right="0" top="0">
+              <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                <LineBorder roundedCorners="true">
                   <Color PropertyName="color" blue="bb" green="85" red="26" type="rgb"/>
-                </MatteColorBorder>
+                </LineBorder>
               </Border>
             </Property>
             <Property name="opaque" type="boolean" value="false"/>
@@ -261,10 +261,10 @@
               <Color blue="33" green="33" red="33" type="rgb"/>
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
-                <MatteColorBorder bottom="2" left="0" right="0" top="0">
+              <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                <LineBorder roundedCorners="true">
                   <Color PropertyName="color" blue="bb" green="85" red="26" type="rgb"/>
-                </MatteColorBorder>
+                </LineBorder>
               </Border>
             </Property>
             <Property name="opaque" type="boolean" value="false"/>
@@ -320,10 +320,10 @@
               <Color blue="33" green="33" red="33" type="rgb"/>
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
-                <MatteColorBorder bottom="2" left="0" right="0" top="0">
+              <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                <LineBorder roundedCorners="true">
                   <Color PropertyName="color" blue="bb" green="85" red="26" type="rgb"/>
-                </MatteColorBorder>
+                </LineBorder>
               </Border>
             </Property>
             <Property name="opaque" type="boolean" value="false"/>
@@ -402,10 +402,10 @@
               <Color blue="33" green="33" red="33" type="rgb"/>
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
-                <MatteColorBorder bottom="2" left="0" right="0" top="0">
+              <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                <LineBorder roundedCorners="true">
                   <Color PropertyName="color" blue="bb" green="85" red="26" type="rgb"/>
-                </MatteColorBorder>
+                </LineBorder>
               </Border>
             </Property>
             <Property name="opaque" type="boolean" value="false"/>

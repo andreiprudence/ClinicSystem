@@ -146,7 +146,7 @@ public class updatePatientFrame extends javax.swing.JFrame {
         jLabel3.setText("Last Name");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, -1));
 
-        textLastName.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 204, 255)));
+        textLastName.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(38, 133, 187), 1, true));
         textLastName.setOpaque(false);
         jPanel1.add(textLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, 210, 30));
 
@@ -155,7 +155,7 @@ public class updatePatientFrame extends javax.swing.JFrame {
         jLabel4.setText("First Name");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
 
-        textFirstName.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 204, 255)));
+        textFirstName.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(38, 133, 187), 1, true));
         textFirstName.setOpaque(false);
         jPanel1.add(textFirstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 180, 210, 30));
 
@@ -164,7 +164,7 @@ public class updatePatientFrame extends javax.swing.JFrame {
         jLabel9.setText("Phone Number");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 180, -1, 30));
 
-        textPhoneNo.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 204, 255)));
+        textPhoneNo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(38, 133, 187), 1, true));
         textPhoneNo.setOpaque(false);
         jPanel1.add(textPhoneNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 180, 230, 30));
 
@@ -173,7 +173,7 @@ public class updatePatientFrame extends javax.swing.JFrame {
         jLabel5.setText("Address");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, 30));
 
-        textAddress.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 204, 255)));
+        textAddress.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(38, 133, 187), 1, true));
         textAddress.setOpaque(false);
         jPanel1.add(textAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, 290, 30));
 
@@ -201,7 +201,7 @@ public class updatePatientFrame extends javax.swing.JFrame {
         jLabel10.setText("Age");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 60, -1, 40));
 
-        textAge.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 204, 255)));
+        textAge.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(38, 133, 187), 1, true));
         textAge.setOpaque(false);
         textAge.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -281,11 +281,11 @@ public class updatePatientFrame extends javax.swing.JFrame {
     jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
     jLabel14.setForeground(new java.awt.Color(38, 133, 187));
     jLabel14.setText("Age");
-    jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 60, -1, 30));
+    jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 70, -1, 30));
 
-    textFatherFirstName.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 204, 255)));
+    textFatherFirstName.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(38, 133, 187), 1, true));
     textFatherFirstName.setOpaque(false);
-    jPanel3.add(textFatherFirstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 30, 130, 30));
+    jPanel3.add(textFatherFirstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 30, 130, 30));
 
     jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
     jLabel16.setForeground(new java.awt.Color(38, 133, 187));
@@ -295,29 +295,29 @@ public class updatePatientFrame extends javax.swing.JFrame {
     jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
     jLabel13.setForeground(new java.awt.Color(38, 133, 187));
     jLabel13.setText("First Name");
-    jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 30, -1, 30));
+    jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 30, -1, 30));
 
-    textFatherAge.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 204, 255)));
+    textFatherAge.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(38, 133, 187), 1, true));
     textFatherAge.setOpaque(false);
     textFatherAge.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
             textFatherAgeActionPerformed(evt);
         }
     });
-    jPanel3.add(textFatherAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 60, 40, 30));
+    jPanel3.add(textFatherAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 70, 40, 30));
 
-    textFatherNumber.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 204, 255)));
+    textFatherNumber.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(38, 133, 187), 1, true));
     textFatherNumber.setOpaque(false);
-    jPanel3.add(textFatherNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 60, 170, 30));
+    jPanel3.add(textFatherNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, 150, 30));
 
     jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
     jLabel12.setForeground(new java.awt.Color(38, 133, 187));
     jLabel12.setText("Last Name");
     jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 80, 30));
 
-    textFatherLastName.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 204, 255)));
+    textFatherLastName.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(38, 133, 187), 1, true));
     textFatherLastName.setOpaque(false);
-    jPanel3.add(textFatherLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, 170, 30));
+    jPanel3.add(textFatherLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, 150, 30));
 
     jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 190, 550, 120));
 
@@ -331,7 +331,7 @@ public class updatePatientFrame extends javax.swing.JFrame {
     jLabel17.setText("Age");
     jPanel4.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 60, -1, 30));
 
-    textMotherFirstName.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 204, 255)));
+    textMotherFirstName.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(38, 133, 187), 1, true));
     textMotherFirstName.setOpaque(false);
     jPanel4.add(textMotherFirstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 20, 150, 30));
 
@@ -345,7 +345,7 @@ public class updatePatientFrame extends javax.swing.JFrame {
     jLabel19.setText("First Name");
     jPanel4.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 20, -1, 30));
 
-    textMotherAge.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 204, 255)));
+    textMotherAge.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(38, 133, 187), 1, true));
     textMotherAge.setOpaque(false);
     textMotherAge.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -354,18 +354,18 @@ public class updatePatientFrame extends javax.swing.JFrame {
     });
     jPanel4.add(textMotherAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 60, 40, 30));
 
-    textMotherNumber.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 204, 255)));
+    textMotherNumber.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(38, 133, 187), 1, true));
     textMotherNumber.setOpaque(false);
-    jPanel4.add(textMotherNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 60, 130, 30));
+    jPanel4.add(textMotherNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 60, 140, 30));
 
     jLabel21.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
     jLabel21.setForeground(new java.awt.Color(38, 133, 187));
     jLabel21.setText("Last Name");
     jPanel4.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 80, 30));
 
-    textMotherLname.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 204, 255)));
+    textMotherLname.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(38, 133, 187), 1, true));
     textMotherLname.setOpaque(false);
-    jPanel4.add(textMotherLname, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, 130, 30));
+    jPanel4.add(textMotherLname, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, 140, 30));
 
     jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 50, 550, 120));
 
@@ -432,7 +432,7 @@ public class updatePatientFrame extends javax.swing.JFrame {
     jLabel20.setBackground(new java.awt.Color(255, 0, 0));
     jLabel20.setForeground(new java.awt.Color(255, 255, 255));
     jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-    jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/closeicon.png"))); // NOI18N
+    jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/close.png"))); // NOI18N
     jLabel20.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
     jLabel20.setOpaque(true);
     jLabel20.addMouseListener(new java.awt.event.MouseAdapter() {

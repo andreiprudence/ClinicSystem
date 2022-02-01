@@ -54,7 +54,6 @@ public class displayDataToFrame extends javax.swing.JFrame {
 
     }
 
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -126,6 +125,8 @@ public class displayDataToFrame extends javax.swing.JFrame {
         jTextField14 = new javax.swing.JTextField();
         jTextField15 = new javax.swing.JTextField();
         jPanel14 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        rSButtonIconD2 = new rojerusan.RSButtonIconD();
         jPanel2 = new javax.swing.JPanel();
         rSButtonIconD1 = new rojerusan.RSButtonIconD();
 
@@ -147,7 +148,7 @@ public class displayDataToFrame extends javax.swing.JFrame {
         jLabel31.setFont(new java.awt.Font("Segoe UI Black", 1, 22)); // NOI18N
         jLabel31.setForeground(new java.awt.Color(38, 133, 187));
         jLabel31.setText("PATIENT RECORD");
-        jPanel1.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 100, -1, -1));
+        jPanel1.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 100, -1, -1));
 
         jLabel22.setFont(new java.awt.Font("Yu Gothic", 1, 18)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(38, 133, 187));
@@ -347,13 +348,13 @@ public class displayDataToFrame extends javax.swing.JFrame {
 
         jButton5.setBackground(new java.awt.Color(255, 0, 0));
         jButton5.setForeground(new java.awt.Color(255, 255, 255));
-        jButton5.setText("X");
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/close.png"))); // NOI18N
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 0, 50, 30));
+        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 0, 50, -1));
 
         jLabel20.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(38, 133, 187));
@@ -438,10 +439,27 @@ public class displayDataToFrame extends javax.swing.JFrame {
         );
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 3, Short.MAX_VALUE)
         );
 
         jPanel1.add(jPanel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 830, 3));
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 2, 2, 2, new java.awt.Color(38, 133, 187)));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        rSButtonIconD2.setBackground(new java.awt.Color(38, 133, 187));
+        rSButtonIconD2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/print_32px.png"))); // NOI18N
+        rSButtonIconD2.setText("Print Record");
+        rSButtonIconD2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
+        rSButtonIconD2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rSButtonIconD2ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(rSButtonIconD2, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 10, 160, 30));
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 690, 870, 50));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 874, 680));
 
@@ -492,7 +510,7 @@ public class displayDataToFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void rSButtonIconD1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonIconD1ActionPerformed
-         // PRINTS THE JFRAME
+        // PRINTS THE JFRAME
         PrinterJob job = PrinterJob.getPrinterJob();
         job.setJobName("Print Data");
 
@@ -507,7 +525,7 @@ public class displayDataToFrame extends javax.swing.JFrame {
                 g2.translate(pf.getImageableX(), pf.getImageableY());
                 g2.scale(0.7, 0.7);
 
-jPanel1.paint(g2);
+                jPanel1.paint(g2);
 //
 
                 return Printable.PAGE_EXISTS;
@@ -524,6 +542,40 @@ jPanel1.paint(g2);
             }
         }
     }//GEN-LAST:event_rSButtonIconD1ActionPerformed
+
+    private void rSButtonIconD2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonIconD2ActionPerformed
+        // PRINTS THE JFRAME
+        PrinterJob job = PrinterJob.getPrinterJob();
+        job.setJobName("Print Data");
+
+        job.setPrintable(new Printable() {
+            public int print(Graphics pg, PageFormat pf, int pageNum) {
+                pf.setOrientation(PageFormat.PORTRAIT);
+                if (pageNum > 0) {
+                    return Printable.NO_SUCH_PAGE;
+                }
+
+                Graphics2D g2 = (Graphics2D) pg;
+                g2.translate(pf.getImageableX(), pf.getImageableY());
+                g2.scale(0.7, 0.7);
+
+                jPanel1.paint(g2);
+                //
+
+                return Printable.PAGE_EXISTS;
+
+            }
+        });
+
+        boolean ok = job.printDialog();
+        if (ok) {
+            try {
+
+                job.print();
+            } catch (PrinterException ex) {
+            }
+        }
+    }//GEN-LAST:event_rSButtonIconD2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -588,6 +640,7 @@ jPanel1.paint(g2);
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextField1;
@@ -624,6 +677,7 @@ jPanel1.paint(g2);
     private javax.swing.JLabel lblPhoneNumber;
     private javax.swing.JTextArea prescriptionTextArea;
     private rojerusan.RSButtonIconD rSButtonIconD1;
+    private rojerusan.RSButtonIconD rSButtonIconD2;
     private javax.swing.JTextArea remarksTextArea;
     // End of variables declaration//GEN-END:variables
 }

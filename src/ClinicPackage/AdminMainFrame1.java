@@ -356,7 +356,7 @@ public class AdminMainFrame1 extends javax.swing.JFrame {
         sidePanel.add(regPtntButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 220, 50));
 
         btnExit.setBackground(new java.awt.Color(254, 241, 230));
-        btnExit.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        btnExit.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         btnExit.setForeground(new java.awt.Color(25, 128, 251));
         btnExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/618316_arrow_exit_logout_sign out_icon.png"))); // NOI18N
         btnExit.setText("Sign-Out");
@@ -379,17 +379,17 @@ public class AdminMainFrame1 extends javax.swing.JFrame {
         sidePanel.add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 570, 220, 50));
 
         labelWelcome.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        labelWelcome.setForeground(new java.awt.Color(21, 126, 251));
+        labelWelcome.setForeground(new java.awt.Color(38, 133, 187));
         labelWelcome.setText("Welcome,");
         sidePanel.add(labelWelcome, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, 70, 20));
 
         labelUser.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        labelUser.setForeground(new java.awt.Color(21, 126, 251));
+        labelUser.setForeground(new java.awt.Color(38, 133, 187));
         labelUser.setText("andrei");
         sidePanel.add(labelUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 100, 30));
 
         userLabel1.setFont(new java.awt.Font("Yu Gothic Medium", 1, 12)); // NOI18N
-        userLabel1.setForeground(new java.awt.Color(21, 126, 251));
+        userLabel1.setForeground(new java.awt.Color(38, 133, 187));
         userLabel1.setText("Admin");
         sidePanel.add(userLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, 70, 20));
 

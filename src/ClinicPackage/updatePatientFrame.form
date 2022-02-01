@@ -71,10 +71,10 @@
         <Component class="javax.swing.JTextField" name="textLastName">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
-                <MatteColorBorder bottom="2" left="0" right="0" top="0">
-                  <Color PropertyName="color" blue="ff" green="cc" red="66" type="rgb"/>
-                </MatteColorBorder>
+              <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                <LineBorder roundedCorners="true">
+                  <Color PropertyName="color" blue="bb" green="85" red="26" type="rgb"/>
+                </LineBorder>
               </Border>
             </Property>
             <Property name="opaque" type="boolean" value="false"/>
@@ -104,10 +104,10 @@
         <Component class="javax.swing.JTextField" name="textFirstName">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
-                <MatteColorBorder bottom="2" left="0" right="0" top="0">
-                  <Color PropertyName="color" blue="ff" green="cc" red="66" type="rgb"/>
-                </MatteColorBorder>
+              <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                <LineBorder roundedCorners="true">
+                  <Color PropertyName="color" blue="bb" green="85" red="26" type="rgb"/>
+                </LineBorder>
               </Border>
             </Property>
             <Property name="opaque" type="boolean" value="false"/>
@@ -137,10 +137,10 @@
         <Component class="javax.swing.JTextField" name="textPhoneNo">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
-                <MatteColorBorder bottom="2" left="0" right="0" top="0">
-                  <Color PropertyName="color" blue="ff" green="cc" red="66" type="rgb"/>
-                </MatteColorBorder>
+              <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                <LineBorder roundedCorners="true">
+                  <Color PropertyName="color" blue="bb" green="85" red="26" type="rgb"/>
+                </LineBorder>
               </Border>
             </Property>
             <Property name="opaque" type="boolean" value="false"/>
@@ -170,10 +170,10 @@
         <Component class="javax.swing.JTextField" name="textAddress">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
-                <MatteColorBorder bottom="2" left="0" right="0" top="0">
-                  <Color PropertyName="color" blue="ff" green="cc" red="66" type="rgb"/>
-                </MatteColorBorder>
+              <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                <LineBorder roundedCorners="true">
+                  <Color PropertyName="color" blue="bb" green="85" red="26" type="rgb"/>
+                </LineBorder>
               </Border>
             </Property>
             <Property name="opaque" type="boolean" value="false"/>
@@ -259,10 +259,10 @@
         <Component class="javax.swing.JTextField" name="textAge">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
-                <MatteColorBorder bottom="2" left="0" right="0" top="0">
-                  <Color PropertyName="color" blue="ff" green="cc" red="66" type="rgb"/>
-                </MatteColorBorder>
+              <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                <LineBorder roundedCorners="true">
+                  <Color PropertyName="color" blue="bb" green="85" red="26" type="rgb"/>
+                </LineBorder>
               </Border>
             </Property>
             <Property name="opaque" type="boolean" value="false"/>
@@ -441,24 +441,24 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="370" y="60" width="-1" height="30"/>
+                  <AbsoluteConstraints x="350" y="70" width="-1" height="30"/>
                 </Constraint>
               </Constraints>
             </Component>
             <Component class="javax.swing.JTextField" name="textFatherFirstName">
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
-                    <MatteColorBorder bottom="2" left="0" right="0" top="0">
-                      <Color PropertyName="color" blue="ff" green="cc" red="66" type="rgb"/>
-                    </MatteColorBorder>
+                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                    <LineBorder roundedCorners="true">
+                      <Color PropertyName="color" blue="bb" green="85" red="26" type="rgb"/>
+                    </LineBorder>
                   </Border>
                 </Property>
                 <Property name="opaque" type="boolean" value="false"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="410" y="30" width="130" height="30"/>
+                  <AbsoluteConstraints x="390" y="30" width="130" height="30"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -490,17 +490,17 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="320" y="30" width="-1" height="30"/>
+                  <AbsoluteConstraints x="300" y="30" width="-1" height="30"/>
                 </Constraint>
               </Constraints>
             </Component>
             <Component class="javax.swing.JTextField" name="textFatherAge">
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
-                    <MatteColorBorder bottom="2" left="0" right="0" top="0">
-                      <Color PropertyName="color" blue="ff" green="cc" red="66" type="rgb"/>
-                    </MatteColorBorder>
+                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                    <LineBorder roundedCorners="true">
+                      <Color PropertyName="color" blue="bb" green="85" red="26" type="rgb"/>
+                    </LineBorder>
                   </Border>
                 </Property>
                 <Property name="opaque" type="boolean" value="false"/>
@@ -510,24 +510,24 @@
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="410" y="60" width="40" height="30"/>
+                  <AbsoluteConstraints x="390" y="70" width="40" height="30"/>
                 </Constraint>
               </Constraints>
             </Component>
             <Component class="javax.swing.JTextField" name="textFatherNumber">
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
-                    <MatteColorBorder bottom="2" left="0" right="0" top="0">
-                      <Color PropertyName="color" blue="ff" green="cc" red="66" type="rgb"/>
-                    </MatteColorBorder>
+                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                    <LineBorder roundedCorners="true">
+                      <Color PropertyName="color" blue="bb" green="85" red="26" type="rgb"/>
+                    </LineBorder>
                   </Border>
                 </Property>
                 <Property name="opaque" type="boolean" value="false"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="140" y="60" width="170" height="30"/>
+                  <AbsoluteConstraints x="140" y="70" width="150" height="30"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -550,17 +550,17 @@
             <Component class="javax.swing.JTextField" name="textFatherLastName">
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
-                    <MatteColorBorder bottom="2" left="0" right="0" top="0">
-                      <Color PropertyName="color" blue="ff" green="cc" red="66" type="rgb"/>
-                    </MatteColorBorder>
+                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                    <LineBorder roundedCorners="true">
+                      <Color PropertyName="color" blue="bb" green="85" red="26" type="rgb"/>
+                    </LineBorder>
                   </Border>
                 </Property>
                 <Property name="opaque" type="boolean" value="false"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="140" y="30" width="170" height="30"/>
+                  <AbsoluteConstraints x="140" y="30" width="150" height="30"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -610,10 +610,10 @@
             <Component class="javax.swing.JTextField" name="textMotherFirstName">
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
-                    <MatteColorBorder bottom="2" left="0" right="0" top="0">
-                      <Color PropertyName="color" blue="ff" green="cc" red="66" type="rgb"/>
-                    </MatteColorBorder>
+                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                    <LineBorder roundedCorners="true">
+                      <Color PropertyName="color" blue="bb" green="85" red="26" type="rgb"/>
+                    </LineBorder>
                   </Border>
                 </Property>
                 <Property name="opaque" type="boolean" value="false"/>
@@ -659,10 +659,10 @@
             <Component class="javax.swing.JTextField" name="textMotherAge">
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
-                    <MatteColorBorder bottom="2" left="0" right="0" top="0">
-                      <Color PropertyName="color" blue="ff" green="cc" red="66" type="rgb"/>
-                    </MatteColorBorder>
+                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                    <LineBorder roundedCorners="true">
+                      <Color PropertyName="color" blue="bb" green="85" red="26" type="rgb"/>
+                    </LineBorder>
                   </Border>
                 </Property>
                 <Property name="opaque" type="boolean" value="false"/>
@@ -679,17 +679,17 @@
             <Component class="javax.swing.JTextField" name="textMotherNumber">
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
-                    <MatteColorBorder bottom="2" left="0" right="0" top="0">
-                      <Color PropertyName="color" blue="ff" green="cc" red="66" type="rgb"/>
-                    </MatteColorBorder>
+                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                    <LineBorder roundedCorners="true">
+                      <Color PropertyName="color" blue="bb" green="85" red="26" type="rgb"/>
+                    </LineBorder>
                   </Border>
                 </Property>
                 <Property name="opaque" type="boolean" value="false"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="140" y="60" width="130" height="30"/>
+                  <AbsoluteConstraints x="140" y="60" width="140" height="30"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -712,17 +712,17 @@
             <Component class="javax.swing.JTextField" name="textMotherLname">
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
-                    <MatteColorBorder bottom="2" left="0" right="0" top="0">
-                      <Color PropertyName="color" blue="ff" green="cc" red="66" type="rgb"/>
-                    </MatteColorBorder>
+                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                    <LineBorder roundedCorners="true">
+                      <Color PropertyName="color" blue="bb" green="85" red="26" type="rgb"/>
+                    </LineBorder>
                   </Border>
                 </Property>
                 <Property name="opaque" type="boolean" value="false"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="140" y="20" width="130" height="30"/>
+                  <AbsoluteConstraints x="140" y="20" width="140" height="30"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -829,7 +829,7 @@
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/ClinicPackage/images/closeicon.png"/>
+              <Image iconType="3" name="/ClinicPackage/images/close.png"/>
             </Property>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Hand Cursor"/>

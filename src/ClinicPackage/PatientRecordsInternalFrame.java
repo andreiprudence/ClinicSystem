@@ -68,7 +68,7 @@ public class PatientRecordsInternalFrame extends javax.swing.JInternalFrame {
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 430, -1, 30));
 
         deleteButton.setBackground(new java.awt.Color(153, 204, 255));
-        deleteButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.lightGray, java.awt.Color.lightGray, java.awt.Color.lightGray, java.awt.Color.lightGray));
+        deleteButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 112, 192), 1, true));
         deleteButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         deleteButton.setOpaque(false);
         deleteButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -101,7 +101,7 @@ public class PatientRecordsInternalFrame extends javax.swing.JInternalFrame {
         jPanel1.add(deleteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 230, 170, 190));
 
         viewButton.setBackground(new java.awt.Color(153, 204, 255));
-        viewButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.lightGray, java.awt.Color.lightGray, java.awt.Color.lightGray, java.awt.Color.lightGray));
+        viewButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 112, 192), 1, true));
         viewButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         viewButton.setOpaque(false);
         viewButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -135,7 +135,7 @@ public class PatientRecordsInternalFrame extends javax.swing.JInternalFrame {
         jPanel1.add(viewButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 230, 180, 190));
 
         updateButton.setBackground(new java.awt.Color(153, 204, 255));
-        updateButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.lightGray, java.awt.Color.lightGray, java.awt.Color.lightGray, java.awt.Color.lightGray));
+        updateButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 112, 192), 1, true));
         updateButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         updateButton.setOpaque(false);
         updateButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -160,7 +160,7 @@ public class PatientRecordsInternalFrame extends javax.swing.JInternalFrame {
                 jLabel4MouseExited(evt);
             }
         });
-        updateButton.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 130, 140));
+        updateButton.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 140, 140));
 
         jPanel1.add(updateButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 230, 180, 190));
 
@@ -211,31 +211,31 @@ public class PatientRecordsInternalFrame extends javax.swing.JInternalFrame {
     private void updateButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateButtonMouseEntered
         updateButton.setBackground(mouseEnteredColor);
         updateButton.setOpaque(true);
-        updateButton.setBorder(BorderFactory.createBevelBorder(EtchedBorder.RAISED));
+
     }//GEN-LAST:event_updateButtonMouseEntered
 
     private void updateButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateButtonMouseExited
         updateButton.setBackground(mouseExitedColor);
-        updateButton.setBorder(BorderFactory.createBevelBorder(EtchedBorder.LOWERED));
+
         // updateButton.setOpaque(false);
     }//GEN-LAST:event_updateButtonMouseExited
 
     private void deleteButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteButtonMouseEntered
         deleteButton.setBackground(mouseEnteredColor);
         deleteButton.setOpaque(true);
-        deleteButton.setBorder(BorderFactory.createBevelBorder(EtchedBorder.RAISED));
+
     }//GEN-LAST:event_deleteButtonMouseEntered
 
     private void deleteButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteButtonMouseExited
         deleteButton.setBackground(mouseExitedColor);
-                deleteButton.setBorder(BorderFactory.createBevelBorder(EtchedBorder.LOWERED));
+
 
 
     }//GEN-LAST:event_deleteButtonMouseExited
 
     private void viewButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewButtonMouseExited
         viewButton.setBackground(mouseExitedColor);
-                viewButton.setBorder(BorderFactory.createBevelBorder(EtchedBorder.LOWERED));
+
 
 
 
@@ -244,7 +244,7 @@ public class PatientRecordsInternalFrame extends javax.swing.JInternalFrame {
     private void viewButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewButtonMouseEntered
         viewButton.setBackground(mouseEnteredColor);
         viewButton.setOpaque(true);
-        viewButton.setBorder(BorderFactory.createBevelBorder(EtchedBorder.RAISED));
+
     }//GEN-LAST:event_viewButtonMouseEntered
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
@@ -254,18 +254,18 @@ public class PatientRecordsInternalFrame extends javax.swing.JInternalFrame {
 
     private void jLabel4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseEntered
         updateButton.setBackground(mouseEnteredColor);
-        updateButton.setBorder(BorderFactory.createBevelBorder(EtchedBorder.RAISED));
+
     }//GEN-LAST:event_jLabel4MouseEntered
 
     private void jLabel4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseExited
         updateButton.setBackground(mouseExitedColor);
-        updateButton.setBorder(BorderFactory.createBevelBorder(EtchedBorder.LOWERED));
+
 
     }//GEN-LAST:event_jLabel4MouseExited
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
         new deletePatientFrame().setVisible(true);
-                        deleteButton.setBorder(BorderFactory.createBevelBorder(EtchedBorder.LOWERED));
+
 
     }//GEN-LAST:event_jLabel2MouseClicked
 
@@ -275,19 +275,19 @@ public class PatientRecordsInternalFrame extends javax.swing.JInternalFrame {
 
     private void jLabel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseEntered
         deleteButton.setBackground(mouseEnteredColor);
-                deleteButton.setBorder(BorderFactory.createBevelBorder(EtchedBorder.RAISED));
+
 
     }//GEN-LAST:event_jLabel2MouseEntered
 
     private void jLabel2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseExited
         deleteButton.setBackground(mouseExitedColor);
-                        deleteButton.setBorder(BorderFactory.createBevelBorder(EtchedBorder.LOWERED));
+
 
     }//GEN-LAST:event_jLabel2MouseExited
 
     private void jLabel3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseEntered
         viewButton.setBackground(mouseEnteredColor);
-                        viewButton.setBorder(BorderFactory.createBevelBorder(EtchedBorder.RAISED));
+
 
     }//GEN-LAST:event_jLabel3MouseEntered
 
@@ -303,7 +303,7 @@ public class PatientRecordsInternalFrame extends javax.swing.JInternalFrame {
 
     private void jLabel3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseExited
         viewButton.setBackground(mouseExitedColor);
-                        viewButton.setBorder(BorderFactory.createBevelBorder(EtchedBorder.LOWERED));
+                        
 
     }//GEN-LAST:event_jLabel3MouseExited
 

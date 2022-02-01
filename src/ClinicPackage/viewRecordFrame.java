@@ -124,7 +124,7 @@ public class viewRecordFrame extends javax.swing.JFrame {
         patient_table.setColorBordeFilas(new java.awt.Color(38, 133, 187));
         patient_table.setColorBordeHead(new java.awt.Color(38, 133, 187));
         patient_table.setColorFilasBackgound2(new java.awt.Color(255, 255, 255));
-        patient_table.setRowHeight(20);
+        patient_table.setRowHeight(25);
         patient_table.setRowMargin(2);
         patient_table.getTableHeader().setResizingAllowed(false);
         patient_table.getTableHeader().setReorderingAllowed(false);
@@ -156,7 +156,7 @@ public class viewRecordFrame extends javax.swing.JFrame {
         jLabel20.setBackground(new java.awt.Color(255, 0, 0));
         jLabel20.setForeground(new java.awt.Color(255, 255, 255));
         jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/closeicon.png"))); // NOI18N
+        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/close.png"))); // NOI18N
         jLabel20.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel20.setOpaque(true);
         jLabel20.addMouseListener(new java.awt.event.MouseAdapter() {

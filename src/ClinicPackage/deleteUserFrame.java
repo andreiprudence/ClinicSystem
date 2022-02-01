@@ -149,7 +149,7 @@ public class deleteUserFrame extends javax.swing.JFrame {
         textLastName.setBackground(new java.awt.Color(255, 255, 255));
         textLastName.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         textLastName.setForeground(new java.awt.Color(51, 51, 51));
-        textLastName.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(38, 133, 187)));
+        textLastName.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(38, 133, 187), 1, true));
         textLastName.setOpaque(false);
         jPanel1.add(textLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 120, 210, 30));
 
@@ -162,7 +162,7 @@ public class deleteUserFrame extends javax.swing.JFrame {
         textFirstName.setBackground(new java.awt.Color(255, 255, 255));
         textFirstName.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         textFirstName.setForeground(new java.awt.Color(51, 51, 51));
-        textFirstName.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(38, 133, 187)));
+        textFirstName.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(38, 133, 187), 1, true));
         textFirstName.setOpaque(false);
         jPanel1.add(textFirstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 160, 210, 30));
 
@@ -175,7 +175,7 @@ public class deleteUserFrame extends javax.swing.JFrame {
         textPhoneNo.setBackground(new java.awt.Color(255, 255, 255));
         textPhoneNo.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         textPhoneNo.setForeground(new java.awt.Color(51, 51, 51));
-        textPhoneNo.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(38, 133, 187)));
+        textPhoneNo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(38, 133, 187), 1, true));
         textPhoneNo.setOpaque(false);
         jPanel1.add(textPhoneNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 120, 240, 30));
 
@@ -188,7 +188,7 @@ public class deleteUserFrame extends javax.swing.JFrame {
         textAddress.setBackground(new java.awt.Color(255, 255, 255));
         textAddress.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         textAddress.setForeground(new java.awt.Color(51, 51, 51));
-        textAddress.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(38, 133, 187)));
+        textAddress.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(38, 133, 187), 1, true));
         textAddress.setOpaque(false);
         jPanel1.add(textAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 320, 480, 30));
 
@@ -206,7 +206,7 @@ public class deleteUserFrame extends javax.swing.JFrame {
         textAge.setBackground(new java.awt.Color(255, 255, 255));
         textAge.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         textAge.setForeground(new java.awt.Color(51, 51, 51));
-        textAge.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(38, 133, 187)));
+        textAge.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(38, 133, 187), 1, true));
         textAge.setOpaque(false);
         textAge.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -260,7 +260,7 @@ public class deleteUserFrame extends javax.swing.JFrame {
         textUsername.setBackground(new java.awt.Color(255, 255, 255));
         textUsername.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         textUsername.setForeground(new java.awt.Color(51, 51, 51));
-        textUsername.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(38, 133, 187)));
+        textUsername.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(38, 133, 187), 1, true));
         textUsername.setOpaque(false);
         jPanel1.add(textUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, 210, 30));
 
