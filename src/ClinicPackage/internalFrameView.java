@@ -18,6 +18,8 @@ public class internalFrameView extends javax.swing.JInternalFrame {
      */
     public internalFrameView() {
         initComponents();
+        // CODE THAT MAKES THE CELLS UNEDITABLE
+       // med_table.setDefaultEditor(Object.class, null);
          this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         BasicInternalFrameUI ui = (BasicInternalFrameUI) this.getUI();
         ui.setNorthPane(null);
@@ -100,7 +102,7 @@ public class internalFrameView extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void rSMaterialButtonRectangle2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSMaterialButtonRectangle2ActionPerformed
-        new AddMedicine().setVisible(true);
+   //     new AddMedicine().setVisible(true);
     }//GEN-LAST:event_rSMaterialButtonRectangle2ActionPerformed
 
 

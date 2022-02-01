@@ -5,6 +5,7 @@
  */
 package ClinicPackage;
 
+import com.sun.glass.events.KeyEvent;
 import java.awt.Dimension;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -130,10 +131,6 @@ public class InternalFrameAddUser extends javax.swing.JInternalFrame {
 
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        btnAddRec = new javax.swing.JButton();
-        btnBack = new javax.swing.JButton();
-        btnCancel = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         txtlastName = new javax.swing.JTextField();
@@ -144,7 +141,6 @@ public class InternalFrameAddUser extends javax.swing.JInternalFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        comboRole = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
         txtAddress = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
@@ -154,89 +150,82 @@ public class InternalFrameAddUser extends javax.swing.JInternalFrame {
         userIDLabel = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         txtPassword = new javax.swing.JPasswordField();
-        btnCalculateAge = new javax.swing.JButton();
         textAge = new javax.swing.JTextField();
         birthDate = new com.toedter.calendar.JDateChooser();
         jLabel13 = new javax.swing.JLabel();
         txtConfirmPassword = new javax.swing.JPasswordField();
+        comboRole = new rojerusan.RSComboMetro();
+        rSMaterialButtonRectangle1 = new rojerusan.RSMaterialButtonRectangle();
+        jPanel14 = new javax.swing.JPanel();
+        clearButton = new rojerusan.RSMaterialButtonCircle();
+        btnAddRec = new rojerusan.RSMaterialButtonCircle();
 
         setPreferredSize(new java.awt.Dimension(1070, 620));
 
-        jPanel2.setBackground(new java.awt.Color(153, 204, 255));
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setPreferredSize(new java.awt.Dimension(1060, 620));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 33)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(61, 86, 178));
-        jLabel1.setText("Add New User");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 20, -1, -1));
-
-        btnAddRec.setBackground(new java.awt.Color(0, 166, 89));
-        btnAddRec.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        btnAddRec.setForeground(new java.awt.Color(255, 255, 255));
-        btnAddRec.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/3336950_download_save_icon.png"))); // NOI18N
-        btnAddRec.setText("Save");
-        btnAddRec.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddRecActionPerformed(evt);
-            }
-        });
-        jPanel2.add(btnAddRec, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 540, 120, 50));
-
-        btnBack.setFont(new java.awt.Font("Gadugi", 1, 11)); // NOI18N
-        btnBack.setText("X");
-        btnBack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBackActionPerformed(evt);
-            }
-        });
-        jPanel2.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 10, 50, 30));
-
-        btnCancel.setBackground(new java.awt.Color(255, 0, 51));
-        btnCancel.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        btnCancel.setForeground(new java.awt.Color(255, 255, 255));
-        btnCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/330399_bad_cancel_clear_close_decline_icon.png"))); // NOI18N
-        btnCancel.setText("Clear");
-        btnCancel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelActionPerformed(evt);
-            }
-        });
-        jPanel2.add(btnCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 540, 120, 50));
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 790, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 2, Short.MAX_VALUE)
-        );
-
-        jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 790, 2));
+        jLabel1.setText("ADD NEW USER");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 10, -1, -1));
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel6.setOpaque(false);
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(38, 133, 187));
         jLabel2.setText("Birthdate:");
-        jPanel6.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, -1, -1));
-        jPanel6.add(txtlastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 220, 30));
+        jPanel6.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel3.setText("First Name");
-        jPanel6.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 70, -1, -1));
-        jPanel6.add(txtfirstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 100, 220, 30));
+        txtlastName.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        txtlastName.setForeground(new java.awt.Color(51, 51, 51));
+        txtlastName.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(38, 133, 187), 1, true));
+        txtlastName.setOpaque(false);
+        txtlastName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtlastNameKeyTyped(evt);
+            }
+        });
+        jPanel6.add(txtlastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 250, 30));
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel4.setText("Username");
-        jPanel6.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 70, -1, -1));
-        jPanel6.add(txtUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 100, 220, 30));
+        jLabel3.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(38, 133, 187));
+        jLabel3.setText("First Name:");
+        jPanel6.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 70, -1, -1));
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel5.setText("Last Name");
+        txtfirstName.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        txtfirstName.setForeground(new java.awt.Color(51, 51, 51));
+        txtfirstName.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(38, 133, 187), 1, true));
+        txtfirstName.setOpaque(false);
+        txtfirstName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtfirstNameKeyTyped(evt);
+            }
+        });
+        jPanel6.add(txtfirstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 100, 280, 30));
+
+        jLabel4.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(38, 133, 187));
+        jLabel4.setText("Username:");
+        jPanel6.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 70, -1, -1));
+
+        txtUserName.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        txtUserName.setForeground(new java.awt.Color(51, 51, 51));
+        txtUserName.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(38, 133, 187), 1, true));
+        txtUserName.setOpaque(false);
+        txtUserName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtUserNameKeyTyped(evt);
+            }
+        });
+        jPanel6.add(txtUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 100, 280, 30));
+
+        jLabel5.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(38, 133, 187));
+        jLabel5.setText("Last Name:");
         jPanel6.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Dialog", 2, 11)); // NOI18N
@@ -244,59 +233,81 @@ public class InternalFrameAddUser extends javax.swing.JInternalFrame {
         jLabel6.setText("*from date of Birth");
         jPanel6.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 210, -1, -1));
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(38, 133, 187));
         jLabel7.setText("Role:");
-        jPanel6.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 150, -1, -1));
+        jPanel6.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 140, -1, -1));
 
-        comboRole.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        comboRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Doctor", "Admin", "Secretary" }));
-        jPanel6.add(comboRole, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 180, 220, 30));
-
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(38, 133, 187));
         jLabel8.setText("Address:");
         jPanel6.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, -1, -1));
-        jPanel6.add(txtAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 840, 40));
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel9.setText("Age");
-        jPanel6.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 150, -1, -1));
-
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel10.setText("Contact Number:");
-        jPanel6.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 150, -1, -1));
-        jPanel6.add(txtContactNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 180, 220, 30));
-
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel11.setText("User ID:");
-        jPanel6.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
-
-        userIDLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        userIDLabel.setForeground(new java.awt.Color(0, 51, 204));
-        userIDLabel.setText("CS001");
-        jPanel6.add(userIDLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, 80, 40));
-
-        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel12.setText("Password:");
-        jPanel6.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, -1, -1));
-
-        txtPassword.setText("jPasswordField1");
-        jPanel6.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, 350, 40));
-
-        btnCalculateAge.setText("Get Age");
-        btnCalculateAge.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCalculateAgeActionPerformed(evt);
+        txtAddress.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        txtAddress.setForeground(new java.awt.Color(51, 51, 51));
+        txtAddress.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(38, 133, 187), 1, true));
+        txtAddress.setOpaque(false);
+        txtAddress.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtAddressKeyTyped(evt);
             }
         });
-        jPanel6.add(btnCalculateAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 180, 80, 30));
+        jPanel6.add(txtAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 840, 40));
+
+        jLabel9.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(38, 133, 187));
+        jLabel9.setText("Age");
+        jPanel6.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 140, -1, -1));
+
+        jLabel10.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(38, 133, 187));
+        jLabel10.setText("Contact Number:");
+        jPanel6.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 140, -1, -1));
+
+        txtContactNo.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        txtContactNo.setForeground(new java.awt.Color(51, 51, 51));
+        txtContactNo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(38, 133, 187), 1, true));
+        txtContactNo.setOpaque(false);
+        txtContactNo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtContactNoKeyTyped(evt);
+            }
+        });
+        jPanel6.add(txtContactNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 180, 220, 30));
+
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(38, 133, 187));
+        jLabel11.setText("User ID:");
+        jPanel6.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, -1, -1));
+
+        userIDLabel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        userIDLabel.setForeground(new java.awt.Color(0, 51, 204));
+        userIDLabel.setText("CS001");
+        jPanel6.add(userIDLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 0, 80, 30));
+
+        jLabel12.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(38, 133, 187));
+        jLabel12.setText("Password:");
+        jPanel6.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, -1, -1));
+
+        txtPassword.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        txtPassword.setForeground(new java.awt.Color(51, 51, 51));
+        txtPassword.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(38, 133, 187), 1, true));
+        txtPassword.setOpaque(false);
+        jPanel6.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, 380, 40));
 
         textAge.setEditable(false);
+        textAge.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        textAge.setForeground(new java.awt.Color(51, 51, 51));
         textAge.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        textAge.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        textAge.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(38, 133, 187), 1, true));
         textAge.setEnabled(false);
-        jPanel6.add(textAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 180, 40, 30));
+        textAge.setOpaque(false);
+        jPanel6.add(textAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 180, 50, 30));
 
+        birthDate.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(38, 133, 187), 1, true));
         birthDate.setDateFormatString("dd/MM/yyyy");
+        birthDate.setOpaque(false);
         birthDate.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
@@ -323,16 +334,74 @@ public class InternalFrameAddUser extends javax.swing.JInternalFrame {
                 birthDatePropertyChange(evt);
             }
         });
-        jPanel6.add(birthDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 230, 30));
+        jPanel6.add(birthDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 230, 35));
 
-        jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(38, 133, 187));
         jLabel13.setText("Confirm Password:");
-        jPanel6.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 330, -1, -1));
+        jPanel6.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 320, -1, -1));
 
-        txtConfirmPassword.setText("jPasswordField1");
-        jPanel6.add(txtConfirmPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 360, 370, 40));
+        txtConfirmPassword.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        txtConfirmPassword.setForeground(new java.awt.Color(51, 51, 51));
+        txtConfirmPassword.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(38, 133, 187), 1, true));
+        txtConfirmPassword.setOpaque(false);
+        jPanel6.add(txtConfirmPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 360, 440, 40));
 
-        jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, 970, 460));
+        comboRole.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Secretary", "Admin" }));
+        comboRole.setColorArrow(new java.awt.Color(38, 133, 187));
+        comboRole.setColorBorde(new java.awt.Color(38, 133, 187));
+        comboRole.setColorFondo(new java.awt.Color(38, 133, 187));
+        comboRole.setDoubleBuffered(true);
+        comboRole.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 16)); // NOI18N
+        jPanel6.add(comboRole, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 180, 210, 30));
+
+        rSMaterialButtonRectangle1.setBackground(new java.awt.Color(38, 133, 187));
+        rSMaterialButtonRectangle1.setText("Get Age");
+        rSMaterialButtonRectangle1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rSMaterialButtonRectangle1ActionPerformed(evt);
+            }
+        });
+        jPanel6.add(rSMaterialButtonRectangle1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 170, 100, 40));
+
+        jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 970, 420));
+
+        jPanel14.setBackground(new java.awt.Color(255, 179, 68));
+
+        javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
+        jPanel14.setLayout(jPanel14Layout);
+        jPanel14Layout.setHorizontalGroup(
+            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 720, Short.MAX_VALUE)
+        );
+        jPanel14Layout.setVerticalGroup(
+            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        jPanel2.add(jPanel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 60, 720, 3));
+
+        clearButton.setBackground(new java.awt.Color(255, 0, 51));
+        clearButton.setBorder(null);
+        clearButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/103765_close_user_settings_icon (1).png"))); // NOI18N
+        clearButton.setText("clear");
+        clearButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clearButtonActionPerformed(evt);
+            }
+        });
+        jPanel2.add(clearButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 510, 190, 80));
+
+        btnAddRec.setBackground(new java.awt.Color(0, 166, 89));
+        btnAddRec.setBorder(null);
+        btnAddRec.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/103765_close_user_settings_icon (1).png"))); // NOI18N
+        btnAddRec.setText("Register");
+        btnAddRec.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddRecActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnAddRec, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 510, 190, 80));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -345,109 +414,29 @@ public class InternalFrameAddUser extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 691, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 634, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
+    private void birthDateAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_birthDateAncestorAdded
 
-    }//GEN-LAST:event_btnCancelActionPerformed
+    }//GEN-LAST:event_birthDateAncestorAdded
 
-    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        this.dispose();
+    private void birthDateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_birthDateMouseClicked
 
-    }//GEN-LAST:event_btnBackActionPerformed
+    }//GEN-LAST:event_birthDateMouseClicked
 
-    private void btnAddRecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddRecActionPerformed
-        Connection con;
+    private void birthDateInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_birthDateInputMethodTextChanged
 
-        //Password
-        String password = new String(txtPassword.getPassword());
-        String confirmpassword = new String(txtConfirmPassword.getPassword());
-        //End Password
-        DatabaseConnection connection = new DatabaseConnection();
-        con = connection.getConnection();
-        String query = "insert into user_info(user_id, last_name, first_name, username, birth_date, age, contact_number, role, address, password) values (?,?,?,?,?,?,?,?,?,?)";
-        int msg = JOptionPane.showConfirmDialog(this, "Save the record?");
+    }//GEN-LAST:event_birthDateInputMethodTextChanged
 
-        if (msg == JOptionPane.YES_OPTION) {
-            try {
-                PreparedStatement pstmt = con.prepareStatement(query);
-                pstmt.setString(1, userIDLabel.getText());
-                pstmt.setString(2, txtlastName.getText());
-                pstmt.setString(3, txtfirstName.getText());
-                pstmt.setString(4, txtUserName.getText());
-                // date
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
-                String d = sdf.format(birthDate.getDate());
-                pstmt.setString(5, d);
-                // date
-                pstmt.setString(6, textAge.getText());
-                pstmt.setString(7, txtContactNo.getText());
-                pstmt.setString(8, comboRole.getSelectedItem().toString());
-                pstmt.setString(9, txtAddress.getText());
-                pstmt.setString(10, txtPassword.getText());
+    private void birthDatePropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_birthDatePropertyChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_birthDatePropertyChange
 
-            //    int success = pstmt.executeUpdate();
-                if (password.equals(confirmpassword)) {
-                    pstmt.executeUpdate();
-                    JOptionPane.showMessageDialog(this, "Record Saved!");
-
-//                     Clearing the textfields after saving the record
-                    txtlastName.setText("");
-                    txtfirstName.setText("");
-                    birthDate.setCalendar(null);
-                    txtUserName.setText("");
-                    textAge.setText("");
-                    txtContactNo.setText("");
-                    txtAddress.setText("");
-                    txtPassword.setText("");
-
-                    autoID();
-                } else{
-                    JOptionPane.showMessageDialog(this, "Passwords do not match. Double check your password", "User not registered", JOptionPane.WARNING_MESSAGE);
-                }
-
-//                if (success == 1) {
-//                    JOptionPane.showMessageDialog(this, "Record Saved!");
-//
-//
-//                    txtlastName.setText("");
-//                    txtfirstName.setText("");
-//                    birthDate.setCalendar(null);
-//                    txtUserName.setText("");
-//                    textAge.setText("");
-//                    txtContactNo.setText("");
-//                    txtAddress.setText("");
-//                    txtPassword.setText("");
-//
-//                    autoID();
-
-            } catch (SQLException ex) {
-                Logger.getLogger(InternalFramePatientRec.class.getName()).log(Level.SEVERE, null, ex);
-
-                // closing the connection
-            } finally {
-                try {
-                    rs.close();
-                } catch (Exception e) {
-                    /* Ignored */ }
-                try {
-                    pst.close();
-                } catch (Exception e) {
-                    /* Ignored */ }
-                try {
-                    con.close();
-                } catch (Exception e) {
-                    /* Ignored */ }
-            }
-
-        }
-    }//GEN-LAST:event_btnAddRecActionPerformed
-
-    private void btnCalculateAgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalculateAgeActionPerformed
+    private void rSMaterialButtonRectangle1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSMaterialButtonRectangle1ActionPerformed
         // Takes the string value of the jDateChooser
         String dateofBirth = ((JTextField) birthDate.getDateEditor().getUiComponent()).getText();
 
@@ -472,32 +461,195 @@ public class InternalFrameAddUser extends javax.swing.JInternalFrame {
         } else if (textAge.getText() == "") {
             textAge.setText("");
         }
-    }//GEN-LAST:event_btnCalculateAgeActionPerformed
+    }//GEN-LAST:event_rSMaterialButtonRectangle1ActionPerformed
 
-    private void birthDateAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_birthDateAncestorAdded
+    private void txtContactNoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtContactNoKeyTyped
+      char c = evt.getKeyChar();
 
-    }//GEN-LAST:event_birthDateAncestorAdded
+      if(!(Character.isDigit(c) || (c == KeyEvent.VK_BACKSPACE) || c== KeyEvent.VK_DELETE)){
 
-    private void birthDateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_birthDateMouseClicked
+          evt.consume();
+    }
+    }//GEN-LAST:event_txtContactNoKeyTyped
 
-    }//GEN-LAST:event_birthDateMouseClicked
+    private void txtlastNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtlastNameKeyTyped
+        char c = evt.getKeyChar();
 
-    private void birthDateInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_birthDateInputMethodTextChanged
+        if(!(Character.isAlphabetic(c) || c== KeyEvent.VK_SPACE || c==KeyEvent.VK_DELETE)){
 
-    }//GEN-LAST:event_birthDateInputMethodTextChanged
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtlastNameKeyTyped
 
-    private void birthDatePropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_birthDatePropertyChange
-        // TODO add your handling code here:
-    }//GEN-LAST:event_birthDatePropertyChange
+    private void txtfirstNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtfirstNameKeyTyped
+     char c = evt.getKeyChar();
+
+        if(!(Character.isAlphabetic(c) || c== KeyEvent.VK_SPACE || c==KeyEvent.VK_DELETE)){
+
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtfirstNameKeyTyped
+
+    private void txtUserNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUserNameKeyTyped
+       char c = evt.getKeyChar();
+
+        if(!(Character.isAlphabetic(c) || c== KeyEvent.VK_SPACE || c==KeyEvent.VK_DELETE)){
+
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtUserNameKeyTyped
+
+    private void txtAddressKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAddressKeyTyped
+     char c = evt.getKeyChar();
+
+        if(!(Character.isAlphabetic(c) || c== KeyEvent.VK_SPACE || c==KeyEvent.VK_DELETE)){
+
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtAddressKeyTyped
+
+    private void btnAddRecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddRecActionPerformed
+        Connection con;
+
+        //Password
+        String password = new String(txtPassword.getPassword());
+        String confirmpassword = new String(txtConfirmPassword.getPassword());
+        //End Password
+        DatabaseConnection connection = new DatabaseConnection();
+        con = connection.getConnection();
+        String query = "insert into user_info(user_id, last_name, first_name, username, birth_date, age, contact_number, role, address, password) values (?,?,?,?,?,?,?,?,?,?)";
+        int msg = JOptionPane.showConfirmDialog(this, "Save the record?");
+
+        if (msg == JOptionPane.YES_OPTION) {
+            try {
+
+                 if (txtlastName.getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(this, "Please fill in all the fields");
+                    return;
+                }
+                if (txtfirstName.getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(this, "Please fill in all the fields");
+                    return;
+                }
+                if (txtUserName.getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(this, "Please fill in all the fields");
+                    return;
+                }
+                if (this.birthDate.getDate() == null) {
+                    JOptionPane.showMessageDialog(this, "Enter a date");
+                    return;
+                }
+                if (textAge.getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(this, "Please fill in all the fields");
+                    return;
+                }
+                if (txtContactNo.getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(this, "Please fill in all the fields");
+                    return;
+                }
+                if (txtAddress.getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(this, "Please fill in all the fields");
+                    return;
+                }
+                if (txtPassword.getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(this, "Please fill in all the fields");
+                    return;
+                }
+                if (txtConfirmPassword.getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(this, "Please fill in all the fields");
+                    return;
+                }
+                PreparedStatement pstmt = con.prepareStatement(query);
+                pstmt.setString(1, userIDLabel.getText());
+                pstmt.setString(2, txtlastName.getText());
+                pstmt.setString(3, txtfirstName.getText());
+                pstmt.setString(4, txtUserName.getText());
+                // date
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+                String d = sdf.format(birthDate.getDate());
+                pstmt.setString(5, d);
+                // date
+                pstmt.setString(6, textAge.getText());
+                pstmt.setString(7, txtContactNo.getText());
+                pstmt.setString(8, comboRole.getSelectedItem().toString());
+                pstmt.setString(9, txtAddress.getText());
+                pstmt.setString(10, txtPassword.getText());
+
+                //    int success = pstmt.executeUpdate();
+                if (password.equals(confirmpassword)) {
+                    pstmt.executeUpdate();
+                    JOptionPane.showMessageDialog(this, "Record Saved!");
+
+//                     Clearing the textfields after saving the record
+                    txtlastName.setText("");
+                    txtfirstName.setText("");
+                    birthDate.setCalendar(null);
+                    txtUserName.setText("");
+                    textAge.setText("");
+                    txtContactNo.setText("");
+                    txtAddress.setText("");
+                    txtPassword.setText("");
+                    txtConfirmPassword.setText("");
+
+
+                    autoID();
+                } else {
+                    JOptionPane.showMessageDialog(this, "Passwords do not match. Double check your password", "User not registered", JOptionPane.WARNING_MESSAGE);
+                }
+
+//                if (success == 1) {
+//                    JOptionPane.showMessageDialog(this, "Record Saved!");
+//
+//
+//                    txtlastName.setText("");
+//                    txtfirstName.setText("");
+//                    birthDate.setCalendar(null);
+//                    txtUserName.setText("");
+//                    textAge.setText("");
+//                    txtContactNo.setText("");
+//                    txtAddress.setText("");
+//                    txtPassword.setText("");
+//
+//                    autoID();
+            } catch (SQLException ex) {
+                Logger.getLogger(InternalFramePatientRec.class.getName()).log(Level.SEVERE, null, ex);
+
+                // closing the connection
+            } finally {
+                try {
+                    rs.close();
+                } catch (Exception e) {
+                    /* Ignored */ }
+                try {
+                    pst.close();
+                } catch (Exception e) {
+                    /* Ignored */ }
+                try {
+                    con.close();
+                } catch (Exception e) {
+                    /* Ignored */ }
+            }
+
+        }
+    }//GEN-LAST:event_btnAddRecActionPerformed
+
+    private void clearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearButtonActionPerformed
+        txtlastName.setText("");
+        txtfirstName.setText("");
+        birthDate.setCalendar(null);
+        txtUserName.setText("");
+        textAge.setText("");
+        txtContactNo.setText("");
+        txtAddress.setText("");
+        txtPassword.setText("");
+    }//GEN-LAST:event_clearButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.toedter.calendar.JDateChooser birthDate;
-    private javax.swing.JButton btnAddRec;
-    private javax.swing.JButton btnBack;
-    private javax.swing.JButton btnCalculateAge;
-    private javax.swing.JButton btnCancel;
-    private javax.swing.JComboBox<String> comboRole;
+    private rojerusan.RSMaterialButtonCircle btnAddRec;
+    private rojerusan.RSMaterialButtonCircle clearButton;
+    private rojerusan.RSComboMetro comboRole;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -511,9 +663,10 @@ public class InternalFrameAddUser extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel6;
+    private rojerusan.RSMaterialButtonRectangle rSMaterialButtonRectangle1;
     private javax.swing.JTextField textAge;
     private javax.swing.JTextField txtAddress;
     private javax.swing.JPasswordField txtConfirmPassword;

@@ -51,59 +51,67 @@ public class internalFrameRestoreRecords extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
         rSMaterialButtonRectangle1 = new rojerusan.RSMaterialButtonRectangle();
         jCTextField1 = new app.bolivia.swing.JCTextField();
         rSMaterialButtonRectangle2 = new rojerusan.RSMaterialButtonRectangle();
         jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel14 = new javax.swing.JPanel();
 
         setPreferredSize(new java.awt.Dimension(1060, 620));
         setRequestFocusEnabled(false);
 
-        jPanel1.setBackground(new java.awt.Color(153, 204, 255));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 112, 192), 3));
         jPanel1.setPreferredSize(new java.awt.Dimension(1060, 620));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 112, 192));
-        jLabel1.setText("Restore Records");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 10, -1, 30));
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 610, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 2, Short.MAX_VALUE)
-        );
-
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 50, 610, 2));
-
         rSMaterialButtonRectangle1.setText("RESTORE RECORD");
-        rSMaterialButtonRectangle1.setFont(new java.awt.Font("Roboto Medium", 0, 24)); // NOI18N
+        rSMaterialButtonRectangle1.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
         rSMaterialButtonRectangle1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rSMaterialButtonRectangle1ActionPerformed(evt);
             }
         });
-        jPanel1.add(rSMaterialButtonRectangle1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 230, 330, 110));
+        jPanel1.add(rSMaterialButtonRectangle1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 270, 330, 110));
 
+        jCTextField1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 112, 192)));
         jCTextField1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jCTextField1.setOpaque(false);
         jCTextField1.setPlaceholder("Select file location");
-        jPanel1.add(jCTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 100, 330, 60));
+        jPanel1.add(jCTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 140, 330, 60));
 
         rSMaterialButtonRectangle2.setText("Browse");
+        rSMaterialButtonRectangle2.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         rSMaterialButtonRectangle2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rSMaterialButtonRectangle2ActionPerformed(evt);
             }
         });
-        jPanel1.add(rSMaterialButtonRectangle2, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 100, 130, 60));
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 170, 330, 40));
+        jPanel1.add(rSMaterialButtonRectangle2, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 140, 130, 60));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 210, 330, 40));
+
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 112, 192));
+        jLabel1.setText("RESTORE DATABASE");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 30, -1, 30));
+
+        jPanel14.setBackground(new java.awt.Color(255, 179, 68));
+
+        javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
+        jPanel14.setLayout(jPanel14Layout);
+        jPanel14Layout.setHorizontalGroup(
+            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 840, Short.MAX_VALUE)
+        );
+        jPanel14Layout.setVerticalGroup(
+            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(jPanel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, 840, 3));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -165,15 +173,19 @@ public class internalFrameRestoreRecords extends javax.swing.JInternalFrame {
         //   String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
 
         try {
-            if (jCTextField1.getText().isEmpty()) {
-                jLabel2.setForeground(Color.red);
-                jLabel2.setText("*Message: Please select file location");
-            } else {
+//            if (jCTextField1.getText().isEmpty()) {
+//                jLabel2.setForeground(Color.red);
+//                jLabel2.setText("*Message: Please select file location");
+//             else {
                 File f = fc.getSelectedFile();
                 path = f.getAbsolutePath();
                 path = path.replace('\\', '/');
                 jCTextField1.setText(path);
-            }
+
+                if (jCTextField1.getText().isEmpty()) {
+               jLabel2.setText("*Message: Please select file location");
+                }
+         //   }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -186,7 +198,7 @@ public class internalFrameRestoreRecords extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel14;
     private rojerusan.RSMaterialButtonRectangle rSMaterialButtonRectangle1;
     private rojerusan.RSMaterialButtonRectangle rSMaterialButtonRectangle2;
     // End of variables declaration//GEN-END:variables

@@ -6,6 +6,9 @@
 package ClinicPackage;
 
 import java.awt.Color;
+import javax.swing.BorderFactory;
+import javax.swing.border.Border;
+import javax.swing.border.EtchedBorder;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
 /**
@@ -13,8 +16,13 @@ import javax.swing.plaf.basic.BasicInternalFrameUI;
  * @author andre
  */
 public class PatientRecordsInternalFrame extends javax.swing.JInternalFrame {
-    Color mouseExitedColor = new Color(153,204,255);
-    Color mouseEnteredColor = new Color(187, 207, 215);
+
+    Color mouseExitedColor = new Color(255, 255, 255);
+    Color mouseEnteredColor = new Color(153, 204, 255);
+
+    Border blackline, raisedetched, loweredetched,
+            raisedbevel, loweredbevel, empty;
+
     /**
      * Creates new form PatientRecordsInternalFrame
      */
@@ -45,20 +53,24 @@ public class PatientRecordsInternalFrame extends javax.swing.JInternalFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        jPanel14 = new javax.swing.JPanel();
 
         setPreferredSize(new java.awt.Dimension(1070, 620));
 
-        jPanel1.setBackground(new java.awt.Color(153, 204, 255));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 112, 192), 2));
         jPanel1.setMinimumSize(new java.awt.Dimension(1070, 620));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(61, 86, 178));
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(38, 133, 187));
         jLabel1.setText("VIEW");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 420, -1, 30));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 430, -1, 30));
 
         deleteButton.setBackground(new java.awt.Color(153, 204, 255));
+        deleteButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 112, 192), 1, true));
         deleteButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        deleteButton.setOpaque(false);
         deleteButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 deleteButtonMouseClicked(evt);
@@ -72,8 +84,7 @@ public class PatientRecordsInternalFrame extends javax.swing.JInternalFrame {
         });
         deleteButton.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/2303123_bin_delete_garbage_remove_trash_icon.png"))); // NOI18N
-        jLabel2.setText("jLabel2");
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/185090_delete_garbage_icon (1).png"))); // NOI18N
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel2MouseClicked(evt);
@@ -85,12 +96,14 @@ public class PatientRecordsInternalFrame extends javax.swing.JInternalFrame {
                 jLabel2MouseExited(evt);
             }
         });
-        deleteButton.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 130, 130));
+        deleteButton.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 130, 130));
 
-        jPanel1.add(deleteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 240, 150, 170));
+        jPanel1.add(deleteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 230, 170, 190));
 
         viewButton.setBackground(new java.awt.Color(153, 204, 255));
+        viewButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 112, 192), 1, true));
         viewButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        viewButton.setOpaque(false);
         viewButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 viewButtonMouseClicked(evt);
@@ -104,7 +117,7 @@ public class PatientRecordsInternalFrame extends javax.swing.JInternalFrame {
         });
         viewButton.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/314233_note_list_icon.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/viewicon.png"))); // NOI18N
         jLabel3.setText("jLabel2");
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -117,12 +130,14 @@ public class PatientRecordsInternalFrame extends javax.swing.JInternalFrame {
                 jLabel3MouseExited(evt);
             }
         });
-        viewButton.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 130, 120));
+        viewButton.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 130, 130));
 
-        jPanel1.add(viewButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 230, 180, 180));
+        jPanel1.add(viewButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 230, 180, 190));
 
         updateButton.setBackground(new java.awt.Color(153, 204, 255));
+        updateButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 112, 192), 1, true));
         updateButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        updateButton.setOpaque(false);
         updateButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 updateButtonMouseEntered(evt);
@@ -133,8 +148,7 @@ public class PatientRecordsInternalFrame extends javax.swing.JInternalFrame {
         });
         updateButton.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/314288_edit_clipboard_icon.png"))); // NOI18N
-        jLabel4.setText("jLabel2");
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/editicon.png"))); // NOI18N
         jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel4MouseClicked(evt);
@@ -146,24 +160,39 @@ public class PatientRecordsInternalFrame extends javax.swing.JInternalFrame {
                 jLabel4MouseExited(evt);
             }
         });
-        updateButton.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 120, 130));
+        updateButton.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 140, 140));
 
-        jPanel1.add(updateButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 220, 170, 190));
+        jPanel1.add(updateButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 230, 180, 190));
 
-        jLabel5.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(61, 86, 178));
-        jLabel5.setText("Patient Records");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 110, -1, 50));
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 112, 192));
+        jLabel5.setText("Manage Patient Records");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 60, -1, 70));
 
-        jLabel6.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(61, 86, 178));
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(38, 133, 187));
         jLabel6.setText("UPDATE");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 420, -1, 30));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 430, -1, 30));
 
-        jLabel7.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(61, 86, 178));
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(38, 133, 187));
         jLabel7.setText("DELETE");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 420, 110, 30));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 430, 90, 30));
+
+        jPanel14.setBackground(new java.awt.Color(255, 179, 68));
+
+        javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
+        jPanel14.setLayout(jPanel14Layout);
+        jPanel14Layout.setHorizontalGroup(
+            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 810, Short.MAX_VALUE)
+        );
+        jPanel14Layout.setVerticalGroup(
+            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(jPanel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, 810, 3));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -181,26 +210,41 @@ public class PatientRecordsInternalFrame extends javax.swing.JInternalFrame {
 
     private void updateButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateButtonMouseEntered
         updateButton.setBackground(mouseEnteredColor);
+        updateButton.setOpaque(true);
+
     }//GEN-LAST:event_updateButtonMouseEntered
 
     private void updateButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateButtonMouseExited
         updateButton.setBackground(mouseExitedColor);
+
+        // updateButton.setOpaque(false);
     }//GEN-LAST:event_updateButtonMouseExited
 
     private void deleteButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteButtonMouseEntered
         deleteButton.setBackground(mouseEnteredColor);
+        deleteButton.setOpaque(true);
+
     }//GEN-LAST:event_deleteButtonMouseEntered
 
     private void deleteButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteButtonMouseExited
         deleteButton.setBackground(mouseExitedColor);
+
+
+
     }//GEN-LAST:event_deleteButtonMouseExited
 
     private void viewButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewButtonMouseExited
         viewButton.setBackground(mouseExitedColor);
+
+
+
+
     }//GEN-LAST:event_viewButtonMouseExited
 
     private void viewButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewButtonMouseEntered
         viewButton.setBackground(mouseEnteredColor);
+        viewButton.setOpaque(true);
+
     }//GEN-LAST:event_viewButtonMouseEntered
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
@@ -210,14 +254,19 @@ public class PatientRecordsInternalFrame extends javax.swing.JInternalFrame {
 
     private void jLabel4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseEntered
         updateButton.setBackground(mouseEnteredColor);
+
     }//GEN-LAST:event_jLabel4MouseEntered
 
     private void jLabel4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseExited
         updateButton.setBackground(mouseExitedColor);
+
+
     }//GEN-LAST:event_jLabel4MouseExited
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
         new deletePatientFrame().setVisible(true);
+
+
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void deleteButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteButtonMouseClicked
@@ -226,14 +275,20 @@ public class PatientRecordsInternalFrame extends javax.swing.JInternalFrame {
 
     private void jLabel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseEntered
         deleteButton.setBackground(mouseEnteredColor);
+
+
     }//GEN-LAST:event_jLabel2MouseEntered
 
     private void jLabel2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseExited
         deleteButton.setBackground(mouseExitedColor);
+
+
     }//GEN-LAST:event_jLabel2MouseExited
 
     private void jLabel3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseEntered
         viewButton.setBackground(mouseEnteredColor);
+
+
     }//GEN-LAST:event_jLabel3MouseEntered
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
@@ -248,6 +303,8 @@ public class PatientRecordsInternalFrame extends javax.swing.JInternalFrame {
 
     private void jLabel3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseExited
         viewButton.setBackground(mouseExitedColor);
+                        
+
     }//GEN-LAST:event_jLabel3MouseExited
 
     private void viewButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewButtonMouseClicked
@@ -265,6 +322,7 @@ public class PatientRecordsInternalFrame extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel updateButton;
     private javax.swing.JPanel viewButton;
     // End of variables declaration//GEN-END:variables

@@ -38,6 +38,8 @@ public class updatePatientFrame extends javax.swing.JFrame {
     public updatePatientFrame() {
         initComponents();
         fetch();
+        // CODE THAT MAKES THE CELLS UNEDITABLE
+        patient_table.setDefaultEditor(Object.class, null);
     }
 
     //updates the table
@@ -80,8 +82,6 @@ public class updatePatientFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         textLastName = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -98,9 +98,6 @@ public class updatePatientFrame extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         textAreaPrescription = new javax.swing.JTextArea();
-        jButton1 = new javax.swing.JButton();
-        clearButton = new javax.swing.JButton();
-        updateButton = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         patient_table = new rojerusan.RSTableMetro();
         jLabel8 = new javax.swing.JLabel();
@@ -125,127 +122,105 @@ public class updatePatientFrame extends javax.swing.JFrame {
         jLabel21 = new javax.swing.JLabel();
         textMotherLname = new javax.swing.JTextField();
         jLabel22 = new javax.swing.JLabel();
-        textPatientID = new javax.swing.JTextField();
         birthDate = new com.toedter.calendar.JDateChooser();
         searchField = new app.bolivia.swing.JCTextField();
         rSMaterialButtonRectangle2 = new rojerusan.RSMaterialButtonRectangle();
+        textPatientID1 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        clearButton1 = new rojerusan.RSMaterialButtonCircle();
+        btnAddRec1 = new rojerusan.RSMaterialButtonCircle();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Update Patient Record");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setUndecorated(true);
 
-        jPanel1.setBackground(new java.awt.Color(0, 78, 103));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(1280, 900));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Update Patient Record");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
-
-        jPanel2.setBackground(new java.awt.Color(255, 179, 68));
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 660, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 10, Short.MAX_VALUE)
-        );
-
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 660, 10));
-
-        jLabel3.setFont(new java.awt.Font("Cambria", 1, 16)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(38, 133, 187));
         jLabel3.setText("Last Name");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, -1));
-        jPanel1.add(textLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, 210, 30));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Cambria", 1, 16)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        textLastName.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(38, 133, 187), 1, true));
+        textLastName.setOpaque(false);
+        jPanel1.add(textLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, 210, 30));
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(38, 133, 187));
         jLabel4.setText("First Name");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
-        jPanel1.add(textFirstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 160, 210, 30));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
 
-        jLabel9.setFont(new java.awt.Font("Cambria", 1, 16)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        textFirstName.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(38, 133, 187), 1, true));
+        textFirstName.setOpaque(false);
+        jPanel1.add(textFirstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 180, 210, 30));
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(38, 133, 187));
         jLabel9.setText("Phone Number");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 110, -1, 30));
-        jPanel1.add(textPhoneNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 110, 230, 30));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 180, -1, 30));
 
-        jLabel5.setFont(new java.awt.Font("Cambria", 1, 16)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        textPhoneNo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(38, 133, 187), 1, true));
+        textPhoneNo.setOpaque(false);
+        jPanel1.add(textPhoneNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 180, 230, 30));
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(38, 133, 187));
         jLabel5.setText("Address");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 160, -1, 30));
-        jPanel1.add(textAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 160, 290, 30));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, 30));
 
-        jLabel7.setFont(new java.awt.Font("Cambria", 1, 16)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        textAddress.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(38, 133, 187), 1, true));
+        textAddress.setOpaque(false);
+        jPanel1.add(textAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, 290, 30));
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(38, 133, 187));
         jLabel7.setText("Date of Birth");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 100, 20));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 130, 100, 20));
 
-        jLabel11.setFont(new java.awt.Font("Cambria", 1, 16)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(38, 133, 187));
         jLabel11.setText("Gender");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, -1, 30));
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 70, -1, 30));
 
         comboGender.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         comboGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female" }));
-        jPanel1.add(comboGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, 90, 30));
+        comboGender.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboGenderActionPerformed(evt);
+            }
+        });
+        jPanel1.add(comboGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 70, 90, 30));
 
-        jLabel10.setFont(new java.awt.Font("Cambria", 1, 16)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(38, 133, 187));
         jLabel10.setText("Age");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 200, -1, 40));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 60, -1, 40));
 
+        textAge.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(38, 133, 187), 1, true));
+        textAge.setOpaque(false);
         textAge.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textAgeActionPerformed(evt);
             }
         });
-        jPanel1.add(textAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 200, 40, 30));
+        jPanel1.add(textAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 70, 40, 30));
 
-        jLabel6.setFont(new java.awt.Font("Cambria", 1, 16)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Prescription");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 290, -1, -1));
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(38, 133, 187));
+        jLabel6.setText("Prescription:");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 280, -1, -1));
 
         textAreaPrescription.setColumns(20);
         textAreaPrescription.setRows(5);
+        textAreaPrescription.setOpaque(false);
         jScrollPane1.setViewportView(textAreaPrescription);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 320, 330, 60));
-
-        jButton1.setText("Exit");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1230, 0, 60, 30));
-
-        clearButton.setBackground(new java.awt.Color(255, 51, 51));
-        clearButton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        clearButton.setForeground(new java.awt.Color(255, 255, 255));
-        clearButton.setText("Clear");
-        clearButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel1.add(clearButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 390, 100, 50));
-
-        updateButton.setBackground(new java.awt.Color(0, 153, 51));
-        updateButton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        updateButton.setForeground(new java.awt.Color(255, 255, 255));
-        updateButton.setText("Update");
-        updateButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        updateButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                updateButtonActionPerformed(evt);
-            }
-        });
-        jPanel1.add(updateButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 390, 110, 50));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 320, 370, 80));
 
         patient_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -260,8 +235,14 @@ public class updatePatientFrame extends javax.swing.JFrame {
         )
     );
     patient_table.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+    patient_table.setColorBackgoundHead(new java.awt.Color(38, 133, 187));
+    patient_table.setColorBordeFilas(new java.awt.Color(38, 133, 187));
+    patient_table.setColorBordeHead(new java.awt.Color(38, 133, 187));
+    patient_table.setColorFilasBackgound2(new java.awt.Color(255, 255, 255));
+    patient_table.setColorFilasForeground1(new java.awt.Color(38, 133, 187));
+    patient_table.setColorFilasForeground2(new java.awt.Color(38, 133, 187));
+    patient_table.setColorSelBackgound(new java.awt.Color(38, 133, 187));
     patient_table.setRowHeight(20);
-    patient_table.setRowMargin(2);
     patient_table.getTableHeader().setResizingAllowed(false);
     patient_table.getTableHeader().setReorderingAllowed(false);
     patient_table.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -276,100 +257,125 @@ public class updatePatientFrame extends javax.swing.JFrame {
     });
     jScrollPane3.setViewportView(patient_table);
 
-    jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 450, 1270, 280));
+    jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 480, 1250, 250));
 
-    jLabel8.setFont(new java.awt.Font("Cambria", 1, 16)); // NOI18N
-    jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+    jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+    jLabel8.setForeground(new java.awt.Color(38, 133, 187));
     jLabel8.setText("Remarks:");
-    jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, -1, -1));
+    jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, -1, -1));
+
+    jScrollPane2.setOpaque(false);
 
     textAreaRemarks.setColumns(20);
     textAreaRemarks.setRows(5);
+    textAreaRemarks.setOpaque(false);
     jScrollPane2.setViewportView(textAreaRemarks);
 
-    jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 300, 60));
+    jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 350, 80));
 
     jPanel3.setBackground(new java.awt.Color(0, 78, 103));
-    jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Father's Information", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 11), new java.awt.Color(255, 255, 255))); // NOI18N
+    jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Father's Information", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(38, 133, 187))); // NOI18N
+    jPanel3.setOpaque(false);
     jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-    jLabel14.setFont(new java.awt.Font("Cambria", 1, 16)); // NOI18N
-    jLabel14.setForeground(new java.awt.Color(255, 255, 255));
+    jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+    jLabel14.setForeground(new java.awt.Color(38, 133, 187));
     jLabel14.setText("Age");
-    jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 60, -1, 30));
-    jPanel3.add(textFatherFirstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 20, 150, 30));
+    jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 70, -1, 30));
 
-    jLabel16.setFont(new java.awt.Font("Cambria", 1, 16)); // NOI18N
-    jLabel16.setForeground(new java.awt.Color(255, 255, 255));
+    textFatherFirstName.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(38, 133, 187), 1, true));
+    textFatherFirstName.setOpaque(false);
+    jPanel3.add(textFatherFirstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 30, 130, 30));
+
+    jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+    jLabel16.setForeground(new java.awt.Color(38, 133, 187));
     jLabel16.setText("Phone Number");
-    jPanel3.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 120, 30));
+    jPanel3.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 120, 30));
 
-    jLabel13.setFont(new java.awt.Font("Cambria", 1, 16)); // NOI18N
-    jLabel13.setForeground(new java.awt.Color(255, 255, 255));
+    jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+    jLabel13.setForeground(new java.awt.Color(38, 133, 187));
     jLabel13.setText("First Name");
-    jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 20, -1, 30));
+    jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 30, -1, 30));
 
+    textFatherAge.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(38, 133, 187), 1, true));
+    textFatherAge.setOpaque(false);
     textFatherAge.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
             textFatherAgeActionPerformed(evt);
         }
     });
-    jPanel3.add(textFatherAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 60, 40, 30));
-    jPanel3.add(textFatherNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, 160, 30));
+    jPanel3.add(textFatherAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 70, 40, 30));
 
-    jLabel12.setFont(new java.awt.Font("Cambria", 1, 16)); // NOI18N
-    jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+    textFatherNumber.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(38, 133, 187), 1, true));
+    textFatherNumber.setOpaque(false);
+    jPanel3.add(textFatherNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, 150, 30));
+
+    jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+    jLabel12.setForeground(new java.awt.Color(38, 133, 187));
     jLabel12.setText("Last Name");
-    jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 80, 30));
-    jPanel3.add(textFatherLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 170, 30));
+    jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 80, 30));
 
-    jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 180, 550, 120));
+    textFatherLastName.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(38, 133, 187), 1, true));
+    textFatherLastName.setOpaque(false);
+    jPanel3.add(textFatherLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, 150, 30));
+
+    jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 190, 550, 120));
 
     jPanel4.setBackground(new java.awt.Color(0, 78, 103));
-    jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Mother's Information", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 11), new java.awt.Color(255, 255, 255))); // NOI18N
+    jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Mother's Information", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(38, 133, 187))); // NOI18N
+    jPanel4.setOpaque(false);
     jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-    jLabel17.setFont(new java.awt.Font("Cambria", 1, 16)); // NOI18N
-    jLabel17.setForeground(new java.awt.Color(255, 255, 255));
+    jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+    jLabel17.setForeground(new java.awt.Color(38, 133, 187));
     jLabel17.setText("Age");
-    jPanel4.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 60, -1, 30));
+    jPanel4.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 60, -1, 30));
+
+    textMotherFirstName.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(38, 133, 187), 1, true));
+    textMotherFirstName.setOpaque(false);
     jPanel4.add(textMotherFirstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 20, 150, 30));
 
-    jLabel18.setFont(new java.awt.Font("Cambria", 1, 16)); // NOI18N
-    jLabel18.setForeground(new java.awt.Color(255, 255, 255));
+    jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+    jLabel18.setForeground(new java.awt.Color(38, 133, 187));
     jLabel18.setText("Phone Number");
-    jPanel4.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 120, 30));
+    jPanel4.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 120, 30));
 
-    jLabel19.setFont(new java.awt.Font("Cambria", 1, 16)); // NOI18N
-    jLabel19.setForeground(new java.awt.Color(255, 255, 255));
+    jLabel19.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+    jLabel19.setForeground(new java.awt.Color(38, 133, 187));
     jLabel19.setText("First Name");
     jPanel4.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 20, -1, 30));
 
+    textMotherAge.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(38, 133, 187), 1, true));
+    textMotherAge.setOpaque(false);
     textMotherAge.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
             textMotherAgeActionPerformed(evt);
         }
     });
-    jPanel4.add(textMotherAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 60, 40, 30));
-    jPanel4.add(textMotherNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, 160, 30));
+    jPanel4.add(textMotherAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 60, 40, 30));
 
-    jLabel21.setFont(new java.awt.Font("Cambria", 1, 16)); // NOI18N
-    jLabel21.setForeground(new java.awt.Color(255, 255, 255));
+    textMotherNumber.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(38, 133, 187), 1, true));
+    textMotherNumber.setOpaque(false);
+    jPanel4.add(textMotherNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 60, 140, 30));
+
+    jLabel21.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+    jLabel21.setForeground(new java.awt.Color(38, 133, 187));
     jLabel21.setText("Last Name");
     jPanel4.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 80, 30));
-    jPanel4.add(textMotherLname, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 170, 30));
 
-    jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 40, 550, 120));
+    textMotherLname.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(38, 133, 187), 1, true));
+    textMotherLname.setOpaque(false);
+    jPanel4.add(textMotherLname, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, 140, 30));
 
-    jLabel22.setFont(new java.awt.Font("Cambria", 1, 16)); // NOI18N
-    jLabel22.setForeground(new java.awt.Color(255, 255, 255));
+    jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 50, 550, 120));
+
+    jLabel22.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+    jLabel22.setForeground(new java.awt.Color(38, 133, 187));
     jLabel22.setText("Patient ID:");
-    jPanel1.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
-
-    textPatientID.setEnabled(false);
-    jPanel1.add(textPatientID, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, 120, 30));
+    jPanel1.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
 
     birthDate.setDateFormatString("dd/MM/yyyy");
+    birthDate.setOpaque(false);
     birthDate.addAncestorListener(new javax.swing.event.AncestorListener() {
         public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
         }
@@ -396,30 +402,93 @@ public class updatePatientFrame extends javax.swing.JFrame {
             birthDatePropertyChange(evt);
         }
     });
-    jPanel1.add(birthDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, 250, 30));
+    jPanel1.add(birthDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 130, 230, 30));
 
+    searchField.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(38, 133, 187)));
+    searchField.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+    searchField.setOpaque(false);
     searchField.setPlaceholder("Enter Last Name");
     searchField.addKeyListener(new java.awt.event.KeyAdapter() {
         public void keyReleased(java.awt.event.KeyEvent evt) {
             searchFieldKeyReleased(evt);
         }
     });
-    jPanel1.add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 400, -1, 40));
+    jPanel1.add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, 210, 50));
 
+    rSMaterialButtonRectangle2.setBackground(new java.awt.Color(38, 133, 187));
     rSMaterialButtonRectangle2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/1086667_deals_examine_form_list_records_icon.png"))); // NOI18N
-    rSMaterialButtonRectangle2.setText("Show All");
+    rSMaterialButtonRectangle2.setText("REFRESH");
     rSMaterialButtonRectangle2.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
             rSMaterialButtonRectangle2ActionPerformed(evt);
         }
     });
-    jPanel1.add(rSMaterialButtonRectangle2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 400, 100, 40));
+    jPanel1.add(rSMaterialButtonRectangle2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 430, 100, 40));
+
+    textPatientID1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+    textPatientID1.setForeground(new java.awt.Color(102, 255, 102));
+    jPanel1.add(textPatientID1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, 150, 40));
+
+    jLabel20.setBackground(new java.awt.Color(255, 0, 0));
+    jLabel20.setForeground(new java.awt.Color(255, 255, 255));
+    jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+    jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/close.png"))); // NOI18N
+    jLabel20.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+    jLabel20.setOpaque(true);
+    jLabel20.addMouseListener(new java.awt.event.MouseAdapter() {
+        public void mouseClicked(java.awt.event.MouseEvent evt) {
+            jLabel20MouseClicked(evt);
+        }
+    });
+    jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(1240, 0, 40, 40));
+
+    jPanel2.setBackground(new java.awt.Color(255, 179, 68));
+
+    javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+    jPanel2.setLayout(jPanel2Layout);
+    jPanel2Layout.setHorizontalGroup(
+        jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGap(0, 0, Short.MAX_VALUE)
+    );
+    jPanel2Layout.setVerticalGroup(
+        jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGap(0, 0, Short.MAX_VALUE)
+    );
+
+    jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 400, 3));
+
+    jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+    jLabel1.setForeground(new java.awt.Color(38, 133, 187));
+    jLabel1.setText("UPDATE PATIENT RECORD");
+    jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
+    clearButton1.setBackground(new java.awt.Color(255, 0, 51));
+    clearButton1.setBorder(null);
+    clearButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/103765_close_user_settings_icon (1).png"))); // NOI18N
+    clearButton1.setText("clear");
+    clearButton1.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            clearButton1ActionPerformed(evt);
+        }
+    });
+    jPanel1.add(clearButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 410, 150, 60));
+
+    btnAddRec1.setBackground(new java.awt.Color(0, 166, 89));
+    btnAddRec1.setBorder(null);
+    btnAddRec1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/103765_close_user_settings_icon (1).png"))); // NOI18N
+    btnAddRec1.setText("update");
+    btnAddRec1.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            btnAddRec1ActionPerformed(evt);
+        }
+    });
+    jPanel1.add(btnAddRec1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 410, 160, 60));
 
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
     getContentPane().setLayout(layout);
     layout.setHorizontalGroup(
         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1314, Short.MAX_VALUE)
+        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
     );
     layout.setVerticalGroup(
         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -429,70 +498,6 @@ public class updatePatientFrame extends javax.swing.JFrame {
     pack();
     setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
-        Connection con;
-
-        DatabaseConnection connection = new DatabaseConnection();
-        con = connection.getConnection();
-        //confirmation dialog message
-        int msg = JOptionPane.showConfirmDialog(this, "Update selected record?");
-
-//assigning textfields into variables for easy calling
-        String patientID = textPatientID.getText();
-        String lname = textLastName.getText();
-        String fname = textFirstName.getText();
-        String gender = comboGender.getSelectedItem().toString();
-        String age = textAge.getText();
-//date of birth
-        String date = ((JTextField) birthDate.getDateEditor().getUiComponent()).getText();
-        String phoneNumber = textPhoneNo.getText();
-        String address = textAddress.getText();
-        String MotherLName = textMotherLname.getText();
-        String MotherFirstName = textMotherFirstName.getText();
-        String MotherAge = textMotherAge.getText();
-        String MotherNumber = textMotherNumber.getText();
-        String FatherLastName = textFatherLastName.getText();
-        String FatherFirstName = textFatherFirstName.getText();
-        String FatherAge = textFatherAge.getText();
-        String FatherNumber = textFatherNumber.getText();
-        String remarksString = textAreaRemarks.getText();
-        String prescriptString = textAreaPrescription.getText();
-
-        if (msg == JOptionPane.YES_OPTION) {
-            try {
-                String query = "update patient_info set patient_lastname=?, patient_firstname=?, patient_gender=?, patient_DOB=?, patient_age=?, patient_contactno=?, patient_address=?, mother_lastname=?, mother_firstname=?, mother_age=?, mother_contactno=?, father_lastname=?, father_firstname=?, father_age=?, father_contactno=?, remarks=?, prescription=? where patient_ID='" + patientID + "' ";
-
-                PreparedStatement pst = con.prepareStatement(query);
-                pst.setString(1, lname);
-                pst.setString(2, fname);
-                pst.setString(3, gender);
-                pst.setString(4, date);
-                pst.setString(5, age);
-                pst.setString(6, phoneNumber);
-                pst.setString(7, address);
-                pst.setString(8, MotherLName);
-                pst.setString(9, MotherFirstName);
-                pst.setString(10, MotherAge);
-                pst.setString(11, MotherNumber);
-                pst.setString(12, FatherLastName);
-                pst.setString(13, FatherFirstName);
-                pst.setString(14, FatherAge);
-                pst.setString(15, FatherNumber);
-                pst.setString(16, remarksString);
-                pst.setString(17, prescriptString);
-                pst.executeUpdate();
-                JOptionPane.showMessageDialog(this, "Update Successful!");
-                updateTable();
-            } catch (SQLException ex) {
-                Logger.getLogger(updatePatientFrame.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-    }//GEN-LAST:event_updateButtonActionPerformed
 
     private void textAgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textAgeActionPerformed
         // TODO add your handling code here:
@@ -523,7 +528,7 @@ public class updatePatientFrame extends javax.swing.JFrame {
             ResultSet rs = pst.executeQuery();
 
             if (rs.next()) {
-                textPatientID.setText(rs.getString("patient_ID"));
+                textPatientID1.setText(rs.getString("patient_ID"));
                 textLastName.setText(rs.getString("patient_lastname"));
                 textFirstName.setText(rs.getString("patient_firstname"));
                 comboGender.setSelectedItem(rs.getString("patient_gender"));
@@ -569,14 +574,16 @@ public class updatePatientFrame extends javax.swing.JFrame {
 
         int row = patient_table.getSelectedRow();
         String selection = patient_table.getModel().getValueAt(row, 0).toString();
-        String query = "select * from patient_info where patient_ID = " + selection;
+        DefaultTableModel model = (DefaultTableModel) patient_table.getModel();
+        String id = (String) model.getValueAt(row, 0);
+        String query = "select * from patient_info where patient_ID = '" + id + "'";
 
         try {
             PreparedStatement pst = con.prepareStatement(query);
             ResultSet rs = pst.executeQuery();
 
             if (rs.next()) {
-                textPatientID.setText(rs.getString("patient_ID"));
+                textPatientID1.setText(rs.getString("patient_ID"));
                 textLastName.setText(rs.getString("patient_lastname"));
                 textFirstName.setText(rs.getString("patient_firstname"));
                 comboGender.setSelectedItem(rs.getString("patient_gender"));
@@ -610,6 +617,7 @@ public class updatePatientFrame extends javax.swing.JFrame {
                 con.close();
             } catch (Exception e) {
                 /* Ignored */ }
+
         }
     }//GEN-LAST:event_patient_tableKeyReleased
 
@@ -687,6 +695,99 @@ public class updatePatientFrame extends javax.swing.JFrame {
         fetch();
     }//GEN-LAST:event_rSMaterialButtonRectangle2ActionPerformed
 
+    private void comboGenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboGenderActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboGenderActionPerformed
+
+    private void jLabel20MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel20MouseClicked
+        // Terminate JVM
+        this.dispose();
+    }//GEN-LAST:event_jLabel20MouseClicked
+
+    private void clearButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearButton1ActionPerformed
+         int msg = JOptionPane.showConfirmDialog(this, "Are you sure you want to remove all fields?", "Remove Fields", JOptionPane.WARNING_MESSAGE);
+
+        if (msg == 0) {
+            // textIDNo.setText("");
+            textLastName.setText("");
+            textFirstName.setText("");
+            birthDate.setCalendar(null);
+            textAge.setText("");
+            textPhoneNo.setText("");
+            textAddress.setText("");
+            textMotherLname.setText("");
+            textMotherFirstName.setText("");
+            textMotherAge.setText("");
+            textMotherNumber.setText("");
+            textFatherLastName.setText("");
+            textFatherFirstName.setText("");
+            textFatherAge.setText("");
+            textFatherNumber.setText("");
+            textAreaRemarks.setText("");
+            textAreaPrescription.setText("");
+        }
+    }//GEN-LAST:event_clearButton1ActionPerformed
+
+    private void btnAddRec1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddRec1ActionPerformed
+        Connection con;
+
+        DatabaseConnection connection = new DatabaseConnection();
+        con = connection.getConnection();
+        //confirmation dialog message
+        int msg = JOptionPane.showConfirmDialog(this, "Update selected record?");
+
+//assigning textfields into variables for easy calling
+        String patientID = textPatientID1.getText();
+        String lname = textLastName.getText();
+        String fname = textFirstName.getText();
+        String gender = comboGender.getSelectedItem().toString();
+        String age = textAge.getText();
+//date of birth
+        String date = ((JTextField) birthDate.getDateEditor().getUiComponent()).getText();
+        String phoneNumber = textPhoneNo.getText();
+        String address = textAddress.getText();
+        String MotherLName = textMotherLname.getText();
+        String MotherFirstName = textMotherFirstName.getText();
+        String MotherAge = textMotherAge.getText();
+        String MotherNumber = textMotherNumber.getText();
+        String FatherLastName = textFatherLastName.getText();
+        String FatherFirstName = textFatherFirstName.getText();
+        String FatherAge = textFatherAge.getText();
+        String FatherNumber = textFatherNumber.getText();
+        String remarksString = textAreaRemarks.getText();
+        String prescriptString = textAreaPrescription.getText();
+
+        if (msg == JOptionPane.YES_OPTION) {
+            try {
+                String query = "update patient_info set patient_lastname=?, patient_firstname=?, patient_gender=?, patient_DOB=?, patient_age=?, patient_contactno=?, patient_address=?, mother_lastname=?, mother_firstname=?, mother_age=?, mother_contactno=?, father_lastname=?, father_firstname=?, father_age=?, father_contactno=?, remarks=?, prescription=? where patient_ID='" + patientID + "' ";
+
+                PreparedStatement pst = con.prepareStatement(query);
+                pst.setString(1, lname);
+                pst.setString(2, fname);
+                pst.setString(3, gender);
+                pst.setString(4, date);
+                pst.setString(5, age);
+                pst.setString(6, phoneNumber);
+                pst.setString(7, address);
+                pst.setString(8, MotherLName);
+                pst.setString(9, MotherFirstName);
+                pst.setString(10, MotherAge);
+                pst.setString(11, MotherNumber);
+                pst.setString(12, FatherLastName);
+                pst.setString(13, FatherFirstName);
+                pst.setString(14, FatherAge);
+                pst.setString(15, FatherNumber);
+                pst.setString(16, remarksString);
+                pst.setString(17, prescriptString);
+                pst.executeUpdate();
+                JOptionPane.showMessageDialog(this, "Update Successful!");
+                updateTable();
+            } catch (SQLException ex) {
+                Logger.getLogger(updatePatientFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_btnAddRec1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -724,9 +825,9 @@ public class updatePatientFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.toedter.calendar.JDateChooser birthDate;
-    private javax.swing.JButton clearButton;
+    private rojerusan.RSMaterialButtonCircle btnAddRec1;
+    private rojerusan.RSMaterialButtonCircle clearButton1;
     private javax.swing.JComboBox<String> comboGender;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -737,6 +838,7 @@ public class updatePatientFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
@@ -770,8 +872,7 @@ public class updatePatientFrame extends javax.swing.JFrame {
     private javax.swing.JTextField textMotherFirstName;
     private javax.swing.JTextField textMotherLname;
     private javax.swing.JTextField textMotherNumber;
-    private javax.swing.JTextField textPatientID;
+    private javax.swing.JLabel textPatientID1;
     private javax.swing.JTextField textPhoneNo;
-    private javax.swing.JButton updateButton;
     // End of variables declaration//GEN-END:variables
 }

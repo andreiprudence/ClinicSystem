@@ -42,7 +42,7 @@ public class UpdateMedicineFrame extends javax.swing.JFrame {
         DatabaseConnection connection = new DatabaseConnection();
         con = connection.getConnection();
         try {
-            String query = "select medicine_no as 'Medicine ID', medicine_name as 'Name', medicine_price as 'Price', medicine_expiry as 'Expiry Date' from medicine_info";
+            String query = "select medicine_no as 'ID', medicine_name as 'Name', medicine_price as 'Price', medicine_expiry as 'Expiry', quantity as 'Quantity' from medicine_info";
             PreparedStatement pstmt = con.prepareStatement(query);
             ResultSet rs = pstmt.executeQuery();
             medicine_table.setModel(DbUtils.resultSetToTableModel(rs));
@@ -85,17 +85,21 @@ public class UpdateMedicineFrame extends javax.swing.JFrame {
         textMedicineName = new app.bolivia.swing.JCTextField();
         textMedicinePrice = new app.bolivia.swing.JCTextField();
         textMedID = new app.bolivia.swing.JCTextField();
-        btnCancel = new javax.swing.JButton();
-        btnDeleteRec = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         medicine_table = new rojerusan.RSTableMetro();
         searchField = new app.bolivia.swing.JCTextField();
+        jPanel14 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        jSpinnerQuantity = new javax.swing.JSpinner();
+        btnAddRec1 = new rojerusan.RSMaterialButtonCircle();
+        clearButton1 = new rojerusan.RSMaterialButtonCircle();
 
         setUndecorated(true);
         setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(0, 78, 103));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(38, 133, 187), 3, true));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -111,69 +115,56 @@ public class UpdateMedicineFrame extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 530, -1));
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(38, 133, 187));
         jLabel1.setText("UPDATE MEDICINE");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 10, -1, 50));
 
-        jLabel3.setFont(new java.awt.Font("Cambria", 1, 16)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(38, 133, 187));
         jLabel3.setText("Medicine ID: ");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Cambria", 1, 16)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(38, 133, 187));
         jLabel4.setText("Medicine Name:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, -1, -1));
 
-        jLabel5.setFont(new java.awt.Font("Cambria", 1, 16)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Expiry:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, -1, -1));
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(38, 133, 187));
+        jLabel5.setText("Quantity:");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 340, -1, -1));
 
-        jLabel6.setFont(new java.awt.Font("Cambria", 1, 16)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(38, 133, 187));
         jLabel6.setText("Medicine Price:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, -1, -1));
-        jPanel1.add(expiryDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 290, 230, 30));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, -1));
 
+        expiryDate.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(38, 133, 187)));
+        expiryDate.setOpaque(false);
+        jPanel1.add(expiryDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 280, 230, 40));
+
+        textMedicineName.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(38, 133, 187)));
+        textMedicineName.setOpaque(false);
         textMedicineName.setPlaceholder("Enter Name...");
         textMedicineName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textMedicineNameActionPerformed(evt);
             }
         });
-        jPanel1.add(textMedicineName, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, 230, -1));
+        jPanel1.add(textMedicineName, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 172, 230, 40));
 
+        textMedicinePrice.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(38, 133, 187)));
+        textMedicinePrice.setOpaque(false);
         textMedicinePrice.setPlaceholder("Enter Price...");
-        jPanel1.add(textMedicinePrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 230, 230, -1));
+        jPanel1.add(textMedicinePrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 222, 230, 40));
 
+        textMedID.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(38, 133, 187)));
+        textMedID.setOpaque(false);
         textMedID.setPlaceholder("Enter ID...");
-        jPanel1.add(textMedID, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, 230, -1));
+        jPanel1.add(textMedID, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 122, 230, 40));
 
-        btnCancel.setBackground(new java.awt.Color(255, 0, 51));
-        btnCancel.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        btnCancel.setForeground(new java.awt.Color(255, 255, 255));
-        btnCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/330399_bad_cancel_clear_close_decline_icon.png"))); // NOI18N
-        btnCancel.setText("Clear");
-        btnCancel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 360, 120, 50));
-
-        btnDeleteRec.setBackground(new java.awt.Color(0, 166, 89));
-        btnDeleteRec.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        btnDeleteRec.setForeground(new java.awt.Color(255, 255, 255));
-        btnDeleteRec.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/3336950_download_save_icon.png"))); // NOI18N
-        btnDeleteRec.setText("UPDATE");
-        btnDeleteRec.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteRecActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnDeleteRec, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 360, 130, 50));
-
+        btnBack.setBackground(new java.awt.Color(255, 0, 51));
         btnBack.setFont(new java.awt.Font("Gadugi", 1, 11)); // NOI18N
         btnBack.setText("X");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -181,7 +172,7 @@ public class UpdateMedicineFrame extends javax.swing.JFrame {
                 btnBackActionPerformed(evt);
             }
         });
-        jPanel1.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 10, -1, 30));
+        jPanel1.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 0, -1, 30));
 
         medicine_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -193,6 +184,12 @@ public class UpdateMedicineFrame extends javax.swing.JFrame {
                 "Name of Medicine", "Medicine No.", "Medicine Price"
             }
         ));
+        medicine_table.setColorBackgoundHead(new java.awt.Color(38, 133, 187));
+        medicine_table.setColorBordeFilas(new java.awt.Color(38, 133, 187));
+        medicine_table.setColorBordeHead(new java.awt.Color(38, 133, 187));
+        medicine_table.setColorFilasBackgound2(new java.awt.Color(255, 255, 255));
+        medicine_table.setColorSelBackgound(new java.awt.Color(38, 133, 187));
+        medicine_table.setRowHeight(25);
         medicine_table.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 medicine_tableMouseClicked(evt);
@@ -200,16 +197,61 @@ public class UpdateMedicineFrame extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(medicine_table);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 110, 470, 330));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 120, 470, 330));
 
-        searchField.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 0, 0)));
-        searchField.setPlaceholder("Enter Name/ID...");
+        searchField.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(38, 133, 187)));
+        searchField.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        searchField.setOpaque(false);
+        searchField.setPlaceholder("Enter ID/Name...");
         searchField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 searchFieldKeyReleased(evt);
             }
         });
-        jPanel1.add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 70, 220, -1));
+        jPanel1.add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 72, 220, 40));
+
+        jPanel14.setBackground(new java.awt.Color(255, 179, 68));
+
+        javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
+        jPanel14.setLayout(jPanel14Layout);
+        jPanel14Layout.setHorizontalGroup(
+            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 550, Short.MAX_VALUE)
+        );
+        jPanel14Layout.setVerticalGroup(
+            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(jPanel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 60, 550, 3));
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(38, 133, 187));
+        jLabel7.setText("Expiry:");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 290, -1, -1));
+        jPanel1.add(jSpinnerQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 340, 50, 30));
+
+        btnAddRec1.setBackground(new java.awt.Color(0, 166, 89));
+        btnAddRec1.setBorder(null);
+        btnAddRec1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/103765_close_user_settings_icon (1).png"))); // NOI18N
+        btnAddRec1.setText("update");
+        btnAddRec1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddRec1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnAddRec1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 390, 140, 60));
+
+        clearButton1.setBackground(new java.awt.Color(255, 0, 51));
+        clearButton1.setBorder(null);
+        clearButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicPackage/images/103765_close_user_settings_icon (1).png"))); // NOI18N
+        clearButton1.setText("clear");
+        clearButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clearButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(clearButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 390, 130, 60));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -229,65 +271,6 @@ public class UpdateMedicineFrame extends javax.swing.JFrame {
     private void textMedicineNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textMedicineNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textMedicineNameActionPerformed
-
-    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
-        int msg = JOptionPane.showConfirmDialog(null, "Are you sure you want to clear all the records?");
-
-        if (msg == 0) {
-            // textIDNo.setText("");
-            textMedicinePrice.setText("");
-            textMedicineName.setText("");
-            textMedID.setText("");
-            expiryDate.setCalendar(null);
-
-        }
-    }//GEN-LAST:event_btnCancelActionPerformed
-
-    private void btnDeleteRecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteRecActionPerformed
-        Connection con;
-
-        DatabaseConnection connection = new DatabaseConnection();
-        con = connection.getConnection();
-        //confirmation dialog message
-        int msg = JOptionPane.showConfirmDialog(this, "Update selected record?");
-
-        String expirydate = ((JTextField) expiryDate.getDateEditor().getUiComponent()).getText();
-        String medicineID = textMedID.getText();
-        String medicineName = textMedicineName.getText();
-        String medicinePrice = textMedicinePrice.getText();
-        if (msg == JOptionPane.YES_OPTION) {
-            try {
-                String query = "update medicine_info set medicine_no=?, medicine_name=?, medicine_price=?, medicine_expiry=? where medicine_no='" + medicineID + "' ";
-
-                PreparedStatement pst = con.prepareStatement(query);
-                pst.setString(1, medicineID);
-                pst.setString(2, medicineName);
-                pst.setString(3, medicinePrice);
-                pst.setString(4, expirydate);
-                pst.executeUpdate();
-                JOptionPane.showMessageDialog(this, "Update Successful!");
-                updateTable();
-            } catch (SQLException ex) {
-                Logger.getLogger(updatePatientFrame.class.getName()).log(Level.SEVERE, null, ex);
-
-            } finally {
-                try {
-                    rs.close();
-                } catch (Exception e) {
-                    /* Ignored */ }
-                try {
-                    pst.close();
-                } catch (Exception e) {
-                    /* Ignored */ }
-                try {
-                    con.close();
-                } catch (Exception e) {
-                    /* Ignored */ }
-            }
-        }else{
-            JOptionPane.showMessageDialog(this, "Update unsuccessful", "Error", JOptionPane.WARNING_MESSAGE);
-        }
-    }//GEN-LAST:event_btnDeleteRecActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         this.dispose();
@@ -309,12 +292,14 @@ public class UpdateMedicineFrame extends javax.swing.JFrame {
                 pst = con.prepareStatement(query);
                 rs = pst.executeQuery();
                 medicine_table.setModel(DbUtils.resultSetToTableModel(rs));
+                fetch();
 
             } else {
 
                 pst = con.prepareStatement(query2);
                 rs = pst.executeQuery();
                 medicine_table.setModel(DbUtils.resultSetToTableModel(rs));
+                fetch();
             }
         } catch (SQLException ex) {
             Logger.getLogger(InternalFramePatientRec.class.getName()).log(Level.SEVERE, null, ex);
@@ -374,6 +359,68 @@ public class UpdateMedicineFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_medicine_tableMouseClicked
 
+    private void btnAddRec1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddRec1ActionPerformed
+              Connection con;
+
+        DatabaseConnection connection = new DatabaseConnection();
+        con = connection.getConnection();
+        //confirmation dialog message
+        int msg = JOptionPane.showConfirmDialog(this, "Update selected record?");
+
+        String expirydate = ((JTextField) expiryDate.getDateEditor().getUiComponent()).getText();
+        String medicineID = textMedID.getText();
+        String medicineName = textMedicineName.getText();
+        String medicinePrice = textMedicinePrice.getText();
+        String quantity = jSpinnerQuantity.getValue().toString();
+        if (msg == JOptionPane.YES_OPTION) {
+            try {
+                String query = "update medicine_info set medicine_no=?, medicine_name=?, medicine_price=?, medicine_expiry=?, quantity=? where medicine_no='" + medicineID + "' ";
+
+                PreparedStatement pst = con.prepareStatement(query);
+                pst.setString(1, medicineID);
+                pst.setString(2, medicineName);
+                pst.setString(3, medicinePrice);
+                pst.setString(4, expirydate);
+                pst.setString(5, quantity);
+                pst.executeUpdate();
+                JOptionPane.showMessageDialog(this, "Update Successful!");
+                fetch();
+            } catch (SQLException ex) {
+                Logger.getLogger(updatePatientFrame.class.getName()).log(Level.SEVERE, null, ex);
+
+            } finally {
+                try {
+                    rs.close();
+                } catch (Exception e) {
+                    /* Ignored */ }
+                try {
+                    pst.close();
+                } catch (Exception e) {
+                    /* Ignored */ }
+                try {
+                    con.close();
+                } catch (Exception e) {
+                    /* Ignored */ }
+            }
+        }else{
+            JOptionPane.showMessageDialog(this, "Update unsuccessful", "Error", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_btnAddRec1ActionPerformed
+
+    private void clearButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearButton1ActionPerformed
+         int msg = JOptionPane.showConfirmDialog(null, "Are you sure you want to clear all the records?");
+
+        if (msg == 0) {
+            // textIDNo.setText("");
+            textMedicinePrice.setText("");
+            textMedicineName.setText("");
+            textMedID.setText("");
+            expiryDate.setCalendar(null);
+            jSpinnerQuantity.setValue(0);
+
+        }
+    }//GEN-LAST:event_clearButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -413,18 +460,21 @@ public class UpdateMedicineFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private rojerusan.RSMaterialButtonCircle btnAddRec1;
     private javax.swing.JButton btnBack;
-    private javax.swing.JButton btnCancel;
-    private javax.swing.JButton btnDeleteRec;
+    private rojerusan.RSMaterialButtonCircle clearButton1;
     private com.toedter.calendar.JDateChooser expiryDate;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSpinner jSpinnerQuantity;
     private static rojerusan.RSTableMetro medicine_table;
     private app.bolivia.swing.JCTextField searchField;
     private app.bolivia.swing.JCTextField textMedID;
